@@ -38,7 +38,7 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 
 <h4> Show bindkeys with Whichkey </h3>
 
-<img src="screenshot/whichkey.png">
+<img src="screenshot/wk.png">
 
 </details>
 
@@ -95,7 +95,6 @@ and more plugins...
   ```
 
 <details><summary> <b><i>Credits</b></i></summary>
-
 
 - [Nvchad](https://github.com/nvchad/base46) helped me with NeoVim themes
 

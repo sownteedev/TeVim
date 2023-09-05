@@ -15,7 +15,7 @@ local setup = {
     icons = {
         breadcrumb = "",
         separator = "",
-        group = " ",
+        group = " ",
     },
     window = {
         border = "none",
@@ -44,7 +44,7 @@ local mappings = {
     ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
     ["q"] = { ":q<CR>", "Quit" },
     p = {
-        name = "PACKER",
+        name = "󰏖  PACKER",
         C = { "<cmd>PackerClean<cr>", "Clean" },
         c = { "<cmd>PackerCompile<cr>", "Compile" },
         i = { "<cmd>PackerInstall<cr>", "Install" },
@@ -53,21 +53,21 @@ local mappings = {
         u = { "<cmd>PackerUpdate<cr>", "Update" },
     },
     o = {
-        name = "OPTIONS",
+        name = "  OPTIONS",
         w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
         s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
         t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
         g = { '<cmd>lua require("user.functions").run_build()<cr>', "Run & Build" },
     },
     w = {
-        name = "WINDOWS",
+        name = "  WINDOWS",
         v = { "<C-w>v", "Vertical Split" },
         h = { "<C-w>s", "Horizontal Split" },
         e = { "<C-w>=", "Make Splits Equal" },
         q = { ":close<CR>", "Close Split" },
     },
     d = {
-        name = "DEBUG",
+        name = "  DEBUG",
         b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
         c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
         i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
@@ -79,7 +79,7 @@ local mappings = {
         x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
     },
     f = {
-        name = "TELESCOPE",
+        name = "  TELESCOPE",
         C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
         c = { "<cmd>lua require('themes.switch').setup(require('telescope.themes').get_dropdown{})<cr>", "Select Themes" },
         f = { "<cmd>Telescope find_files<cr>", "Find File" },
@@ -96,7 +96,7 @@ local mappings = {
         p = { "<cmd>Telescope projects<cr>", "Projects" },
     },
     g = {
-        name = "GIT",
+        name = "󰊢  GIT",
         g = { "<cmd>lua LazyGit()<CR>", "Lazygit" },
         j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
         k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
@@ -111,7 +111,7 @@ local mappings = {
         d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
     },
     l = {
-        name = "LSP",
+        name = "  LSP",
         a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
         d = { "<cmd>TroubleToggle<cr>", "Diagnostics" },
         w = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics" },
@@ -131,7 +131,7 @@ local mappings = {
         u = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
     },
     t = {
-        name = "TERMINAL",
+        name = "  TERMINAL",
         ["1"] = { ":1ToggleTerm<cr>", "1" },
         ["2"] = { ":2ToggleTerm<cr>", "2" },
         ["3"] = { ":3ToggleTerm<cr>", "3" },
