@@ -6,7 +6,7 @@
 
 <img src="screenshot/layout.png">
 <img src="screenshot/syntax.png">
-<img src="screenshot/cmp.png">
+<img src="screenshot/completion.png">
 <img src="screenshot/selecttheme.png">
 
 ## UI related plugins used
