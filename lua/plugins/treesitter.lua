@@ -31,6 +31,9 @@ treesitter.setup({
             show_help = '?',
         },
     },
+    context_commentstring = {
+        enable = true,
+    },
     query_linter = {
         enable = true,
         use_virtual_text = true,

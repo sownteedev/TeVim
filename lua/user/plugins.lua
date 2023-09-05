@@ -52,17 +52,13 @@ local plugins = {
     -- Treesitter
     ["nvim-treesitter/nvim-treesitter"] = {
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+        requires = { "nvim-treesitter/nvim-treesitter-context" },
         config = function()
             require("plugins.treesitter")
         end
     },
-    ["nvim-treesitter/nvim-treesitter-context"] = {
-        event = { "BufReadPost", "BufNewFile" },
-        config = function()
-            require("treesitter-context").setup()
-        end
-    },
     ["windwp/nvim-ts-autotag"] = { event = "InsertEnter" },
+    ["JoosepAlviste/nvim-ts-context-commentstring"] = { after = "nvim-treesitter" },
 
     -- Auto closing
     ["windwp/nvim-autopairs"] = {
@@ -92,7 +88,9 @@ local plugins = {
     ["numToStr/Comment.nvim"] = {
         event = { "BufReadPost", "BufNewFile" },
         config = function()
-            require("Comment").setup()
+            require("Comment").setup({
+                pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+            })
         end
     },
 
@@ -341,6 +339,9 @@ local plugins = {
         config = function()
             require("plugins.lsp.lspsaga")
         end
+    },
+    ["ray-x/lsp_signature.nvim"] = {
+        event = "InsertEnter",
     },
     ["onsails/lspkind.nvim"] = {},
 
