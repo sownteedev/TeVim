@@ -6,25 +6,25 @@ end
 
 nvim_web_devicons.set_icon({
     sh = {
-        icon = " ",
+        icon = "",
         color = "#1DC123",
         cterm_color = "59",
         name = "Sh",
     },
     [".gitattributes"] = {
-        icon = " ",
+        icon = "",
         color = "#e24329",
         cterm_color = "59",
         name = "GitAttributes",
     },
     [".gitconfig"] = {
-        icon = " ",
+        icon = "",
         color = "#e24329",
         cterm_color = "59",
         name = "GitConfig",
     },
     [".gitignore"] = {
-        icon = " ",
+        icon = "",
         color = "#e24329",
         cterm_color = "59",
         name = "GitIgnore",
@@ -36,15 +36,21 @@ nvim_web_devicons.set_icon({
         name = "GitlabCI",
     },
     [".gitmodules"] = {
-        icon = " ",
+        icon = "",
         color = "#e24329",
         cterm_color = "59",
         name = "GitModules",
     },
     ["diff"] = {
-        icon = " ",
+        icon = "",
         color = "#e24329",
         cterm_color = "59",
         name = "Diff",
+    },
+    ["js"] = {
+        icon = "",
+        color = "#e24329",
+        cterm_color = "59",
+        name = "Javascript",
     },
 })

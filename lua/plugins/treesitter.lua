@@ -9,7 +9,6 @@ require("nvim-treesitter.install").compilers = { "clang" }
 treesitter.setup({
     highlight = {
         enable = true,
-        additional_vim_regex_highlighting = { 'org' },
         use_languagetree = true,
     },
     -- Playground

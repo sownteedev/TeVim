@@ -85,7 +85,7 @@ cmp.setup({
                 mode = "symbol_text",
                 symbol_map = { Copilot = "", Codeium = "", Snippet = "", Keyword = "" },
                 preset = "codicons",
-                -- ellipsis_char = "...",
+                ellipsis_char = "...",
                 maxwidth = 30,
             })(entry, vim_item)
             local strings = vim.split(vim_item.kind, "%s+", { trimempty = true })
@@ -100,12 +100,11 @@ cmp.setup({
         },
     },
     sources = {
-        { name = 'orgmode' },
         { name = "copilot",  group_index = 2 },
-        { name = "crates",   group_index = 2 },
         { name = "nvim_lsp", group_index = 2 },
         { name = "nvim_lua", group_index = 2 },
         { name = "luasnip",  group_index = 2 },
+        { name = "crates",   group_index = 2 },
         { name = "buffer",   group_index = 2 },
         { name = "path",     group_index = 2 },
     },
