@@ -2,38 +2,47 @@
 
 <h4 align="center">Neovim config by SownteeNguyen @sownteedev</h2>
 
-## Showcase
+<div align="center">
+ 
+[![Neovim Minimum Version](https://img.shields.io/badge/Neovim-Nightly-blueviolet.svg?style=for-the-badge&logo=Neovim&color=90E59A&logoColor=white)](https://github.com/neovim/neovim)
+![](https://img.shields.io/github/last-commit/sownteedev/TeVim?&style=for-the-badge&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41)
+![](https://img.shields.io/github/stars/sownteedev/TeVim?style=for-the-badge&logo=starship&color=8bd5ca&logoColor=D9E0EE&labelColor=302D41)
+[![](https://img.shields.io/github/repo-size/sownteedev/TeVim?color=%23DDB6F2&label=SIZE&logo=codesandbox&style=for-the-badge&logoColor=D9E0EE&labelColor=302D41)](https://github.com/sownteedev/TeVim)
+<a href="https://discordapp.com/users/745732774027198554"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white"/></a>
+</div>
+  
+## 📷 Showcase
 
 <img src="screenshot/layout.png">
 <img src="screenshot/syntax.png">
 <img src="screenshot/completion.png">
 <img src="screenshot/selecttheme.png">
 
-## UI related plugins used
+## 🔌 UI related plugins used
 
 <details><summary> <b>Images</b></summary>
 
 <h4> Neotree.lua </h3>
 
-<kbd><img src="screenshot/neotree.png"></kbd>
+<img src="screenshot/neotree.png">
 
 <h4> Telescope-nvim </h3>
 
 A fuzzy file finder, picker, sorter, previewer and much more:
 
-<kbd><img src="screenshot/telescope.png"></kbd>
+<img src="screenshot/telescope.png">
 
 <h4> Statusline with Lualine.nvim </h3>
 
-<kbd><img src="screenshot/statusline.png"></kbd>
+<img src="screenshot/statusline.png">
 
 <h4> Show bindkeys with Whichkey </h3>
 
-<kbd><img src="screenshot/whichkey.png"></kbd>
+<img src="screenshot/whichkey.png">
 
 </details>
 
-## Plugins list
+## ⚙️ Plugins
 
 - Mange plugins with [packer.nvim](https://github.com/wbthomason/packer.nvim)
 - Many beautiful themes, theme toggle from [nvchad/base46](https://github.com/NvChad/base46)
@@ -52,7 +61,41 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 
 and more plugins...
 
+<br>
+<h2>🔎 Requirement</h2>
+- You probably notice you don't have support for copy and paste also that python and node haven't been setup
+  
+  - If you on X11 install xsel and xclip
+    
+    ```
+    sudo pacman -S xsel xclip
+    ```
+
+- Next we need to install python support (Node is optional)
+  - Neovim python support:
+  ```
+    pip install pynvim
+  ```
+  - Neovim Node support
+  ```
+    npm i -g neovim
+  ```
+- Other dependencies for formatting & finding text :
+
+  - Prettier
+
+  ```bash
+    npm i -g prettier
+  ```
+
+  - Ripgrep Fzf Lazygit
+
+  ```
+    sudo pacman -S ripgrep fzf lazygit
+  ```
+
 <details><summary> <b><i>Credits</b></i></summary>
+
 
 - [Nvchad](https://github.com/nvchad/base46) helped me with NeoVim themes
 
