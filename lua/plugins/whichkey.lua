@@ -127,7 +127,6 @@ local mappings = {
         R = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
         s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
         S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
-        t = { '<cmd>lua require("user.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
         u = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
     },
     t = {

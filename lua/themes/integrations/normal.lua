@@ -5,7 +5,7 @@ return function(colors)
         NormalSB = { fg = colors.white, bg = colors.black },
         NormalFloat = { bg = colors.darker_black },
         FloatBorder = { fg = colors.darker_black, bg = colors.darker_black },
-        WinSeparator = { fg = colors.black, bg = colors.black },
+        WinSeparator = { fg = colors.black2, bg = colors.black },
 
         MsgArea = { fg = colors.white, bg = colors.black },
         ModeMsg = { fg = colors.white, bg = colors.black },

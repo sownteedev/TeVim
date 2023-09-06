@@ -1,4 +1,4 @@
-vim.cmd("filetype plugin indent off")
+vim.cmd("filetype plugin indent on")
 vim.cmd("syntax on")
 
 local options = {
@@ -24,7 +24,7 @@ local options = {
     backup = false,
     clipboard = "unnamedplus",
     showcmd = true,
-    cmdheight = 1,
+    cmdheight = 0,
     writebackup = false,
     swapfile = false,
     completeopt = { "menu", "menuone", "noselect" },

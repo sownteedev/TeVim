@@ -56,11 +56,10 @@ local location = {
 
 local modes = {
     function()
-        vim.cmd "function! ToggleTheme(a,b,c,d) \n lua require('themes.switch').toggleTheme() \n endfunction"
         local animated = {
-            "%@ToggleTheme@" .. "  ",
-            "%@ToggleTheme@" .. "  ",
-            "%@ToggleTheme@" .. " 󱠡 ",
+            "  ",
+            "  ",
+            " 󱠡 ",
         }
         return animated[os.date("%S") % #animated + 1]
     end,
@@ -72,6 +71,7 @@ local indent = function()
 end
 
 local lsp_progess = function()
+    local msg
     msg = msg or "✖"
     local buf_clients = vim.lsp.get_active_clients()
     if next(buf_clients) == nil then
@@ -101,7 +101,7 @@ local lsp_progess = function()
         end
     end
 
-    function list_registered_providers_names(filetype)
+    local list_registered_providers_names = function(filetype)
         local s = require("null-ls.sources")
         local available_sources = s.get_available(filetype)
         local registered = {}
@@ -114,7 +114,7 @@ local lsp_progess = function()
         return registered
     end
 
-    function list_registered(filetype)
+    local list_registered = function(filetype)
         local registered_providers = list_registered_providers_names(filetype)
         local providers_for_methods = vim.tbl_flatten(vim.tbl_map(function(m)
             return registered_providers[m] or {}
@@ -202,7 +202,7 @@ lualine.setup({
                 separator = { left = "", right = "" },
                 color = { bg = colors.orange, fg = colors.black },
             },
-            diagnostics,
+            -- diagnostics,
             {
                 lsp_progess,
             },

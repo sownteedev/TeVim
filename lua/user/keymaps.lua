@@ -7,8 +7,6 @@
 --                            | |
 --                            |_|
 
-M = {}
-
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
@@ -32,7 +30,7 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Save
-keymap("n", "<C-s>", ":w<CR>", opts)
+keymap("n", "<C-s>", "<cmd>w<CR>", opts)
 keymap("i", "<C-s>", "<ESC>:w<CR>", opts)
 
 -- Move line up and down in normal mode
@@ -42,10 +40,10 @@ keymap("i", "<M-Up>", "<Esc>:m-2<CR>", opts)
 keymap("i", "<M-Down>", "<Esc>:m+<CR>", opts)
 
 -- Resize window
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-Up>", ":resize +2<CR>", opts)
+keymap("n", "<C-Down>", ":resize -2<CR>", opts)
+keymap("n", "<C-Left>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-Right>", ":vertical resize -2<CR>", opts)
 
 -- Use Ctrl + hjkl to move between windows in Insert Mode
 keymap("i", "<C-j>", "<Down>", opts)
@@ -54,7 +52,7 @@ keymap("i", "<C-h>", "<Left>", opts)
 keymap("i", "<C-l>", "<Right>", opts)
 
 -- Move between buffers
-keymap("n", "<TAB>", ":bnext<CR>", opts)
+keymap("n", "<TAB>", "<cmd>bnext<CR>", opts)
 
 -- Split window and hozirontal window
 keymap("n", "<leader>wv", "<C-w>v", opts)
@@ -68,7 +66,6 @@ keymap("n", "<C-t>", "<cmd>lua vim.lsp.buf.document_symbol()<cr>", opts)
 
 -- Expoler
 keymap("n", "<C-e>", "<cmd>Neotree<cr>", opts)
--- keymap("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
 
 -- Telescope
 keymap("n", "<S-TAB>",
@@ -80,5 +77,3 @@ keymap("n", "<S-TAB>",
 vim.cmd([[imap <silent><script><expr> <C-c> copilot#Accept("\<CR>")]])
 vim.cmd([[imap <silent><script><expr> <C-Down> copilot#Next("\<CR>")]])
 vim.cmd([[imap <silent><script><expr> <C-Up> copilot#Previous("\<CR>")]])
-
-return M
