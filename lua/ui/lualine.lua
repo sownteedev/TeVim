@@ -114,7 +114,7 @@ local lsp_progess = function()
         return registered
     end
 
-    local list_registered = function(filetype)
+    function list_registered(filetype)
         local registered_providers = list_registered_providers_names(filetype)
         local providers_for_methods = vim.tbl_flatten(vim.tbl_map(function(m)
             return registered_providers[m] or {}
@@ -202,7 +202,7 @@ lualine.setup({
                 separator = { left = "", right = "" },
                 color = { bg = colors.orange, fg = colors.black },
             },
-            -- diagnostics,
+            diagnostics,
             {
                 lsp_progess,
             },

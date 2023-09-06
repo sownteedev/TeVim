@@ -13,7 +13,7 @@
   
 ## 📷 Showcase
 
-<img src="screenshot/presentation.png">
+<img src="screenshot/layout.png">
 <img src="screenshot/syntax.png">
 <img src="screenshot/completion.png">
 <img src="screenshot/selecttheme.png">

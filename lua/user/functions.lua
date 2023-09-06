@@ -1,11 +1,5 @@
 local M = {}
 
-function M.remove_augroup(name)
-    if vim.fn.exists("#" .. name) == 1 then
-        vim.cmd("au! " .. name)
-    end
-end
-
 -- Toggle Option
 function M.toggle_option(option)
     local value = not vim.api.nvim_get_option_value(option, {})
@@ -99,6 +93,10 @@ local lazygit = require("toggleterm.terminal").Terminal:new({
 
 function LazyGit()
     lazygit:toggle()
+end
+
+function M.toQuitAll()
+    vim.cmd("qa!")
 end
 
 return M

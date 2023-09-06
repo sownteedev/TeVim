@@ -47,30 +47,12 @@ bufferline.setup({
         custom_areas = {
             right = function()
                 vim.cmd "function! ToggleTheme(a,b,c,d) \n lua require('themes.switch').toggleTheme() \n endfunction"
-                local icon = "%@ToggleTheme@" .. "  "
+                vim.cmd "function! Quit(a,b,c,d) \n lua require('user.functions').toQuitAll() \n endfunction"
+                local theme = "%@ToggleTheme@" .. "  "
+                local quit = "%@Quit@" .. "  "
                 local result = {}
-                local seve = vim.diagnostic.severity
-                local error = #vim.diagnostic.get(0, { severity = seve.ERROR })
-                local warning = #vim.diagnostic.get(0, { severity = seve.WARN })
-                local info = #vim.diagnostic.get(0, { severity = seve.INFO })
-                local hint = #vim.diagnostic.get(0, { severity = seve.HINT })
-
-                -- if error ~= 0 thenbuf
-                table.insert(result, { text = "  " .. error, fg = colors.red, bg = "NONE" })
-                -- end
-
-                -- if warning ~= 0 then
-                table.insert(result, { text = "  " .. warning, fg = colors.orange, bg = "NONE" })
-                -- end
-
-                -- if hint ~= 0 then
-                table.insert(result, { text = " 󰌵 " .. hint, fg = colors.purple, bg = "NONE" })
-                -- end
-
-                -- if info ~= 0 then
-                table.insert(result, { text = "  " .. info .. " ", fg = colors.blue, bg = "NONE" })
-                -- end
-                table.insert(result, { text = icon, fg = colors.green, bg = colors.grey })
+                table.insert(result, { text = theme, fg = colors.green, bg = colors.grey })
+                table.insert(result, { text = quit, fg = colors.black, bg = colors.red })
                 return result
             end
         },
