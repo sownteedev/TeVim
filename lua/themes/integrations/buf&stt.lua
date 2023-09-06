@@ -29,10 +29,10 @@ return function(colors)
         BufferLineTabVisible = { fg = colors.grey },
         BufferLineTabInactive = { fg = colors.grey },
 
-        BufferLineSeparator = { fg = colors.grey },
-        BufferLineSeparatorSelected = { fg = colors.cyan },
-        BufferLineSeparatorVisible = { fg = colors.grey },
-        BufferLineSeparatorInactive = { fg = colors.grey },
+        BufferLineSeparator = { fg = colors.black },
+        BufferLineSeparatorSelected = { fg = colors.black },
+        BufferLineSeparatorVisible = { fg = colors.black },
+        BufferLineSeparatorInactive = { fg = colors.black },
 
         BufferLineIndicator = { fg = colors.grey },
         BufferLineIndicatorSelected = { fg = colors.cyan },

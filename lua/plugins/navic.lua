@@ -4,8 +4,6 @@ if not status_ok then
     return
 end
 
-local icon = require("plugins.icons")
-
 navic.setup({
     icons = {
         File          = " ",

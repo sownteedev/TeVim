@@ -56,12 +56,14 @@ local location = {
 
 local modes = {
     function()
-        local animated = {
-            "  ",
-            "  ",
-            " 󱠡 ",
-        }
-        return animated[os.date("%S") % #animated + 1]
+        -- local animated = {
+        -- "  ",
+        -- "  ",
+        -- " 󱠡 ",
+        -- }
+        -- return animated[os.date("%S") % #animated + 1]
+        local animated = "  "
+        return animated
     end,
     separator = { left = "", right = "" },
 }

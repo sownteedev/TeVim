@@ -8,7 +8,7 @@ local colors = require('themes.schemes.yoru').get_colors()
 bufferline.setup({
     options = {
         mode = "buffers",
-        numbers = "ordinal",
+        numbers = "none",
         close_command = "bd! %d",
         right_mouse_command = "bd! %d",
         left_mouse_command = "buffer %d",
