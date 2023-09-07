@@ -42,7 +42,7 @@ local setup = {
 
 local mappings = {
     ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
-    ["q"] = { ":q<CR>", "Quit" },
+    ["q"] = { ":qa!<CR>", "Quit" },
     p = {
         name = "󰏖  PACKER",
         C = { "<cmd>PackerClean<cr>", "Clean" },
@@ -57,7 +57,7 @@ local mappings = {
         w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
         s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
         t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
-        g = { '<cmd>lua require("user.functions").run_build()<cr>', "Run & Build" },
+        g = { '<cmd>lua require("user.functions").build_run()<cr>', "Run & Build" },
     },
     w = {
         name = "  WINDOWS",

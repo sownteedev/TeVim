@@ -22,11 +22,11 @@ local plugins = {
     -- Icons
     ["kyazdani42/nvim-web-devicons"] = {
         config = function()
-            require("plugins.nvim-webdev-icons")
+            require("plugins.devicons")
         end
     },
 
-    -- Nice UI
+    -- Perfect layout
     ["folke/edgy.nvim"] = {
         config = function()
             require("ui.edgy")
@@ -64,7 +64,7 @@ local plugins = {
     ["windwp/nvim-autopairs"] = {
         event = "InsertEnter",
         config = function()
-            require("plugins.autopairs")
+            require("plugins.cmp.autopairs")
         end
     },
 
@@ -133,19 +133,10 @@ local plugins = {
         end
     },
 
-    -- Show winbar lsp
-    ["SmiteshP/nvim-navic"] = {
-        config = function()
-            require("plugins.navic")
-        end
-    },
+
 
     -- Trouble
-    ["folke/trouble.nvim"] = {
-        config = function()
-            require("trouble").setup()
-        end
-    },
+    ["folke/trouble.nvim"] = {},
 
     -- UI CMD
     ["folke/noice.nvim"] = {
@@ -156,11 +147,7 @@ local plugins = {
     },
 
     -- Notification
-    ["rcarriga/nvim-notify"] = {
-        config = function()
-            require("notify").setup()
-        end
-    },
+    ["rcarriga/nvim-notify"] = {},
 
     -- Terminal
     ["akinsho/toggleterm.nvim"] = {
@@ -196,7 +183,6 @@ local plugins = {
         event = { "BufReadPost", "BufNewFile" },
         config = function()
             require("illuminate").configure {
-                delay = 0,
                 filetypes_denylist = { "alpha", "NvimTree", "neo-tree", "packer", "Trouble", "DressingSelect",
                     "TelescopePrompt" },
             }
@@ -238,7 +224,7 @@ local plugins = {
                         sign = { name = { "Diagnostic" }, maxwidth = 1, auto = false },
                         click = "v:lua.ScFa",
                     },
-                    { text = { " ", builtin.lnumfunc, " " },  click = "v:lua.ScLa" },
+                    { text = { builtin.lnumfunc, " " },       click = "v:lua.ScLa" },
                     {
                         sign = { name = { "GitSigns" }, maxwidth = 1, auto = false },
                         click = "v:lua.ScSa",
@@ -255,7 +241,7 @@ local plugins = {
         requires = { "kevinhwang91/promise-async" },
         config = function()
             require("ufo").setup({
-                provider_selector = function(bufnr, filetype, buftype)
+                provider_selector = function()
                     return { 'treesitter', 'indent' }
                 end,
             })
@@ -283,10 +269,9 @@ local plugins = {
             "hrsh7th/cmp-cmdline",
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lua",
-            "petertriho/cmp-git",
         },
         config = function()
-            require("plugins.lsp.cmp")
+            require("plugins.cmp.cmp")
         end
     },
 
@@ -340,10 +325,13 @@ local plugins = {
             require("plugins.lsp.lspsaga")
         end
     },
-    ["ray-x/lsp_signature.nvim"] = {
-        event = "InsertEnter",
-    },
+    ["ray-x/lsp_signature.nvim"] = { event = "InsertEnter" },
     ["onsails/lspkind.nvim"] = {},
+    ["SmiteshP/nvim-navic"] = {
+        config = function()
+            require("plugins.cmp.navic")
+        end
+    },
 
     -- Formatting
     ["jose-elias-alvarez/null-ls.nvim"] = {

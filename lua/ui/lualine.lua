@@ -116,7 +116,7 @@ local lsp_progess = function()
         return registered
     end
 
-    function list_registered(filetype)
+    local list_registered = function(filetype)
         local registered_providers = list_registered_providers_names(filetype)
         local providers_for_methods = vim.tbl_flatten(vim.tbl_map(function(m)
             return registered_providers[m] or {}
@@ -124,7 +124,7 @@ local lsp_progess = function()
         return providers_for_methods
     end
 
-    function formatters_list_registered(filetype)
+    local formatters_list_registered = function(filetype)
         local registered_providers = list_registered_providers_names(filetype)
         return registered_providers[null_ls.methods.FORMATTING] or {}
     end

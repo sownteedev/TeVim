@@ -50,7 +50,6 @@ saga.setup({
         show_code_action = true,
         show_source = true,
         jump_num_shortcut = true,
-        --1 is max
         max_width = 0.7,
         custom_fix = nil,
         custom_msg = nil,
@@ -86,7 +85,7 @@ saga.setup({
     },
     symbol_in_winbar = {
         enable = true,
-        separator = "    ",
+        separator = "  ",
         ignore_patterns = {},
         hide_keyword = false,
         show_file = false,
@@ -94,4 +93,10 @@ saga.setup({
         respect_root = true,
         color_mode = true,
     },
+    implement = {
+        enable = true,
+        sign = true,
+        virtual_text = true,
+        priority = 100,
+    }
 })

@@ -42,7 +42,7 @@ function M.show_documentation()
 end
 
 -- Build & Run
-function M.run_build()
+function M.build_run()
     local filetype = vim.bo.filetype
     if filetype == "c" then
         vim.cmd("TermExec cmd='gcc " ..

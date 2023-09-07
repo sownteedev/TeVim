@@ -15,7 +15,6 @@ bufferline.setup({
         middle_mouse_command = nil,
         indicator = {
             icon = "▍",
-            -- icon = "|",
             style = "icon",
         },
         buffer_close_icon = "󰅙",
@@ -26,7 +25,7 @@ bufferline.setup({
         truncate_names = true,
         max_name_length = 20,
         max_prefix_length = 20,
-        tab_size = 20,
+        tab_size = 23,
         diagnostics = false,
         diagnostics_update_in_insert = true,
         offsets = {},

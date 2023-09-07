@@ -165,11 +165,3 @@ cmp.setup.cmdline(":", {
         { name = "nvim_lua",        max_item_count = 10 },
     },
 })
-
-cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-        { name = 'git' },
-    }, {
-        { name = 'buffer' },
-    })
-})

@@ -8,10 +8,15 @@ require("edgy").setup {
                 return vim.api.nvim_win_get_config(win).relative == ""
             end,
         },
-        "TROUBLE",
+        {
+            ft = "Trouble",
+            title = "TROUBLE",
+            open = "Trouble",
+        },
         { ft = "qf",            title = "QuickFix" },
         {
-            ft = "HELP",
+            title = "HELP",
+            ft = "help",
             size = { height = 20 },
             filter = function(buf)
                 return vim.bo[buf].buftype == "help"
@@ -20,10 +25,6 @@ require("edgy").setup {
         { ft = "spectre_panel", size = { height = 0.4 } },
     },
     left = {
-        -- {
-        --     title = "Explorer",
-        --     ft = "NvimTree",
-        -- },
         {
             title = "EXPLORER",
             ft = "neo-tree",

@@ -4,8 +4,8 @@ function M.get_colors()
     return {
         -- base30
         white = "#dee1e6",
-        darker_black = "#111519",
-        black = "#171B20", --  nvim bg
+        darker_black = "#0d1115",
+        black = "#101419", --  nvim bg
         black2 = "#1e2227",
         one_bg = "#262a2f",
         one_bg2 = "#2f3338",
