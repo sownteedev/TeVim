@@ -133,8 +133,6 @@ local plugins = {
         end
     },
 
-
-
     -- Trouble
     ["folke/trouble.nvim"] = {},
 
@@ -283,13 +281,10 @@ local plugins = {
         end
     },
     ["zbirenbaum/copilot.lua"] = {
-        cmd = "Copilot",
-        event = "InsertEnter",
         config = function()
             require("copilot").setup()
         end
     },
-    ["github/copilot.vim"] = {},
 
     -- Snippets
     ["L3MON4D3/LuaSnip"] = {},

@@ -1,6 +1,6 @@
 return function(colors)
     return {
-        NotifyBackground = { fg = colors.darker_black, bg = colors.darker_black },
+        -- NotifyBackground = { fg = colors.darker_black, bg = colors.darker_black },
         NotifyINFOBorder = { fg = colors.darker_black, bg = colors.darker_black },
         NotifyWARNBorder = { fg = colors.darker_black, bg = colors.darker_black },
         NotifyERRORBorder = { fg = colors.darker_black, bg = colors.darker_black },

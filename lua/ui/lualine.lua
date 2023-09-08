@@ -13,12 +13,7 @@ local colors = require('themes.schemes.yoru').get_colors()
 local diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
-    symbols = {
-        error = " ",
-        warn = " ",
-        hint = " ",
-        info = " ",
-    },
+    symbols = { error = " ", warn = " ", hint = " ", info = " " },
     colored = true,
     diagnostics_color = {
         color_error = { fg = colors.red },
@@ -84,7 +79,7 @@ local lsp_progess = function()
     end
     local buf_ft = vim.bo.filetype
     local buf_client_names = {}
-    local copilot_active = true
+    local copilot_active
     local null_ls = require("null-ls")
     local alternative_methods = {
         null_ls.methods.DIAGNOSTICS,
@@ -94,12 +89,13 @@ local lsp_progess = function()
 
     -- add client
     for _, client in pairs(buf_clients) do
-        if client.name ~= "null-ls" and client.name ~= "copilot" then
-            table.insert(buf_client_names, client.name)
-        end
-
         if client.name == "copilot" then
             copilot_active = true
+        end
+    end
+    for _, client in pairs(buf_clients) do
+        if client.name ~= "null-ls" and client.name ~= "copilot" then
+            table.insert(buf_client_names, client.name)
         end
     end
 
@@ -138,12 +134,12 @@ local lsp_progess = function()
     vim.list_extend(buf_client_names, supported_linters)
     local unique_client_names = vim.fn.uniq(buf_client_names)
 
-    local language_servers = "" .. table.concat(unique_client_names, ", ") .. ""
+    local language_servers = table.concat(unique_client_names, ", ")
 
-    if copilot_active then
-        language_servers = language_servers .. "%#SLCopilot#" .. "    "
-    else
-        language_servers = language_servers .. "%#SLCopilotInactive#" .. "    "
+    if copilot_active == true then
+        language_servers = language_servers .. "    "
+    elseif copilot_active == false then
+        language_servers = language_servers .. "    "
     end
 
     return language_servers
@@ -173,12 +169,12 @@ lualine.setup({
                 "filename",
                 padding = 1,
                 separator = { left = "", right = "" },
-                color = { bg = colors.orange, fg = colors.black2, gui = "bold" },
+                color = { bg = colors.orange, fg = colors.black2, gui = "bold,italic" },
                 file_status = true,
                 newfile_status = true,
                 path = 5,
                 symbols = {
-                    modified = "●",
+                    modified = "",
                     readonly = "",
                     unnamed = "",
                     newfile = "",

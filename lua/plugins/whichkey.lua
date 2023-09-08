@@ -57,7 +57,7 @@ local mappings = {
         w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
         s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
         t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
-        g = { '<cmd>lua require("user.functions").build_run()<cr>', "Run & Build" },
+        g = { '<cmd>lua require("user.functions").build_run()<cr>', "Build & Run" },
     },
     w = {
         name = "  WINDOWS",
