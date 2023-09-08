@@ -59,10 +59,10 @@ local options = {
 	foldlevel = 99,
 }
 
+vim.opt.listchars = "tab:  "
 vim.opt.fillchars = { eob = " ", foldopen = "", foldsep = " ", foldclose = "" }
 vim.opt.formatoptions:remove({ "c", "r", "o" })
 vim.opt.shortmess:append("sI")
-vim.opt.listchars = "tab:  "
 
 -- For Copilot
 vim.g.copilot_no_tab_map = true

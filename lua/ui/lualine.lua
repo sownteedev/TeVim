@@ -6,21 +6,12 @@ end
 -- Require theme color you're using
 local colors = require('themes.schemes.yoru').get_colors()
 
--- local hide_in_width = function()
---     return vim.fn.winwidth(0) > 80
--- end
-
 local diagnostics = {
 	"diagnostics",
 	sources = { "nvim_diagnostic" },
 	symbols = { error = " ", warn = " ", hint = " ", info = " " },
 	colored = true,
-	diagnostics_color = {
-		color_error = { fg = colors.red },
-		color_warn = { fg = colors.orange },
-		color_info = { fg = colors.blue },
-		color_hint = { fg = colors.purple }
-	},
+	padding = { left = 1, right = 1 },
 	always_visible = false,
 	update_in_insert = true,
 }
@@ -29,7 +20,7 @@ local branch = {
 	"branch",
 	icon = "",
 	color = { fg = colors.dark_purple },
-	padding = { right = 2 },
+	padding = { left = 1, right = 2 },
 }
 
 local diff = {
@@ -41,14 +32,13 @@ local diff = {
 		removed  = 'DiffDelete',
 	},
 	symbols = { added = " ", modified = " ", removed = " " },
-	padding = { right = 2 },
+	padding = { right = 1 },
 }
 
+local result = vim.fn.system("git rev-parse --is-inside-work-tree")
 local gitcheck = function()
-	local command = "git rev-parse --is-inside-work-tree"
-	local result = vim.fn.system(command)
-	if result ~= nil and result:match("true") then
-		return " "
+	if result:match("true") then
+		return ""
 	else
 		return " 󱓌 "
 	end
@@ -89,7 +79,6 @@ local lsp_progess = function()
 	end
 	local buf_ft = vim.bo.filetype
 	local buf_client_names = {}
-	local copilot_active = false
 	local null_ls = require("null-ls")
 	local alternative_methods = {
 		null_ls.methods.DIAGNOSTICS,
@@ -98,11 +87,6 @@ local lsp_progess = function()
 	}
 
 	-- add client
-	for _, client in pairs(buf_clients) do
-		if client.name == "copilot" then
-			copilot_active = true
-		end
-	end
 	for _, client in pairs(buf_clients) do
 		if client.name ~= "null-ls" and client.name ~= "copilot" then
 			table.insert(buf_client_names, client.name)
@@ -146,13 +130,22 @@ local lsp_progess = function()
 
 	local language_servers = table.concat(unique_client_names, ", ")
 
-	if copilot_active == true then
-		language_servers = language_servers .. "    "
-	elseif copilot_active == false then
-		language_servers = language_servers .. "    "
-	end
-
 	return language_servers
+end
+
+local copilot = function()
+	local copilot_active = false
+	local buf_clients = vim.lsp.get_active_clients()
+	for _, client in pairs(buf_clients) do
+		if client.name == "copilot" then
+			copilot_active = true
+		end
+	end
+	if copilot_active == true then
+		return " "
+	elseif copilot_active == false then
+		return " "
+	end
 end
 
 lualine.setup({
@@ -192,7 +185,10 @@ lualine.setup({
 			},
 		},
 		lualine_c = {
-			gitcheck,
+			{
+				gitcheck,
+				color = { fg = colors.purple },
+			},
 			branch,
 			diff,
 			{
@@ -214,6 +210,10 @@ lualine.setup({
 			diagnostics,
 			{
 				lsp_progess,
+			},
+			{
+				copilot,
+				color = { fg = colors.green },
 			},
 			{
 				function()

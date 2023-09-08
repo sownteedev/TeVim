@@ -58,7 +58,6 @@ local plugins = {
 		end
 	},
 	["windwp/nvim-ts-autotag"] = { event = "InsertEnter" },
-	["JoosepAlviste/nvim-ts-context-commentstring"] = { after = "nvim-treesitter" },
 
 	-- Auto closing
 	["windwp/nvim-autopairs"] = {
@@ -88,9 +87,7 @@ local plugins = {
 	["numToStr/Comment.nvim"] = {
 		event = { "BufReadPost", "BufNewFile" },
 		config = function()
-			require("Comment").setup({
-				pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-			})
+			require("Comment").setup()
 		end
 	},
 
