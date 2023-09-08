@@ -1,4 +1,4 @@
 require("themes").setup({
-    theme = "ayu",
-    transparent_background = false
+	theme = "ayu",
+	transparent_background = false
 })

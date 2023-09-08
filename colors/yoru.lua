@@ -1,4 +1,4 @@
 require("themes").setup({
-    theme = "yoru",
-    transparent_background = false
+	theme = "yoru",
+	transparent_background = false
 })

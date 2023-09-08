@@ -1,4 +1,4 @@
 require("themes").setup({
-    theme = "tokyonight",
-    transparent_background = false
+	theme = "tokyonight",
+	transparent_background = false
 })

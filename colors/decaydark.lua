@@ -1,4 +1,4 @@
 require("themes").setup({
-    theme = "decaydark",
-    transparent_background = false
+	theme = "decaydark",
+	transparent_background = false
 })

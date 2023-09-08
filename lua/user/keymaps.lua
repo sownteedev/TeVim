@@ -67,8 +67,8 @@ keymap("n", "<C-e>", "<cmd>Neotree<cr>", opts)
 
 -- Telescope
 keymap("n", "<S-TAB>",
-    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false, no_ignore=true, follow=true, hidden=true})<cr>",
-    opts
+	"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false, no_ignore=true, follow=true, hidden=true})<cr>",
+	opts
 )
 
 -- Copilot

@@ -1,4 +1,4 @@
 require("themes").setup({
-    theme = "gruvbox",
-    transparent_background = false
+	theme = "gruvbox",
+	transparent_background = false
 })
