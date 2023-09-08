@@ -29,7 +29,7 @@ local branch = {
     "branch",
     icon = "",
     color = { fg = colors.dark_purple },
-    padding = { left = 2, right = 2 },
+    padding = { right = 2 },
 }
 
 local diff = {
@@ -41,8 +41,18 @@ local diff = {
         removed  = 'DiffDelete',
     },
     symbols = { added = " ", modified = " ", removed = " " },
-    padding = { left = -1, right = 1 },
+    padding = { right = 2 },
 }
+
+local gitcheck = function()
+    local command = "git rev-parse --is-inside-work-tree"
+    local result = vim.fn.system(command)
+    if result ~= nil and result:match("true") then
+        return " "
+    else
+        return " 󱓌 "
+    end
+end
 
 local location = {
     "location",
@@ -182,6 +192,7 @@ lualine.setup({
             },
         },
         lualine_c = {
+            gitcheck,
             branch,
             diff,
             {

@@ -48,8 +48,8 @@ nvim_web_devicons.set_icon({
         name = "Diff",
     },
     ["js"] = {
-        icon = "",
-        color = "#e24329",
+        icon = "󰌞",
+        color = "#f1e05a",
         cterm_color = "59",
         name = "Javascript",
     },
