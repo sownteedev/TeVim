@@ -13,7 +13,7 @@
   
 ## 📷 Showcase
 
-<img src="screenshot/layout.png">
+<img src="screenshot/lo.png">
 <img src="screenshot/syntax.png">
 <img src="screenshot/completion.png">
 <img src="screenshot/selecttheme.png">
@@ -32,7 +32,7 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 
 <img src="screenshot/telescope.png">
 
-<h4> Statusline with Lualine.nvim </h3>
+<h4> Statusline auto find copilot, git repo</h3>
 
 <img src="screenshot/statusline.png">
 

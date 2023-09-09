@@ -79,7 +79,7 @@ cmp.setup({
 		}),
 	}),
 	formatting = {
-		fields = { "kind", "abbr", "menu" },
+		fields = { "kind", "abbr" },
 		format = function(entry, vim_item)
 			local kind = lspkind.cmp_format({
 				mode = "symbol_text",
@@ -93,20 +93,13 @@ cmp.setup({
 			return kind
 		end,
 	},
-	view = {
-		entries = {
-			name = "custom",
-			selection_order = "near_cursor",
-		},
-	},
 	sources = {
-		{ name = "copilot",  group_index = 2 },
-		{ name = "nvim_lsp", group_index = 2 },
-		{ name = "nvim_lua", group_index = 2 },
-		{ name = "luasnip",  group_index = 2 },
-		{ name = "crates",   group_index = 2 },
-		{ name = "buffer",   group_index = 2 },
-		{ name = "path",     group_index = 2 },
+		{ name = "copilot" },
+		{ name = "nvim_lsp" },
+		{ name = "nvim_lua" },
+		{ name = "luasnip" },
+		{ name = "buffer" },
+		{ name = "path" },
 	},
 	sorting = {
 		priority_weight = 2,
@@ -127,7 +120,6 @@ cmp.setup({
 		behavior = cmp.ConfirmBehavior.Replace,
 		select = false,
 	},
-
 	window = {
 		documentation = {
 			border = "rounded",
@@ -145,6 +137,7 @@ cmp.setup({
 	},
 	experimental = {
 		ghost_text = true,
+		native_menu = false
 	},
 })
 

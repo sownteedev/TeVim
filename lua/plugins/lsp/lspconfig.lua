@@ -23,7 +23,7 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(),
-	require("cmp_nvim_lsp").default_capabilities())
+	cmp_nvim_lsp.default_capabilities())
 
 capabilities.offsetEncoding = { "utf-16" }
 

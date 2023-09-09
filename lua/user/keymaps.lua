@@ -60,6 +60,8 @@ keymap("n", "<leader>wh", "<C-w>s", opts)
 -- Clear search when esc esc
 keymap("n", "<esc><esc>", "<cmd>nohlsearch<cr>", opts)
 
+-- Rename
+vim.keymap.set("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 ----------------------------------------------- PLUGINS -------------------------------------------
 
 -- Expoler

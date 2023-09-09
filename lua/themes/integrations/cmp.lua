@@ -20,8 +20,8 @@ return function(colors)
 		CmpItemKind = { fg = colors.blue, bg = colors.darker_black },
 		CmpItemMenu = { fg = colors.green, bg = colors.darker_black },
 		Pmenu = { fg = colors.white, bg = colors.darker_black },
-		PmenuSel = { fg = colors.darker_black, bg = colors.blue, bold = true, italic = true },
 		PmenuBorder = { fg = colors.darker_black, bg = colors.darker_black },
+		PmenuSel = { fg = colors.darker_black, bg = colors.blue, bold = true, italic = true },
 		PmenuSbar = { bg = colors.darker_black },
 		PmenuThumb = { bg = colors.blue },
 
