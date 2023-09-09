@@ -20,7 +20,7 @@ local branch = {
 	"branch",
 	icon = "",
 	color = { fg = colors.dark_purple },
-	padding = { left = 1, right = 2 },
+	padding = { left = 1, right = 1 },
 }
 
 local diff = {
@@ -32,7 +32,7 @@ local diff = {
 		removed  = 'DiffDelete',
 	},
 	symbols = { added = " ", modified = " ", removed = " " },
-	padding = { right = 1 },
+	padding = { left = 1, right = 1 },
 }
 
 local result = vim.fn.system("git rev-parse --is-inside-work-tree")
