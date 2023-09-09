@@ -32,6 +32,10 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 
 <img src="screenshot/telescope.png">
 
+<h4> Buffer with toggle theme and quit</h4>
+
+<img src="screenshot/buffer.png">
+
 <h4> Statusline auto find copilot, git repo</h3>
 
 <img src="screenshot/statusline.png">
