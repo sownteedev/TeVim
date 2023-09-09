@@ -70,8 +70,3 @@ keymap("n", "<S-TAB>",
 	"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false, no_ignore=true, follow=true, hidden=true})<cr>",
 	opts
 )
-
--- Copilot
-vim.cmd([[imap <silent><script><expr> <C-c> copilot#Accept("\<CR>")]])
-vim.cmd([[imap <silent><script><expr> <C-Down> copilot#Next("\<CR>")]])
-vim.cmd([[imap <silent><script><expr> <C-Up> copilot#Previous("\<CR>")]])

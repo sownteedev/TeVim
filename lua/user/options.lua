@@ -64,9 +64,6 @@ vim.opt.fillchars = { eob = " ", foldopen = "ï‘¼", foldsep = " ", foldclose = "ï
 vim.opt.formatoptions:remove({ "c", "r", "o" })
 vim.opt.shortmess:append("sI")
 
--- For Copilot
-vim.g.copilot_no_tab_map = true
-
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end

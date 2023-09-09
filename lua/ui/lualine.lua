@@ -213,7 +213,7 @@ lualine.setup({
 			},
 			{
 				copilot,
-				color = { fg = colors.green },
+				color = { fg = colors.vibrant_green },
 			},
 			{
 				function()
