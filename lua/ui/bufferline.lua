@@ -47,12 +47,17 @@ bufferline.setup({
 			right = function()
 				vim.cmd "function! ToggleTheme(a,b,c,d) \n lua require('themes.switch').toggleTheme() \n endfunction"
 				vim.cmd "function! Quit(a,b,c,d) \n lua require('user.functions').toQuitAll() \n endfunction"
-				local theme = "%@ToggleTheme@" .. "  "
+				vim.cmd "function! Run(a,b,c,d) \n lua require('user.functions').build_run() \n endfunction"
+				local run = "%@Run@" .. "  "
+				local theme = "%@ToggleTheme@" .. "   "
 				local quit = "%@Quit@" .. "  "
 				local result = {}
+				table.insert(result, { text = run, fg = colors.yellow, bg = colors.grey })
 				table.insert(result, { text = theme, fg = colors.green, bg = colors.grey })
 				table.insert(result, { text = quit, fg = colors.black, bg = colors.red })
 				return result
+			end,
+			left = function()
 			end
 		},
 	}

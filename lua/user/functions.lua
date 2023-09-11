@@ -90,13 +90,16 @@ local lazygit = require("toggleterm.terminal").Terminal:new({
 		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
 	end,
 })
-
 function LazyGit()
 	lazygit:toggle()
 end
 
 function M.toQuitAll()
 	vim.cmd("qa!")
+end
+
+function M.toggleExpoler()
+	vim.cmd("NeoTreeShowToggle")
 end
 
 return M

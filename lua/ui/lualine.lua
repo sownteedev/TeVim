@@ -14,19 +14,20 @@ local diagnostics = {
 	padding = { left = 1, right = 1 },
 	always_visible = false,
 	update_in_insert = true,
+	color = { bg = colors.black2 }
 }
 
 local branch = {
 	"branch",
-	icon = "",
-	color = { fg = colors.dark_purple },
-	padding = { left = 1, right = 1 },
+	icon = "",
+	color = { fg = colors.dark_purple, bg = colors.black2 },
+	padding = { left = -2 },
 }
 
 local diff = {
 	"diff",
 	colored = true,
-	color = { added = 'DiffAdd', modified = 'DiffChange', removed = 'DiffDelete' },
+	color = { added = 'DiffAdd', modified = 'DiffChange', removed = 'DiffDelete', bg = colors.black2 },
 	symbols = { added = " ", modified = " ", removed = " " },
 	padding = { left = 1, right = 1 },
 }
@@ -40,8 +41,12 @@ local gitcheck = function()
 	end
 end
 
-local indent = function()
-	return "" .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+local gitchecks = function()
+	if result:match("true") then
+		return ""
+	else
+		return ""
+	end
 end
 
 local lsp_progess = function()
@@ -140,24 +145,29 @@ lualine.setup({
 		lualine_a = {
 			{
 				function()
-					return "  "
+					return ""
 				end,
-				separator = { left = "", right = "" },
-			}
+				separator = { left = "█", right = "█" },
+			},
 		},
 		lualine_b = {
+			{
+				function()
+					return " "
+				end
+			},
 			{
 				"filetype",
 				icon_only = true,
 				colored = true,
-				padding = { left = 2 },
-				color = { bg = colors.orange },
+				padding = { left = 2, right = 2 },
+				color = { bg = colors.red },
 			},
 			{
 				"filename",
-				padding = 1,
-				separator = { left = "", right = "" },
-				color = { bg = colors.orange, fg = colors.black2, gui = "bold,italic" },
+				padding = { left = -1 },
+				separator = { left = "█", right = "█" },
+				color = { bg = colors.black2, fg = colors.red, gui = "bold,italic" },
 				file_status = true,
 				newfile_status = true,
 				path = 5,
@@ -171,16 +181,30 @@ lualine.setup({
 		},
 		lualine_c = {
 			{
+				function()
+					return " "
+				end
+			},
+			{
+				function()
+					return ""
+				end,
+				color = { bg = colors.purple, fg = colors.black },
+			},
+			{
 				gitcheck,
 				color = { fg = colors.purple },
 			},
 			branch,
-			diff,
 			{
 				function()
-					return " "
-				end,
-				separator = { left = "", right = "" },
+					return " "
+				end
+			},
+			diff,
+			{
+				gitchecks,
+				separator = { left = "█", right = "█" },
 				color = { bg = colors.blue, fg = colors.black },
 			}
 		},
@@ -189,53 +213,81 @@ lualine.setup({
 				function()
 					return " "
 				end,
-				separator = { left = "", right = "" },
+				separator = { left = "█", right = "█" },
 				color = { bg = colors.orange, fg = colors.black },
 			},
 			diagnostics,
-			lsp_progess,
+			{
+				lsp_progess,
+				color = { fg = colors.orange, bg = colors.black2 },
+
+			},
 			{
 				copilot,
-				color = { fg = colors.vibrant_green },
+				color = { fg = colors.vibrant_green, bg = colors.black2 },
+			},
+			{
+				function()
+					return " "
+				end
 			},
 			{
 				function()
 					return ""
 				end,
-				separator = { left = "", right = "" },
+				separator = { left = "█", right = "█" },
 				color = { bg = colors.blue, fg = colors.black },
 			},
-			indent,
+			{
+				function()
+					return "" .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+				end,
+				color = { fg = colors.blue, bg = colors.black2 },
+			},
+			{
+				function()
+					return " "
+				end
+			},
 			{
 				function()
 					return ""
 				end,
-				separator = { left = "", right = "" },
-				color = { bg = colors.orange, fg = colors.black },
+				separator = { left = "█", right = "█" },
+				color = { bg = colors.pink, fg = colors.black },
 			},
-			"progress",
+			{
+				"progress",
+				color = { bg = colors.black2, fg = colors.pink },
+			},
+			{
+				function()
+					return " "
+				end
+			},
 			{
 				function()
 					return ""
 				end,
-				separator = { left = "", right = "" },
-				color = { bg = colors.blue, fg = colors.black },
+				separator = { left = "█", right = "█" },
+				color = { bg = colors.yellow, fg = colors.black },
 			},
 			{
 				"location",
 				padding = 1,
+				color = { fg = colors.yellow, bg = colors.black2 }
 			},
-			{
-				function()
-					local current_line = vim.fn.line(".")
-					local total_lines = vim.fn.line("$")
-					local chars = { "_", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" }
-					local progress_percent = current_line / total_lines
-					local index = math.ceil(progress_percent * #chars)
-					return chars[index]
-				end,
-				color = { fg = colors.orange },
-			}
+			-- {
+			-- 	function()
+			-- 		local current_line = vim.fn.line(".")
+			-- 		local total_lines = vim.fn.line("$")
+			-- 		local chars = { "_", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" }
+			-- 		local progress_percent = current_line / total_lines
+			-- 		local index = math.ceil(progress_percent * #chars)
+			-- 		return chars[index]
+			-- 	end,
+			-- 	color = { fg = colors.orange },
+			-- }
 		},
 		lualine_y = {},
 		lualine_z = {},

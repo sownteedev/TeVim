@@ -52,7 +52,7 @@ local plugins = {
 	-- Treesitter
 	["nvim-treesitter/nvim-treesitter"] = {
 		run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-		requires = { "nvim-treesitter/nvim-treesitter-context" },
+		requires = { "nvim-treesitter/nvim-treesitter-context", "JoosepAlviste/nvim-ts-context-commentstring" },
 		config = function()
 			require("plugins.treesitter")
 		end
@@ -84,7 +84,14 @@ local plugins = {
 	},
 
 	-- Comment
-	["numToStr/Comment.nvim"] = { event = { "BufReadPost", "BufNewFile" } },
+	["numToStr/Comment.nvim"] = {
+		event = { "BufReadPost", "BufNewFile" },
+		config = function()
+			require("Comment").setup {
+				pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+			}
+		end
+	},
 
 	-- Telescope, Fzfinder
 	["nvim-telescope/telescope.nvim"] = {
@@ -136,10 +143,7 @@ local plugins = {
 	["akinsho/toggleterm.nvim"] = {
 		tag = '*',
 		config = function()
-			require("toggleterm").setup({
-				open_mapping = [[<c-\>]],
-				shading_factor = 2,
-			})
+			require("toggleterm").setup { shading_factor = 2 }
 		end
 	},
 

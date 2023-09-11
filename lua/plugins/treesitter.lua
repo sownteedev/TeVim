@@ -30,14 +30,12 @@ treesitter.setup({
 			show_help = '?',
 		},
 	},
-	context_commentstring = {
-		enable = true,
-	},
 	query_linter = {
 		enable = true,
 		use_virtual_text = true,
 		lint_events = { "BufWrite", "CursorHold" },
 	},
+	context_commentstring = { enable = true },
 	-- Rainbow
 	rainbow = { enable = true },
 	-- Indent

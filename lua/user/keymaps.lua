@@ -67,8 +67,10 @@ vim.keymap.set("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left>
 -- Expoler
 keymap("n", "<C-e>", "<cmd>Neotree<cr>", opts)
 
+-- Toggle Term
+keymap("n", [[<c-\>]], "<cmd>ToggleTerm<cr>", opts)
+
 -- Telescope
 keymap("n", "<S-TAB>",
 	"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false, no_ignore=true, follow=true, hidden=true})<cr>",
-	opts
-)
+	opts)
