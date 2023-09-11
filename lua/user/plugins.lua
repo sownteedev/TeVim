@@ -267,6 +267,7 @@ local plugins = {
 			require("copilot").setup()
 		end
 	},
+	["Exafunction/codeium.vim"] = {},
 
 	-- Snippets
 	["L3MON4D3/LuaSnip"] = {},

@@ -13,10 +13,10 @@
   
 ## 📷 Showcase
 
-<img src="screenshot/layout.png">
-<img src="screenshot/syntax.png">
-<img src="screenshot/cmp.png">
-<img src="screenshot/theme.png">
+<img src="screenshot/lo.png">
+<img src="screenshot/syntaxs.png">
+<img src="screenshot/completion.png">
+<img src="screenshot/selectthemes.png">
 
 ## 🔌 UI related plugins used
 
@@ -28,15 +28,15 @@
 
 <h4> Find </h3>
 
-<img src="screenshot/telescope.png">
+<img src="screenshot/telescopes.png">
 
 <h4> Buffer with toggle theme, quit and run</h4>
 
-<img src="screenshot/buffer.png">
+<img src="screenshot/buf.png">
 
 <h4> Statusline auto find copilot, git repo</h3>
 
-<img src="screenshot/statusline.png">
+<img src="screenshot/stt.png">
 
 <h4> Show bindkeys with Whichkey </h3>
 

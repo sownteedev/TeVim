@@ -13,31 +13,15 @@ bufferline.setup({
 		right_mouse_command = "bd! %d",
 		left_mouse_command = "buffer %d",
 		middle_mouse_command = nil,
-		indicator = {
-			icon = "▍",
-			style = "icon",
-		},
+		indicator = { icon = "|", style = "icon" },
 		buffer_close_icon = "󰅙",
 		modified_icon = "●",
 		close_icon = "",
 		left_trunc_marker = "",
 		right_trunc_marker = "",
-		truncate_names = true,
 		max_name_length = 20,
 		max_prefix_length = 20,
 		tab_size = 23,
-		diagnostics = false,
-		diagnostics_update_in_insert = true,
-		offsets = {},
-		show_buffer_icons = true,
-		show_buffer_close_icons = true,
-		show_close_icon = true,
-		show_duplicate_prefix = true,
-		show_tab_indicators = true,
-		persist_buffer_sort = true,
-		separator_style = "thin",
-		enforce_regular_tabs = true,
-		always_show_bufferline = true,
 		hover = {
 			enabled = true,
 			delay = 0,
@@ -48,11 +32,14 @@ bufferline.setup({
 				vim.cmd "function! ToggleTheme(a,b,c,d) \n lua require('themes.switch').toggleTheme() \n endfunction"
 				vim.cmd "function! Quit(a,b,c,d) \n lua require('user.functions').toQuitAll() \n endfunction"
 				vim.cmd "function! Run(a,b,c,d) \n lua require('user.functions').build_run() \n endfunction"
+				vim.cmd "function! Split(a,b,c,d) \n lua require('user.functions').toSplit() \n endfunction"
 				local run = "%@Run@" .. "  "
 				local theme = "%@ToggleTheme@" .. "   "
+				local split = "%@Split@" .. "  "
 				local quit = "%@Quit@" .. "  "
 				local result = {}
 				table.insert(result, { text = run, fg = colors.yellow, bg = colors.grey })
+				table.insert(result, { text = split, fg = colors.blue, bg = colors.grey })
 				table.insert(result, { text = theme, fg = colors.green, bg = colors.grey })
 				table.insert(result, { text = quit, fg = colors.black, bg = colors.red })
 				return result

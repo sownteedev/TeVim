@@ -95,6 +95,7 @@ cmp.setup({
 	},
 	sources = {
 		{ name = "copilot" },
+		{ name = "codeium" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },

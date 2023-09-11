@@ -94,12 +94,14 @@ function LazyGit()
 	lazygit:toggle()
 end
 
+-- Quit All
 function M.toQuitAll()
 	vim.cmd("qa!")
 end
 
-function M.toggleExpoler()
-	vim.cmd("NeoTreeShowToggle")
+-- Vertical Split
+function M.toSplit()
+	vim.cmd("vsplit")
 end
 
 return M

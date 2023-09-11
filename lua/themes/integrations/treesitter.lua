@@ -75,6 +75,6 @@ return function(colors)
 
 		TreesitterContext = { bg = colors.darker_black, italic = true, bold = true },
 		TreesitterContextBottom = { italic = true, bold = true },
-		TreesitterContextLineNumber = { fg = colors.white, italic = true, bold = true },
+		TreesitterContextLineNumber = { fg = colors.base06, italic = true, bold = true },
 	}
 end

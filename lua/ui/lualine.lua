@@ -6,41 +6,14 @@ end
 -- Require theme color you're using
 local colors = require('themes.schemes.yoru').get_colors()
 
-local diagnostics = {
-	"diagnostics",
-	sources = { "nvim_diagnostic" },
-	symbols = { error = " ", warn = " ", hint = " ", info = " " },
-	colored = true,
-	padding = { left = 1, right = 1 },
-	always_visible = false,
-	update_in_insert = true,
-	color = { bg = colors.black2 }
-}
-
-local branch = {
-	"branch",
-	icon = "",
-	color = { fg = colors.dark_purple, bg = colors.black2 },
-	padding = { left = -2 },
-}
-
-local diff = {
-	"diff",
-	colored = true,
-	color = { added = 'DiffAdd', modified = 'DiffChange', removed = 'DiffDelete', bg = colors.black2 },
-	symbols = { added = " ", modified = " ", removed = " " },
-	padding = { left = 1, right = 1 },
-}
-
 local result = vim.fn.system("git rev-parse --is-inside-work-tree")
 local gitcheck = function()
 	if result:match("true") then
-		return ""
+		return ""
 	else
-		return " 󱓌 "
+		return "󱓌"
 	end
 end
-
 local gitchecks = function()
 	if result:match("true") then
 		return ""
@@ -101,13 +74,14 @@ local lsp_progess = function()
 	vim.list_extend(buf_client_names, supported_formatters)
 
 	-- linters
-	local linters_list_registered = function(filetype)
+	function linters_list_registered(filetype)
 		local registered_providers = list_registered_providers_names(filetype)
 		local providers_for_methods = vim.tbl_flatten(vim.tbl_map(function(m)
 			return registered_providers[m] or {}
 		end, alternative_methods))
 		return providers_for_methods
 	end
+
 	local supported_linters = linters_list_registered(buf_ft)
 	vim.list_extend(buf_client_names, supported_linters)
 
@@ -119,18 +93,13 @@ local lsp_progess = function()
 end
 
 local copilot = function()
-	local copilot_active = false
 	local buf_clients = vim.lsp.get_active_clients()
 	for _, client in pairs(buf_clients) do
 		if client.name == "copilot" then
-			copilot_active = true
+			return ""
 		end
 	end
-	if copilot_active == true then
-		return " "
-	elseif copilot_active == false then
-		return " "
-	end
+	return ""
 end
 
 lualine.setup({
@@ -149,25 +118,26 @@ lualine.setup({
 				end,
 				separator = { left = "█", right = "█" },
 			},
-		},
-		lualine_b = {
 			{
 				function()
 					return " "
-				end
+				end,
+				color = { bg = colors.black }
 			},
+		},
+		lualine_b = {
 			{
 				"filetype",
 				icon_only = true,
-				colored = true,
+				colored = false,
 				padding = { left = 2, right = 2 },
-				color = { bg = colors.red },
+				color = { bg = colors.baby_pink, fg = colors.black },
 			},
 			{
 				"filename",
 				padding = { left = -1 },
 				separator = { left = "█", right = "█" },
-				color = { bg = colors.black2, fg = colors.red, gui = "bold,italic" },
+				color = { bg = colors.black2, fg = colors.baby_pink, gui = "bold" },
 				file_status = true,
 				newfile_status = true,
 				path = 5,
@@ -186,22 +156,28 @@ lualine.setup({
 				end
 			},
 			{
-				function()
-					return ""
-				end,
+				gitcheck,
 				color = { bg = colors.purple, fg = colors.black },
+				separator = { left = "█", right = "█" },
 			},
 			{
-				gitcheck,
-				color = { fg = colors.purple },
+				"branch",
+				icon = "",
+				color = { fg = colors.dark_purple, bg = colors.black2 },
+				padding = { left = -2 },
 			},
-			branch,
 			{
 				function()
 					return " "
 				end
 			},
-			diff,
+			{
+				"diff",
+				colored = true,
+				color = { added = 'DiffAdd', modified = 'DiffChange', removed = 'DiffDelete', bg = colors.black2 },
+				symbols = { added = " ", modified = " ", removed = " " },
+				padding = { left = 1, right = 1 },
+			},
 			{
 				gitchecks,
 				separator = { left = "█", right = "█" },
@@ -214,12 +190,21 @@ lualine.setup({
 					return " "
 				end,
 				separator = { left = "█", right = "█" },
-				color = { bg = colors.orange, fg = colors.black },
+				color = { bg = colors.green, fg = colors.black },
 			},
-			diagnostics,
+			{
+				"diagnostics",
+				sources = { "nvim_diagnostic" },
+				symbols = { error = " ", warn = " ", hint = " ", info = " " },
+				colored = true,
+				padding = { left = 1, right = 1 },
+				always_visible = false,
+				update_in_insert = true,
+				color = { bg = colors.black2 }
+			},
 			{
 				lsp_progess,
-				color = { fg = colors.orange, bg = colors.black2 },
+				color = { fg = colors.green, bg = colors.black2 },
 
 			},
 			{
@@ -240,7 +225,7 @@ lualine.setup({
 			},
 			{
 				function()
-					return "" .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+					return vim.api.nvim_buf_get_option(0, "shiftwidth")
 				end,
 				color = { fg = colors.blue, bg = colors.black2 },
 			},
@@ -277,17 +262,6 @@ lualine.setup({
 				padding = 1,
 				color = { fg = colors.yellow, bg = colors.black2 }
 			},
-			-- {
-			-- 	function()
-			-- 		local current_line = vim.fn.line(".")
-			-- 		local total_lines = vim.fn.line("$")
-			-- 		local chars = { "_", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" }
-			-- 		local progress_percent = current_line / total_lines
-			-- 		local index = math.ceil(progress_percent * #chars)
-			-- 		return chars[index]
-			-- 	end,
-			-- 	color = { fg = colors.orange },
-			-- }
 		},
 		lualine_y = {},
 		lualine_z = {},
