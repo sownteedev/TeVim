@@ -84,12 +84,7 @@ local plugins = {
 	},
 
 	-- Comment
-	["numToStr/Comment.nvim"] = {
-		event = { "BufReadPost", "BufNewFile" },
-		config = function()
-			require("Comment").setup()
-		end
-	},
+	["numToStr/Comment.nvim"] = { event = { "BufReadPost", "BufNewFile" } },
 
 	-- Telescope, Fzfinder
 	["nvim-telescope/telescope.nvim"] = {
@@ -124,14 +119,7 @@ local plugins = {
 	},
 
 	-- UI
-	["stevearc/dressing.nvim"] = {
-		config = function()
-			require("dressing").setup()
-		end
-	},
-
-	-- Trouble
-	["folke/trouble.nvim"] = {},
+	["stevearc/dressing.nvim"] = {},
 
 	-- UI CMD
 	["folke/noice.nvim"] = {
@@ -155,7 +143,7 @@ local plugins = {
 		end
 	},
 
-	-- Discord Show
+	-- Discord Rich
 	["andweeb/presence.nvim"] = {
 		config = function()
 			require("presence").setup {
@@ -178,9 +166,7 @@ local plugins = {
 		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("illuminate").configure {
-				filetypes_denylist = { "alpha", "NvimTree", "neo-tree", "packer", "Trouble", "DressingSelect",
-					"TelescopePrompt" },
-			}
+				filetypes_denylist = { "neo-tree", "Trouble", "DressingSelect", "TelescopePrompt" } }
 		end
 	},
 
@@ -191,15 +177,15 @@ local plugins = {
 			require("satellite").setup({
 				excluded_filetypes = { "neo-tree" },
 				handlers = {
-					cursor = { symbols = { ' ', ' ', ' ', ' ' } },
-					gitsigns = { signs = { add = "", change = "", delete = "" } },
-					diagnostic = { signs = { '', '', '' } },
+					cursor = { enable = false },
+					gitsigns = { enable = false },
+					diagnostic = { enable = false },
 				},
 			})
 		end
 	},
 
-	-- TODO
+	-- TODO List
 	["folke/todo-comments.nvim"] = {
 		event = { "BufReadPost", "BufNewFile" },
 		config = function()
@@ -248,13 +234,6 @@ local plugins = {
 	["rcarriga/nvim-dap-ui"] = {},
 
 	----------------------------------------------------------------------------
-
-	-- Neodev
-	["folke/neodev.nvim"] = {
-		config = function()
-			require("neodev").setup()
-		end
-	},
 
 	-- Auto completions
 	["hrsh7th/nvim-cmp"] = {
@@ -319,13 +298,15 @@ local plugins = {
 			require("plugins.lsp.lspsaga")
 		end
 	},
-	["ray-x/lsp_signature.nvim"] = { event = "InsertEnter" },
 	["onsails/lspkind.nvim"] = {},
 	["SmiteshP/nvim-navic"] = {
 		config = function()
 			require("plugins.cmp.navic")
 		end
 	},
+
+	-- Trouble
+	["folke/trouble.nvim"] = {},
 
 	-- Formatting
 	["jose-elias-alvarez/null-ls.nvim"] = {

@@ -90,9 +90,6 @@ lspconfig.lua_ls.setup({
 			diagnostics = {
 				globals = { "vim" },
 			},
-			completion = {
-				callSnippet = "Replace"
-			},
 			workspace = {
 				checkThirdParty = false,
 				library = {

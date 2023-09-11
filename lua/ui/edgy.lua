@@ -75,7 +75,7 @@ require("edgy").setup {
 			vim.g.minianimate_disable = false
 		end,
 		spinner = {
-			frames = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+			frames = { "", "󰪞", "󰪟", "󰪠", "󰪢", "󰪣", "󰪤", "󰪥" },
 			interval = 100,
 		},
 	},

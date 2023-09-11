@@ -94,6 +94,7 @@ local mappings = {
 		j = { "<cmd>Telescope commands<cr>", "Commands" },
 		h = { "<cmd>Telescope highlights<cr>", "Help" },
 		p = { "<cmd>Telescope projects<cr>", "Projects" },
+		t = { "<cmd>TodoTelescope<cr>", "Todo" },
 	},
 	g = {
 		name = "󰊢  GIT",

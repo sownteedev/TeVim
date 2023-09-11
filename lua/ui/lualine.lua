@@ -26,11 +26,7 @@ local branch = {
 local diff = {
 	"diff",
 	colored = true,
-	color = {
-		added    = 'DiffAdd',
-		modified = 'DiffChange',
-		removed  = 'DiffDelete',
-	},
+	color = { added = 'DiffAdd', modified = 'DiffChange', removed = 'DiffDelete' },
 	symbols = { added = " ", modified = " ", removed = " " },
 	padding = { left = 1, right = 1 },
 }
@@ -44,41 +40,16 @@ local gitcheck = function()
 	end
 end
 
-local location = {
-	"location",
-	padding = 1,
-}
-
-local modes = {
-	function()
-		-- local animated = {
-		-- "  ",
-		-- "  ",
-		-- " 󱠡 ",
-		-- }
-		-- return animated[os.date("%S") % #animated + 1]
-		local animated = "  "
-		return animated
-	end,
-	separator = { left = "", right = "" },
-}
-
 local indent = function()
 	return "" .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
 local lsp_progess = function()
-	local msg
-	msg = msg or "✖"
 	local buf_clients = vim.lsp.get_active_clients()
+	local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
 	if next(buf_clients) == nil then
-		if type(msg) == "boolean" or #msg == 0 then
-			return "NO LSP"
-		end
-		return msg
+		return ""
 	end
-	local buf_ft = vim.bo.filetype
-	local buf_client_names = {}
 	local null_ls = require("null-ls")
 	local alternative_methods = {
 		null_ls.methods.DIAGNOSTICS,
@@ -86,13 +57,23 @@ local lsp_progess = function()
 		null_ls.methods.DIAGNOSTICS_ON_SAVE,
 	}
 
-	-- add client
-	for _, client in pairs(buf_clients) do
-		if client.name ~= "null-ls" and client.name ~= "copilot" then
-			table.insert(buf_client_names, client.name)
+	-- ADD CLIENTS
+	local add_client = function(filetype)
+		local clients = {}
+		for _, client in pairs(buf_clients) do
+			if client.name ~= "null-ls" and client.name ~= "copilot" then
+				if client.config.filetypes ~= nil then
+					if vim.tbl_contains(client.config.filetypes, filetype) then
+						table.insert(clients, client.name)
+					end
+				end
+			end
 		end
+		return clients
 	end
+	local buf_client_names = add_client(buf_ft)
 
+	-- ADD FORMATERS AND LINTERS
 	local list_registered_providers_names = function(filetype)
 		local s = require("null-ls.sources")
 		local available_sources = s.get_available(filetype)
@@ -106,31 +87,30 @@ local lsp_progess = function()
 		return registered
 	end
 
-	local list_registered = function(filetype)
+	-- formatters
+	local formatters_list_registered = function(filetype)
+		local registered_providers = list_registered_providers_names(filetype)
+		return registered_providers[null_ls.methods.FORMATTING] or {}
+	end
+	local supported_formatters = formatters_list_registered(buf_ft)
+	vim.list_extend(buf_client_names, supported_formatters)
+
+	-- linters
+	local linters_list_registered = function(filetype)
 		local registered_providers = list_registered_providers_names(filetype)
 		local providers_for_methods = vim.tbl_flatten(vim.tbl_map(function(m)
 			return registered_providers[m] or {}
 		end, alternative_methods))
 		return providers_for_methods
 	end
-
-	local formatters_list_registered = function(filetype)
-		local registered_providers = list_registered_providers_names(filetype)
-		return registered_providers[null_ls.methods.FORMATTING] or {}
-	end
-
-	-- formatters
-	local supported_formatters = formatters_list_registered(buf_ft)
-	vim.list_extend(buf_client_names, supported_formatters)
-
-	-- linters
-	local supported_linters = list_registered(buf_ft)
+	local supported_linters = linters_list_registered(buf_ft)
 	vim.list_extend(buf_client_names, supported_linters)
-	local unique_client_names = vim.fn.uniq(buf_client_names)
 
-	local language_servers = table.concat(unique_client_names, ", ")
-
-	return language_servers
+	-- RETURN CLIENTS
+	if #buf_client_names > 3 then
+		return buf_client_names[1] .. ", " .. buf_client_names[2] .. ", " .. buf_client_names[3]
+	end
+	return table.concat(vim.fn.uniq(buf_client_names), ", ")
 end
 
 local copilot = function()
@@ -158,7 +138,12 @@ lualine.setup({
 	},
 	sections = {
 		lualine_a = {
-			modes,
+			{
+				function()
+					return "  "
+				end,
+				separator = { left = "", right = "" },
+			}
 		},
 		lualine_b = {
 			{
@@ -208,9 +193,7 @@ lualine.setup({
 				color = { bg = colors.orange, fg = colors.black },
 			},
 			diagnostics,
-			{
-				lsp_progess,
-			},
+			lsp_progess,
 			{
 				copilot,
 				color = { fg = colors.vibrant_green },
@@ -238,7 +221,10 @@ lualine.setup({
 				separator = { left = "", right = "" },
 				color = { bg = colors.blue, fg = colors.black },
 			},
-			location,
+			{
+				"location",
+				padding = 1,
+			},
 			{
 				function()
 					local current_line = vim.fn.line(".")
