@@ -38,9 +38,9 @@ bufferline.setup({
 				local split = "%@Split@" .. "  "
 				local quit = "%@Quit@" .. "  "
 				local result = {}
-				table.insert(result, { text = run, fg = colors.yellow, bg = colors.grey })
-				table.insert(result, { text = split, fg = colors.blue, bg = colors.grey })
-				table.insert(result, { text = theme, fg = colors.green, bg = colors.grey })
+				table.insert(result, { text = run, fg = colors.yellow, bg = colors.grey_fg })
+				table.insert(result, { text = split, fg = colors.blue, bg = colors.grey_fg })
+				table.insert(result, { text = theme, fg = colors.green, bg = colors.grey_fg })
 				table.insert(result, { text = quit, fg = colors.black, bg = colors.red })
 				return result
 			end,

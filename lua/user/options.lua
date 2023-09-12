@@ -51,12 +51,10 @@ local options = {
 	backspace = "indent,eol,start",
 	list = true,
 	splitkeep = "screen",
-	background = "dark",
 	-- FOLD
 	foldenable = true,
 	foldcolumn = '1',
 	foldlevelstart = 99,
-	foldlevel = 99,
 }
 
 vim.opt.listchars = "tab:  "

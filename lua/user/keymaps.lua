@@ -9,6 +9,7 @@
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -53,29 +54,26 @@ keymap("i", "<C-l>", "<Right>", opts)
 -- Move between buffers
 keymap("n", "<TAB>", "<cmd>bnext<CR>", opts)
 
--- Split window and hozirontal window
-keymap("n", "<leader>wv", "<C-w>v", opts)
-keymap("n", "<leader>wh", "<C-w>s", opts)
-
--- Clear search when esc esc
+-- Clear search
 keymap("n", "<esc><esc>", "<cmd>nohlsearch<cr>", opts)
 
 -- Rename
-vim.keymap.set("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+map("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 ----------------------------------------------- PLUGINS -------------------------------------------
 
 -- Expoler
 keymap("n", "<C-e>", "<cmd>Neotree<cr>", opts)
 
 -- Toggle Term
-keymap("n", [[<c-`>]], "<cmd>ToggleTerm<cr>", opts)
+keymap("n", [[<C-`>]], "<cmd>ToggleTerm<cr>", opts)
 
 -- Telescope
 keymap("n", "<S-TAB>",
 	"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false, no_ignore=true, follow=true, hidden=true})<cr>",
 	opts)
 
-vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
-vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
-vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
-vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+vim.g.codeium_disable_bindings = 1
+map('i', '<C-c>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+map('i', '<C-Up>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+map('i', '<C-Down>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+map('i', '<C-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })

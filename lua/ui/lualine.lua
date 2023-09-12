@@ -74,14 +74,13 @@ local lsp_progess = function()
 	vim.list_extend(buf_client_names, supported_formatters)
 
 	-- linters
-	function linters_list_registered(filetype)
+	local linters_list_registered = function(filetype)
 		local registered_providers = list_registered_providers_names(filetype)
 		local providers_for_methods = vim.tbl_flatten(vim.tbl_map(function(m)
 			return registered_providers[m] or {}
 		end, alternative_methods))
 		return providers_for_methods
 	end
-
 	local supported_linters = linters_list_registered(buf_ft)
 	vim.list_extend(buf_client_names, supported_linters)
 
@@ -93,13 +92,19 @@ local lsp_progess = function()
 end
 
 local copilot = function()
-	local buf_clients = vim.lsp.get_active_clients()
-	for _, client in pairs(buf_clients) do
+	for _, client in pairs(vim.lsp.get_active_clients()) do
 		if client.name == "copilot" then
 			return ""
 		end
 	end
 	return ""
+end
+
+local codeium = function()
+	if vim.fn.exists(":Codeium") == 2 then
+		return "󰘦"
+	end
+	return ""
 end
 
 lualine.setup({
@@ -130,13 +135,11 @@ lualine.setup({
 				"filetype",
 				icon_only = true,
 				colored = false,
-				padding = { left = 2, right = 2 },
+				separator = { left = "█", right = "█" },
 				color = { bg = colors.baby_pink, fg = colors.black },
 			},
 			{
 				"filename",
-				padding = { left = -1 },
-				separator = { left = "█", right = "█" },
 				color = { bg = colors.black2, fg = colors.baby_pink, gui = "bold" },
 				file_status = true,
 				newfile_status = true,
@@ -176,7 +179,6 @@ lualine.setup({
 				colored = true,
 				color = { added = 'DiffAdd', modified = 'DiffChange', removed = 'DiffDelete', bg = colors.black2 },
 				symbols = { added = " ", modified = " ", removed = " " },
-				padding = { left = 1, right = 1 },
 			},
 			{
 				gitchecks,
@@ -204,12 +206,16 @@ lualine.setup({
 			},
 			{
 				lsp_progess,
-				color = { fg = colors.green, bg = colors.black2 },
-
+				color = { fg = colors.vibrant_green, bg = colors.black2 },
 			},
 			{
 				copilot,
-				color = { fg = colors.vibrant_green, bg = colors.black2 },
+				color = { fg = colors.teal, bg = colors.black2 },
+			},
+			{
+				codeium,
+				color = { fg = colors.teal, bg = colors.black2 },
+
 			},
 			{
 				function()
@@ -259,7 +265,6 @@ lualine.setup({
 			},
 			{
 				"location",
-				padding = 1,
 				color = { fg = colors.yellow, bg = colors.black2 }
 			},
 		},

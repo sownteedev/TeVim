@@ -19,7 +19,7 @@ null_ls.setup({
 		-- Lua
 		formatting.stylua.with({ extra_args = { "--style", "{IndentWidth: 4}" } }),
 
-		-- Cpp, C
+		-- Cpp, C with indent width 4
 		formatting.clang_format.with({ extra_args = { "--style", "{IndentWidth: 4}" } }),
 
 		-- Python
