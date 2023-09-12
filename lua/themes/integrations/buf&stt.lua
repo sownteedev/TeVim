@@ -57,6 +57,8 @@ return function(colors)
 		BufferLineDevIconLuaInactive = { fg = colors.grey, bg = colors.black },
 		BufferLineDevIconLuaSelected = { fg = colors.blue, bg = colors.black },
 
+		BufferLineTruncMarker = { fg = colors.grey, bg = colors.darker_black },
+
 		-- Statusline
 		StatusLine = { bg = colors.black },
 		StatusLineNC = { bg = colors.black },

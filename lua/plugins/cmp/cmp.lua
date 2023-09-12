@@ -83,7 +83,7 @@ cmp.setup({
 		format = function(entry, vim_item)
 			local kind = lspkind.cmp_format({
 				mode = "symbol_text",
-				symbol_map = { Copilot = "", Codeium = "", Snippet = "", Keyword = "" },
+				symbol_map = { Copilot = "", Codeium = "", Snippet = "", Keyword = "" },
 				preset = "codicons",
 				ellipsis_char = "...",
 				maxwidth = 30,
