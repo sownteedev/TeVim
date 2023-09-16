@@ -5,22 +5,19 @@ local action_state = require "telescope.actions.state"
 local conf         = require("telescope.config").values
 
 local M            = {}
-local files        = vim.fn.stdpath "config" .. "/colors/"
 local themes       = {}
+local files        = vim.fn.stdpath "config" .. "/colors/"
 
 for _, file in ipairs(vim.fn.readdir(files)) do
 	local f = vim.fn.fnamemodify(file, ":r")
 	table.insert(themes, f)
 end
 
--- Select themes with Telescope
-M.setup = function(opts)
+M.setup       = function(opts)
 	opts = opts or {}
 	pickers.new(opts, {
-		prompt_title = " Select Themes",
-		finder = finders.new_table {
-			results = themes
-		},
+		prompt_title = " TEVIM THEMES",
+		finder = finders.new_table { results = themes },
 		sorter = conf.generic_sorter(opts),
 		attach_mappings = function(buffer)
 			actions.select_default:replace(function()

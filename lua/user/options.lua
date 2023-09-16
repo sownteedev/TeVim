@@ -1,6 +1,9 @@
 vim.cmd("filetype plugin indent on")
 vim.cmd("syntax on")
 
+vim.g.currentTheme = "yoru"
+vim.g.theme_cache = vim.fn.stdpath "data" .. "/colors_data/"
+
 local options = {
 	-- NUMBER
 	number = true,
@@ -22,6 +25,7 @@ local options = {
 	fileencoding = "utf-8",
 	encoding = "utf-8",
 	backup = false,
+	hidden = true,
 	clipboard = "unnamedplus",
 	showcmd = true,
 	cmdheight = 0,

@@ -1,4 +1,3 @@
-require("themes").setup({
-	theme = "decaydark",
-	transparent_background = false
-})
+vim.g.currentTheme = "decaydark"
+require("plenary.reload").reload_module "themes"
+require("themes").load()

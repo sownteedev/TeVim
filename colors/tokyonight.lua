@@ -1,4 +1,3 @@
-require("themes").setup({
-	theme = "tokyonight",
-	transparent_background = false
-})
+vim.g.currentTheme = "tokyodark"
+require("plenary.reload").reload_module "themes"
+require("themes").load()

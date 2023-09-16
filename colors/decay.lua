@@ -1,4 +1,3 @@
-require("themes").setup({
-	theme = "decay",
-	transparent_background = false
-})
+vim.g.currentTheme = "decay"
+require("plenary.reload").reload_module "themes"
+require("themes").load()

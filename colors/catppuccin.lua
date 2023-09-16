@@ -1,4 +1,3 @@
-require("themes").setup({
-	theme = "catppuccin",
-	transparent_background = false
-})
+vim.g.currentTheme = "catppuccin"
+require("plenary.reload").reload_module "themes"
+require("themes").load()

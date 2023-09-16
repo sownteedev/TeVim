@@ -60,6 +60,8 @@ function M.build_run()
 		vim.cmd("TermExec cmd='php " .. vim.fn.expand("%") .. "'")
 	elseif filetype == "java" then
 		vim.cmd("TermExec cmd='javac " .. vim.fn.expand("%") .. " && java " .. vim.fn.expand("%:r") .. "'")
+	elseif filetype == "cs" then
+		vim.cmd("TermExec cmd='mcs " .. vim.fn.expand("%") .. "'")
 	elseif filetype == "rust" then
 		vim.cmd("TermExec cmd='cargo run'")
 	elseif filetype == "go" then
@@ -68,10 +70,6 @@ function M.build_run()
 		vim.cmd("TermExec cmd='lua " .. vim.fn.expand("%") .. "'")
 	elseif filetype == "sh" then
 		vim.cmd("TermExec cmd='bash " .. vim.fn.expand("%") .. "'")
-	elseif filetype == "kotlin" then
-		vim.cmd("TermExec cmd='kotlinc " ..
-			vim.fn.expand("%") ..
-			" -include-runtime -d " .. vim.fn.expand("%:r") .. ".jar && java -jar " .. vim.fn.expand("%:r") .. ".jar'")
 	elseif filetype == "dart" then
 		vim.cmd("TermExec cmd='dart " .. vim.fn.expand("%") .. "'")
 	end
@@ -90,7 +88,7 @@ local lazygit = require("toggleterm.terminal").Terminal:new({
 		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
 	end,
 })
-function LazyGit()
+function M.LazyGit()
 	lazygit:toggle()
 end
 

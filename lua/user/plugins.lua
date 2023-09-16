@@ -42,17 +42,10 @@ local plugins = {
 		end
 	},
 
-	-- Statusline
-	["nvim-lualine/lualine.nvim"] = {
-		config = function()
-			require("ui.lualine")
-		end
-	},
-
 	-- Treesitter
 	["nvim-treesitter/nvim-treesitter"] = {
 		run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-		requires = { "nvim-treesitter/nvim-treesitter-context", "JoosepAlviste/nvim-ts-context-commentstring" },
+		requires = { "nvim-treesitter/nvim-treesitter-context" },
 		config = function()
 			require("plugins.treesitter")
 		end
@@ -87,9 +80,7 @@ local plugins = {
 	["numToStr/Comment.nvim"] = {
 		event = { "BufReadPost", "BufNewFile" },
 		config = function()
-			require("Comment").setup {
-				pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-			}
+			require("Comment").setup()
 		end
 	},
 
@@ -135,9 +126,6 @@ local plugins = {
 			require("plugins.noice")
 		end
 	},
-
-	-- Notification
-	["rcarriga/nvim-notify"] = {},
 
 	-- Terminal
 	["akinsho/toggleterm.nvim"] = {

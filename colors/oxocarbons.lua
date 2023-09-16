@@ -1,4 +1,3 @@
-require("themes").setup({
-	theme = "oxocarbons",
-	transparent_background = false
-})
+vim.g.currentTheme = "oxocarbons"
+require("plenary.reload").reload_module "themes"
+require("themes").load()

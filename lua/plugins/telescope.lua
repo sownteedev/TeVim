@@ -9,7 +9,6 @@ local trouble = require("trouble.providers.telescope")
 
 telescope.load_extension("noice")
 -- telescope.load_extension('media_files')
-telescope.load_extension("notify")
 
 telescope.setup {
 	defaults = {

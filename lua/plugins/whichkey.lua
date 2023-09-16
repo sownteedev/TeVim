@@ -98,7 +98,7 @@ local mappings = {
 	},
 	g = {
 		name = "󰊢  GIT",
-		g = { "<cmd>lua LazyGit()<CR>", "Lazygit" },
+		g = { '<cmd>lua require("user.functions").LazyGit()<cr>', "Lazygit" },
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
 		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
 		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
