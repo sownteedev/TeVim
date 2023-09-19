@@ -1,4 +1,7 @@
 local M = function()
+	if vim.o.columns < 130 then
+		return ""
+	end
 	if not vim.b.gitsigns_head or vim.b.gitsigns_git_status then
 		return "%#TeSTTBranchIcon#" .. "  󱓌  "
 	end

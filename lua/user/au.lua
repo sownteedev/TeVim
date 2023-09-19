@@ -10,6 +10,13 @@ autocmd({ "UIEnter" }, {
 	end
 })
 
+-- Load Statusline
+autocmd({ "ModeChanged", "CursorHold" }, {
+	callback = function()
+		require("ui.statusline").setup()
+	end
+})
+
 -- Highlight yanked text
 autocmd("TextYankPost", {
 	group = augroup("yank_highlight", {}),

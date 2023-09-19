@@ -6,7 +6,6 @@ local run = function()
 	local diagnostics = require("ui.statusline.modules.diagnostics")
 	local lsp = require("ui.statusline.modules.lsp")
 	local copilot = require("ui.statusline.modules.copilot")
-	local codeium = require("ui.statusline.modules.codeium")
 	local folder = require("ui.statusline.modules.folder")
 	local tab = require("ui.statusline.modules.tab")
 	local location = require("ui.statusline.modules.location")
@@ -24,7 +23,6 @@ local run = function()
 		diagnostics(),
 		lsp(),
 		copilot(),
-		codeium(),
 		nothing(),
 		folder(),
 		nothing(),

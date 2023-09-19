@@ -27,20 +27,6 @@ function M.get_buf_option(opt)
 	end
 end
 
--- Show docs
-function M.show_documentation()
-	local filetype = vim.bo.filetype
-	if vim.tbl_contains({ "vim", "help" }, filetype) then
-		vim.cmd("h " .. vim.fn.expand("<cword>"))
-	elseif vim.tbl_contains({ "man" }, filetype) then
-		vim.cmd("Man " .. vim.fn.expand("<cword>"))
-	elseif vim.fn.expand("%:t") == "Cargo.toml" then
-		require("crates").show_popup()
-	else
-		vim.lsp.buf.hover()
-	end
-end
-
 -- Build & Run
 function M.build_run()
 	local filetype = vim.bo.filetype
@@ -76,13 +62,14 @@ function M.build_run()
 end
 
 -- LazyGit
+if not pcall(require, "toggleterm") then
+	return
+end
 local lazygit = require("toggleterm.terminal").Terminal:new({
 	cmd = "lazygit",
 	dir = "git_dir",
 	direction = "float",
-	float_opts = {
-		border = "curved",
-	},
+	float_opts = { border = "curved" },
 	on_open = function(term)
 		vim.cmd("startinsert!")
 		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })

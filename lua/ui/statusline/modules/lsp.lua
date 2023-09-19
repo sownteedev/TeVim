@@ -1,5 +1,9 @@
 local M = function()
+	--- @diagnostic disable warning
 	local buf_clients = vim.lsp.get_active_clients()
+	if vim.o.columns < 130 or not buf_clients then
+		return ""
+	end
 	local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
 	if next(buf_clients) == nil then
 		return ""
@@ -16,9 +20,7 @@ local M = function()
 		local clients = {}
 		for _, client in pairs(buf_clients) do
 			if client.name ~= "null-ls" and client.name ~= "copilot" then
-				---@diagnostic disable-next-line: undefined-field
 				if client.config.filetypes ~= nil then
-					---@diagnostic disable-next-line: undefined-field
 					if vim.tbl_contains(client.config.filetypes, filetype) then
 						table.insert(clients, client.name)
 					end
@@ -66,7 +68,7 @@ local M = function()
 	if #buf_client_names > 3 then
 		return buf_client_names[1] .. ", " .. buf_client_names[2] .. ", " .. buf_client_names[3]
 	end
-	return "%#TeSTTLsp#" .. " " .. table.concat(vim.fn.uniq(buf_client_names), ", ")
+	return "%#TeSTTLsp#" .. "  " .. table.concat(vim.fn.uniq(buf_client_names), ", ") .. " "
 end
 
 return M

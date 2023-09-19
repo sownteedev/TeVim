@@ -8,29 +8,29 @@ local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
 
 telescope.load_extension("noice")
--- telescope.load_extension('media_files')
+telescope.load_extension("media_files")
 
 telescope.setup {
 	defaults = {
 		layout_config = {
 			horizontal = {
-				prompt_position = "top",
-				preview_width = 0.55,
-				results_width = 0.8,
+				prompt_position = "bottom",
+				preview_width = 0.6,
+				results_width = 0.7,
 			},
 			vertical = {
 				mirror = false,
 			},
-			width = 0.75,
-			height = 0.75,
+			width = 0.9,
+			height = 0.8,
 			preview_cutoff = 120,
 		},
 		find_command = {
 			'rg', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'
 		},
 		prompt_prefix = "   ",
-		selection_caret = "  ",
-		entry_prefix = "  ",
+		selection_caret = "    ",
+		entry_prefix = "    ",
 		initial_mode = "insert",
 		selection_strategy = "reset",
 		sorting_strategy = "ascending",
@@ -41,10 +41,9 @@ telescope.setup {
 		path_display = { "smart" },
 		winblend = 0,
 		border = {},
-		-- borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
 		color_devicons = true,
 		use_less = true,
-		set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+		set_env = { ['COLORTERM'] = 'truecolor' },
 		file_previewer = require 'telescope.previewers'.vim_buffer_cat.new,
 		grep_previewer = require 'telescope.previewers'.vim_buffer_vimgrep.new,
 		qflist_previewer = require 'telescope.previewers'.vim_buffer_qflist.new,
@@ -66,10 +65,10 @@ telescope.setup {
 			}
 		}
 	},
-	-- extensions = {
-	--     media_files = {
-	--         filetypes = { "png", "webp", "jpg", "jpeg", "mp4", "pdf" },
-	--         find_cmd = "rg"
-	--     },
-	-- }
+	extensions = {
+		media_files = {
+			filetypes = { "png", "webp", "jpg", "jpeg", "mp4", "webm", "pdf", "mkv" },
+			find_cmd = "fd"
+		}
+	},
 }

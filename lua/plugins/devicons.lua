@@ -10,7 +10,7 @@ local config = {
 		css = { icon = "", name = "CSS" },
 		deb = { icon = "", name = "Deb" },
 		Dockerfile = { icon = "", name = "Dockerfile" },
-		md = { icon = "" },
+		md = { icon = "", name = "Markdown" },
 		html = { icon = "", name = "HTML" },
 		jpeg = { icon = "", name = "JPEG" },
 		jpg = { icon = "", name = "JPG" },

@@ -6,18 +6,18 @@ return {
 	NormalSB = { fg = colors.white, bg = colors.black },
 	NormalFloat = { bg = colors.darker_black },
 	FloatBorder = { fg = colors.darker_black, bg = colors.darker_black },
-	WinSeparator = { fg = colors.black2, bg = colors.black },
+	WinSeparator = { fg = colors.darker_black, bg = colors.black },
 
 	MsgArea = { fg = colors.white, bg = colors.black },
 	ModeMsg = { fg = colors.white, bg = colors.black },
 	MsgSeparator = { fg = colors.white, bg = colors.black },
 
 	WildMenu = { fg = colors.base08, bg = colors.base0A },
-	Comment = { fg = colors.grey_fg },
+	Comment = { fg = colors.grey_fg, italic = true },
 	Whitespace = { fg = colors.grey_fg },
 
-	Folded = { bg = colors.black },
-	FoldColumn = { bg = colors.black },
+	Folded = { fg = colors.light_grey, bg = colors.black },
+	FoldColumn = { fg = colors.light_grey, bg = colors.black },
 
 	Cursor = { fg = colors.base00, bg = colors.base05 },
 	lCursor = { fg = colors.white, bg = colors.cursor },
@@ -67,7 +67,7 @@ return {
 	SpellRare = { undercurl = true, sp = colors.base0E },
 	healthSuccess = { bg = colors.green, fg = colors.black },
 
-	-- SynbolOutline
+	-- SymbolOutline
 	SymbolsOutlineConnector = { fg = colors.black },
 	FocusedSymbol = { fg = colors.white, bg = colors.black, bold = true, italic = true },
 
@@ -80,5 +80,9 @@ return {
 	MasonMuted = { fg = colors.light_grey },
 	MasonMutedBlock = { fg = colors.light_grey, bg = colors.one_bg },
 
-	EdgyNormal = { bg = colors.black },
+	EdgyNormal = { bg = colors.darker_black },
+	EdgyWinBar = { bg = colors.darker_black },
+	EdgyTitle = { bg = colors.darker_black },
+
+	CopilotSuggestion = { fg = colors.grey_fg, italic = true }
 }

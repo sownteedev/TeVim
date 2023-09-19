@@ -2,13 +2,13 @@ local colors = require("themes").getCurrentTheme()
 
 return {
 	-- Buffer
-	BufferLineFill = { fg = colors.grey, bg = colors.black },
-	BufferLineBackground = { fg = colors.grey, bg = colors.black },
+	BufferLineFill = { fg = colors.grey, bg = colors.darker_black },
+	BufferLineBackground = { fg = colors.grey, bg = colors.darker_black },
 
-	BufferLineBuffer = { fg = colors.grey, bg = colors.black },
-	BufferLineBufferSelected = { fg = colors.white, bg = colors.black, italic = true, bold = true },
-	BufferLineBufferVisible = { fg = colors.grey, bg = colors.black },
-	BufferLineBufferInactive = { fg = colors.grey, bg = colors.black },
+	BufferLineBuffer = { fg = colors.grey, bg = colors.darker_black },
+	BufferLineBufferSelected = { fg = colors.white, bg = colors.black, bold = true },
+	BufferLineBufferInactive = { fg = colors.grey, bg = colors.darker_black },
+	BufferLineBufferVisible = { fg = colors.grey, bg = colors.darker_black },
 
 	BufferLineModified = { fg = colors.green },
 	BufferLineModifiedSelected = { fg = colors.green },
@@ -20,42 +20,33 @@ return {
 	BufferLineCloseButtonVisible = { fg = colors.grey },
 	BufferLineCloseButtonInactive = { fg = colors.grey },
 
-	BufferLineTabClose = { fg = colors.grey, bg = colors.black },
+	BufferLineTabClose = { fg = colors.grey, bg = colors.darker_black },
 	BufferLineTabCloseSelected = { fg = colors.red, bg = colors.black },
-	BufferLineTabCloseVisible = { fg = colors.grey, bg = colors.black },
-	BufferLineTabCloseInactive = { fg = colors.grey, bg = colors.black },
-
-	BufferLineTab = { fg = colors.grey },
-	BufferLineTabSelected = { fg = colors.grey },
-	BufferLineTabVisible = { fg = colors.grey },
-	BufferLineTabInactive = { fg = colors.grey },
+	BufferLineTabCloseVisible = { fg = colors.grey, bg = colors.darker_black },
+	BufferLineTabCloseInactive = { fg = colors.grey, bg = colors.darker_black },
 
 	BufferLineSeparator = { fg = colors.black },
 	BufferLineSeparatorSelected = { fg = colors.black },
-	BufferLineSeparatorVisible = { fg = colors.black },
-	BufferLineSeparatorInactive = { fg = colors.black },
+	BufferLineSeparatorVisible = { fg = colors.darker_black },
+	BufferLineSeparatorInactive = { fg = colors.darker_black },
 
-	BufferLineIndicator = { fg = colors.grey },
-	BufferLineIndicatorSelected = { fg = colors.cyan },
-	BufferLineIndicatorVisible = { fg = colors.grey },
-	BufferLineIndicatorInactive = { fg = colors.grey },
+	BufferLineIndicator = { fg = colors.grey, bg = colors.darker_black },
+	BufferLineIndicatorSelected = { fg = colors.cyan, bg = colors.black },
+	BufferLineIndicatorVisible = { fg = colors.grey, bg = colors.darker_black },
+	BufferLineIndicatorInactive = { fg = colors.grey, bg = colors.darker_black },
 
-	BufferLinePick = { fg = colors.grey, bg = colors.black },
-	BufferLinePickVisible = { fg = colors.grey, bg = colors.black },
+	BufferLinePick = { fg = colors.grey, bg = colors.darker_black },
+	BufferLinePickVisible = { fg = colors.grey, bg = colors.darker_black },
 	BufferLinePickSelected = { fg = colors.grey, bg = colors.black },
-	BufferLinePickInactive = { fg = colors.grey, bg = colors.black },
+	BufferLinePickInactive = { fg = colors.grey, bg = colors.darker_black },
 
-	BufferLineClose = { fg = colors.grey, bg = colors.black },
-	BufferLineCloseVisible = { fg = colors.grey, bg = colors.black },
-	BufferLineCloseSelected = { fg = colors.red },
-	BufferLineCloseInactive = { fg = colors.grey, bg = colors.black },
+	BufferLineClose = { fg = colors.grey, bg = colors.darker_black },
+	BufferLineCloseSelected = { fg = colors.red, bg = colors.black },
+	BufferLineCloseInactive = { fg = colors.grey, bg = colors.darker_black },
+	BufferLineCloseVisible = { fg = colors.grey, bg = colors.darker_black },
 
-	BufferLineNumbers = { fg = colors.grey, bg = colors.black },
-	BufferLineNumbersSelected = { bg = colors.black, italic = true, bold = true },
-	BufferLineNumbersVisible = { fg = colors.grey, bg = colors.black },
-
-	BufferLineDevIconLua = { fg = colors.grey, bg = colors.black },
-	BufferLineDevIconLuaInactive = { fg = colors.grey, bg = colors.black },
+	BufferLineDevIconLua = { fg = colors.grey, bg = colors.darker_black },
+	BufferLineDevIconLuaInactive = { fg = colors.grey, bg = colors.darker_black },
 	BufferLineDevIconLuaSelected = { fg = colors.blue, bg = colors.black },
 
 	BufferLineTruncMarker = { fg = colors.grey, bg = colors.darker_black },
@@ -80,7 +71,7 @@ return {
 	TeSTTFileIcon = { fg = colors.black, bg = colors.red },
 	TeSTTFileName = { fg = colors.red, bg = colors.black2, bold = true },
 
-	Nothing = { fg = colors.black },
+	Nothing = { fg = colors.darker_black, bg = colors.darker_black },
 	NothingLighter = { fg = colors.black2 },
 
 	TeSTTError = { fg = colors.red, bg = colors.black2 },
@@ -105,7 +96,6 @@ return {
 	TeSTTLsp = { fg = colors.green, bg = colors.black2 },
 	TeSTTLspIcon = { fg = colors.black, bg = colors.green },
 	TeSTTCopilot = { fg = colors.cyan, bg = colors.black2 },
-	TeSTTCodeium = { fg = colors.cyan, bg = colors.black2 },
 
 	TeSTTFolderText = { fg = colors.red, bg = colors.black2 },
 	TeSTTFolderIcon = { fg = colors.black, bg = colors.red },

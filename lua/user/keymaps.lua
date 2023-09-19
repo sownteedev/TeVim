@@ -72,8 +72,5 @@ keymap("n", "<S-TAB>",
 	"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false, no_ignore=true, follow=true, hidden=true})<cr>",
 	opts)
 
-vim.g.codeium_disable_bindings = 1
-map('i', '<C-c>', function() return vim.fn['codeium#Accept']() end, { expr = true })
-map('i', '<C-Up>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
-map('i', '<C-Down>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
-map('i', '<C-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+-- Copilot
+vim.cmd([[imap <silent><script><expr> <M-c> copilot#Accept("\<CR>")]])

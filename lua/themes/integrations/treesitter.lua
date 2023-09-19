@@ -73,8 +73,7 @@ return {
 	["@include"] = { link = "Include" },
 	["@conditional"] = { link = "Conditional" },
 
-
-	TreesitterContext = { bg = colors.darker_black, italic = true, bold = true },
-	TreesitterContextBottom = { italic = true, bold = true },
-	TreesitterContextLineNumber = { fg = colors.base06, italic = true, bold = true },
+	TreesitterContext = { bg = colors.darker_black, bold = true },
+	TreesitterContextBottom = { bold = true },
+	TreesitterContextLineNumber = { fg = colors.base06, bold = true },
 }

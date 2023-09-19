@@ -9,6 +9,7 @@ local plugins = {
 		end
 	},
 	["nvim-lua/plenary.nvim"] = {},
+	["nvim-lua/popup.nvim"] = {},
 
 	-- File explorer
 	["nvim-neo-tree/neo-tree.nvim"] = {
@@ -87,6 +88,7 @@ local plugins = {
 	-- Telescope, Fzfinder
 	["nvim-telescope/telescope.nvim"] = {
 		branch = '0.1.x',
+		requires = { "nvim-telescope/telescope-media-files.nvim" },
 		config = function()
 			require("plugins.telescope")
 		end
@@ -131,7 +133,7 @@ local plugins = {
 	["akinsho/toggleterm.nvim"] = {
 		tag = '*',
 		config = function()
-			require("toggleterm").setup { shading_factor = 2 }
+			require("toggleterm").setup({ shading_factor = 2 })
 		end
 	},
 
@@ -221,10 +223,6 @@ local plugins = {
 		end
 	},
 
-	-- Debug
-	["mfussenegger/nvim-dap"] = {},
-	["rcarriga/nvim-dap-ui"] = {},
-
 	----------------------------------------------------------------------------
 
 	-- Auto completions
@@ -242,20 +240,18 @@ local plugins = {
 	},
 
 	-- AI
-	["zbirenbaum/copilot-cmp"] = {
-		after = { "copilot.lua" },
+	["github/copilot.vim"] = {
 		config = function()
-			require("copilot_cmp").setup()
+			vim.g.copilot_no_tab_map = true;
+			vim.g.copilot_assume_mapped = true;
+			vim.g.copilot_tab_fallback = "";
 		end
 	},
-	["zbirenbaum/copilot.lua"] = {
-		cmd = "Copilot",
-		event = "InsertEnter",
+	["jcdickinson/codeium.nvim"] = {
 		config = function()
-			require("copilot").setup()
+			require("codeium").setup()
 		end
 	},
-	["Exafunction/codeium.vim"] = {},
 
 	-- Snippets
 	["L3MON4D3/LuaSnip"] = {},
@@ -352,9 +348,9 @@ packer.startup({
 			compact         = false,
 			open_cmd        = '65vnew \\[packer\\]',
 			working_sym     = '󰁇 ',
-			error_sym       = ' ',
+			error_sym       = ' ',
 			done_sym        = ' ',
-			removed_sym     = ' ',
+			removed_sym     = ' ',
 			moved_sym       = '󰪹 ',
 			header_sym      = '━ ',
 			show_all_info   = true,

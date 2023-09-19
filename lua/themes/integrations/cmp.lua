@@ -55,4 +55,5 @@ return {
 	CmpItemKindOperator = { fg = colors.base05 },
 	CmpItemKindTypeParameter = { fg = colors.base08 },
 	CmpItemKindCopilot = { fg = colors.green },
+	CmpItemKindCodeium = { fg = colors.yellow },
 }

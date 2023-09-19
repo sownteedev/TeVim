@@ -1,5 +1,8 @@
 local diagnostic = vim.diagnostic
 local M = function()
+	if vim.o.columns < 130 then
+		return ""
+	end
 	local errors = #diagnostic.get(0, { severity = diagnostic.severity.ERROR })
 	local warnings = #diagnostic.get(0, { severity = diagnostic.severity.WARN })
 	local hints = #diagnostic.get(0, { severity = diagnostic.severity.HINT })

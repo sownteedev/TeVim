@@ -47,8 +47,8 @@ require("neo-tree").setup({
 				modified = "",
 				deleted = "",
 				renamed = "",
-				untracked = "",
-				ignored = "",
+				untracked = "",
+				ignored = "",
 				unstaged = "",
 				staged = "",
 				conflict = "",
@@ -122,4 +122,3 @@ require("neo-tree").setup({
 		},
 	},
 })
-

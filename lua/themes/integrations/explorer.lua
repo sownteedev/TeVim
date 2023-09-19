@@ -1,9 +1,9 @@
 local colors = require("themes").getCurrentTheme()
 
 return {
-	NeoTreeNormal = { fg = colors.white, bg = colors.black },
-	NeoTreeNormalNC = { fg = colors.white, bg = colors.black },
-	NeoTreeWinSeparator = { bg = colors.black, fg = colors.black2 },
+	NeoTreeNormal = { fg = colors.white, bg = colors.darker_black },
+	NeoTreeNormalNC = { fg = colors.white, bg = colors.darker_black },
+	NeoTreeWinSeparator = { bg = colors.darker_black, fg = colors.darker_black },
 	NeoTreeIndent = { fg = colors.grey },
 	NeoTreeIndentMarker = { fg = colors.grey },
 	NeoTreeDirectoryIcon = { fg = colors.folder_bg },

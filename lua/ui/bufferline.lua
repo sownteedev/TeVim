@@ -3,7 +3,7 @@ if not status_ok then
 	return
 end
 
-local colors = require('themes.schemes.yoru').get_colors()
+local colors = require("themes").getCurrentTheme()
 
 bufferline.setup({
 	options = {
@@ -13,7 +13,7 @@ bufferline.setup({
 		right_mouse_command = "bd! %d",
 		left_mouse_command = "buffer %d",
 		middle_mouse_command = nil,
-		indicator = { icon = "|", style = "icon" },
+		indicator = { icon = "|", style = "none" },
 		buffer_close_icon = "󰅙",
 		modified_icon = "●",
 		close_icon = "",
@@ -21,7 +21,8 @@ bufferline.setup({
 		right_trunc_marker = "",
 		max_name_length = 20,
 		max_prefix_length = 20,
-		tab_size = 23,
+		tab_size = 25,
+		enforce_regular_tabs = true,
 		hover = {
 			enabled = true,
 			delay = 0,
@@ -38,9 +39,9 @@ bufferline.setup({
 				local split = "%@Split@" .. "  "
 				local quit = "%@Quit@" .. "  "
 				local result = {}
-				table.insert(result, { text = run, fg = colors.yellow, bg = colors.grey_fg })
-				table.insert(result, { text = split, fg = colors.blue, bg = colors.grey_fg })
-				table.insert(result, { text = theme, fg = colors.green, bg = colors.grey_fg })
+				table.insert(result, { text = run, fg = colors.yellow, bg = colors.one_bg2 })
+				table.insert(result, { text = split, fg = colors.blue, bg = colors.one_bg2 })
+				table.insert(result, { text = theme, fg = colors.green, bg = colors.one_bg2 })
 				table.insert(result, { text = quit, fg = colors.black, bg = colors.red })
 				return result
 			end,
@@ -60,7 +61,7 @@ if not Offset.edgy then
 			for _, pos in ipairs({ "left", "right" }) do
 				local sb = layout[pos]
 				if sb and #sb.wins > 0 then
-					local title = "                          " .. string.rep(" ", sb.bounds.width - 26)
+					local title = "                           " .. string.rep(" ", sb.bounds.width - 26)
 					ret[pos] = "%#EdgyTitle#" .. title .. "%*" .. "%#WinSeparator#%*"
 					ret[pos .. "_size"] = sb.bounds.width
 				end
