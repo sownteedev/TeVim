@@ -82,14 +82,11 @@ cmp.setup({
 		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
 			local kind = lspkind.cmp_format({
-				mode = "symbol_text",
 				symbol_map = { Copilot = "", Codeium = "", Snippet = "", Keyword = "" },
 				preset = "codicons",
-				ellipsis_char = "...",
-				maxwidth = 30,
 			})(entry, vim_item)
 			local strings = vim.split(vim_item.kind, "%s+", { trimempty = true })
-			kind.kind = " " .. string.format("%s │", strings[1], strings[2]) .. " "
+			kind.kind = " " .. string.format("%s  │", strings[1], strings[2]) .. " "
 			return kind
 		end,
 	},

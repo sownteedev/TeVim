@@ -61,28 +61,6 @@ saga.setup({
 			go_action = "g"
 		},
 	},
-	rename = {
-		quit = "<C-c>",
-		exec = "<CR>",
-		mark = "x",
-		confirm = "<CR>",
-		in_select = true,
-	},
-	outline = {
-		win_position = "right",
-		win_with = "",
-		win_width = 30,
-		show_detail = true,
-		auto_preview = true,
-		auto_refresh = true,
-		auto_close = true,
-		custom_sort = nil,
-		keys = {
-			jump = "o",
-			expand_collapse = "u",
-			quit = "q",
-		},
-	},
 	symbol_in_winbar = {
 		enable = true,
 		separator = "    ",

@@ -6,7 +6,7 @@ function M.get_colors()
 		white = "#F8F8F2",
 		darker_black = "#12121F",
 		black = "#141523", -- nvim bg
-		black2 = "#1E1E34",
+		black2 = "#252540",
 		one_bg = "#252540",
 		one_bg2 = "#33335A",
 		one_bg3 = "#414171",
@@ -29,7 +29,7 @@ function M.get_colors()
 		teal = "#92A2D4",
 		orange = "#FFB86C",
 		cyan = "#2CCCFF",
-		statusline_bg = "#252540",
+		statusline_bg = "#1E1E34",
 		lightbg = "#383862",
 		pmenu_bg = "#9A86FD",
 		folder_bg = "#BD93F9",

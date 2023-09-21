@@ -13,8 +13,6 @@ if not navic_lsp_status_ok then
 	return
 end
 
-local protocol = require("vim.lsp.protocol")
-
 local on_attach = function(client, bufnr)
 	-- Navic
 	if client.server_capabilities.documentSymbolProvider then
@@ -28,40 +26,12 @@ local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_c
 capabilities.offsetEncoding = { "utf-16" }
 
 vim.diagnostic.config({
-	virtual_text = { prefix = " ●" },
+	virtual_text = { prefix = "●" },
 	signs = true,
-	underline = false,
+	underline = true,
 	update_in_insert = false,
 	severity_sort = true,
 })
-
-protocol.CompletionItemKind = {
-	" ", -- Text
-	" ", -- Method
-	" ", -- Function
-	" ", -- Constructor
-	" ", -- Field
-	" ", -- Variable
-	" ", -- Class
-	" ", -- Interface
-	" ", -- Module
-	" ", -- Property
-	" ", -- Unit
-	" ", -- Value
-	" ", -- Enum
-	" ", -- Keyword
-	"﬌ ", -- Snippet
-	" ", -- Color
-	" ", -- File
-	" ", -- Reference
-	" ", -- Folder
-	" ", -- EnumMember
-	" ", -- Constant
-	" ", -- Struct
-	" ", -- Event
-	"ﬦ ", -- Operator
-	" ", -- TypeParameter
-}
 
 -- Change the Diagnostic symbols
 local signs = { Error = " ", Warn = " ", Hint = "󰌵", Info = " ", Question = " " }

@@ -1,11 +1,9 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
-local colors = require("themes").getCurrentTheme()
 
 -- Load Themes
 autocmd({ "UIEnter" }, {
 	callback = function()
-		vim.api.nvim_set_hl(0, "StatusLine", { bg = colors.black })
 		require("themes").load()
 	end
 })

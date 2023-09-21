@@ -6,7 +6,7 @@ return {
 	NormalSB = { fg = colors.white, bg = colors.black },
 	NormalFloat = { bg = colors.darker_black },
 	FloatBorder = { fg = colors.darker_black, bg = colors.darker_black },
-	WinSeparator = { fg = colors.darker_black, bg = colors.black },
+	WinSeparator = { fg = colors.darker_black, bg = colors.darker_black },
 
 	MsgArea = { fg = colors.white, bg = colors.black },
 	ModeMsg = { fg = colors.white, bg = colors.black },
@@ -38,7 +38,7 @@ return {
 	ErrorMsg = { fg = colors.base08, bg = colors.black },
 	MoreMsg = { fg = colors.base0B, bg = colors.black },
 
-	QuickFixLine = { bg = colors.base01, sp = "none" },
+	QuickFixLine = { bg = colors.base01, sp = colors.none },
 	MatchWord = { bg = colors.grey, fg = colors.white },
 	MatchParen = { link = "MatchWord" },
 
@@ -46,13 +46,13 @@ return {
 	Macro = { fg = colors.base08 },
 	Debug = { fg = colors.base08 },
 
-	Conceal = { bg = "none" },
+	Conceal = { bg = colors.none },
 	Directory = { fg = colors.base0D },
 	SpecialKey = { fg = colors.base03 },
-	Title = { fg = colors.base0D, sp = "none" },
+	Title = { fg = colors.base0D, sp = colors.none },
 	Search = { fg = colors.black, bg = colors.base0A },
 	IncSearch = { fg = colors.black, bg = colors.base0A },
-	Substitute = { fg = colors.base01, bg = colors.base0A, sp = "none" },
+	Substitute = { fg = colors.base01, bg = colors.base0A, sp = colors.none },
 	Question = { fg = colors.purple },
 	EndOfBuffer = { fg = colors.black },
 	NonText = { fg = colors.base03 },
@@ -68,8 +68,8 @@ return {
 	healthSuccess = { bg = colors.green, fg = colors.black },
 
 	-- SymbolOutline
-	SymbolsOutlineConnector = { fg = colors.black },
-	FocusedSymbol = { fg = colors.white, bg = colors.black, bold = true, italic = true },
+	SymbolsOutlineConnector = { fg = colors.darker_black },
+	FocusedSymbol = { fg = colors.white, bg = colors.black2, bold = true, italic = true },
 
 	-- Mason
 	MasonHeader = { bg = colors.red, fg = colors.black },

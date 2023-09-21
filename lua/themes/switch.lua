@@ -2,7 +2,7 @@ local pickers      = require "telescope.pickers"
 local finders      = require "telescope.finders"
 local actions      = require "telescope.actions"
 local action_state = require "telescope.actions.state"
-local conf         = require("telescope.config").values
+local sorters      = require "telescope.sorters"
 
 local M            = {}
 local themes       = {}
@@ -13,28 +13,71 @@ for _, file in ipairs(vim.fn.readdir(files)) do
 	table.insert(themes, f)
 end
 
-M.setup       = function(opts)
-	opts = opts or {}
-	pickers.new(opts, {
-		prompt_title = " TEVIM THEMES",
-		finder = finders.new_table { results = themes },
-		sorter = conf.generic_sorter(opts),
-		attach_mappings = function(buffer)
-			actions.select_default:replace(function()
-				local theme = action_state.get_selected_entry().value
-				vim.g.currentTheme = theme
-				vim.cmd("colorscheme " .. theme)
-				actions.close(buffer)
-			end)
-			return true
-		end,
-	}):find()
+M.settheme = function(theme)
+	vim.g.currentTheme = theme
+	vim.cmd("colorscheme " .. theme)
+end
+
+M.writeconfig = function()
+	local theme    = vim.g.currentTheme
+	local file     = vim.fn.stdpath "config" .. "/lua/user/options.lua"
+	local lines    = vim.fn.readfile(file)
+	local newlines = {}
+	local found    = false
+	for _, line in ipairs(lines) do
+		if line:find("vim.g.currentTheme") then
+			table.insert(newlines, "vim.g.currentTheme = \"" .. theme .. "\"")
+			found = true
+		else
+			table.insert(newlines, line)
+		end
+	end
+	if not found then
+		table.insert(newlines, "vim.g.currentTheme = \"" .. theme .. "\"")
+	end
+	vim.fn.writefile(newlines, file)
+end
+
+local picker_opts = {
+	prompt_title = " TEVIM THEMES",
+	finder = finders.new_table { results = themes },
+	sorter = sorters.get_generic_fuzzy_sorter({}),
+	sorting_strategy = 'ascending',
+	attach_mappings = function(prompt_bufnr, map)
+		map('i', '<CR>', function()
+			M.settheme(action_state.get_selected_entry()[1])
+			M.writeconfig()
+			actions.close(prompt_bufnr)
+		end)
+
+		map("i", "<Down>", function()
+			actions.move_selection_next(prompt_bufnr)
+			M.settheme(action_state.get_selected_entry()[1])
+		end)
+
+		map("i", "<Up>", function()
+			actions.move_selection_previous(prompt_bufnr)
+			M.settheme(action_state.get_selected_entry()[1])
+		end)
+		return true
+	end,
+}
+
+local mini = {
+	layout_strategy = 'vertical',
+	layout_config = { height = 0.5, width = 0.3 }
+}
+
+M.setup = function()
+	local picker = pickers.new(mini, picker_opts)
+	picker:find()
 end
 
 -- Click to toggle
 M.toggleTheme = function()
 	local theme = themes[math.random(#themes)]
-	vim.cmd("colorscheme " .. theme)
+	M.settheme(theme)
+	M.writeconfig()
 end
 
 return M

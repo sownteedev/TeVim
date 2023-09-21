@@ -59,6 +59,10 @@ keymap("n", "<esc><esc>", "<cmd>nohlsearch<cr>", opts)
 
 -- Rename
 map("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Reload all
+map("n", "<leader>rl", [[:source %<CR>]], opts)
+
 ----------------------------------------------- PLUGINS -------------------------------------------
 
 -- Expoler
@@ -69,8 +73,8 @@ keymap("n", [[<C-`>]], "<cmd>ToggleTerm<cr>", opts)
 
 -- Telescope
 keymap("n", "<S-TAB>",
-	"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false, no_ignore=true, follow=true, hidden=true})<cr>",
+	"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 	opts)
 
 -- Copilot
-vim.cmd([[imap <silent><script><expr> <M-c> copilot#Accept("\<CR>")]])
+vim.cmd([[imap <silent><script><expr> <C-c> copilot#Accept("\<CR>")]])

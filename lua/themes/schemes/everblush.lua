@@ -31,7 +31,6 @@ function M.get_colors()
 		cyan = "#6cbfbf",
 		statusline_bg = "#181f22",
 		lightbg = "#262d30",
-		lightbg2 = "#1f2629",
 		pmenu_bg = "#8ccf7e",
 		folder_bg = "#71baf2",
 		none = "NONE",

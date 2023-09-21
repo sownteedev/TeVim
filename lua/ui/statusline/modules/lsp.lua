@@ -1,5 +1,5 @@
 local M = function()
-	--- @diagnostic disable warning
+	--- @diagnostic disable warnings
 	local buf_clients = vim.lsp.get_active_clients()
 	if vim.o.columns < 130 or not buf_clients then
 		return ""

@@ -6,8 +6,8 @@ local run = function()
 	local diagnostics = require("ui.statusline.modules.diagnostics")
 	local lsp = require("ui.statusline.modules.lsp")
 	local copilot = require("ui.statusline.modules.copilot")
-	local folder = require("ui.statusline.modules.folder")
 	local tab = require("ui.statusline.modules.tab")
+	local progress = require("ui.statusline.modules.progress")
 	local location = require("ui.statusline.modules.location")
 	local nothing = require("ui.statusline.modules.nothing")
 	return table.concat {
@@ -24,9 +24,9 @@ local run = function()
 		lsp(),
 		copilot(),
 		nothing(),
-		folder(),
-		nothing(),
 		tab(),
+		nothing(),
+		progress(),
 		nothing(),
 		location(),
 	}

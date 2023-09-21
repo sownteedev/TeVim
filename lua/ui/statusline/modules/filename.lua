@@ -1,6 +1,10 @@
 local fn = vim.fn
 local M = function()
+	if vim.o.columns < 130 then
+		return ""
+	end
 	local icon = "  "
+	local directory = " " .. fn.fnamemodify(fn.getcwd(), ":t")
 	local filename = (fn.expand "%" == "" and "Empty ") or fn.expand "%:t"
 	if filename ~= "Empty " then
 		local devicons = require("nvim-web-devicons")
@@ -14,7 +18,8 @@ local M = function()
 			filename = "Terminal"
 			return "%#TeSTTFileIcon#" .. "    " .. "%#TeSTTFileName#" .. " " .. filename .. " "
 		end
-		return "%#TeSTTFileIcon#" .. " " .. icon .. "  " .. "%#TeSTTFileName#" .. " " .. filename .. " "
+		return "%#TeSTTFileIcon#" ..
+			" " .. icon .. "  " .. "%#TeSTTFolder#" .. directory .. "/" .. "%#TeSTTFileName#" .. filename .. " "
 	else
 		return "%#TeSTTFileIcon#" .. " " .. icon .. " " .. "%#TeSTTFileName# TeVim "
 	end

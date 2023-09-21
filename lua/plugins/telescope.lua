@@ -18,16 +18,12 @@ telescope.setup {
 				preview_width = 0.6,
 				results_width = 0.7,
 			},
-			vertical = {
-				mirror = false,
-			},
+			vertical = { mirror = false },
 			width = 0.9,
-			height = 0.8,
+			height = 0.9,
 			preview_cutoff = 120,
 		},
-		find_command = {
-			'rg', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'
-		},
+		find_command = { 'rg', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case' },
 		prompt_prefix = "   ",
 		selection_caret = "    ",
 		entry_prefix = "    ",

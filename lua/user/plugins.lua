@@ -169,7 +169,7 @@ local plugins = {
 		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("satellite").setup({
-				excluded_filetypes = { "neo-tree" },
+				excluded_filetypes = { "neo-tree", "Outline" },
 				handlers = {
 					cursor = { enable = false },
 					gitsigns = { enable = false },
@@ -179,7 +179,7 @@ local plugins = {
 		end
 	},
 
-	-- TODO List
+	-- TODO:
 	["folke/todo-comments.nvim"] = {
 		event = { "BufReadPost", "BufNewFile" },
 		config = function()

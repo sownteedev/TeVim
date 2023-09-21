@@ -1,18 +1,6 @@
 local colors = require("themes").getCurrentTheme()
 
 return {
-	-- CmpItemKindClass = { link = "Type" },
-	-- CmpItemKindConstant = { link = "Constant" },
-	-- CmpItemKindConstructor = { link = "TSConstructor" },
-	-- CmpItemKindFunction = { link = "Function" },
-	-- CmpItemKindKeyword = { link = "Keyword" },
-	-- CmpItemKindOperator = { link = "Operator" },
-	-- CmpItemKindProperty = { link = "TSProperty" },
-	-- CmpItemKindStruct = { link = "Structure" },
-	-- CmpItemKindTypeParameter = { link = "TSParameter" },
-	-- CmpItemKindUnit = { link = "Number" },
-	-- CmpItemKindValue = { link = "String" },
-	-- CmpItemKindVariable = { link = "Identifier" },
 	CmpDocumentationBorder = { fg = colors.darker_black, bg = colors.darker },
 	CmpItemAbbr = { fg = colors.white, bg = colors.darker_black },
 	CmpItemAbbrDeprecated = { fg = colors.green, bg = colors.darker_black },
