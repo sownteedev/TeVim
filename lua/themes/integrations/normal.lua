@@ -69,7 +69,7 @@ return {
 
 	-- SymbolOutline
 	SymbolsOutlineConnector = { fg = colors.darker_black },
-	FocusedSymbol = { fg = colors.white, bg = colors.black2, bold = true, italic = true },
+	FocusedSymbol = { fg = colors.white, bg = colors.black2, bold = true },
 
 	-- Mason
 	MasonHeader = { bg = colors.red, fg = colors.black },

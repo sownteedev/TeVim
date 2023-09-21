@@ -26,7 +26,7 @@ local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_c
 capabilities.offsetEncoding = { "utf-16" }
 
 vim.diagnostic.config({
-	virtual_text = { prefix = "●" },
+	virtual_text = true,
 	signs = true,
 	underline = true,
 	update_in_insert = false,
@@ -42,14 +42,27 @@ for type, icon in pairs(signs) do
 end
 
 -- CONFIGS
+local all_lsp = {
+	"cssls",
+	"html",
+	"tsserver",
+	"tailwindcss",
+	"vuels",
+	"eslint",
+	"pyright",
+	"emmet_ls",
+	"jsonls",
+}
+for _, lsp in ipairs(all_lsp) do
+	lspconfig[lsp].setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+	})
+end
+
 lspconfig.clangd.setup({
 	on_attach = on_attach,
 	capabilities = vim.tbl_deep_extend("keep", { offsetEncoding = { "utf-16", "utf-8" } }, capabilities),
-})
-
-lspconfig.pyright.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
 })
 
 lspconfig.lua_ls.setup({
@@ -71,44 +84,4 @@ lspconfig.lua_ls.setup({
 			},
 		},
 	},
-})
-
-lspconfig.html.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.cssls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.tsserver.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.tailwindcss.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.vuels.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.jsonls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.emmet_ls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.eslint.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
 })
