@@ -1,0 +1,29 @@
+snippet ktestcpp
+	#include <bits/stdc++.h>
+	using namespace std;
+	#define faster() ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+	int main() {
+		faster();
+			${1:/* code */}
+		return 0;
+	}
+
+snippet testcpp
+	#include <bits/stdc++.h>
+	using namespace std;
+	#define faster() ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+	int main() {
+		faster();
+		int t;
+		cin >> t;
+		while (t--) {
+			${1:/* code */}
+		}
+		return 0;
+	}
+
+snippet ll
+	long long
+
+snippet pb
+	push_back
