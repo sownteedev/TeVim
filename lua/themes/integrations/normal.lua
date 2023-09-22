@@ -84,5 +84,6 @@ return {
 	EdgyWinBar = { bg = colors.darker_black },
 	EdgyTitle = { bg = colors.darker_black },
 
-	CopilotSuggestion = { fg = colors.grey_fg, italic = true }
+	CopilotSuggestion = { fg = colors.grey_fg, italic = true },
+	DiagnosticShowBorder = { fg = colors.black, bg = colors.black },
 }

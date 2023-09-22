@@ -81,7 +81,7 @@ local mappings = {
 	f = {
 		name = "  TELESCOPE",
 		J = { "<cmd>Telescope media_files<cr>", "Media Files" },
-		c = { "<cmd>lua require('themes.switch').setup(require('telescope.themes').get_dropdown{})<cr>", "TeVim Themes" },
+		c = { "<cmd>lua require('themes.switch').setup()<cr>", "TeVim Themes" },
 		f = { "<cmd>Telescope find_files<cr>", "Find File" },
 		a = { "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>", "FindAll" },
 		r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },

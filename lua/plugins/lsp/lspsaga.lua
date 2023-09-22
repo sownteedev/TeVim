@@ -54,7 +54,7 @@ saga.setup({
 		custom_fix = nil,
 		custom_msg = nil,
 		text_hl_follow = false,
-		border_follow = true,
+		border_follow = false,
 		keys = {
 			exec_action = "o",
 			quit = "q",
@@ -75,6 +75,11 @@ saga.setup({
 		enable = true,
 		sign = true,
 		virtual_text = true,
-		priority = 100,
+		priority = 0,
 	}
+})
+
+vim.api.nvim_create_autocmd("CursorHold", {
+	command = "Lspsaga show_cursor_diagnostics ++unfocus",
+	pattern = "*"
 })

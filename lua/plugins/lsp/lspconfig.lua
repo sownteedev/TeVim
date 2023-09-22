@@ -26,7 +26,7 @@ local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_c
 capabilities.offsetEncoding = { "utf-16" }
 
 vim.diagnostic.config({
-	virtual_text = true,
+	virtual_text = false,
 	signs = true,
 	underline = true,
 	update_in_insert = false,

@@ -33,11 +33,3 @@ autocmd("InsertLeave", {
 	command = "set relativenumber",
 	pattern = "*"
 })
-
--- PackerSync if save plugins.lua
-vim.cmd [[
-    augroup packer_user_config
-        autocmd!
-        autocmd BufWritePost plugins.lua source <afile> | PackerSync
-    augroup end
-]]

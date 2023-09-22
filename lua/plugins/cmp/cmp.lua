@@ -27,6 +27,7 @@ local has_words_before = function()
 end
 
 require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_snipmate").lazy_load()
 
 cmp.setup({
 	snippet = {
@@ -84,6 +85,7 @@ cmp.setup({
 			local kind = lspkind.cmp_format({
 				symbol_map = { Copilot = "", Codeium = "", Snippet = "", Keyword = "" },
 				preset = "codicons",
+				maxwidth = 50,
 			})(entry, vim_item)
 			local strings = vim.split(vim_item.kind, "%s+", { trimempty = true })
 			kind.kind = " " .. string.format("%s  │", strings[1], strings[2]) .. " "
