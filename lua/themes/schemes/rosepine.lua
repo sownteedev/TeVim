@@ -3,9 +3,9 @@ local M = {}
 function M.get_colors()
 	return {
 		-- base 30
-		black = "#191724", --  nvim bg
-		darker_black = "#13111e",
 		white = "#e0def4",
+		darker_black = "#13111e",
+		black = "#191724",
 		black2 = "#1f1d2a",
 		one_bg = "#262431",
 		one_bg2 = "#2d2b38",

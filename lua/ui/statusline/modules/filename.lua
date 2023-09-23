@@ -1,8 +1,5 @@
 local fn = vim.fn
 local M = function()
-	if vim.o.columns < 130 then
-		return ""
-	end
 	local icon = "  "
 	local directory = " " .. fn.fnamemodify(fn.getcwd(), ":t")
 	local filename = (fn.expand "%" == "" and "Empty ") or fn.expand "%:t"
@@ -12,16 +9,16 @@ local M = function()
 		icon = (ft_icon ~= nil and " " .. ft_icon) or ""
 		if string.find(filename, "tree") then
 			filename = "File Explorer"
-			return "%#TeSTTFileIcon#" .. "  󰝰  " .. "%#TeSTTFileName#" .. " " .. filename .. " "
+			return "%#TeSTTFileIcon#" .. " 󰝰 " .. "%#TeSTTFileName#" .. " " .. filename .. " "
 		end
 		if string.find(filename, "toggleterm") then
 			filename = "Terminal"
-			return "%#TeSTTFileIcon#" .. "    " .. "%#TeSTTFileName#" .. " " .. filename .. " "
+			return "%#TeSTTFileIcon#" .. "  " .. "%#TeSTTFileName#" .. " " .. filename .. " "
 		end
 		return "%#TeSTTFileIcon#" ..
-			" " .. icon .. "  " .. "%#TeSTTFolder#" .. directory .. "/" .. "%#TeSTTFileName#" .. filename .. " "
+			icon .. " " .. "%#TeSTTFolder#" .. directory .. "/" .. "%#TeSTTFileName#" .. filename .. " "
 	else
-		return "%#TeSTTFileIcon#" .. " " .. icon .. " " .. "%#TeSTTFileName# TeVim "
+		return "%#TeSTTFileIcon#" .. icon .. "%#TeSTTFileName# TeVim "
 	end
 end
 return M

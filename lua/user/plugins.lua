@@ -46,7 +46,7 @@ local plugins = {
 	-- Treesitter
 	["nvim-treesitter/nvim-treesitter"] = {
 		run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-		requires = { "nvim-treesitter/nvim-treesitter-context" },
+		requires = { "nvim-treesitter/nvim-treesitter-context", "HiPhish/rainbow-delimiters.nvim" },
 		config = function()
 			require("plugins.treesitter")
 		end
@@ -249,6 +249,7 @@ local plugins = {
 		end
 	},
 	["jcdickinson/codeium.nvim"] = {
+		after = "nvim-cmp",
 		config = function()
 			require("codeium").setup()
 		end
@@ -256,11 +257,10 @@ local plugins = {
 
 	-- Snippets
 	["L3MON4D3/LuaSnip"] = {
+		requires = { "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets" },
 		tag = "v2.*",
 		run = "make install_jsregexp"
 	},
-	["saadparwaiz1/cmp_luasnip"] = {},
-	["rafamadriz/friendly-snippets"] = {},
 
 	-- Manage and Install LSP
 	["williamboman/mason.nvim"] = {

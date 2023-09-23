@@ -45,8 +45,8 @@ return {
 	BufferLineCloseInactive = { fg = colors.grey, bg = colors.statusline_bg },
 	BufferLineCloseVisible = { fg = colors.grey, bg = colors.statusline_bg },
 
-	BufferLineDevIconLua = { fg = colors.grey, bg = colors.statusline_bg },
-	BufferLineDevIconLuaInactive = { fg = colors.grey, bg = colors.statusline_bg },
+	BufferLineDevIconLua = { fg = colors.blue, bg = colors.statusline_bg },
+	BufferLineDevIconLuaInactive = { fg = colors.blue, bg = colors.statusline_bg },
 	BufferLineDevIconLuaSelected = { fg = colors.blue, bg = colors.black },
 
 	BufferLineTruncMarker = { fg = colors.grey, bg = colors.statusline_bg },
@@ -74,6 +74,7 @@ return {
 	TeSTTFolder = { fg = colors.red, bg = colors.one_bg },
 
 	Nothing = { fg = colors.statusline_bg, bg = colors.statusline_bg },
+	Nothing2 = { fg = colors.black, bg = colors.black },
 
 	TeSTTError = { fg = colors.red, bg = colors.one_bg },
 	TeSTTErrorIcon = { fg = colors.red, bg = colors.one_bg },

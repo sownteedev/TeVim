@@ -5,7 +5,7 @@ function M.get_colors()
 		-- base30
 		white = "#edeff0",
 		darker_black = "#0a0b0c",
-		black = "#0c0e0f", -- bg
+		black = "#0c0e0f",
 		black2 = "#141617",
 		one_bg = "#161819",
 		one_bg2 = "#1f2122",

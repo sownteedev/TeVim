@@ -1,11 +1,11 @@
 require("edgy").setup {
 	bottom = {
-		{
-			title = "TERMINAL",
-			ft = "toggleterm",
-			size = { height = 0.4 },
-			open = "ToggleTerm",
-		},
+		-- {
+		-- 	title = "TERMINAL",
+		-- 	ft = "toggleterm",
+		-- 	size = { height = 0.4 },
+		-- 	open = "ToggleTerm size=10 direction=horizontal",
+		-- },
 		{
 			ft = "Trouble",
 			title = "TROUBLE",
@@ -38,7 +38,7 @@ require("edgy").setup {
 		},
 	},
 	options = {
-		left = { size = 35 },
+		left = { size = 33 },
 		bottom = { size = 10 },
 		right = { size = 0 },
 		top = { size = 0 },

@@ -1,10 +1,7 @@
 local M = function()
-	if vim.o.columns < 130 then
-		return ""
-	end
 	local current_line = vim.fn.line(".")
 	local total_lines = vim.fn.line("$")
-	local chars = { "    ", "  󰪞  ", "  󰪟  ", "  󰪠  ", "  󰪢  ", "  󰪣  ", "  󰪤  ", "  󰪥  " }
+	local chars = { "  ", " 󰪞 ", " 󰪟 ", " 󰪠 ", " 󰪢 ", " 󰪣 ", " 󰪤 ", " 󰪥 " }
 	local progress_percent = current_line / total_lines
 	local index = math.ceil(progress_percent * #chars)
 	if current_line == 1 then

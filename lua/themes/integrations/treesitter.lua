@@ -75,5 +75,13 @@ return {
 
 	TreesitterContext = { bg = colors.darker_black, bold = true },
 	TreesitterContextBottom = { bold = true },
-	TreesitterContextLineNumber = { fg = colors.base06, bold = true },
+	TreesitterContextLineNumber = { fg = colors.light_grey, bold = true },
+
+	RainbowDelimiterRed = { fg = colors.red },
+	RainbowDelimiterYellow = { fg = colors.yellow },
+	RainbowDelimiterBlue = { fg = colors.blue },
+	RainbowDelimiterOrange = { fg = colors.orange },
+	RainbowDelimiterGreen = { fg = colors.green },
+	RainbowDelimiterViolet = { fg = colors.purple },
+	RainbowDelimiterCyan = { fg = colors.cyan },
 }

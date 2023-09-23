@@ -24,13 +24,13 @@ return {
 	CursorIM = { fg = colors.white, bg = colors.cursor },
 	CursorLine = { bg = colors.black2 },
 	CursorLineNr = { fg = colors.purple, bold = true },
-	LineNr = { fg = colors.grey_fg2, bg = colors.black },
+	LineNr = { fg = colors.grey, bg = colors.black },
 
 	CursorColumn = { bg = colors.black },
 	ColorColumn = { bg = colors.black },
 	SignColumn = { bg = colors.black, fg = colors.black },
 
-	Visual = { bg = colors.base02, fg = colors.white },
+	Visual = { bg = colors.base03, fg = colors.white },
 	VisualNOS = { fg = colors.base08, bg = colors.black },
 
 	WarningMsg = { fg = colors.base08, bg = colors.black },
@@ -85,5 +85,5 @@ return {
 	EdgyTitle = { bg = colors.darker_black },
 
 	CopilotSuggestion = { fg = colors.grey_fg, italic = true },
-	DiagnosticShowBorder = { fg = colors.black, bg = colors.black },
+	DiagnosticShowBorder = { fg = colors.darker_black, bg = colors.darker_black },
 }

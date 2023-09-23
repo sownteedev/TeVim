@@ -1,5 +1,5 @@
 local M = function()
-	if not vim.b.gitsigns_head or vim.b.gitsigns_git_status or vim.o.columns < 130 then
+	if not vim.b.gitsigns_head or vim.b.gitsigns_git_status then
 		return ""
 	end
 
@@ -11,7 +11,7 @@ local M = function()
 	if (#added > 0) or (#changed > 0) or (#removed > 0) then
 		return "%#TeSTTDiffAdd#" ..
 			added ..
-			"%#TeSTTDiffChange#" .. changed .. "%#TeSTTDiffRemove#" .. removed .. " " .. "%#TeSTTGithub#" .. "    "
+			"%#TeSTTDiffChange#" .. changed .. "%#TeSTTDiffRemove#" .. removed .. " " .. "%#TeSTTGithub#" .. "  "
 	else
 		return ""
 	end

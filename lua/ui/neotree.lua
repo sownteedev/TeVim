@@ -58,7 +58,7 @@ require("neo-tree").setup({
 	commands = {},
 	window = {
 		position = "left",
-		width = 35,
+		width = 33,
 		mappings = {
 			["o"] = "open",
 			["<c-x>"] = "open_split",

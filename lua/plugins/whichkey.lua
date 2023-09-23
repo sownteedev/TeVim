@@ -83,7 +83,7 @@ local mappings = {
 		J = { "<cmd>Telescope media_files<cr>", "Media Files" },
 		c = { "<cmd>lua require('themes.switch').setup()<cr>", "TeVim Themes" },
 		f = { "<cmd>Telescope find_files<cr>", "Find File" },
-		a = { "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>", "FindAll" },
+		a = { "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>", "Find All" },
 		r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
 		w = { "<cmd>Telescope live_grep<cr>", "Find Text" },
 		m = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
@@ -137,7 +137,7 @@ local mappings = {
 		["3"] = { ":3ToggleTerm<cr>", "3" },
 		["4"] = { ":4ToggleTerm<cr>", "4" },
 		f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-		h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
+		h = { "<cmd>ToggleTerm size=15 direction=horizontal<cr>", "Horizontal" },
 		v = { "<cmd>ToggleTerm size=50 direction=vertical<cr>", "Vertical" },
 	},
 }

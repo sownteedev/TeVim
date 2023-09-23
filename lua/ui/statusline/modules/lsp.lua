@@ -1,7 +1,7 @@
 local M = function()
 	--- @diagnostic disable warnings
 	local buf_clients = vim.lsp.get_active_clients()
-	if vim.o.columns < 130 or not buf_clients then
+	if not buf_clients then
 		return ""
 	end
 	local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
@@ -67,9 +67,9 @@ local M = function()
 	-- RETURN CLIENTS
 	if #buf_client_names > 3 then
 		return "%#TeSTTLsp#" ..
-		"  " .. buf_client_names[1] .. ", " .. buf_client_names[2] .. ", " .. buf_client_names[3] .. " "
+			" " .. buf_client_names[1] .. ", " .. buf_client_names[2] .. ", " .. buf_client_names[3] .. " "
 	end
-	return "%#TeSTTLsp#" .. "  " .. table.concat(vim.fn.uniq(buf_client_names), ", ") .. " "
+	return "%#TeSTTLsp#" .. " " .. table.concat(vim.fn.uniq(buf_client_names), ", ") .. " "
 end
 
 return M
