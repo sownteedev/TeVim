@@ -43,8 +43,21 @@ end
 
 if vim.g.neovide then
   vim.opt.guifont = "Liga SFMono Nerd Font:h9.5"
+  vim.opt.linespace = 3
+  vim.g.neovide_cursor_animation_length = 0.13
+  vim.g.neovide_cursor_trail_size = 0.1
+  vim.g.neovide_cursor_antialiasing = false
+  vim.g.neovide_cursor_animate_in_insert_mode = true
+  vim.g.neovide_cursor_animate_command_line = true
+  vim.g.neovide_cursor_vfx_mode = "ripple"
   vim.g.remember_window_size = true
   vim.g.remember_window_position = true
+  vim.g.neovide_padding_top = 20
+  vim.g.neovide_padding_bottom = 20
+  vim.g.neovide_padding_right = 20
+  vim.g.neovide_padding_left = 20
+  vim.g.neovide_refresh_rate = 60
+  vim.g.neovide_confirm_quit = false
 
   local function toggle_transparency()
     if vim.g.neovide_transparency == 1.0 then

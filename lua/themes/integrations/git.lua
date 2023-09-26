@@ -2,9 +2,9 @@ local colors = require("themes").getCurrentTheme()
 
 return {
 	GitSignsAdd = { fg = colors.green },
+	GitSignsAdded = { fg = colors.blue },
 	GitSignsChange = { fg = colors.orange },
 	GitSignsDelete = { fg = colors.red },
-	GitSignsAdded = { fg = colors.blue },
 	GitSignsCurrentLineBlame = { fg = colors.grey_fg },
 
 	diffAdded = { fg = colors.green },

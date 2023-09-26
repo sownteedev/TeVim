@@ -23,6 +23,10 @@ keymap("n", "<C-a>", "ggVG", opts)
 keymap("v", "<C-c>", "y", opts)
 keymap("n", "<C-v>", "p", opts)
 
+-- Allow moving the cursor through wrapped lines
+keymap("n", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
+keymap("n", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
+
 -- Move the cursor between windows
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -61,7 +65,7 @@ keymap("n", "<esc><esc>", "<cmd>nohlsearch<cr>", opts)
 map("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Reload all
-map("n", "<leader>rl", [[:source %<CR>]], opts)
+map("n", "<leader>rl", [[:so %<CR>]], opts)
 
 ----------------------------------------------- PLUGINS -------------------------------------------
 
@@ -75,6 +79,11 @@ keymap("n", [[<C-`>]], "<cmd>ToggleTerm size=15 direction=horizontal<cr>", opts)
 keymap("n", "<S-TAB>",
 	"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 	opts)
+
+-- Hint
+if vim.lsp.inlay_hint then
+	map("n", "<leader>lI", function() vim.lsp.inlay_hint(0, nil) end, opts)
+end
 
 -- Copilot
 vim.cmd([[imap <silent><script><expr> <C-c> copilot#Accept("\<CR>")]])

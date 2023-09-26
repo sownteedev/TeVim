@@ -72,7 +72,7 @@ local picker_opts = {
 
 local mini = {
 	layout_strategy = 'vertical',
-	layout_config = { height = 0.5, width = 0.3 }
+	layout_config = { height = 0.4, width = 0.25 }
 }
 
 M.setup = function()

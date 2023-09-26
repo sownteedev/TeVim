@@ -294,7 +294,7 @@ local plugins = {
 	["onsails/lspkind.nvim"] = {},
 	["SmiteshP/nvim-navic"] = {
 		config = function()
-			require("plugins.cmp.navic")
+			require("nvim-navic").setup({ lsp = { auto_attach = true } })
 		end
 	},
 

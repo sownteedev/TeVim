@@ -68,7 +68,7 @@ cmp.setup({
 		}),
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				cmp.select_prev_item()
+				cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
 			elseif luasnip.jumpable(-1) then
 				luasnip.jump(-1)
 			else
@@ -88,7 +88,7 @@ cmp.setup({
 				maxwidth = 50,
 			})(entry, vim_item)
 			local strings = vim.split(vim_item.kind, "%s+", { trimempty = true })
-			kind.kind = " " .. string.format("%s  │", strings[1], strings[2]) .. " "
+			kind.kind = " " .. string.format("%s │", strings[1], strings[2]) .. " "
 			return kind
 		end,
 	},

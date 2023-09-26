@@ -13,34 +13,42 @@
   
 ## 📷 Showcase
 
-<img src="screenshot/lo.png">
-<img src="screenshot/syntaxs.png">
-<img src="screenshot/completion.png">
-<img src="screenshot/selectthemes.png">
+<img src="screenshot/layout.png">
+<img src="screenshot/syntax.png">
+
+<h5> Themes Showcase </h5>
+
+|    <img src="screenshot/ayu.png" align="center" width="200px">    | <img src="screenshot/catppuccin.png" align="center" width="200px"> |   <img src="screenshot/decay.png" align="center" width="200px">    | <img src="screenshot/decaydark.png" align="center" width="200px">    |
+| :---------------------------------------------------------------: | :----------------------------------------------------------------: | :----------------------------------------------------------------: | -------------------------------------------------------------------- |
+| <img src="screenshot/everblush.png" align="center" width="200px"> | <img src="screenshot/everforest.png" align="center" width="200px"> |  <img src="screenshot/dracula.png" align="center" width="200px">   | <img src="screenshot/github_light.png" align="center" width="200px"> |
+|  <img src="screenshot/gruvbox.png" align="center" width="200px">  |  <img src="screenshot/onedark.png" align="center" width="200px">   | <img src="screenshot/oxocarbon.png" align="center" width="200px">  | <img src="screenshot/rosepine.png" align="center" width="200px">     |
+| <img src="screenshot/solarized.png" align="center" width="200px"> | <img src="screenshot/tokyodark.png" align="center" width="200px">  | <img src="screenshot/tokyonight.png" align="center" width="200px"> | <img src="screenshot/yoru.png" align="center" width="200px">         |
+
+</details>
 
 ## 🔌 UI related plugins used
 
 <details><summary> <b>Images</b></summary>
 
-<h4> Expoler </h3>
+<h4> Left Bar </h3>
 
-<img src="screenshot/expoler.png">
+<img src="screenshot/leftbar.png">
 
-<h4> Find </h3>
+<h4> Find anything </h3>
 
-<img src="screenshot/telescopes.png">
+<img src="screenshot/telescope.png">
 
-<h4> Buffer with toggle theme, quit and run</h4>
+<h4> Bufferline </h4>
 
-<img src="screenshot/buf.png">
+<img src="screenshot/buffer.png">
 
-<h4> Statusline auto find copilot, git repo</h3>
+<h4> Smart statusline </h3>
 
-<img src="screenshot/stt.png">
+<img src="screenshot/statusline.png">
 
-<h4> Show bindkeys with Whichkey </h3>
+<h4> Bindkeys with Whichkey </h3>
 
-<img src="screenshot/whichkey.png">
+<img src="screenshot/whichkeys.png">
 
 </details>
 
@@ -62,9 +70,9 @@
 - Terminal with [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
 
 and more plugins...
-
 <br>
-<h2>🔎 Requirement</h2>
+
+<h2>🔎 Requirement </h2>
 - You probably notice you don't have support for copy and paste also that python and node haven't been setup
   
   - If you on X11 install xsel and xclip
@@ -86,7 +94,7 @@ and more plugins...
 
   - Prettier
 
-  ```bash
+  ```
     npm i -g prettier
   ```
 
@@ -95,6 +103,28 @@ and more plugins...
   ```
     sudo pacman -S ripgrep fzf lazygit
   ```
+
+<h2> ⬇️  Install </h2>
+
+- Backup old config
+
+  ```
+  mv ~/.config/nvim ~/.config/nvim.bak
+  ```
+
+- Remove old plugins and setup
+
+  ```
+  sudo rm -r ~/.local/share/nvim ~/.cache/nvim
+  ```
+
+- Install TeVim
+
+  ```
+  git clone https://github.com/sownteedev/TeVim ~/.config/nvim --depth 1 && nvim
+  ```
+
+- Wait for everything to install and enjoy
 
 <details><summary> <b><i>Credits</b></i></summary>
 
