@@ -28,6 +28,19 @@ snippet testcpp
 		return 0;
 	}
 
+snippet prime
+	bool prime(long long n) {
+		if (n <= 3)
+			return n > 1;
+		if (n % 2 == 0 || n % 3 == 0)
+			return false;
+		for (long long i = 5; i * i <= n; i += 6) {
+			if (n % i == 0 || n % (i + 2) == 0)
+				return false;
+		}
+		return true;
+	}
+
 snippet ll
 	long long
 

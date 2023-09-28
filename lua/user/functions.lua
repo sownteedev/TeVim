@@ -62,9 +62,6 @@ function M.build_run()
 end
 
 -- LazyGit
-if not pcall(require, "toggleterm") then
-	return
-end
 local lazygit = require("toggleterm.terminal").Terminal:new({
 	cmd = "lazygit",
 	dir = "git_dir",

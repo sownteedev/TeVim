@@ -4,7 +4,7 @@ local M = function()
 	local warnings = #diagnostic.get(0, { severity = diagnostic.severity.WARN })
 	local hints = #diagnostic.get(0, { severity = diagnostic.severity.HINT })
 	local info = #diagnostic.get(0, { severity = diagnostic.severity.INFO })
-	ERROR = (errors and errors > 0) and ("%#TeSTTErrorIcon#" .. "  " .. "%#TeSTTError#" .. errors) or ""
+	ERROR = (errors and errors > 0) and ("%#TeSTTErrorIcon#" .. "  " .. "%#TeSTTError#" .. errors) or ""
 	WARNING = (warnings and warnings > 0) and ("%#TeSTTWarningIcon#" .. "  " .. "%#TeSTTWarning#" .. warnings) or ""
 	HINT = (hints and hints > 0) and ("%#TeSTTHintsIcon#" .. "  " .. "%#TeSTTHints#" .. hints) or ""
 	INFO = (info and info > 0) and ("%#TeSTTInfoIcon#" .. "  " .. "%#TeSTTInfo#" .. info) or ""

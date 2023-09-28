@@ -1,6 +1,5 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
-local general = augroup("General Settings", { clear = true })
 
 -- Load Themes
 autocmd({ "UIEnter" }, {
@@ -44,13 +43,12 @@ autocmd("FileType", {
 	end,
 })
 
--- Smart Term
+-- Smart term
 autocmd("TermOpen", {
+	pattern = "*",
 	callback = function()
 		vim.opt_local.relativenumber = false
 		vim.opt_local.number = false
-		vim.cmd "startinsert!"
+		vim.cmd("startinsert")
 	end,
-	group = general,
-	desc = "Terminal Options",
 })

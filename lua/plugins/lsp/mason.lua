@@ -43,6 +43,7 @@ require("mason-lspconfig").setup {
 		"pyright",
 
 		"clangd",
+		"vimls",
 	},
 }
 

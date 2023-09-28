@@ -6,7 +6,7 @@ lua << EOF
 
 if vim.g.GuiLoaded then
   local font_name = "JetBrainsMono Nerd Font"
-  local font_size = 9
+  local font_size = 9.5
   local not_transparent = false
 
   local function toggle_transparency()
@@ -61,17 +61,17 @@ if vim.g.neovide then
 
   local function toggle_transparency()
     if vim.g.neovide_transparency == 1.0 then
-      vim.cmd "let g:neovide_transparency=0.8"
+		vim.g.neovide_transparency = 0.8
     else
-      vim.cmd "let g:neovide_transparency=1.0"
+		vim.g.neovide_transparency = 1
     end
   end
 
   local function toggle_fullscreen()
     if vim.g.neovide_fullscreen == false then
-      vim.cmd "let g:neovide_fullscreen=v:true"
+		vim.g.neovide_fullscreen = true
     else
-      vim.cmd "let g:neovide_fullscreen=v:false"
+		vim.g.neovide_fullscreen = false
     end
   end
 
