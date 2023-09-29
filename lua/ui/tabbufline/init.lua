@@ -80,7 +80,7 @@ local treeWidth = function()
 end
 M.getTabline = function()
 	local buffline = ""
-	local buffstart = "%#BuffLineEmpty#"
+	local buffstart = "%#TeBufEmpty#"
 	local run = "%@Run@" .. "  "
 	local theme = "%@ToggleTheme@" .. "   "
 	local split = "%@Split@" .. "  "
@@ -90,7 +90,7 @@ M.getTabline = function()
 		local filename = vim.api.nvim_buf_get_name(buf):match("^.+/(.+)$") or ""
 		if vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buflisted and filename ~= "" then
 			local conditions = vim.tbl_contains(excludedFileTypes, vim.bo[buf].ft)
-			if conditions then goto do_nothing else filename = "%#BufflineEmptyColor#" .. createTab(buf) end
+			if conditions then goto do_nothing else filename = "%#TeBufEmptyColor#" .. createTab(buf) end
 			buffline = buffline .. filename
 			counter = counter + 1
 		end
