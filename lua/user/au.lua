@@ -9,7 +9,7 @@ autocmd({ "UIEnter" }, {
 	end
 })
 
--- Load Statusline
+-- Load Statusline and TabBufline
 autocmd({ "ModeChanged", "CursorHold" }, {
 	callback = function()
 		require("ui.statusline").setup()

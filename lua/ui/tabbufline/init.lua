@@ -22,8 +22,9 @@ end, {})
 
 -------------------------------------------------------------------------
 local createTab = function(buf)
-	local filetype = vim.bo[buf].ft
-	local icon = devicons_present and devicons.get_icon(vim.api.nvim_buf_get_name(buf), filetype) or ""
+	local filenames = (vim.fn.expand "%" == "" and "Empty ") or vim.fn.expand "%:t"
+	local ft_icon = devicons.get_icon(filenames)
+	local icon = (ft_icon ~= nil and " " .. ft_icon) or ""
 	local close_btn = "%" .. buf .. "@BufflineKillBuf@ 󰅙%X"
 	local filename = (#vim.api.nvim_buf_get_name(buf) ~= 0) and vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ":t") or
 		""
@@ -105,6 +106,10 @@ M.getTabline = function()
 			string.rep(" ", treeWidth() / 2 - 3) .. "       " .. string.rep(" ", treeWidth() / 2 - 2)
 	else
 		treespace = "%#TeBufTree#" .. string.rep(" ", treeWidth())
+	end
+	if counter == 0 then
+		return "%=" ..
+			"%#TeBufRun#" .. run .. "%#TeBufSplit#" .. split .. "%#TeBufTheme#" .. theme .. "%#TeBufQuit#" .. quit
 	end
 	return treespace ..
 		buffstart ..
