@@ -36,10 +36,11 @@ local plugins = {
 
 	-- Buffer
 	["akinsho/bufferline.nvim"] = {
+		disable = true,
 		tag = "*",
 		event = "BufRead",
 		config = function()
-			require("ui.bufferline")
+			require("ui.tabbufline.bufferline")
 		end
 	},
 
@@ -120,8 +121,6 @@ local plugins = {
 
 	-- UI
 	["stevearc/dressing.nvim"] = {},
-
-	-- UI CMD
 	["folke/noice.nvim"] = {
 		requires = { "MunifTanjim/nui.nvim" },
 		config = function()
@@ -171,7 +170,6 @@ local plugins = {
 			require("satellite").setup({
 				excluded_filetypes = { "neo-tree", "Outline" },
 				handlers = {
-					cursor = { enable = false },
 					gitsigns = { enable = false },
 					diagnostic = { enable = false },
 				},
@@ -194,17 +192,10 @@ local plugins = {
 			require("statuscol").setup({
 				ft_ignore = { "neo-tree", "NvimTree", "Outline" },
 				segments = {
-					{ text = { " ", builtin.foldfunc, "  " }, click = "v:lua.ScFa" },
-					{
-						sign = { name = { "Diagnostic" }, maxwidth = 1, auto = false },
-						click = "v:lua.ScFa",
-					},
-					{ text = { builtin.lnumfunc, " " },       click = "v:lua.ScLa" },
-					{
-						sign = { name = { "GitSigns" }, maxwidth = 1, auto = false },
-						click = "v:lua.ScSa",
-					},
-					{ text = { " " } }
+					{ text = { " ", builtin.foldfunc, "  " },                         click = "v:lua.ScFa" },
+					{ sign = { name = { "Diagnostic" }, maxwidth = 1, auto = false }, click = "v:lua.ScFa" },
+					{ text = { builtin.lnumfunc, " " },                               click = "v:lua.ScLa" },
+					{ sign = { name = { "GitSigns" }, maxwidth = 1, auto = false },   click = "v:lua.ScSa" },
 				},
 			})
 		end

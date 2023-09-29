@@ -51,6 +51,24 @@ return {
 
 	BufferLineTruncMarker = { fg = colors.grey, bg = colors.statusline_bg },
 
+
+	-- Tabbufline
+	TeBufOnActive = { bg = colors.black, fg = colors.white, bold = true },
+	TeBufOnInactive = { fg = colors.grey, bg = colors.statusline_bg },
+	TeBufOnModified = { fg = colors.green },
+	TeBufOffModified = { fg = colors.green },
+	TeBufOnClose = { fg = colors.red, bg = colors.black },
+	TeBufOffClose = { fg = colors.grey, bg = colors.statusline_bg },
+	TeBufTree = { bg = colors.darker_black },
+	TeBufEmpty = { bg = colors.statusline_bg, fg = colors.white },
+	TeBufEmptyColor = { bg = colors.statusline_bg, fg = colors.white },
+	TeBufCloseButton = { bg = colors.red, fg = colors.black },
+
+	TeBufRun = { bg = colors.one_bg2, fg = colors.yellow },
+	TeBufSplit = { bg = colors.one_bg2, fg = colors.blue },
+	TeBufTheme = { bg = colors.one_bg2, fg = colors.green },
+	TeBufQuit = { bg = colors.red, fg = colors.black },
+
 	-- Statusline
 	StatusLine = { fg = colors.statusline_bg, bg = colors.statusline_bg },
 	TeSTTNormalMode = { fg = colors.blue, bg = colors.one_bg },

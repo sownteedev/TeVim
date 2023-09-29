@@ -56,7 +56,7 @@ keymap("i", "<C-h>", "<Left>", opts)
 keymap("i", "<C-l>", "<Right>", opts)
 
 -- Move between buffers
-keymap("n", "<TAB>", "<cmd>bnext<CR>", opts)
+keymap("n", "<TAB>", "<cmd>BufflineNext<CR>", opts)
 
 -- Clear search
 keymap("n", "<esc><esc>", "<cmd>nohlsearch<cr>", opts)

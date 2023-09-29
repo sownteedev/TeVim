@@ -7,10 +7,6 @@ M.getCurrentTheme = function()
 	return theme
 end
 
-M.mergeTb         = function(...)
-	return vim.tbl_deep_extend("force", ...)
-end
-
 M.loadTb          = function(g)
 	g = require("themes.integrations." .. g)
 	return g
@@ -31,6 +27,26 @@ M.tableToStr      = function(tb)
 	return result
 end
 
+local colors      = M.getCurrentTheme()
+M.setTermColors   = function()
+	vim.g.terminal_color_0 = colors.base01
+	vim.g.terminal_color_1 = colors.base08
+	vim.g.terminal_color_2 = colors.base0B
+	vim.g.terminal_color_3 = colors.base0A
+	vim.g.terminal_color_4 = colors.base0D
+	vim.g.terminal_color_5 = colors.base0E
+	vim.g.terminal_color_6 = colors.base0C
+	vim.g.terminal_color_7 = colors.base05
+	vim.g.terminal_color_8 = colors.base03
+	vim.g.terminal_color_9 = colors.base08
+	vim.g.terminal_color_10 = colors.base0B
+	vim.g.terminal_color_11 = colors.base0A
+	vim.g.terminal_color_12 = colors.base0D
+	vim.g.terminal_color_13 = colors.base0E
+	vim.g.terminal_color_14 = colors.base0C
+	vim.g.terminal_color_15 = colors.base07
+end
+
 M.toCache         = function(filename, tb)
 	local lines = "return string.dump(function()" .. M.tableToStr(tb) .. "end, true)"
 	local file = io.open(vim.g.theme_cache .. filename, "wb")
@@ -49,6 +65,7 @@ M.compile         = function()
 		local filename = vim.fn.fnamemodify(file, ":r")
 		M.toCache(filename, M.loadTb(filename))
 	end
+	M.setTermColors()
 end
 
 M.load            = function()

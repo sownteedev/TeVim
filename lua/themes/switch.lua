@@ -42,28 +42,28 @@ local picker_opts = {
 	prompt_title = " TEVIM THEMES",
 	finder = finders.new_table { results = themes },
 	sorter = sorters.get_generic_fuzzy_sorter({}),
-	attach_mappings = function(prompt_bufnr, map)
+	attach_mappings = function(bufnr, map)
 		map('i', '<CR>', function()
 			M.settheme(action_state.get_selected_entry()[1])
 			M.writeconfig()
-			actions.close(prompt_bufnr)
+			actions.close(bufnr)
 		end)
 
 		map("i", "<Down>", function()
-			actions.move_selection_next(prompt_bufnr)
+			actions.move_selection_next(bufnr)
 			M.settheme(action_state.get_selected_entry()[1])
 		end)
 		map("i", "<C-j>", function()
-			actions.move_selection_next(prompt_bufnr)
+			actions.move_selection_next(bufnr)
 			M.settheme(action_state.get_selected_entry()[1])
 		end)
 
 		map("i", "<Up>", function()
-			actions.move_selection_previous(prompt_bufnr)
+			actions.move_selection_previous(bufnr)
 			M.settheme(action_state.get_selected_entry()[1])
 		end)
 		map("i", "<C-k>", function()
-			actions.move_selection_previous(prompt_bufnr)
+			actions.move_selection_previous(bufnr)
 			M.settheme(action_state.get_selected_entry()[1])
 		end)
 		return true

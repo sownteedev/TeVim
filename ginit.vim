@@ -5,7 +5,7 @@ lua << EOF
 -------------
 
 if vim.g.GuiLoaded then
-  local font_name = "JetBrainsMono Nerd Font"
+  local font_name = "Liga SFMono Nerd Font"
   local font_size = 9.5
   local not_transparent = false
 
@@ -44,8 +44,8 @@ end
 if vim.g.neovide then
   vim.opt.guifont = "Liga SFMono Nerd Font:h9.5"
   vim.opt.linespace = 3
-  vim.g.neovide_cursor_animation_length = 0.13
-  vim.g.neovide_cursor_trail_size = 0.1
+  vim.g.neovide_cursor_animation_length = 0.2
+  vim.g.neovide_cursor_trail_size = 0
   vim.g.neovide_cursor_antialiasing = false
   vim.g.neovide_cursor_animate_in_insert_mode = true
   vim.g.neovide_cursor_animate_command_line = true

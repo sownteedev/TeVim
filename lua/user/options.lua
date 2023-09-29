@@ -1,7 +1,7 @@
 vim.cmd("filetype plugin indent off")
 vim.cmd("syntax off")
 
-vim.g.currentTheme = "decaydark"
+vim.g.currentTheme = "yoru"
 vim.g.theme_cache = vim.fn.stdpath "data" .. "/colors_data/"
 
 local options = {

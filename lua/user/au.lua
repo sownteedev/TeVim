@@ -1,5 +1,6 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
+local colors = require("themes").getCurrentTheme()
 
 -- Load Themes
 autocmd({ "UIEnter" }, {
@@ -12,6 +13,7 @@ autocmd({ "UIEnter" }, {
 autocmd({ "ModeChanged", "CursorHold" }, {
 	callback = function()
 		require("ui.statusline").setup()
+		require("ui.tabbufline").setup()
 	end
 })
 
@@ -40,6 +42,7 @@ autocmd("FileType", {
 	callback = function()
 		vim.opt_local.foldcolumn = "0"
 		vim.opt_local.stc = ""
+		vim.api.nvim_set_hl(0, "WinSeparator", { bg = colors.darker_black, fg = colors.darker_black })
 	end,
 })
 

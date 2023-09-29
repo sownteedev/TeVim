@@ -76,14 +76,4 @@ function M.LazyGit()
 	lazygit:toggle()
 end
 
--- Quit All
-function M.toQuitAll()
-	vim.cmd("qa!")
-end
-
--- Vertical Split
-function M.toSplit()
-	vim.cmd("vsplit")
-end
-
 return M

@@ -29,9 +29,9 @@ bufferline.setup({
 		custom_areas = {
 			right = function()
 				vim.cmd "function! ToggleTheme(a,b,c,d) \n lua require('themes.switch').toggleTheme() \n endfunction"
-				vim.cmd "function! Quit(a,b,c,d) \n lua require('user.functions').toQuitAll() \n endfunction"
+				vim.cmd "function! Quit(a,b,c,d) \n qa! \n endfunction"
 				vim.cmd "function! Run(a,b,c,d) \n lua require('user.functions').build_run() \n endfunction"
-				vim.cmd "function! Split(a,b,c,d) \n lua require('user.functions').toSplit() \n endfunction"
+				vim.cmd "function! Split(a,b,c,d) \n vsplit \n endfunction"
 				local run = "%@Run@" .. "  "
 				local theme = "%@ToggleTheme@" .. "   "
 				local split = "%@Split@" .. "  "
