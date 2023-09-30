@@ -11,7 +11,6 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 local map = vim.keymap.set
 
-vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Increase or Decrease value
