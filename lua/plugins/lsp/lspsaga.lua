@@ -78,8 +78,3 @@ saga.setup({
 		priority = 0,
 	}
 })
-
-vim.api.nvim_create_autocmd("CursorHold", {
-	command = "Lspsaga show_cursor_diagnostics ++unfocus",
-	pattern = "*"
-})

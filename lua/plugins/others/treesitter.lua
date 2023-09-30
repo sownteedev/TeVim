@@ -49,3 +49,4 @@ treesitter.setup({
 	auto_install = true,
 	sync_install = false,
 })
+

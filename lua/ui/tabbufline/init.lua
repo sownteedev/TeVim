@@ -23,8 +23,9 @@ end, {})
 -------------------------------------------------------------------------
 local createTab = function(buf)
 	local filenames = (vim.fn.expand "%" == "" and "Empty ") or vim.fn.expand "%:t"
-	local ft_icon = devicons.get_icon(filenames)
-	local icon = (ft_icon ~= nil and " " .. ft_icon) or ""
+	local ft = vim.bo[buf].ft
+	local ft_icon = devicons_present and devicons.get_icon(filenames, ft)
+	local icon = ft_icon and ft_icon .. " " or ""
 	local close_btn = "%" .. buf .. "@BufflineKillBuf@ 󰅙%X"
 	local filename = (#vim.api.nvim_buf_get_name(buf) ~= 0) and vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ":t") or
 		""
@@ -68,8 +69,6 @@ local createTab = function(buf)
 	return "%" .. buf .. "@BufflineGoToBuf@" .. filename .. "  " .. close_btn .. '%X' .. "%#TeBufEmptyColor#"
 end
 
-
-
 local excludedFileTypes = { 'neo-tree', 'help', 'dasher', 'lir', 'alpha', "toggleterm" }
 local treeWidth = function()
 	for _, win in pairs(vim.api.nvim_tabpage_list_wins(0)) do
@@ -107,7 +106,7 @@ M.getTabline = function()
 	else
 		treespace = "%#TeBufTree#" .. string.rep(" ", treeWidth())
 	end
-	if counter == 0 then
+	if counter == 0 or vim.o.columns < 120 then
 		return "%=" ..
 			"%#TeBufRun#" .. run .. "%#TeBufSplit#" .. split .. "%#TeBufTheme#" .. theme .. "%#TeBufQuit#" .. quit
 	end

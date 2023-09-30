@@ -1,7 +1,7 @@
 vim.cmd("filetype plugin indent off")
 vim.cmd("syntax off")
 
-vim.g.currentTheme = "decaydark"
+vim.g.currentTheme = "yoru"
 vim.g.theme_cache = vim.fn.stdpath "data" .. "/colors_data/"
 
 local options = {
@@ -27,19 +27,16 @@ local options = {
 	backup = false,
 	hidden = true,
 	clipboard = "unnamedplus",
-	showcmd = true,
-	cmdheight = 0,
 	writebackup = false,
 	swapfile = false,
 	completeopt = { "menu", "menuone", "noselect" },
+	backspace = "indent,eol,start",
 	undofile = true,
 	mouse = "a",
 	cursorline = true,
-	mousemoveevent = true,
 	title = true,
 	conceallevel = 0,
 	hlsearch = true,
-	pumheight = 10,
 	showmode = true,
 	showtabline = 1,
 	laststatus = 3,
@@ -50,9 +47,6 @@ local options = {
 	timeoutlen = 400,
 	updatetime = 0,
 	wrap = true,
-	scrolloff = 8,
-	sidescrolloff = 8,
-	backspace = "indent,eol,start",
 	list = true,
 	splitkeep = "screen",
 	-- FOLD

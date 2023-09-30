@@ -18,9 +18,9 @@ local on_attach = function(client, bufnr)
 	if client.server_capabilities.documentSymbolProvider then
 		navic.attach(client, bufnr)
 	end
-	if client.server_capabilities.inlayHintProvider then
-		vim.lsp.inlay_hint(bufnr, true)
-	end
+	-- if client.server_capabilities.inlayHintProvider then
+	-- 	vim.lsp.inlay_hint(bufnr, true)
+	-- end
 end
 
 local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(),
@@ -34,6 +34,12 @@ vim.diagnostic.config({
 	underline = true,
 	update_in_insert = false,
 	severity_sort = true,
+	float = {
+		focusable = false,
+		suffix = '',
+		header = { "  Diagnostics", "String" },
+		prefix = function(_, _, _) return "  ", "String" end,
+	}
 })
 
 -- Change the Diagnostic symbols
@@ -86,7 +92,6 @@ lspconfig.lua_ls.setup({
 				maxPreload = 50000,
 				preloadFileSize = 10000,
 			},
-			hint = { enable = true },
 		},
 	},
 })

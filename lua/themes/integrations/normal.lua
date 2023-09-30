@@ -6,7 +6,7 @@ return {
 	NormalSB = { fg = colors.white, bg = colors.black },
 	NormalFloat = { bg = colors.darker_black },
 	FloatBorder = { fg = colors.darker_black, bg = colors.darker_black },
-	WinSeparator = { fg = colors.darker_black, bg = colors.black },
+	WinSeparator = { fg = colors.darker_black, bg = colors.darker_black },
 
 	MsgArea = { fg = colors.white, bg = colors.black },
 	ModeMsg = { fg = colors.white, bg = colors.black },
@@ -85,5 +85,4 @@ return {
 	EdgyTitle = { bg = colors.darker_black },
 
 	CopilotSuggestion = { fg = colors.grey_fg, italic = true },
-	DiagnosticShowBorder = { fg = colors.darker_black, bg = colors.darker_black },
 }

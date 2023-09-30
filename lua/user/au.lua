@@ -1,6 +1,5 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
-local colors = require("themes").getCurrentTheme()
 
 -- Load Themes
 autocmd({ "UIEnter" }, {
@@ -14,6 +13,14 @@ autocmd({ "ModeChanged", "CursorHold" }, {
 	callback = function()
 		require("ui.statusline").setup()
 		require("ui.tabbufline").setup()
+	end
+})
+
+-- Open Float Window for LSP Diagnostics
+autocmd("CursorHold", {
+	pattern = "*",
+	callback = function()
+		vim.diagnostic.open_float()
 	end
 })
 
@@ -36,13 +43,21 @@ autocmd("InsertLeave", {
 	pattern = "*"
 })
 
+autocmd("WinLeave", {
+	pattern = "*",
+	command = "set nocursorline"
+})
+autocmd("WinEnter", {
+	pattern = "*",
+	command = "set cursorline"
+})
+
 -- Disable fold in Outline
 autocmd("FileType", {
 	pattern = "Outline",
 	callback = function()
 		vim.opt_local.foldcolumn = "0"
 		vim.opt_local.stc = ""
-		vim.api.nvim_set_hl(0, "WinSeparator", { bg = colors.darker_black, fg = colors.darker_black })
 	end,
 })
 

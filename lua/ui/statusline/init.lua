@@ -39,7 +39,7 @@ local run = function()
 		diagnostics(),
 	}
 
-	if vim.o.columns < 130 then
+	if vim.o.columns < 120 then
 		return b
 	else
 		return a

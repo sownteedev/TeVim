@@ -22,7 +22,7 @@ bufferline.setup({
 		tab_size = 25,
 		enforce_regular_tabs = true,
 		hover = {
-			enabled = true,
+			enabled = false,
 			delay = 0,
 			reveal = { 'close' }
 		},
