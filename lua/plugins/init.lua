@@ -96,10 +96,7 @@ return {
 			require("plugins.others.colorize")
 		end
 	},
-	{
-		"stevearc/dressing.nvim",
-		lazy = true
-	},
+	"stevearc/dressing.nvim",
 	{
 		"folke/noice.nvim",
 		dependencies = "MunifTanjim/nui.nvim",
