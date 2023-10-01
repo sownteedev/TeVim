@@ -82,7 +82,7 @@ return {
 
 	EdgyNormal = { bg = colors.darker_black },
 	EdgyWinBar = { bg = colors.darker_black },
-	EdgyTitle = { bg = colors.darker_black },
+	EdgyTitle = { bg = colors.darker_black, fg = colors.white },
 
 	CopilotSuggestion = { fg = colors.grey_fg, italic = true },
 }

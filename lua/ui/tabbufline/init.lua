@@ -106,7 +106,7 @@ M.getTabline = function()
 	else
 		treespace = "%#TeBufTree#" .. string.rep(" ", treeWidth())
 	end
-	if counter == 0 or vim.o.columns < 120 then
+	if counter < 2 or vim.o.columns < 120 then
 		return "%=" ..
 			"%#TeBufRun#" .. run .. "%#TeBufSplit#" .. split .. "%#TeBufTheme#" .. theme .. "%#TeBufQuit#" .. quit
 	end

@@ -13,10 +13,6 @@ local map = vim.keymap.set
 
 vim.g.maplocalleader = " "
 
--- Increase or Decrease value
-keymap("n", "+", "<C-a>", opts)
-keymap("n", "-", "<C-x>", opts)
-
 -- Select all, Copy and Paste
 keymap("n", "<C-a>", "ggVG", opts)
 keymap("v", "<C-c>", "y", opts)
@@ -58,7 +54,7 @@ keymap("i", "<C-l>", "<Right>", opts)
 keymap("n", "<TAB>", "<cmd>BufflineNext<CR>", opts)
 
 -- Clear search
-keymap("n", "<esc><esc>", "<cmd>nohlsearch<cr>", opts)
+keymap("n", "<Leader><Space>", "<cmd>nohlsearch<CR>", opts)
 
 -- Rename
 map("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

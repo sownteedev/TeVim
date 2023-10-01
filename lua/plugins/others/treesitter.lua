@@ -45,8 +45,7 @@ treesitter.setup({
 	-- Autopairs
 	autopairs = { enable = true },
 	-- Auto install
-	ensure_installed = "all",
+	ensure_installed = { "lua" },
 	auto_install = true,
 	sync_install = false,
 })
-

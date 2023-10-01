@@ -1,16 +1,10 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
--- Load Themes
+-- Load Statusline, TabBufline and Themes
 autocmd({ "UIEnter" }, {
 	callback = function()
 		require("themes").load()
-	end
-})
-
--- Load Statusline and TabBufline
-autocmd({ "ModeChanged", "CursorHold" }, {
-	callback = function()
 		require("ui.statusline").setup()
 		require("ui.tabbufline").setup()
 	end

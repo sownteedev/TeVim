@@ -25,7 +25,6 @@ local options = {
 	fileencoding = "utf-8",
 	encoding = "utf-8",
 	backup = false,
-	hidden = true,
 	clipboard = "unnamedplus",
 	writebackup = false,
 	swapfile = false,
@@ -37,15 +36,14 @@ local options = {
 	title = true,
 	conceallevel = 0,
 	hlsearch = true,
-	showmode = true,
+	showmode = false,
 	showtabline = 1,
 	laststatus = 3,
-	signcolumn = "yes",
 	splitbelow = true,
 	splitright = true,
 	termguicolors = true,
-	timeoutlen = 400,
-	updatetime = 0,
+	timeoutlen = 100,
+	updatetime = 300,
 	wrap = true,
 	list = true,
 	splitkeep = "screen",
@@ -57,9 +55,54 @@ local options = {
 
 vim.opt.listchars = "tab:  "
 vim.opt.fillchars = { eob = " ", foldopen = "", foldsep = " ", foldclose = "" }
-vim.opt.formatoptions:remove({ "c", "r", "o" })
-vim.opt.shortmess:append("sI")
+vim.opt.shortmess:append "sI"
+
+-- COPILOT
+vim.g.copilot_no_tab_map = true;
+vim.g.copilot_assume_mapped = true;
+vim.g.copilot_tab_fallback = "";
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
+end
+
+local builtins = {
+	"2html_plugin",
+	"getscript",
+	"getscriptPlugin",
+	"gzip",
+	"logipat",
+	"netrw",
+	"netrwPlugin",
+	"netrwSettings",
+	"netrwFileHandlers",
+	"matchit",
+	"matchparen",
+	"tar",
+	"tarPlugin",
+	"rrhelper",
+	"spellfile_plugin",
+	"vimball",
+	"vimballPlugin",
+	"zip",
+	"zipPlugin",
+	"logipat",
+	"matchit",
+	"tutor",
+	"rplugin",
+	"syntax",
+	"synmenu",
+	"optwin",
+	"compiler",
+	"bugreport",
+	"ftplugin",
+	"archlinux",
+	"fzf",
+	"tutor_mode_plugin",
+	"sleuth",
+	"vimgrep"
+}
+
+for _, plugin in ipairs(builtins) do
+	vim.g["loaded_" .. plugin] = 1
 end

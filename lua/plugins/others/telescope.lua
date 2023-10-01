@@ -7,7 +7,6 @@ end
 local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
 
-telescope.load_extension("noice")
 telescope.load_extension("media_files")
 
 telescope.setup {
@@ -68,4 +67,3 @@ telescope.setup {
 		}
 	},
 }
-

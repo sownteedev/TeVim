@@ -115,7 +115,7 @@ and more plugins...
 - Remove old plugins and setup
 
   ```
-  sudo rm -r ~/.local/share/nvim ~/.cache/nvim
+  sudo rm -r ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim ~/.config/nvim/lazy-lock.json
   ```
 
 - Install TeVim
@@ -124,7 +124,7 @@ and more plugins...
   git clone https://github.com/sownteedev/TeVim ~/.config/nvim --depth 1 && nvim
   ```
 
-- Wait for everything to install and enjoy
+- Wait for everything to install, reopen Neovim and ENJOY !
 
 <details><summary> <b><i>Credits</b></i></summary>
 

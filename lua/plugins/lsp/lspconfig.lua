@@ -51,7 +51,7 @@ for type, icon in pairs(signs) do
 end
 
 -- CONFIGS
-local all_lsp = {
+local servers = {
 	"cssls",
 	"html",
 	"tsserver",
@@ -63,7 +63,8 @@ local all_lsp = {
 	"jsonls",
 	"vimls",
 }
-for _, lsp in ipairs(all_lsp) do
+
+for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
@@ -84,12 +85,12 @@ lspconfig.lua_ls.setup({
 				globals = { "vim" },
 			},
 			workspace = {
-				checkThirdParty = false,
 				library = {
 					[vim.fn.expand "$VIMRUNTIME/lua"] = true,
 					[vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+					[vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy"] = true,
 				},
-				maxPreload = 50000,
+				maxPreload = 100000,
 				preloadFileSize = 10000,
 			},
 		},

@@ -23,38 +23,30 @@ local config = {
 	},
 }
 
-vim.diagnostic.config(config)
 mason.setup(config)
+local install_server = {
+	"lua-language-server",
+	"stylua",
 
-require("mason-lspconfig").setup {
-	ensure_installed = {
-		"lua_ls",
+	"css-lsp",
+	"html-lsp",
+	"typescript-language-server",
+	"prettier",
+	"tailwindcss-language-server",
+	"vue-language-server",
+	"eslint-lsp",
+	"deno",
+	"emmet-language-server",
+	"json-lsp",
+	"eslint_d",
 
-		"html",
-		"cssls",
-		"tsserver",
-		"tailwindcss",
-		"volar",
-		"eslint",
-		"denols",
-		"emmet_ls",
-		"jsonls",
+	"pyright",
+	"black",
 
-		"pyright",
-
-		"clangd",
-		"vimls",
-	},
+	"clangd",
+	"clang-format",
+	"vim-language-server",
 }
-
-require("mason-null-ls").setup({
-	ensure_installed = {
-		"stylua",
-		"clang-format",
-		"prettier",
-		"black",
-		"eslint_d",
-	},
-	automatic_installation = true,
-	automatic_setup = false,
-})
+vim.api.nvim_create_user_command("MasonInstallAll", function()
+	vim.cmd("MasonInstall " .. table.concat(install_server, " "))
+end, {})

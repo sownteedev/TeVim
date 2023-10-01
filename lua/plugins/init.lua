@@ -1,37 +1,46 @@
 return {
-	"nvim-lua/plenary.nvim",
-	"nvim-lua/popup.nvim",
-	"MunifTanjim/nui.nvim",
+	{
+		'nvim-lua/plenary.nvim',
+		lazy = true,
+	},
+	{
+		"nvim-lua/popup.nvim",
+		lazy = true
+	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		cmd = "Neotree",
 		branch = "v3.x",
 		config = function()
-			require("ui.neotree")
+			require("plugins.others.neotree")
 		end
-
 	},
 	{
 		"kyazdani42/nvim-web-devicons",
+		lazy = true,
 		config = function()
 			require("plugins.others.devicons")
-		end
+		end,
 	},
 	{
 		"folke/edgy.nvim",
 		event = "VeryLazy",
 		config = function()
-			require("ui.edgy")
+			require("plugins.others.edgy")
 		end
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		event = "BufRead",
 		build = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-		dependencies = { "nvim-treesitter/nvim-treesitter-context", "HiPhish/rainbow-delimiters.nvim",
-			"windwp/nvim-ts-autotag" },
+		dependencies = { "nvim-treesitter/nvim-treesitter-context", "HiPhish/rainbow-delimiters.nvim" },
 		config = function()
 			require("plugins.others.treesitter")
 		end
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		event = "InsertEnter"
 	},
 	{
 		"windwp/nvim-autopairs",
@@ -44,10 +53,6 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		init = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-		end,
 		config = function()
 			require("plugins.others.whichkey")
 		end
@@ -61,6 +66,8 @@ return {
 	},
 	{
 		"nvim-telescope/telescope.nvim",
+		cmd = "Telescope",
+		lazy = true,
 		tag = '0.1.3',
 		dependencies = { "nvim-telescope/telescope-media-files.nvim" },
 		config = function()
@@ -76,28 +83,34 @@ return {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		event = { "BufReadPre", "BufNewFile" },
 		lazy = true,
+		event = { "BufRead" },
 		config = function()
 			require("plugins.others.gitsigns")
 		end
 	},
 	{
 		"NvChad/nvim-colorizer.lua",
-		event = { "BufReadPost", "BufNewFile" },
+		event = 'BufRead',
 		config = function()
 			require("plugins.others.colorize")
 		end
 	},
-	"stevearc/dressing.nvim",
+	{
+		"stevearc/dressing.nvim",
+		lazy = true
+	},
 	{
 		"folke/noice.nvim",
+		dependencies = "MunifTanjim/nui.nvim",
 		config = function()
 			require("plugins.others.noice")
 		end
 	},
 	{
 		"akinsho/toggleterm.nvim",
+		cmd = "ToggleTerm",
+		lazy = true,
 		version = "*",
 		config = function()
 			require("toggleterm").setup({ shading_factor = 2 })
@@ -105,6 +118,8 @@ return {
 	},
 	{
 		"andweeb/presence.nvim",
+		event = "BufRead",
+		lazy = true,
 		config = function()
 			require("presence").setup {
 				neovim_image_text = "Coding by @SownteeNguyen",
@@ -114,7 +129,8 @@ return {
 	},
 	{
 		"simrat39/symbols-outline.nvim",
-		event = { "BufReadPost", "BufNewFile" },
+		cmd = "SymbolsOutline",
+		lazy = true,
 		config = function()
 			require("symbols-outline").setup()
 		end
@@ -142,30 +158,30 @@ return {
 	},
 	{
 		"folke/todo-comments.nvim",
-		event = { "BufReadPost", "BufNewFile" },
-		config = function()
-			require("todo-comments").setup()
-		end
+		event = { "BufReadPost", "InsertEnter" },
+		opts = { signs = false }
 	},
 	{
 		"luukvbaal/statuscol.nvim",
+		event = "BufRead",
 		config = function()
 			local builtin = require("statuscol.builtin")
 			require("statuscol").setup({
 				ft_ignore = { "neo-tree", "NvimTree", "Outline" },
 				segments = {
-					{ text = { " ", builtin.foldfunc, "  " },                         click = "v:lua.ScFa" },
-					{ sign = { name = { "Diagnostic" }, maxwidth = 1, auto = false }, click = "v:lua.ScFa" },
-					{ text = { builtin.lnumfunc, " " },                               click = "v:lua.ScLa" },
-					{ sign = { name = { "GitSigns" }, maxwidth = 1, auto = false },   click = "v:lua.ScSa" },
+					{ text = { " ", builtin.foldfunc, "  " },           click = "v:lua.ScFa" },
+					{ sign = { name = { "Diagnostic" }, auto = false }, click = "v:lua.ScFa" },
+					{ text = { builtin.lnumfunc, " " },                 click = "v:lua.ScLa" },
+					{ sign = { name = { "GitSigns" }, auto = false },   click = "v:lua.ScSa" },
 				},
 			})
 		end
 	},
 	{
 		"kevinhwang91/nvim-ufo",
-		event = { "BufReadPost", "BufNewFile" },
-		dependencies = { "kevinhwang91/promise-async" },
+		event = "BufReadPost",
+		lazy = true,
+		dependencies = "kevinhwang91/promise-async",
 		config = function()
 			require("ufo").setup({
 				ignore_filetypes = { "Outline", "neo-tree", "Trouble" },
@@ -178,71 +194,123 @@ return {
 	--------------------------------------------------------------
 	{
 		"hrsh7th/nvim-cmp",
+		event = { "InsertEnter", "CmdwinEnter" },
 		dependencies = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lua",
+			"saadparwaiz1/cmp_luasnip",
+			{
+				"jcdickinson/codeium.nvim",
+				config = function()
+					require("codeium").setup()
+				end
+			}
 		},
 		config = function()
 			require("plugins.cmp.cmp")
 		end
 	},
-	{
-		"github/copilot.vim",
-		config = function()
-			vim.g.copilot_no_tab_map = true;
-			vim.g.copilot_assume_mapped = true;
-			vim.g.copilot_tab_fallback = "";
-		end
-	},
-	{
-		"jcdickinson/codeium.nvim",
-		config = function()
-			require("codeium").setup()
-		end
-	},
+	"github/copilot.vim",
 	{
 		"L3MON4D3/LuaSnip",
-		dependencies = { "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets" },
+		event = "InsertEnter",
+		lazy = true,
+		dependencies = "rafamadriz/friendly-snippets",
 		version = "2.*",
 		build = "make install_jsregexp"
 	},
 	{
 		"williamboman/mason.nvim",
-		dependencies = {
-			"williamboman/mason-lspconfig",
-			"jayp0521/mason-null-ls.nvim"
-		},
+		-- cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
 		config = function()
 			require("plugins.lsp.mason")
 		end
 	},
 	{
 		"neovim/nvim-lspconfig",
+		event = { "BufReadPost", "BufNewFile" },
+		lazy = true,
+		cmd = { "LspInfo", "LspInstall", "LspUninstall", "LspStart" },
 		dependencies = {
-			"nvimdev/lspsaga.nvim",
-			config = function()
-				require("plugins.lsp.lspsaga")
-			end
+			{
+				"nvimdev/lspsaga.nvim",
+				config = function()
+					require("plugins.lsp.lspsaga")
+				end
+			},
+			{
+				"jose-elias-alvarez/null-ls.nvim",
+				config = function()
+					require("plugins.lsp.null-ls")
+				end
+			},
+			{
+				"SmiteshP/nvim-navic",
+				config = function()
+					require("nvim-navic").setup({ lsp = { auto_attach = true } })
+				end
+			}
 		},
 		config = function()
 			require("plugins.lsp.lspconfig")
 		end
 	},
-	"onsails/lspkind.nvim",
 	{
-		"SmiteshP/nvim-navic",
-		config = function()
-			require("nvim-navic").setup({ lsp = { auto_attach = true } })
-		end
+		"onsails/lspkind.nvim",
+		event = "InsertEnter",
+		lazy = true,
 	},
-	"folke/trouble.nvim",
 	{
-		"jose-elias-alvarez/null-ls.nvim",
-		config = function()
-			require("plugins.lsp.null-ls")
-		end
-	}
+		"folke/trouble.nvim",
+		event = "BufReadPost",
+	},
+
+	defaults = { lazy = true },
+	ui = {
+		icons = {
+			ft = "",
+			lazy = "󰂠 ",
+			loaded = "",
+			not_loaded = "",
+		},
+	},
+	change_detection = {
+		notify = false,
+	},
+	performance = {
+		rtp = {
+			disabled_plugins = {
+				"2html_plugin",
+				"tohtml",
+				"getscript",
+				"getscriptPlugin",
+				"gzip",
+				"logipat",
+				"netrw",
+				"netrwPlugin",
+				"netrwSettings",
+				"netrwFileHandlers",
+				"matchit",
+				"tar",
+				"tarPlugin",
+				"rrhelper",
+				"spellfile_plugin",
+				"vimball",
+				"vimballPlugin",
+				"zip",
+				"zipPlugin",
+				"tutor",
+				"rplugin",
+				"syntax",
+				"synmenu",
+				"optwin",
+				"compiler",
+				"bugreport",
+				"ftplugin",
+			},
+		},
+	},
 }
