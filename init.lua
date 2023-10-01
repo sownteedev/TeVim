@@ -3,6 +3,7 @@
 
 -- WELCOME TO TEVIM --
 
+vim.loader.enable()
 require("user.options")
 
 local function echo(str)

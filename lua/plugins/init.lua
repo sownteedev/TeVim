@@ -1,11 +1,7 @@
 return {
 	{
-		'nvim-lua/plenary.nvim',
+		"nvim-lua/plenary.nvim",
 		lazy = true,
-	},
-	{
-		"nvim-lua/popup.nvim",
-		lazy = true
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
@@ -96,7 +92,10 @@ return {
 			require("plugins.others.colorize")
 		end
 	},
-	"stevearc/dressing.nvim",
+	{
+		"stevearc/dressing.nvim",
+		event = "VeryLazy",
+	},
 	{
 		"folke/noice.nvim",
 		dependencies = "MunifTanjim/nui.nvim",
@@ -115,6 +114,7 @@ return {
 	},
 	{
 		"andweeb/presence.nvim",
+		enabled = false,
 		event = "BufRead",
 		lazy = true,
 		config = function()
@@ -166,10 +166,10 @@ return {
 			require("statuscol").setup({
 				ft_ignore = { "neo-tree", "NvimTree", "Outline" },
 				segments = {
-					{ text = { " ", builtin.foldfunc, "  " },           click = "v:lua.ScFa" },
-					{ sign = { name = { "Diagnostic" }, auto = false }, click = "v:lua.ScFa" },
-					{ text = { builtin.lnumfunc, " " },                 click = "v:lua.ScLa" },
-					{ sign = { name = { "GitSigns" }, auto = false },   click = "v:lua.ScSa" },
+					{ text = { " ", builtin.foldfunc, "  " }, click = "v:lua.ScFa" },
+					{ sign = { name = { "Diagnostic" } },     click = "v:lua.ScFa" },
+					{ text = { builtin.lnumfunc, " " },       click = "v:lua.ScLa" },
+					{ sign = { name = { "GitSigns" } },       click = "v:lua.ScSa" },
 				},
 			})
 		end
@@ -204,13 +204,21 @@ return {
 				config = function()
 					require("codeium").setup()
 				end
-			}
+			},
+			{
+				"onsails/lspkind.nvim",
+				event = "InsertEnter",
+				lazy = true,
+			},
 		},
 		config = function()
 			require("plugins.cmp.cmp")
 		end
 	},
-	"github/copilot.vim",
+	{
+		"github/copilot.vim",
+		event = "InsertEnter"
+	},
 	{
 		"L3MON4D3/LuaSnip",
 		event = "InsertEnter",
@@ -218,13 +226,6 @@ return {
 		dependencies = "rafamadriz/friendly-snippets",
 		version = "2.*",
 		build = "make install_jsregexp"
-	},
-	{
-		"williamboman/mason.nvim",
-		-- cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
-		config = function()
-			require("plugins.lsp.mason")
-		end
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -249,16 +250,18 @@ return {
 				config = function()
 					require("nvim-navic").setup({ lsp = { auto_attach = true } })
 				end
+			},
+			{
+				"williamboman/mason.nvim",
+				cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
+				config = function()
+					require("plugins.lsp.mason")
+				end
 			}
 		},
 		config = function()
 			require("plugins.lsp.lspconfig")
 		end
-	},
-	{
-		"onsails/lspkind.nvim",
-		event = "InsertEnter",
-		lazy = true,
 	},
 	{
 		"folke/trouble.nvim",
@@ -273,9 +276,6 @@ return {
 			loaded = "",
 			not_loaded = "",
 		},
-	},
-	change_detection = {
-		notify = false,
 	},
 	performance = {
 		rtp = {

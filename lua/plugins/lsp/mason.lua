@@ -36,7 +36,7 @@ local install_server = {
 	"vue-language-server",
 	"eslint-lsp",
 	"deno",
-	"emmet-language-server",
+	"emmet-ls",
 	"json-lsp",
 	"eslint_d",
 

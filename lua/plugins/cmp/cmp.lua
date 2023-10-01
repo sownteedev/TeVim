@@ -85,7 +85,7 @@ cmp.setup({
 			local kind = lspkind.cmp_format({
 				symbol_map = { Copilot = "", Codeium = "", Snippet = "", Keyword = "" },
 				preset = "codicons",
-				maxwidth = 50,
+				maxwidth = 40,
 			})(entry, vim_item)
 			local strings = vim.split(vim_item.kind, "%s+", { trimempty = true })
 			kind.kind = " " .. string.format("%s │", strings[1], strings[2]) .. " "
@@ -146,6 +146,8 @@ cmp.setup.cmdline({ "/", "?" }, {
 	sources = {
 		{ name = "buffer",          max_item_count = 10 },
 		{ name = "cmdline_history", max_item_count = 10 },
+		{ name = "path",            max_item_count = 10 },
+		{ name = "nvim_lua",        max_item_count = 10 },
 	},
 })
 
@@ -156,5 +158,6 @@ cmp.setup.cmdline(":", {
 		{ name = "cmdline_history", max_item_count = 10 },
 		{ name = "path",            max_item_count = 10 },
 		{ name = "nvim_lua",        max_item_count = 10 },
+		{ name = "buffer",          max_item_count = 10 },
 	},
 })

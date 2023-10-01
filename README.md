@@ -115,7 +115,7 @@ and more plugins...
 - Remove old plugins and setup
 
   ```
-  sudo rm -r ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim ~/.config/nvim/lazy-lock.json
+  rm -rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim ~/.config/nvim/lazy-lock.json
   ```
 
 - Install TeVim
