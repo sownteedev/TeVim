@@ -75,7 +75,7 @@ keymap("n", "<S-TAB>",
 	"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 	opts)
 
--- Hint
+-- Toggle Inlay Hints
 if vim.lsp.inlay_hint then
 	map("n", "<leader>lI", function() vim.lsp.inlay_hint(0, nil) end, opts)
 end
