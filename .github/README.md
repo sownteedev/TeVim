@@ -92,7 +92,7 @@ and more plugins...
    sudo pacman -S ripgrep fzf lazygit
   ```
 
-  <h2> ⬇️  Installation </h2>
+<h2> ⬇️  Installation </h2>
 
 - Backup old config
 
