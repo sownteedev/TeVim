@@ -96,7 +96,7 @@ M.getTabline = function()
 		end
 		::do_nothing::
 	end
-	if counter > 0 then
+	if counter > 1 then
 		buffstart = "%#TeBufEmptyColor#"
 	end
 	local treespace
@@ -107,7 +107,7 @@ M.getTabline = function()
 		treespace = "%#TeBufTree#" .. string.rep(" ", treeWidth())
 	end
 	if counter < 2 or vim.o.columns < 120 then
-		return "%=" ..
+		return treespace .. buffstart .. "%=" ..
 			"%#TeBufRun#" .. run .. "%#TeBufSplit#" .. split .. "%#TeBufTheme#" .. theme .. "%#TeBufQuit#" .. quit
 	end
 	return treespace ..

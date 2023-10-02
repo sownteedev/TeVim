@@ -60,8 +60,8 @@ return {
 	TeBufOnClose = { fg = colors.red, bg = colors.black },
 	TeBufOffClose = { fg = colors.grey, bg = colors.statusline_bg },
 	TeBufTree = { bg = colors.darker_black },
-	TeBufEmpty = { bg = colors.statusline_bg },
-	TeBufEmptyColor = { bg = colors.statusline_bg, fg = colors.white },
+	TeBufEmpty = { bg = colors.black },
+	TeBufEmptyColor = { bg = colors.statusline_bg },
 	TeBufCloseButton = { bg = colors.red, fg = colors.black },
 
 	TeBufRun = { bg = colors.one_bg2, fg = colors.yellow },

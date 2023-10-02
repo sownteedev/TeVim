@@ -18,9 +18,9 @@ local on_attach = function(client, bufnr)
 	if client.server_capabilities.documentSymbolProvider then
 		navic.attach(client, bufnr)
 	end
-	-- if client.server_capabilities.inlayHintProvider then
-	-- 	vim.lsp.inlay_hint(bufnr, true)
-	-- end
+	if client.server_capabilities.inlayHintProvider then
+		vim.lsp.inlay_hint(bufnr, true)
+	end
 end
 
 local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(),
