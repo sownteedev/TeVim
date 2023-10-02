@@ -53,18 +53,21 @@ local options = {
 	foldlevelstart = 99,
 }
 
+local globals = {
+	mapleader = ' ',
+	maplocalleader = ' ',
+	speeddating_no_mappings = 1,
+}
+
 vim.opt.listchars = "tab:  "
 vim.opt.fillchars = { eob = " ", foldopen = "", foldsep = " ", foldclose = "" }
 vim.opt.shortmess:append "sI"
+vim.opt.formatoptions:remove('c', 'r', 'o');
 
 -- COPILOT
 vim.g.copilot_no_tab_map = true;
 vim.g.copilot_assume_mapped = true;
 vim.g.copilot_tab_fallback = "";
-
-for k, v in pairs(options) do
-	vim.opt[k] = v
-end
 
 local builtins = {
 	"2html_plugin",
@@ -105,4 +108,13 @@ local builtins = {
 
 for _, plugin in ipairs(builtins) do
 	vim.g["loaded_" .. plugin] = 1
+end
+
+
+for k, v in pairs(options) do
+	vim.opt[k] = v
+end
+
+for k, v in pairs(globals) do
+	vim.g[k] = v
 end

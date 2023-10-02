@@ -6,6 +6,7 @@
 vim.loader.enable()
 require("user.options")
 
+--- @diagnostic disable warning
 local function echo(str)
 	vim.cmd "redraw"
 	vim.api.nvim_echo({ { str, "Bold" } }, true, {})
@@ -23,7 +24,6 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-vim.g.mapleader = " "
 
 require("lazy").setup("plugins")
 

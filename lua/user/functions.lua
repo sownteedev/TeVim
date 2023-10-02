@@ -1,5 +1,5 @@
 local M = {}
-local fn = vim.fn
+
 -- Toggle Option
 function M.toggle_option(option)
 	local value = not vim.api.nvim_get_option_value(option, {})

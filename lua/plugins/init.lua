@@ -56,8 +56,11 @@ return {
 	{
 		"numToStr/Comment.nvim",
 		event = { "BufReadPost", "BufNewFile" },
+		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
 		config = function()
-			require("Comment").setup()
+			require("Comment").setup({
+				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+			})
 		end
 	},
 	{
@@ -200,6 +203,12 @@ return {
 			"hrsh7th/cmp-nvim-lua",
 			"saadparwaiz1/cmp_luasnip",
 			{
+				"L3MON4D3/LuaSnip",
+				dependencies = "rafamadriz/friendly-snippets",
+				version = "2.*",
+				build = "make install_jsregexp"
+			},
+			{
 				"jcdickinson/codeium.nvim",
 				config = function()
 					require("codeium").setup()
@@ -218,14 +227,6 @@ return {
 	{
 		"github/copilot.vim",
 		event = "InsertEnter"
-	},
-	{
-		"L3MON4D3/LuaSnip",
-		event = "InsertEnter",
-		lazy = true,
-		dependencies = "rafamadriz/friendly-snippets",
-		version = "2.*",
-		build = "make install_jsregexp"
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -265,7 +266,7 @@ return {
 	},
 	{
 		"folke/trouble.nvim",
-		event = "BufReadPost",
+		cmd = { "TroubleToggle", "Trouble" },
 	},
 
 	defaults = { lazy = true },

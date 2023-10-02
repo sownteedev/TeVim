@@ -11,8 +11,6 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 local map = vim.keymap.set
 
-vim.g.maplocalleader = " "
-
 -- Select all, Copy and Paste
 keymap("n", "<C-a>", "ggVG", opts)
 keymap("v", "<C-c>", "y", opts)
@@ -37,6 +35,8 @@ keymap("n", "<M-Up>", ":m-2<CR>", opts)
 keymap("n", "<M-Down>", ":m+<CR>", opts)
 keymap("i", "<M-Up>", "<Esc>:m-2<CR>", opts)
 keymap("i", "<M-Down>", "<Esc>:m+<CR>", opts)
+keymap("x", "<M-Up>", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "<M-Down>", ":move '>+1<CR>gv-gv", opts)
 
 -- Resize window
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
@@ -50,11 +50,11 @@ keymap("i", "<C-k>", "<Up>", opts)
 keymap("i", "<C-h>", "<Left>", opts)
 keymap("i", "<C-l>", "<Right>", opts)
 
--- Move between buffers
+-- Next buffers
 keymap("n", "<TAB>", "<cmd>BufflineNext<CR>", opts)
 
 -- Clear search
-keymap("n", "<Leader><Space>", "<cmd>nohlsearch<CR>", opts)
+map("n", "<CR>", "<cmd>noh<CR><CR>", opts)
 
 -- Rename
 map("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
