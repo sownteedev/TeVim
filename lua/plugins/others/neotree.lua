@@ -17,9 +17,7 @@ require("neo-tree").setup({
 	open_files_do_not_replace_types = { "terminal", "trouble", "qf" },
 	sort_case_insensitive = false,
 	default_component_configs = {
-		container = {
-			enable_character_fade = true,
-		},
+		container = { enable_character_fade = true },
 		indent = {
 			indent_size = 2,
 			padding = 1,
@@ -99,11 +97,17 @@ require("neo-tree").setup({
 	},
 	event_handlers = {
 		-- {
-		--     event = "file_opened",
-		--     handler = function()
-		--         require("neo-tree.command").execute({ action = "close" })
-		--     end,
+		-- event = "file_opened",
+		-- handler = function()
+		-- require("neo-tree.command").execute({ action = "close" })
+		-- end,
 		-- },
+		{
+			event = "file_opened",
+			handler = function()
+				vim.cmd("wincmd |")
+			end,
+		},
 		{
 			event = "neo_tree_window_after_open",
 			handler = function(args)

@@ -86,4 +86,3 @@ devicons.set_icon({
 
 devicons.set_default_icon("󰈚")
 devicons.setup(config)
-

@@ -48,6 +48,3 @@ treesitter.setup({
 	auto_install = true,
 	sync_install = false,
 })
-vim.api.nvim_create_user_command("TSInstallAll", function()
-	vim.cmd("TSInstall all")
-end, {})

@@ -6,7 +6,7 @@
 vim.loader.enable()
 require("user.options")
 
---- @diagnostic disable warning
+-- - @diagnostic disable warning
 local function echo(str)
 	vim.cmd "redraw"
 	vim.api.nvim_echo({ { str, "Bold" } }, true, {})

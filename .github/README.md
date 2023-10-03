@@ -109,7 +109,7 @@ and more plugins...
   git clone https://github.com/sownteedev/TeVim ~/.config/nvim --depth 1 && nvim
   ```
 - Wait for everything to install, reopen Neovim
-- Use command :TSInstallAll and :MasonInstallAll
+- Use command ":TSInstall all" and ":MasonInstallAll"
 
 ENJOY !
 
