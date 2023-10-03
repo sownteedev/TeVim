@@ -151,7 +151,7 @@ return {
 				excluded_filetypes = { "neo-tree", "Outline" },
 				handlers = {
 					gitsigns = { enable = false },
-					diagnostic = { enable = false },
+					diagnostic = { signs = { '', '', '' } },
 				},
 			})
 		end
@@ -194,7 +194,7 @@ return {
 	--------------------------------------------------------------
 	{
 		"hrsh7th/nvim-cmp",
-		event = { "InsertEnter", "CmdwinEnter" },
+		event = { "InsertEnter", "CmdlineEnter" },
 		dependencies = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",

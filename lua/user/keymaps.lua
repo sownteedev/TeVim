@@ -54,7 +54,7 @@ keymap("i", "<C-l>", "<Right>", opts)
 keymap("n", "<TAB>", "<cmd>BufflineNext<CR>", opts)
 
 -- Clear search
-map("n", "<CR>", "<cmd>noh<CR><CR>", opts)
+map("n", "<esc>", "<cmd>noh<CR><CR>", opts)
 
 -- Rename
 map("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
