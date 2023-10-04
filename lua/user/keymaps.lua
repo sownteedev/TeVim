@@ -64,8 +64,9 @@ map("n", "<leader>rl", [[:so %<CR>]], opts)
 
 ----------------------------------------------- PLUGINS -------------------------------------------
 
--- Expoler
-keymap("n", "<C-e>", "<cmd>Neotree<cr>", opts)
+-- Explorer
+keymap("n", "<C-e>", "<cmd>Neotree toggle<cr>", opts)
+keymap("n", "<leader>e", "<cmd>Neotree toggle<cr>", opts)
 
 -- Toggle Term
 keymap("n", [[<C-`>]], "<cmd>ToggleTerm size=15 direction=horizontal<cr>", opts)
