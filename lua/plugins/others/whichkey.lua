@@ -43,6 +43,7 @@ local setup = {
 local mappings = {
 	["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
 	["q"] = { ":qa!<CR>", "Quit" },
+	["e"] = { ":Neotree toggle<CR>", "Neotree" },
 	p = {
 		name = "󰏖  LAZY",
 		C = { "<cmd>Lazy clean<cr>", "Clean" },
