@@ -63,8 +63,11 @@ and more plugins...
 
 <h2>🔎 Requirement </h2>
 - Make you sure, you're using NeoVim Nightly
-  
-  - If you on X11 install xsel and xclip
+  - Install all libaries
+	```
+	sudo pacman -S nodejs npm yarn python python-pip clang jdk-openjdk rustup
+	```
+  - If you on X11 install xsel and xclip to copy and paste
     ```
     sudo pacman -S xsel xclip
     ```
@@ -77,17 +80,12 @@ and more plugins...
   ```
     npm i -g neovim
   ```
-
 - Other dependencies for formatting & finding text :
-
   - Prettier
-
   ```
    npm i -g prettier
   ```
-
   - Ripgrep Fzf Lazygit
-
   ```
    sudo pacman -S ripgrep fzf lazygit
   ```
@@ -95,11 +93,9 @@ and more plugins...
 <h2> ⬇️  Installation </h2>
 
 - Backup old config
-
   ```
   mv ~/.config/nvim ~/.config/nvim.bak
   ```
-
 - Remove old plugins and setup
   ```
   rm -rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim ~/.config/nvim/lazy-lock.json

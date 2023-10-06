@@ -69,7 +69,7 @@ keymap("n", "<C-e>", "<cmd>Neotree toggle<cr>", opts)
 keymap("n", "<leader>e", "<cmd>Neotree toggle<cr>", opts)
 
 -- Toggle Term
-keymap("n", [[<C-`>]], "<cmd>ToggleTerm size=15 direction=horizontal<cr>", opts)
+keymap("n", [[<C-`>]], "<cmd>ToggleTerm size=10 direction=horizontal<cr>", opts)
 
 -- Telescope
 keymap("n", "<S-TAB>",
