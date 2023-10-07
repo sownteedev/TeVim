@@ -4,9 +4,9 @@
 -- WELCOME TO TEVIM --
 
 vim.loader.enable()
-require("user.options")
+require "user.options"
 
--- - @diagnostic disable warning
+--- @diagnostic disable warning
 local function echo(str)
 	vim.cmd "redraw"
 	vim.api.nvim_echo({ { str, "Bold" } }, true, {})
@@ -27,6 +27,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 
-require("user.keymaps")
+require "user.keymaps"
 
-require("user.au")
+require "user.au"

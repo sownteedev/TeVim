@@ -84,6 +84,7 @@ return {
 		"lewis6991/gitsigns.nvim",
 		lazy = true,
 		event = { "BufRead" },
+		commit = "7f6f1565ac0d9f4e26d87135c6cbe0b9fdcf70b3",
 		config = function()
 			require("plugins.others.gitsigns")
 		end
@@ -244,12 +245,6 @@ return {
 				"jose-elias-alvarez/null-ls.nvim",
 				config = function()
 					require("plugins.lsp.null-ls")
-				end
-			},
-			{
-				"SmiteshP/nvim-navic",
-				config = function()
-					require("nvim-navic").setup({ lsp = { auto_attach = true } })
 				end
 			},
 			{
