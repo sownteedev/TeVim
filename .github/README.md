@@ -63,14 +63,15 @@ and more plugins...
 
 <h2>🔎 Requirement </h2>
 - Make you sure, you're using NeoVim Nightly
-  - Install all libaries
-	```
-	sudo pacman -S nodejs npm yarn python python-pip clang jdk-openjdk rustup
-	```
-  - If you on X11 install xsel and xclip to copy and paste
-    ```
-    sudo pacman -S xsel xclip
-    ```
+
+- Install all libaries support (optional)
+  ```
+  sudo pacman -S nodejs npm yarn python python-pip clang jdk-openjdk rustup
+  ```
+- If you on X11 install xsel and xclip to copy and paste
+  ```
+  sudo pacman -S xsel xclip
+  ```
 - Next we need to install python support (Node is optional)
   - Neovim python support
   ```
