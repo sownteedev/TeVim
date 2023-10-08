@@ -37,6 +37,15 @@ autocmd("InsertLeave", {
 	pattern = "*"
 })
 
+autocmd("WinLeave", {
+	pattern = "*",
+	command = "set nocursorline"
+})
+autocmd("WinEnter", {
+	pattern = "*",
+	command = "set cursorline"
+})
+
 -- Disable fold in Outline
 autocmd("FileType", {
 	pattern = "Outline",
