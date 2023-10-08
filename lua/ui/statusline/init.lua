@@ -11,38 +11,35 @@ local run = function()
 	local location = require("ui.statusline.modules.location")
 	local nothing = require("ui.statusline.modules.nothing")
 
-	local a = table.concat {
-		mode(),
-		nothing(),
-		filename(),
-		nothing(),
-		branch(),
-		nothing(),
-		diff(),
-		nothing(),
-		"%=",
-		diagnostics(),
-		lsp(),
-		copilot(),
-		nothing(),
-		tab(),
-		nothing(),
-		progress(),
-		nothing(),
-		location(),
-	}
-	local b = table.concat {
-		"%#Nothing2#" .. " ",
-		"%=",
-		mode(),
-		nothing(),
-		diagnostics(),
-	}
-
 	if vim.o.columns < 120 then
-		return b
+		return table.concat {
+			"%#Nothing2#" .. " ",
+			"%=",
+			mode(),
+			nothing(),
+			diagnostics(),
+		}
 	else
-		return a
+		return table.concat {
+			mode(),
+			nothing(),
+			filename(),
+			nothing(),
+			branch(),
+			nothing(),
+			diff(),
+			nothing(),
+			"%=",
+			diagnostics(),
+			lsp(),
+			copilot(),
+			nothing(),
+			tab(),
+			nothing(),
+			progress(),
+			nothing(),
+			location(),
+		}
 	end
 end
 
