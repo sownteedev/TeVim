@@ -33,6 +33,7 @@ local options = {
 	backspace = "indent,eol,start",
 	undofile = true,
 	mouse = "a",
+	mousemoveevent = true,
 	cursorline = true,
 	title = true,
 	conceallevel = 0,

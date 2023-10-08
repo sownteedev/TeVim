@@ -27,7 +27,7 @@ require("edgy").setup {
 		{
 			title = "OUTLINE",
 			ft = "Outline",
-			pinned = true,
+			pinned = false,
 			open = "SymbolsOutline",
 		},
 	},
