@@ -10,7 +10,6 @@ require("neo-tree").setup({
 	popup_border_style = "rounded",
 	enable_git_status = true,
 	enable_diagnostics = true,
-	open_files_do_not_replace_types = { "terminal", "trouble", "qf" },
 	sort_case_insensitive = false,
 	default_component_configs = {
 		container = { enable_character_fade = true },
@@ -67,6 +66,7 @@ require("neo-tree").setup({
 			never_show = { ".git" },
 		},
 		follow_current_file = { enabled = true },
+		group_empty_dirs = true,
 		use_libuv_file_watcher = true,
 		components = {
 			name = function(config, node, state)
@@ -85,14 +85,6 @@ require("neo-tree").setup({
 			{ source = "filesystem", display_name = "  Files " },
 			{ source = "buffers", display_name = "  Bufs " },
 			{ source = "git_status", display_name = "  Git " },
-		},
-	},
-	event_handlers = {
-		{
-			event = "file_opened",
-			handler = function()
-				vim.cmd("wincmd |")
-			end,
 		},
 	},
 })
