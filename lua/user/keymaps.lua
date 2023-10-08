@@ -51,7 +51,7 @@ keymap("i", "<C-h>", "<Left>", opts)
 keymap("i", "<C-l>", "<Right>", opts)
 
 -- Next buffers
-keymap("n", "<TAB>", "<cmd>BufflineNext<CR>", opts)
+keymap("n", "<TAB>", "<cmd>TeBufNext<CR>", opts)
 
 -- Clear search
 map("n", "<esc>", "<cmd>noh<CR><CR>", opts)

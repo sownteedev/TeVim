@@ -111,7 +111,6 @@ for _, plugin in ipairs(builtins) do
 	vim.g["loaded_" .. plugin] = 1
 end
 
-
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end

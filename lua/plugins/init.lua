@@ -83,7 +83,7 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		lazy = true,
-		event = { "BufRead" },
+		event = "BufRead",
 		commit = "7f6f1565ac0d9f4e26d87135c6cbe0b9fdcf70b3",
 		config = function()
 			require("plugins.others.gitsigns")

@@ -77,9 +77,9 @@ and more plugins...
   ```
     pip install pynvim
   ```
-  - Neovim Node support
+  - Neovim Node support / Live-server (for dev)
   ```
-    npm i -g neovim
+    npm i -g neovim live-server
   ```
 - Other dependencies for formatting & finding text :
   - Prettier

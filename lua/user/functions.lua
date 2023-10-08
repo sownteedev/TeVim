@@ -58,6 +58,8 @@ function M.build_run()
 		vim.cmd("TermExec cmd='bash " .. vim.fn.expand("%") .. "'")
 	elseif filetype == "dart" then
 		vim.cmd("TermExec cmd='dart " .. vim.fn.expand("%") .. "'")
+	elseif filetype == "html" then
+		vim.cmd("TermExec cmd='live-server " .. vim.fn.expand("%:p:h") .. "'")
 	end
 end
 

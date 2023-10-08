@@ -8,6 +8,7 @@ return {
 	NeoTreeIndentMarker = { fg = colors.grey },
 	NeoTreeDirectoryIcon = { fg = colors.folder_bg },
 	NeoTreeRootName = { fg = colors.blue, bold = true },
+	NeoTreeModified = { fg = colors.green },
 
 	NeoTreeGitAdded = { fg = colors.green },
 	NeoTreeGitConflict = { fg = colors.baby_pink },

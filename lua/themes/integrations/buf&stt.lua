@@ -1,57 +1,6 @@
 local colors = require("themes").getCurrentTheme()
 
 return {
-	-- Buffer
-	BufferLineFill = { fg = colors.grey, bg = colors.statusline_bg },
-	BufferLineBackground = { fg = colors.grey, bg = colors.statusline_bg },
-
-	BufferLineBuffer = { fg = colors.grey, bg = colors.statusline_bg },
-	BufferLineBufferSelected = { fg = colors.white, bg = colors.black, bold = true },
-	BufferLineBufferInactive = { fg = colors.grey, bg = colors.statusline_bg },
-	BufferLineBufferVisible = { fg = colors.grey, bg = colors.statusline_bg },
-
-	BufferLineModified = { fg = colors.green },
-	BufferLineModifiedSelected = { fg = colors.green },
-	BufferLineModifiedVisible = { fg = colors.green },
-	BufferLineModifiedInactive = { fg = colors.green },
-
-	BufferLineCloseButton = { fg = colors.grey },
-	BufferLineCloseButtonSelected = { fg = colors.red },
-	BufferLineCloseButtonVisible = { fg = colors.grey },
-	BufferLineCloseButtonInactive = { fg = colors.grey },
-
-	BufferLineTabClose = { fg = colors.grey, bg = colors.statusline_bg },
-	BufferLineTabCloseSelected = { fg = colors.red, bg = colors.black },
-	BufferLineTabCloseVisible = { fg = colors.grey, bg = colors.statusline_bg },
-	BufferLineTabCloseInactive = { fg = colors.grey, bg = colors.statusline_bg },
-
-	BufferLineSeparator = { fg = colors.black },
-	BufferLineSeparatorSelected = { fg = colors.black },
-	BufferLineSeparatorVisible = { fg = colors.statusline_bg },
-	BufferLineSeparatorInactive = { fg = colors.statusline_bg },
-
-	BufferLineIndicator = { fg = colors.grey, bg = colors.statusline_bg },
-	BufferLineIndicatorSelected = { fg = colors.cyan, bg = colors.black },
-	BufferLineIndicatorVisible = { fg = colors.grey, bg = colors.statusline_bg },
-	BufferLineIndicatorInactive = { fg = colors.grey, bg = colors.statusline_bg },
-
-	BufferLinePick = { fg = colors.grey, bg = colors.statusline_bg },
-	BufferLinePickVisible = { fg = colors.grey, bg = colors.statusline_bg },
-	BufferLinePickSelected = { fg = colors.grey, bg = colors.black },
-	BufferLinePickInactive = { fg = colors.grey, bg = colors.statusline_bg },
-
-	BufferLineClose = { fg = colors.grey, bg = colors.statusline_bg },
-	BufferLineCloseSelected = { fg = colors.red, bg = colors.black },
-	BufferLineCloseInactive = { fg = colors.grey, bg = colors.statusline_bg },
-	BufferLineCloseVisible = { fg = colors.grey, bg = colors.statusline_bg },
-
-	BufferLineDevIconLua = { fg = colors.blue, bg = colors.statusline_bg },
-	BufferLineDevIconLuaInactive = { fg = colors.blue, bg = colors.statusline_bg },
-	BufferLineDevIconLuaSelected = { fg = colors.blue, bg = colors.black },
-
-	BufferLineTruncMarker = { fg = colors.grey, bg = colors.statusline_bg },
-
-
 	-- Tabbufline
 	TeBufOnActive = { bg = colors.black, fg = colors.white, bold = true },
 	TeBufOnInactive = { fg = colors.grey, bg = colors.statusline_bg },
@@ -78,7 +27,6 @@ return {
 	TeSTTTerminalMode = { fg = colors.red, bg = colors.one_bg },
 	TeSTTNTerminalMode = { fg = colors.red, bg = colors.one_bg },
 	TeSTTConfirmMode = { fg = colors.yellow, bg = colors.one_bg },
-
 	TeSTTNormalModeIcon = { fg = colors.black, bg = colors.blue },
 	TeSTTVisualModeIcon = { fg = colors.black, bg = colors.purple },
 	TeSTTCommandModeIcon = { fg = colors.black, bg = colors.red },
@@ -90,6 +38,7 @@ return {
 	TeSTTFileIcon = { fg = colors.black, bg = colors.red },
 	TeSTTFileName = { fg = colors.red, bg = colors.one_bg, bold = true },
 	TeSTTFolder = { fg = colors.red, bg = colors.one_bg },
+	TeSTTModified = { fg = colors.green, bg = colors.one_bg },
 
 	Nothing = { fg = colors.statusline_bg, bg = colors.statusline_bg },
 	Nothing2 = { fg = colors.black, bg = colors.black },
