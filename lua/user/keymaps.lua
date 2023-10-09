@@ -54,7 +54,7 @@ keymap("i", "<C-l>", "<Right>", opts)
 keymap("n", "<TAB>", "<cmd>TeBufNext<CR>", opts)
 
 -- Clear search
-map("n", "<esc>", "<cmd>noh<CR><CR>", opts)
+keymap("n", "<C-Enter>", ":nohlsearch<CR>", opts)
 
 -- Rename
 map("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

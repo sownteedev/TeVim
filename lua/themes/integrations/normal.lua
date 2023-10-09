@@ -20,8 +20,8 @@ return {
 	FoldColumn = { fg = colors.light_grey, bg = colors.black },
 
 	Cursor = { fg = colors.base00, bg = colors.base05 },
-	lCursor = { fg = colors.white, bg = colors.cursor },
-	CursorIM = { fg = colors.white, bg = colors.cursor },
+	lCursor = { fg = colors.white, bg = colors.base05 },
+	CursorIM = { fg = colors.white, bg = colors.base05 },
 	CursorLine = { bg = colors.black2 },
 	CursorLineNr = { fg = colors.purple, bold = true },
 	LineNr = { fg = colors.grey, bg = colors.black },

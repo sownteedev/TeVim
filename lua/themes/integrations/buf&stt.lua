@@ -5,7 +5,7 @@ return {
 	TeBufOnActive = { bg = colors.black, fg = colors.white, bold = true },
 	TeBufOnInactive = { fg = colors.grey, bg = colors.statusline_bg },
 	TeBufOnModified = { fg = colors.green },
-	TeBufOffModified = { fg = colors.green },
+	TeBufOffModified = { fg = colors.grey, bg = colors.statusline_bg },
 	TeBufOnClose = { fg = colors.red, bg = colors.black },
 	TeBufOffClose = { fg = colors.grey, bg = colors.statusline_bg },
 	TeBufTree = { bg = colors.darker_black },

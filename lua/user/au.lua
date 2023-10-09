@@ -27,25 +27,6 @@ autocmd("TextYankPost", {
 	end,
 })
 
--- Smart Number
-autocmd("InsertEnter", {
-	command = "set norelativenumber",
-	pattern = "*"
-})
-autocmd("InsertLeave", {
-	command = "set relativenumber",
-	pattern = "*"
-})
-
-autocmd("WinLeave", {
-	pattern = "*",
-	command = "set nocursorline"
-})
-autocmd("WinEnter", {
-	pattern = "*",
-	command = "set cursorline"
-})
-
 -- Disable fold in Outline
 autocmd("FileType", {
 	pattern = "Outline",

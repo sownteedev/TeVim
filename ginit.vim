@@ -44,6 +44,7 @@ end
 if vim.g.neovide then
   vim.opt.guifont = "Liga SFMono Nerd Font:h9.5"
   vim.opt.linespace = 3
+  vim.g.neovide_refresh_rate = 165
   vim.g.neovide_cursor_animation_length = 0.2
   vim.g.neovide_cursor_trail_size = 0
   vim.g.neovide_cursor_antialiasing = false

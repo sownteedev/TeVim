@@ -39,8 +39,8 @@ require("edgy").setup {
 	},
 	animate = {
 		enabled = true,
-		fps = 60,
-		cps = 120,
+		fps = 165,
+		cps = 165,
 		on_begin = function()
 			vim.g.minianimate_disable = true
 		end,

@@ -7,8 +7,7 @@ vim.g.theme_cache = vim.fn.stdpath "data" .. "/colors_data/"
 local options = {
 	-- NUMBER
 	number = true,
-	relativenumber = true,
-	ruler = true,
+	relativenumber = false,
 	numberwidth = 5,
 	-- INDENT
 	expandtab = false,
@@ -81,8 +80,6 @@ local builtins = {
 	"netrwPlugin",
 	"netrwSettings",
 	"netrwFileHandlers",
-	"matchit",
-	"matchparen",
 	"tar",
 	"tarPlugin",
 	"rrhelper",
