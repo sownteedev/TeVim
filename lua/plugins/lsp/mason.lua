@@ -46,6 +46,7 @@ local install_server = {
 	"clangd",
 	"clang-format",
 	"vim-language-server",
+	"jdtls",
 }
 vim.api.nvim_create_user_command("MasonInstallAll", function()
 	vim.cmd("MasonInstall " .. table.concat(install_server, " "))

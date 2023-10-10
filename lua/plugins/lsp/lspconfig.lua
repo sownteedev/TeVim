@@ -8,9 +8,9 @@ if not cmp_nvim_lsp_status_ok then
 	return
 end
 
-local on_attach = function(client, bufnr)
+local on_attach = function(client)
 	if client.server_capabilities.inlayHintProvider then
-		vim.lsp.inlay_hint(bufnr, true)
+		vim.lsp.inlay_hint(0, true)
 	end
 end
 
@@ -53,6 +53,7 @@ local servers = {
 	"emmet_ls",
 	"jsonls",
 	"vimls",
+	"jdtls",
 }
 
 for _, lsp in ipairs(servers) do
