@@ -8,10 +8,16 @@ if not cmp_nvim_lsp_status_ok then
 	return
 end
 
-local on_attach = function(client)
+local on_attach = function(client, bufnr)
 	if client.server_capabilities.inlayHintProvider then
-		vim.lsp.inlay_hint(0, true)
+		vim.lsp.inlay_hint(bufnr, true)
 	end
+	require "lsp_signature".on_attach({
+		bind = true,
+		handler_opts = {
+			border = "rounded"
+		}
+	}, bufnr)
 end
 
 local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(),
@@ -76,6 +82,7 @@ lspconfig.lua_ls.setup({
 			diagnostics = {
 				globals = { "vim" },
 			},
+			hint = { enable = true },
 			workspace = {
 				library = {
 					[vim.fn.expand "$VIMRUNTIME/lua"] = true,

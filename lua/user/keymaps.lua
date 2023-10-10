@@ -72,7 +72,7 @@ keymap("n", [[<C-`>]], "<cmd>ToggleTerm size=10 direction=horizontal<cr>", opts)
 
 -- Telescope
 keymap("n", "<S-TAB>",
-	"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+	"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false, follow=true, no_ignore=true, hidden=true})<cr>",
 	opts)
 
 -- Toggle Inlay Hints
