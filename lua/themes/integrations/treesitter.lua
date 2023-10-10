@@ -62,10 +62,6 @@ return {
 
 	-- variable.global
 	["@definition"] = { sp = colors.base04, underline = true },
-	-- TSDefinitionUsage = {
-	--   sp = colors.base04,
-	--   underline = true,
-	-- },
 	["@scope"] = { bold = true },
 	["@field"] = { fg = colors.base08 },
 	["@field.key"] = { fg = colors.base08 },
@@ -73,7 +69,7 @@ return {
 	["@include"] = { link = "Include" },
 	["@conditional"] = { link = "Conditional" },
 
-	TreesitterContext = { bg = colors.darker_black, bold = true },
+	TreesitterContext = { bg = colors.black2, bold = true },
 	TreesitterContextBottom = { bold = true },
 	TreesitterContextLineNumber = { fg = colors.light_grey, bold = true },
 

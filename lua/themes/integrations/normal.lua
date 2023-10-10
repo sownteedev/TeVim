@@ -6,7 +6,7 @@ return {
 	NormalSB = { fg = colors.white, bg = colors.black },
 	NormalFloat = { bg = colors.darker_black },
 	FloatBorder = { fg = colors.darker_black, bg = colors.darker_black },
-	WinSeparator = { fg = colors.darker_black, bg = colors.darker_black },
+	WinSeparator = { fg = colors.darker_black, bg = colors.black },
 
 	MsgArea = { fg = colors.white, bg = colors.black },
 	ModeMsg = { fg = colors.white, bg = colors.black },
@@ -22,7 +22,7 @@ return {
 	Cursor = { fg = colors.base00, bg = colors.base05 },
 	lCursor = { fg = colors.white, bg = colors.base05 },
 	CursorIM = { fg = colors.white, bg = colors.base05 },
-	CursorLine = { bg = colors.black2 },
+	CursorLine = { bg = colors.one_bg },
 	CursorLineNr = { fg = colors.purple, bold = true },
 	LineNr = { fg = colors.grey, bg = colors.black },
 

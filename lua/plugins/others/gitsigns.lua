@@ -29,7 +29,7 @@ gitsigns.setup({
 		delay = 200,
 		ignore_whitespace = false,
 	},
-	current_line_blame_formatter = "   <author> 󰔠 <author_time:%h %d, %Y> 󰜘 <summary>",
+	current_line_blame_formatter = "     <author> (<author_time:%h %d, %Y>) • <summary>",
 	sign_priority = 6,
 	update_debounce = 100,
 	status_formatter = nil,
@@ -43,4 +43,3 @@ gitsigns.setup({
 	},
 	yadm = { enable = false },
 })
-

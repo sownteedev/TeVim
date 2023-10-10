@@ -90,19 +90,7 @@ return {
 		cmd = "ToggleTerm",
 		lazy = true,
 		version = "*",
-		config = function() require("toggleterm").setup({ shading_factor = 2 }) end
-	},
-	{
-		"andweeb/presence.nvim",
-		enabled = false,
-		event = "BufRead",
-		lazy = true,
-		config = function()
-			require("presence").setup {
-				neovim_image_text = "Coding by @SownteeNguyen",
-				main_image = "file", -- neovim
-			}
-		end
+		config = function() require("toggleterm").setup { shading_factor = 2 } end
 	},
 	{
 		"simrat39/symbols-outline.nvim",
@@ -142,7 +130,7 @@ return {
 		config = function()
 			local builtin = require("statuscol.builtin")
 			require("statuscol").setup({
-				ft_ignore = { "neo-tree", "NvimTree", "Outline" },
+				ft_ignore = { "neo-tree", "Outline" },
 				segments = {
 					{ text = { " ", builtin.foldfunc, "  " }, click = "v:lua.ScFa" },
 					{ sign = { name = { "Diagnostic" } },     click = "v:lua.ScFa" },
