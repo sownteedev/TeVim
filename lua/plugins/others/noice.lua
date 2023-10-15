@@ -17,7 +17,7 @@ if installed then
 		views = {
 			mini = {
 				position = {
-					row = "90%",
+					row = "10%",
 					col = "100%",
 				},
 			},

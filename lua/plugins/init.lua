@@ -225,6 +225,12 @@ return {
 		dependencies = { "mfussenegger/nvim-dap" },
 		config = function() require("dapui").setup() end
 	},
+	{
+		"xeluxee/competitest.nvim",
+		event = "BufRead",
+		dependencies = "MunifTanjim/nui.nvim",
+		config = function() require("plugins.others.competitest") end,
+	},
 
 	-----------------------------------------------------------------------------
 	defaults = { lazy = true },

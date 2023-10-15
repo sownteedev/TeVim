@@ -1,6 +1,6 @@
 local M = {}
 
-local devicons_present, devicons = pcall(require, "nvim-web-devicons")
+local devicons = require("nvim-web-devicons")
 
 -- Commands
 vim.cmd "function! TeBufGoToBuf(bufnr,b,c,d) \n execute 'b'..a:bufnr \n endfunction"
@@ -22,13 +22,12 @@ end, {})
 
 -------------------------------------------------------------------------
 local createTab = function(buf)
-	local filenames = (vim.fn.expand "%" == "" and "Empty ") or vim.fn.expand "%:t"
-	local ft = vim.bo[buf].ft
-	local ft_icon = devicons_present and devicons.get_icon(filenames, ft)
-	local icon = ft_icon and ft_icon .. " " or ""
-	local close_btn = "%" .. buf .. "@TeBufKillBuf@ 󰅙%X"
+	local icon = "  "
 	local filename = (#vim.api.nvim_buf_get_name(buf) ~= 0) and vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ":t") or
 		""
+	local ft_icon = devicons.get_icon(filename)
+	icon = (ft_icon ~= nil and " " .. ft_icon) or ""
+	local close_btn = "%" .. buf .. "@TeBufKillBuf@ 󰅙%X"
 	for _, buffer in pairs(vim.api.nvim_list_bufs()) do
 		if vim.api.nvim_buf_is_valid(buffer) and vim.api.nvim_buf_is_loaded(buffer) and vim.bo[buffer].buflisted and filename ~= "" then
 			if filename == vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buffer), ":t") and buffer ~= buf then
@@ -99,9 +98,6 @@ M.getTabline = function()
 		end
 		::do_nothing::
 	end
-	if counter > 1 then
-		buffstart = "%#TeBufEmptyColor#"
-	end
 	local treespace
 	if treeWidth() > 2 then
 		treespace = "%#TeBufTree#" ..
@@ -112,6 +108,9 @@ M.getTabline = function()
 	if counter < 2 or vim.o.columns < 120 then
 		return treespace .. buffstart .. "%=" ..
 			"%#TeBufRun#" .. run .. "%#TeBufSplit#" .. split .. "%#TeBufTheme#" .. theme .. "%#TeBufQuit#" .. quit
+	end
+	if counter > 1 then
+		buffstart = "%#TeBufEmptyColor#"
 	end
 	return treespace ..
 		buffstart ..

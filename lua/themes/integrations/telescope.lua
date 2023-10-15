@@ -8,7 +8,6 @@ return {
 	TelescopePromptBorder = { fg = colors.black2, bg = colors.black2 },
 	TelescopePromptNormal = { fg = colors.white, bg = colors.black2 },
 	TelescopePromptTitle = { fg = colors.black, bg = colors.red },
-	TelescopePromptPrefix = { fg = colors.red, bg = colors.black2 },
 
 	TelescopePreviewTitle = { fg = colors.black2, bg = colors.blue },
 	TelescopePreviewBorder = { bg = colors.darker_black, fg = colors.darker_black },
@@ -21,5 +20,4 @@ return {
 	TelescopeResultsDiffAdd = { fg = colors.green },
 	TelescopeResultsDiffChange = { fg = colors.blue },
 	TelescopeResultsDiffDelete = { fg = colors.red },
-
 }

@@ -69,7 +69,8 @@ return {
 	["@include"] = { link = "Include" },
 	["@conditional"] = { link = "Conditional" },
 
-	TreesitterContext = { bg = colors.black2, bold = true },
+	-- Set underlines for TreesitterContext
+	TreesitterContext = { bg = colors.base01, bold = true },
 	TreesitterContextBottom = { bold = true },
 	TreesitterContextLineNumber = { fg = colors.light_grey, bold = true },
 

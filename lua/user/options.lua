@@ -1,7 +1,7 @@
 vim.cmd("filetype plugin indent off")
 vim.cmd("syntax off")
 
-vim.g.currentTheme = "everblush"
+vim.g.currentTheme = "decaydark"
 vim.g.theme_cache = vim.fn.stdpath "data" .. "/colors_data/"
 
 local options = {
@@ -33,7 +33,7 @@ local options = {
 	undofile = true,
 	mouse = "a",
 	mousemoveevent = true,
-	cursorline = false,
+	cursorline = true,
 	title = true,
 	conceallevel = 0,
 	hlsearch = true,

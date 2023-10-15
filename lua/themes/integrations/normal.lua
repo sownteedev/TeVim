@@ -22,9 +22,9 @@ return {
 	Cursor = { fg = colors.base00, bg = colors.base05 },
 	lCursor = { fg = colors.white, bg = colors.base05 },
 	CursorIM = { fg = colors.white, bg = colors.base05 },
-	CursorLine = { bg = colors.one_bg },
+	CursorLine = { bg = colors.black2 },
 	CursorLineNr = { fg = colors.purple, bold = true },
-	LineNr = { fg = colors.grey, bg = colors.black },
+	LineNr = { fg = colors.light_grey, bg = colors.black },
 
 	CursorColumn = { bg = colors.black },
 	ColorColumn = { bg = colors.black },
@@ -84,5 +84,5 @@ return {
 	EdgyWinBar = { bg = colors.darker_black },
 	EdgyTitle = { bg = colors.darker_black, fg = colors.white },
 
-	CopilotSuggestion = { fg = colors.grey_fg, italic = true },
+	CopilotSuggestion = { fg = colors.light_grey, italic = true },
 }
