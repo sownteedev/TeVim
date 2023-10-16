@@ -27,6 +27,17 @@ return {
 		config = function() require("plugins.others.treesitter") end
 	},
 	{
+		"lukas-reineke/indent-blankline.nvim",
+		event = "BufRead",
+		version = "2.20.8",
+		config = function()
+			require("indent_blankline").setup({
+				char = "│", -- "▏"
+				show_first_indent_level = false,
+			})
+		end
+	},
+	{
 		"windwp/nvim-ts-autotag",
 		event = "InsertEnter"
 	},

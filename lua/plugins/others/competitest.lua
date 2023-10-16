@@ -1,4 +1,9 @@
-require("competitest").setup {
+local mason_status_ok, competitest = pcall(require, "competitest")
+if not mason_status_ok then
+	return
+end
+
+competitest.setup {
 	local_config_file_name = ".competitest.lua",
 	floating_border = "rounded",
 	floating_border_highlight = "FloatBorder",

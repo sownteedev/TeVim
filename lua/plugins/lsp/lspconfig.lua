@@ -39,7 +39,7 @@ vim.diagnostic.config({
 	}
 })
 
--- Change the Diagnostic symbols
+-- Diagnostic symbols
 local signs = { Error = " ", Warn = " ", Hint = "", Info = " ", Question = " " }
 
 for type, icon in pairs(signs) do
@@ -59,7 +59,6 @@ local servers = {
 	"emmet_ls",
 	"jsonls",
 	"vimls",
-	"jdtls",
 }
 
 for _, lsp in ipairs(servers) do
@@ -79,9 +78,7 @@ lspconfig.lua_ls.setup({
 	on_attach = on_attach,
 	settings = {
 		Lua = {
-			diagnostics = {
-				globals = { "vim" },
-			},
+			diagnostics = { globals = { "vim" } },
 			workspace = {
 				library = {
 					[vim.fn.expand "$VIMRUNTIME/lua"] = true,

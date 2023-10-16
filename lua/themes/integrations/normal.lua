@@ -85,4 +85,9 @@ return {
 	EdgyTitle = { bg = colors.darker_black, fg = colors.white },
 
 	CopilotSuggestion = { fg = colors.light_grey, italic = true },
+	IndentBlanklineChar = { fg = colors.one_bg },
+	IndentBlanklineSpaceChar = { fg = colors.one_bg },
+	IndentBlanklineSpaceCharBlankline = { fg = colors.one_bg },
+	IndentBlanklineContextChar = { fg = colors.one_bg },
+	IndentBlanklineContextCharBlankline = { fg = colors.one_bg },
 }

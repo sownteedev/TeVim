@@ -1,4 +1,9 @@
-require("edgy").setup {
+local status_ok, edgy = pcall(require, "edgy")
+if not status_ok then
+	return
+end
+
+edgy.setup {
 	bottom = {
 		{
 			ft = "Trouble",

@@ -43,7 +43,7 @@ null_ls.setup({
 				group = augroup,
 				buffer = bufnr,
 				callback = function()
-					vim.lsp.buf.format({ bufnr = bufnr, timeout = 500 })
+					vim.lsp.buf.format({ bufnr = bufnr, timeout = 100 })
 				end,
 			})
 		end

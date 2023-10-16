@@ -1,3 +1,8 @@
+local status_ok, tree = pcall(require, "neo-tree")
+if not status_ok then
+	return
+end
+
 vim.g.neo_tree_remove_legacy_commands = 1
 
 vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticError" })
@@ -5,7 +10,7 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticWar
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticHint" })
 
-require("neo-tree").setup({
+tree.setup({
 	close_if_last_window = true,
 	popup_border_style = "rounded",
 	enable_git_status = true,
