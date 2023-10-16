@@ -35,3 +35,13 @@ autocmd("FileType", {
 		vim.opt_local.stc = ""
 	end,
 })
+
+-- Terminal
+autocmd("TermOpen", {
+	pattern = "*",
+	callback = function()
+		vim.opt.number = false
+		vim.opt_local.cursorline = false
+		vim.cmd("startinsert")
+	end,
+})
