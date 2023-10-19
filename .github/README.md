@@ -18,8 +18,8 @@
 
 ```txt
 Performance for time startup
-On Power                              : 0.020s - 0.036s
-On Battery                            : 0.024s - 0.041s
+On Power                              : 0.020s - 0.024s
+On Battery                            : 0.021s - 0.026s
 ```
 
 </div>

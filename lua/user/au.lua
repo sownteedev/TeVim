@@ -1,5 +1,6 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
+local group = vim.api.nvim_create_augroup('Setup', {})
 
 -- Load Statusline, TabBufline and Themes
 autocmd({ "UIEnter" }, {
@@ -14,7 +15,7 @@ autocmd({ "UIEnter" }, {
 autocmd("CursorHold", {
 	pattern = "*",
 	callback = function()
-		vim.diagnostic.open_float()
+		vim.diagnostic.open_float({ scope = "cursor", focusable = false })
 	end
 })
 
@@ -45,3 +46,7 @@ autocmd("TermOpen", {
 		vim.cmd("startinsert")
 	end,
 })
+
+-- Hide cursorline in insert mode
+vim.api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, { command = 'set cursorline', group = group })
+vim.api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, { command = 'set nocursorline', group = group })

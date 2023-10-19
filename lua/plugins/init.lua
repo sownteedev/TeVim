@@ -32,7 +32,7 @@ return {
 		version = "2.20.8",
 		config = function()
 			require("indent_blankline").setup({
-				char = "│", -- "▏"
+				char = "▏", -- "▏" "│"
 				show_first_indent_level = false,
 			})
 		end
@@ -93,6 +93,7 @@ return {
 	},
 	{
 		"folke/noice.nvim",
+		event = "VeryLazy",
 		dependencies = "MunifTanjim/nui.nvim",
 		config = function() require("plugins.others.noice") end
 	},
@@ -241,49 +242,5 @@ return {
 		event = "BufRead",
 		dependencies = "MunifTanjim/nui.nvim",
 		config = function() require("plugins.others.competitest") end,
-	},
-
-	-----------------------------------------------------------------------------
-	defaults = { lazy = true },
-	ui = {
-		icons = {
-			ft = "",
-			lazy = "󰂠 ",
-			loaded = "",
-			not_loaded = "",
-		},
-	},
-	performance = {
-		rtp = {
-			disabled_plugins = {
-				"2html_plugin",
-				"tohtml",
-				"getscript",
-				"getscriptPlugin",
-				"gzip",
-				"logipat",
-				"netrw",
-				"netrwPlugin",
-				"netrwSettings",
-				"netrwFileHandlers",
-				"matchit",
-				"tar",
-				"tarPlugin",
-				"rrhelper",
-				"spellfile_plugin",
-				"vimball",
-				"vimballPlugin",
-				"zip",
-				"zipPlugin",
-				"tutor",
-				"rplugin",
-				"syntax",
-				"synmenu",
-				"optwin",
-				"compiler",
-				"bugreport",
-				"ftplugin",
-			},
-		},
 	},
 }
