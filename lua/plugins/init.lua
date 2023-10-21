@@ -4,20 +4,30 @@ return {
 		lazy = true,
 	},
 	{
-		"nvim-neo-tree/neo-tree.nvim",
-		cmd = "Neotree",
-		branch = "v3.x",
-		config = function() require("plugins.others.neotree") end
-	},
-	{
 		"kyazdani42/nvim-web-devicons",
 		lazy = true,
 		config = function() require("plugins.others.devicons") end,
 	},
 	{
-		"folke/edgy.nvim",
-		event = "VeryLazy",
-		config = function() require("plugins.others.edgy") end
+		"nvim-neo-tree/neo-tree.nvim",
+		cmd = "Neotree",
+		dependencies = {
+			{
+				"folke/edgy.nvim",
+				dependencies = {
+					{
+						"simrat39/symbols-outline.nvim",
+						cmd = "SymbolsOutline",
+						lazy = true,
+						config = function() require("symbols-outline").setup() end
+					},
+				},
+				config = function() require("plugins.others.edgy") end
+			},
+
+		},
+		branch = "v3.x",
+		config = function() require("plugins.others.neotree") end
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -55,7 +65,7 @@ return {
 	{
 		"numToStr/Comment.nvim",
 		event = { "BufReadPost", "BufNewFile" },
-		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring", "folke/todo-comments.nvim" },
 		config = function()
 			require("Comment").setup({
 				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
@@ -94,7 +104,7 @@ return {
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		dependencies = "MunifTanjim/nui.nvim",
+		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
 		config = function() require("plugins.others.noice") end
 	},
 	{
@@ -103,12 +113,6 @@ return {
 		lazy = true,
 		version = "*",
 		config = function() require("toggleterm").setup { shading_factor = 2 } end
-	},
-	{
-		"simrat39/symbols-outline.nvim",
-		cmd = "SymbolsOutline",
-		lazy = true,
-		config = function() require("symbols-outline").setup() end
 	},
 	{
 		"RRethy/vim-illuminate",
@@ -133,33 +137,29 @@ return {
 		end
 	},
 	{
-		"folke/todo-comments.nvim",
-		event = { "BufReadPost", "InsertEnter" },
-	},
-	{
-		"luukvbaal/statuscol.nvim",
-		event = "BufRead",
-		config = function()
-			local builtin = require("statuscol.builtin")
-			require("statuscol").setup({
-				ft_ignore = { "neo-tree", "Outline" },
-				segments = {
-					{ text = { " ", builtin.foldfunc, "  " }, click = "v:lua.ScFa" },
-					{ sign = { name = { "Diagnostic" } },     click = "v:lua.ScFa" },
-					{ text = { builtin.lnumfunc, " " },       click = "v:lua.ScLa" },
-					{ sign = { name = { "GitSigns" } },       click = "v:lua.ScSa" },
-				},
-			})
-		end
-	},
-	{
 		"kevinhwang91/nvim-ufo",
-		event = "BufReadPost",
+		event = "BufRead",
 		lazy = true,
-		dependencies = "kevinhwang91/promise-async",
+		dependencies = {
+			"kevinhwang91/promise-async",
+			{
+				"luukvbaal/statuscol.nvim",
+				config = function()
+					local builtin = require("statuscol.builtin")
+					require("statuscol").setup({
+						ft_ignore = { "neo-tree", "Outline" },
+						segments = {
+							{ text = { " ", builtin.foldfunc, "  " }, click = "v:lua.ScFa" },
+							{ sign = { name = { "Diagnostic" } },     click = "v:lua.ScFa" },
+							{ text = { builtin.lnumfunc, " " },       click = "v:lua.ScLa" },
+							{ sign = { name = { "GitSigns" } },       click = "v:lua.ScSa" },
+						},
+					})
+				end
+			},
+		},
 		config = function()
 			require("ufo").setup({
-				ignore_filetypes = { "Outline", "neo-tree", "Trouble" },
 				provider_selector = function()
 					return { 'treesitter', 'indent' }
 				end,
@@ -187,11 +187,7 @@ return {
 				"jcdickinson/codeium.nvim",
 				config = function() require("codeium").setup() end
 			},
-			{
-				"onsails/lspkind.nvim",
-				event = "InsertEnter",
-				lazy = true,
-			},
+			"onsails/lspkind.nvim",
 		},
 		config = function() require("plugins.cmp.cmp") end
 	},

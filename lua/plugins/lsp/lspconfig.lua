@@ -23,7 +23,7 @@ end
 local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(),
 	cmp_nvim_lsp.default_capabilities())
 
-capabilities.offsetEncoding = { "utf-16" }
+capabilities.offsetEncoding = { "utf-16", "utf-8" }
 
 vim.diagnostic.config({
 	virtual_text = false,
@@ -41,7 +41,6 @@ vim.diagnostic.config({
 
 -- Diagnostic symbols
 local signs = { Error = " ", Warn = " ", Hint = "", Info = " ", Question = " " }
-
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })

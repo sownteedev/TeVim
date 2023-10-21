@@ -59,9 +59,6 @@ keymap("n", "<Enter>", "<cmd>nohlsearch<CR>", opts)
 -- Rename
 map("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- Reload all
-map("n", "<leader>rl", [[:so %<CR>]], opts)
-
 ----------------------------------------------- PLUGINS -------------------------------------------
 
 -- Explorer

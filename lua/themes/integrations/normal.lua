@@ -24,7 +24,7 @@ return {
 	CursorIM = { fg = colors.white, bg = colors.base05 },
 	CursorLine = { bg = colors.black2 },
 	CursorLineNr = { fg = colors.purple, bold = true },
-	LineNr = { fg = colors.light_grey, bg = colors.black },
+	LineNr = { fg = colors.grey_fg2, bg = colors.black },
 
 	CursorColumn = { bg = colors.black },
 	ColorColumn = { bg = colors.black },
@@ -86,8 +86,4 @@ return {
 
 	CopilotSuggestion = { fg = colors.light_grey, italic = true },
 	IndentBlanklineChar = { fg = colors.one_bg },
-	IndentBlanklineSpaceChar = { fg = colors.one_bg },
-	IndentBlanklineSpaceCharBlankline = { fg = colors.one_bg },
-	IndentBlanklineContextChar = { fg = colors.one_bg },
-	IndentBlanklineContextCharBlankline = { fg = colors.one_bg },
 }

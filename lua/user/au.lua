@@ -2,42 +2,41 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local group = vim.api.nvim_create_augroup('Setup', {})
 
--- Load Statusline, TabBufline and Themes
 autocmd({ "UIEnter" }, {
 	callback = function()
 		require("themes").load()
 		require("ui.statusline").setup()
 		require("ui.tabbufline").setup()
-	end
+	end,
+	desc = "Load Statusline, TabBufline and Themes"
 })
 
--- Open Float Window for LSP Diagnostics
 autocmd("CursorHold", {
 	pattern = "*",
 	callback = function()
 		vim.diagnostic.open_float({ scope = "cursor", focusable = false })
-	end
+	end,
+	desc = "Open Float Window for LSP Diagnostics"
 })
 
--- Highlight yanked text
 autocmd("TextYankPost", {
 	group = augroup("yank_highlight", {}),
 	pattern = "*",
 	callback = function()
 		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 300 })
 	end,
+	desc = "Highlight yanked text"
 })
 
--- Disable fold in Outline
 autocmd("FileType", {
 	pattern = "Outline",
 	callback = function()
 		vim.opt_local.foldcolumn = "0"
 		vim.opt_local.stc = ""
 	end,
+	desc = "Disable fold in Outline"
 })
 
--- Terminal
 autocmd("TermOpen", {
 	pattern = "*",
 	callback = function()
@@ -45,8 +44,8 @@ autocmd("TermOpen", {
 		vim.opt_local.cursorline = false
 		vim.cmd("startinsert")
 	end,
+	desc = "Disable number and cursorline in terminal"
 })
 
--- Hide cursorline in insert mode
-vim.api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, { command = 'set cursorline', group = group })
-vim.api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, { command = 'set nocursorline', group = group })
+autocmd({ 'InsertLeave', 'WinEnter' }, { command = 'set cursorline', group = group, desc = "CursorLine" })
+autocmd({ 'InsertEnter', 'WinLeave' }, { command = 'set nocursorline', group = group, desc = "CursorLine" })

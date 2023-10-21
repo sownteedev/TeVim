@@ -80,7 +80,6 @@ M.setup = function()
 	picker:find()
 end
 
--- Click to toggle
 M.toggleTheme = function()
 	local theme = themes[math.random(#themes)]
 	M.settheme(theme)

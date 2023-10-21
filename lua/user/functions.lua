@@ -1,6 +1,5 @@
 local M = {}
 
--- Toggle Option
 function M.toggle_option(option)
 	local value = not vim.api.nvim_get_option_value(option, {})
 	vim.opt[option] = value
@@ -18,7 +17,6 @@ function M.toggle_tabline()
 	vim.notify("showtabline" .. " set to " .. tostring(value))
 end
 
--- Build & Run
 function M.build_run()
 	local filetype = vim.bo.filetype
 	if filetype == "c" then
@@ -54,7 +52,6 @@ function M.build_run()
 	end
 end
 
--- LazyGit
 local lazygit = require("toggleterm.terminal").Terminal:new({
 	cmd = "lazygit",
 	dir = "git_dir",

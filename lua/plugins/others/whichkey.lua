@@ -24,9 +24,9 @@ local setup = {
 		winblend = 0,
 	},
 	layout = {
-		height = { min = 2, max = 20 },
+		height = { min = 3, max = 20 },
 		width = { min = 20, max = 50 },
-		spacing = 5,
+		spacing = 20,
 		align = "center",
 	},
 	ignore_missing = true,
@@ -42,6 +42,7 @@ local setup = {
 local mappings = {
 	["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
 	["q"] = { "<cmd>qa!<CR>", "Quit" },
+	["s"] = { "<cmd>so %<CR>", "Reload" },
 	p = {
 		name = "󰏖  LAZY",
 		C = { "<cmd>Lazy clean<cr>", "Clean" },
