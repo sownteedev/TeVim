@@ -18,7 +18,7 @@ local M = function()
 		return "%#TeSTTFileIcon#" ..
 			icon .. " " .. "%#TeSTTFolder#" .. directory .. "/" .. "%#TeSTTFileName#" .. filename .. " "
 	else
-		return "%#TeSTTFileIcon#" .. icon .. "%#TeSTTFileName# TeVim "
+		return "%#TeSTTFileIcon#" .. icon .. "%#TeSTTFileName# TEVIM 󰢚 "
 	end
 end
 return M

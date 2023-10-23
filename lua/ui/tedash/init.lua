@@ -9,8 +9,7 @@ local logo = {
 	"  ▒██▒ ░ ░▒████▒  ▒▀█░  ░██░▒██▒   ░██▒",
 	"  ▒ ░░   ░░ ▒░ ░  ░ ▐░  ░▓  ░ ▒░   ░  ░",
 	"    ░     ░ ░  ░  ░ ░░   ▒ ░░  ░      ░",
-	"  ░         ░       ░░   ▒ ░░      ░   ",
-	"            ░  ░     ░   ░         ░   ",
+	"  ░         ░        ░   ▒ ░       ░   ",
 }
 
 local logo2 = {
@@ -21,18 +20,17 @@ local logo2 = {
 	"  ▒██▒ ░    ░▒████▒      ▒▀█░     ░██░   ▒██▒   ░██▒",
 	"  ▒ ░░      ░░ ▒░ ░      ░ ▐░     ░▓     ░ ▒░   ░  ░",
 	"    ░        ░ ░  ░      ░ ░░      ▒ ░   ░  ░      ░",
-	"  ░            ░           ░░      ▒ ░   ░      ░   ",
-	"               ░  ░         ░      ░            ░   ",
+	"  ░            ░            ░      ▒ ░   ░      ░   ",
 }
 
 local buttonss = {
-	{ "  Find File", "Spc f f", "Telescope find_files" },
-	{ "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
-	{ "  Project", "Spc f p", "Telescope projects" },
-	{ "󰈚  TODO", "Spc f t", "TodoTelescope" },
-	{ "  TeVim Themes", "Spc f c", "TeVimThemes" },
-	{ "󰒲  Lazy", "Spc p S", "Lazy show" },
-	{ "  Quit", "Spc q", "q" },
+	{ "                Find File", "", "Telescope find_files" },
+	{ "         󰈭       Find Word", "", "Telescope live_grep" },
+	{ "                Project", "", "Telescope projects" },
+	{ "         󰈚       TODO List", "", "TodoTelescope" },
+	{ "                TeVim Themes", "", "TeVimThemes" },
+	{ "         󰒲       Lazy", "", "Lazy show" },
+	{ "                Quit", "", "q" },
 }
 
 local api = vim.api
