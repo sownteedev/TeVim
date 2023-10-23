@@ -57,7 +57,6 @@ if vim.g.neovide then
 	vim.g.neovide_padding_bottom = 30
 	vim.g.neovide_padding_right = 30
 	vim.g.neovide_padding_left = 30
-	vim.g.neovide_refresh_rate = 60
 	vim.g.neovide_confirm_quit = false
 
 	local function toggle_transparency()

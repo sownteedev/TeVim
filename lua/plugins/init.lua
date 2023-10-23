@@ -65,12 +65,17 @@ return {
 	{
 		"numToStr/Comment.nvim",
 		event = { "BufReadPost", "BufNewFile" },
-		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring", "folke/todo-comments.nvim" },
+		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
 		config = function()
 			require("Comment").setup({
 				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
 			})
 		end
+	},
+	{
+		"folke/todo-comments.nvim",
+		event = "VeryLazy",
+		config = function() require("todo-comments").setup() end
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -79,6 +84,11 @@ return {
 		tag = '0.1.3',
 		dependencies = { "nvim-telescope/telescope-media-files.nvim" },
 		config = function() require("plugins.others.telescope") end
+	},
+	{
+		"ahmedkhalf/project.nvim",
+		event = "VeryLazy",
+		config = function() require("project_nvim").setup() end
 	},
 	{
 		"iamcco/markdown-preview.nvim",
@@ -94,7 +104,7 @@ return {
 	},
 	{
 		"NvChad/nvim-colorizer.lua",
-		event = 'BufRead',
+		event = "BufRead",
 		config = function() require("plugins.others.colorize") end
 	},
 	{
@@ -199,7 +209,6 @@ return {
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPost", "BufNewFile" },
 		lazy = true,
-		cmd = { "LspInfo", "LspInstall", "LspUninstall", "LspStart" },
 		dependencies = {
 			{
 				"nvimdev/lspsaga.nvim",

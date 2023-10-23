@@ -75,4 +75,12 @@ M.load            = function()
 	end
 end
 
+vim.api.nvim_create_user_command("TeVimThemes", function()
+	vim.cmd("lua require('themes.switch').setup()")
+end, {})
+
+vim.api.nvim_create_user_command("TeVimThemesToggle", function()
+	vim.cmd("lua require('themes.switch').toggleTheme()")
+end, {})
+
 return M

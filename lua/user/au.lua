@@ -5,10 +5,11 @@ local group = vim.api.nvim_create_augroup('Setup', {})
 autocmd({ "UIEnter" }, {
 	callback = function()
 		require("themes").load()
-		require("ui.statusline").setup()
-		require("ui.tabbufline").setup()
+		require("ui.testtline").setup()
+		require("ui.tebufline").setup()
+		require("ui.tedash").setup()
 	end,
-	desc = "Load Statusline, TabBufline and Themes"
+	desc = "Load Statusline, TabBufline, Dashboard and Themes"
 })
 
 autocmd("CursorHold", {

@@ -26,7 +26,7 @@ local setup = {
 	layout = {
 		height = { min = 3, max = 20 },
 		width = { min = 20, max = 50 },
-		spacing = 20,
+		spacing = 15,
 		align = "center",
 	},
 	ignore_missing = true,

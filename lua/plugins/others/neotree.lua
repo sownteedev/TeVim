@@ -68,7 +68,7 @@ tree.setup({
 			visible = false,
 			hide_dotfiles = false,
 			hide_gitignored = false,
-			never_show = { ".git" },
+			never_show = {},
 		},
 		follow_current_file = { enabled = true },
 		group_empty_dirs = true,

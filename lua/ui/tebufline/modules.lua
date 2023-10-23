@@ -19,7 +19,7 @@ M.bufilter = function()
 	return bufs
 end
 
-M.tabuflinePrev = function()
+M.tebuflinePrev = function()
 	local bufs = M.bufilter()
 	for i, v in ipairs(bufs) do
 		if vim.api.nvim_get_current_buf() == v then
@@ -28,7 +28,7 @@ M.tabuflinePrev = function()
 		end
 	end
 end
-M.tabuflineNext = function()
+M.tebuflineNext = function()
 	local bufs = M.bufilter()
 
 	for i, v in ipairs(bufs) do
@@ -45,7 +45,7 @@ M.close_buffer = function(bufnr)
 	else
 		bufnr = bufnr or vim.api.nvim_get_current_buf()
 		if bufnr == vim.api.nvim_get_current_buf() then
-			require("ui.tabbufline.modules").tabuflinePrev()
+			require("ui.tebufline.modules").tabuflinePrev()
 		end
 		vim.cmd("confirm bd" .. bufnr)
 	end

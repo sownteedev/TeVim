@@ -1,7 +1,7 @@
 local colors = require("themes").getCurrentTheme()
 
 return {
-	-- Tabbufline
+	-- Tebufline
 	TeBufOnActive = { bg = colors.black, fg = colors.white, bold = true },
 	TeBufOnInactive = { fg = colors.grey_fg2, bg = colors.statusline_bg },
 	TeBufOnModified = { fg = colors.green },
@@ -18,7 +18,7 @@ return {
 	TeBufTheme = { bg = colors.one_bg2, fg = colors.green },
 	TeBufQuit = { bg = colors.red, fg = colors.black },
 
-	-- Statusline
+	-- TeSttLine
 	StatusLine = { fg = colors.statusline_bg, bg = colors.statusline_bg },
 	TeSTTNormalMode = { fg = colors.blue, bg = colors.one_bg },
 	TeSTTVisualMode = { fg = colors.purple, bg = colors.one_bg },
@@ -71,4 +71,8 @@ return {
 
 	TeSTTLocationIcon = { fg = colors.black, bg = colors.yellow },
 	TeSTTLocation = { fg = colors.yellow, bg = colors.one_bg },
+
+	-- TeDash
+	TeDashAscii = { fg = colors.black, bg = colors.blue },
+	TeDashButtons = { fg = colors.white, bg = colors.black2 },
 }
