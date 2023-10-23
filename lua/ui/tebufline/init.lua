@@ -7,7 +7,7 @@ vim.cmd "function! TeBufGoToBuf(bufnr,b,c,d) \n execute 'b'..a:bufnr \n endfunct
 vim.cmd "function! ToggleTheme(a,b,c,d) \n TeVimThemesToggle \n endfunction"
 vim.cmd "function! Split(a,b,c,d) \n vsplit \n endfunction"
 vim.cmd "function! Run(a,b,c,d) \n lua require('user.functions').build_run() \n endfunction"
-vim.cmd "function! CloseAll(a,b,c,d) \n qa! \n endfunction"
+vim.cmd "function! Quit(a,b,c,d) \n qa! \n endfunction"
 vim.cmd [[
    function! TeBufKillBuf(bufnr,b,c,d)
         call luaeval('require("ui.tebufline.modules").close_buffer(_A)', a:bufnr)
