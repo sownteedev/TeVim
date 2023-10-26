@@ -75,4 +75,5 @@ return {
 	-- TeDash
 	TeDashAscii = { fg = colors.black, bg = colors.blue },
 	TeDashButtons = { fg = colors.white, bg = colors.black2 },
+	TeDashBindKeys = { fg = colors.white, bg = colors.blue },
 }

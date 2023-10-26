@@ -12,25 +12,14 @@ local logo = {
 	"  ░         ░        ░   ▒ ░       ░   ",
 }
 
-local logo2 = {
-	"▄███████▓   ▓█████▓    ██▒   █▓    ██▓    ███▄ ▄███▓",
-	"▓  ██▒ ▓▒   ▓█   ▀    ▓██░   █▒   ▓██▒   ▓██▒▀█▀ ██▒",
-	"▒ ▓██░ ▒░   ▒███       ▓██  █▒░   ▒██▒   ▓██    ▓██░",
-	"░ ▓██▓ ░    ▒▓█  ▄      ▒██ █░░   ░██░   ▒██    ▒██ ",
-	"  ▒██▒ ░    ░▒████▒      ▒▀█░     ░██░   ▒██▒   ░██▒",
-	"  ▒ ░░      ░░ ▒░ ░      ░ ▐░     ░▓     ░ ▒░   ░  ░",
-	"    ░        ░ ░  ░      ░ ░░      ▒ ░   ░  ░      ░",
-	"  ░            ░            ░      ▒ ░   ░      ░   ",
-}
-
 local buttonss = {
-	{ "                Find File", "", "Telescope find_files" },
-	{ "         󰈭       Find Word", "", "Telescope live_grep" },
-	{ "                Project", "", "Telescope projects" },
-	{ "         󰈚       TODO List", "", "TodoTelescope" },
-	{ "                TeVim Themes", "", "TeVimThemes" },
-	{ "         󰒲       Lazy", "", "Lazy show" },
-	{ "                Quit", "", "q" },
+	{ "  Find File", "󱁐 f f", "Telescope find_files" },
+	{ "󰈭  Find Word", "󱁐 f w", "Telescope live_grep" },
+	{ "  Project", "󱁐 f p", "Telescope projects" },
+	{ "󰈚  TODO List", "󱁐 f t", "TodoTelescope" },
+	{ "  TeVim Themes", "󱁐 f c", "TeVimThemes" },
+	{ "󰒲  Lazy", "󱁐 p S", "Lazy show" },
+	{ "  Quit", "󱁐 q", "q" },
 }
 
 local api = vim.api
@@ -186,7 +175,13 @@ M.setup = function()
 	vim.opt_local.relativenumber = false
 	vim.opt_local.wrap = false
 	vim.opt_local.cul = false
+	vim.opt_local.foldcolumn = "0"
+	vim.opt_local.stc = ""
 	vim.opt_local.colorcolumn = "0"
 end
+
+vim.api.nvim_create_user_command("TeDash", function()
+	M.setup()
+end, {})
 
 return M
