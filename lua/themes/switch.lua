@@ -16,10 +16,6 @@ end
 M.settheme = function(theme)
 	vim.g.currentTheme = theme
 	vim.cmd("colorscheme " .. theme)
-end
-
-M.writeconfig = function()
-	local theme    = vim.g.currentTheme
 	local file     = vim.fn.stdpath "config" .. "/lua/user/options.lua"
 	local lines    = vim.fn.readfile(file)
 	local newlines = {}
@@ -45,7 +41,6 @@ local picker_opts = {
 	attach_mappings = function(bufnr, map)
 		map('i', '<CR>', function()
 			M.settheme(action_state.get_selected_entry()[1])
-			M.writeconfig()
 			actions.close(bufnr)
 		end)
 
@@ -83,7 +78,6 @@ end
 M.toggleTheme = function()
 	local theme = themes[math.random(#themes)]
 	M.settheme(theme)
-	M.writeconfig()
 end
 
 return M
