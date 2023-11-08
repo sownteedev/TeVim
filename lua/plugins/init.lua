@@ -40,6 +40,19 @@ return {
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufRead",
 		version = "2.20.8",
+		dependencies = {
+			{
+				"shellRaining/hlchunk.nvim",
+				config = function()
+					require("hlchunk").setup({
+						chunk = { notify = false },
+						indent = { enable = false },
+						line_num = { enable = false },
+						blank = { enable = false }
+					})
+				end
+			},
+		},
 		config = function()
 			require("indent_blankline").setup({
 				char = "▏", -- "▏" "│"
