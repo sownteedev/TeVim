@@ -1,6 +1,6 @@
 local M = {}
 
-M.bufilter = function()
+M.tebufilter = function()
 	local bufs = vim.api.nvim_list_bufs() or nil
 
 	if not bufs then
@@ -20,7 +20,7 @@ M.bufilter = function()
 end
 
 M.tebuflinePrev = function()
-	local bufs = M.bufilter()
+	local bufs = M.tebufilter()
 	for i, v in ipairs(bufs) do
 		if vim.api.nvim_get_current_buf() == v then
 			vim.cmd(i == 1 and "b" .. bufs[#bufs] or "b" .. bufs[i - 1])
@@ -29,7 +29,7 @@ M.tebuflinePrev = function()
 	end
 end
 M.tebuflineNext = function()
-	local bufs = M.bufilter()
+	local bufs = M.tebufilter()
 
 	for i, v in ipairs(bufs) do
 		if vim.api.nvim_get_current_buf() == v then
