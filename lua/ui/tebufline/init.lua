@@ -43,7 +43,7 @@ local createTab = function(buf)
 			vim.api.nvim_get_current_buf() == buf and new_hl(icon_hl, "TeBufOnActive") .. " " .. icon
 			or new_hl(icon_hl, "TeBufOnInactive") .. " " .. icon
 		)
-		local close_btn = "%" .. buf .. "@TeBufKillBuf@ 󰅙%X"
+		local close_btn = "%" .. buf .. "@TeBufKillBuf@󰅖%X"
 		for _, buffer in pairs(vim.api.nvim_list_bufs()) do
 			if vim.api.nvim_buf_is_valid(buffer) and vim.api.nvim_buf_is_loaded(buffer) and vim.bo[buffer].buflisted and filename ~= "" then
 				if filename == vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buffer), ":t") and buffer ~= buf then
@@ -103,7 +103,7 @@ M.getTabline = function()
 	end
 	local theme = "%@ToggleTheme@" .. "   "
 	local split = "%@Split@" .. "  "
-	local quit = "%@Quit@" .. "  "
+	local quit = "%@Quit@" .. " 󰅜 "
 	local counter = 0
 	for _, buf in pairs(vim.api.nvim_list_bufs()) do
 		local filename = vim.api.nvim_buf_get_name(buf):match("^.+/(.+)$") or ""

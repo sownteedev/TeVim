@@ -78,7 +78,12 @@ return {
 	{
 		"numToStr/Comment.nvim",
 		event = { "BufReadPost", "BufNewFile" },
-		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+		dependencies = {
+			{
+				"JoosepAlviste/nvim-ts-context-commentstring",
+				config = function() require('ts_context_commentstring').setup() end
+			}
+		},
 		config = function()
 			require("Comment").setup({
 				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
@@ -172,10 +177,10 @@ return {
 					require("statuscol").setup({
 						ft_ignore = { "neo-tree", "Outline" },
 						segments = {
-							{ text = { " ", builtin.foldfunc, "  " }, click = "v:lua.ScFa" },
-							{ sign = { name = { "Diagnostic" } },     click = "v:lua.ScFa" },
-							{ text = { builtin.lnumfunc, " " },       click = "v:lua.ScLa" },
-							{ sign = { name = { "GitSigns" } },       click = "v:lua.ScSa" },
+							{ sign = { name = { "Diagnostic" } }, click = "v:lua.ScFa" },
+							{ sign = { name = { "GitSigns" } },   click = "v:lua.ScSa" },
+							{ text = { builtin.lnumfunc, " " },   click = "v:lua.ScLa" },
+							{ text = { builtin.foldfunc, "  " },  click = "v:lua.ScFa" },
 						},
 					})
 				end

@@ -1,7 +1,7 @@
--- SETUP BY Nguyen Thanh Son - SownteeNguyen --
--- Github : @sownteedev --
+-- Author : Nguyen Thanh Son - SownteeNguyen
+-- Github : @sownteedev
 
--- WELCOME TO TEVIM --
+------------------------------- WELCOME TO TEVIM -------------------------------
 
 vim.loader.enable()
 require "user.options"

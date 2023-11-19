@@ -15,7 +15,6 @@ treesitter.setup({
 		use_virtual_text = true,
 		lint_events = { "BufWrite", "CursorHold" },
 	},
-	context_commentstring = { enable = true },
 	rainbow = { enable = true },
 	indent = { enable = true },
 	autotag = { enable = true },

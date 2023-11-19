@@ -40,7 +40,7 @@ vim.diagnostic.config({
 })
 
 -- Diagnostic symbols
-local signs = { Error = " ", Warn = " ", Hint = "", Info = " ", Question = " " }
+local signs = { Error = " ", Warn = " ", Hint = "󰛨 ", Info = " ", Question = " " }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
