@@ -44,18 +44,18 @@ return {
 			{
 				"shellRaining/hlchunk.nvim",
 				config = function()
-					require("hlchunk").setup({
+					require("hlchunk").setup {
 						chunk = { notify = false },
 						indent = { enable = false },
 						line_num = { enable = false },
 						blank = { enable = false }
-					})
+					}
 				end
 			},
 		},
 		config = function()
 			require("indent_blankline").setup({
-				char = "▏", -- "▏" "│"
+				char = "▏",
 				show_first_indent_level = false,
 			})
 		end
@@ -112,6 +112,17 @@ return {
 		"iamcco/markdown-preview.nvim",
 		ft = "markdown",
 		build = function() vim.fn["mkdp#util#install"]() end
+	},
+	{
+		"andweeb/presence.nvim",
+		event = "BufRead",
+		config = function()
+			require("presence").setup {
+				editing_text   = "Coding",
+				reading_text   = "Reading",
+				workspace_text = "Working on repository",
+			}
+		end
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -179,7 +190,7 @@ return {
 						segments = {
 							{ sign = { name = { "Diagnostic" } }, click = "v:lua.ScFa" },
 							{ sign = { name = { "GitSigns" } },   click = "v:lua.ScSa" },
-							{ text = { builtin.lnumfunc, " " },   click = "v:lua.ScLa" },
+							{ text = { builtin.lnumfunc, "  " },  click = "v:lua.ScLa" },
 							{ text = { builtin.foldfunc, "  " },  click = "v:lua.ScFa" },
 						},
 					})

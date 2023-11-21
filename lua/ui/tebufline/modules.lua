@@ -51,4 +51,14 @@ M.close_buffer = function(bufnr)
 	end
 end
 
+M.close_other_buffers = function()
+	local bufs = M.tebufilter()
+	local current_buf = vim.api.nvim_get_current_buf()
+	for _, v in ipairs(bufs) do
+		if v ~= current_buf then
+			vim.cmd("confirm bd" .. v)
+		end
+	end
+end
+
 return M

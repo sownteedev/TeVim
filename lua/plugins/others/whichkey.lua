@@ -65,6 +65,7 @@ local mappings = {
 		h = { "<C-w>s", "Horizontal Split" },
 		e = { "<C-w>=", "Make Splits Equal" },
 		q = { "<cmd>close<CR>", "Close Split" },
+		c = { "<cmd>TeBufCloseOtherBuf<CR>", "Close Other Buffers" },
 	},
 	d = {
 		name = "  DEBUG",
@@ -95,7 +96,7 @@ local mappings = {
 	},
 	g = {
 		name = "󰊢  GIT",
-		g = { '<cmd>lua require("user.functions").LazyGit()<cr>', "Lazygit" },
+		l = { '<cmd>lua require("user.functions").LazyGit()<cr>', "Lazygit" },
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
 		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
 		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },

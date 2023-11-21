@@ -19,6 +19,9 @@ end, {})
 vim.api.nvim_create_user_command("TeBufNext", function()
 	require("ui.tebufline.modules").tebuflineNext()
 end, {})
+vim.api.nvim_create_user_command("TeBufCloseOtherBuf", function()
+	require("ui.tebufline.modules").close_other_buffers()
+end, {})
 
 -------------------------------------------------------------------------
 
