@@ -1,13 +1,13 @@
-local M = function()
-	local treeWidth = function()
-		for _, win in pairs(vim.api.nvim_tabpage_list_wins(0)) do
-			if vim.bo[vim.api.nvim_win_get_buf(win)].ft == "neo-tree" then
-				return vim.api.nvim_win_get_width(win)
-			end
+local treeWidth = function()
+	for _, win in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+		if vim.bo[vim.api.nvim_win_get_buf(win)].ft == "neo-tree" then
+			return vim.api.nvim_win_get_width(win)
 		end
-		return 0
 	end
+	return 0
+end
 
+local M = function()
 	local treespace
 	if treeWidth() > 2 then
 		treespace = "%#TeBufTree#" ..
