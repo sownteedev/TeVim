@@ -9,14 +9,9 @@ if not cmp_nvim_lsp_status_ok then
 end
 
 local on_attach = function(client, bufnr)
-	if client.server_capabilities.inlayHintProvider then
-		vim.lsp.inlay_hint(bufnr, true)
-	end
 	require "lsp_signature".on_attach({
 		bind = true,
-		handler_opts = {
-			border = "rounded"
-		}
+		handler_opts = { border = "rounded" }
 	}, bufnr)
 end
 

@@ -104,7 +104,7 @@ M.getTabline = function()
 	if vim.bo.filetype == "html" then
 		run = "%@Run@" .. " 󰀂 "
 	end
-	local theme = "%@ToggleTheme@" .. "   "
+	local theme = "%@ToggleTheme@" .. "   "
 	local split = "%@Split@" .. "  "
 	local quit = "%@Quit@" .. " 󰅜 "
 	local counter = 0

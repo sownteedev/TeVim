@@ -10,7 +10,7 @@ local M = function()
 	INFO = (info and info > 0) and ("%#TeSTTInfoIcon#" .. "  " .. "%#TeSTTInfo#" .. info) or ""
 	local icon = "%#TeSTTLspIcon#" .. " 󰒋 "
 	if vim.o.columns < 120 then
-		return ERROR .. WARNING .. HINT .. INFO
+		return ERROR .. WARNING .. HINT .. INFO .. " "
 	end
 	return icon .. ERROR .. WARNING .. HINT .. INFO
 end
