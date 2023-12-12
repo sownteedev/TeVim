@@ -65,7 +65,7 @@ map("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 keymap("n", "<C-e>", "<cmd>Neotree toggle<cr>", opts)
 
 -- Toggle Term
-keymap("n", [[<C-`>]], "<cmd>ToggleTerm size=10 direction=horizontal<cr>", opts)
+keymap("n", [[<C-\>]], "<cmd>ToggleTerm size=10 direction=horizontal<cr>", opts)
 
 -- Telescope
 keymap("n", "<S-TAB>",

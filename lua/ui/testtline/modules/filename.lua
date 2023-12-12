@@ -1,6 +1,6 @@
 local fn = vim.fn
 local M = function()
-	local icon = "  "
+	local icon = " 󰢚 "
 	local directory = " " .. fn.fnamemodify(fn.getcwd(), ":t")
 	local filename = (fn.expand "%" == "" and "Empty ") or fn.expand "%:t"
 	if filename ~= "Empty " then
@@ -18,7 +18,7 @@ local M = function()
 		return "%#TeSTTFileIcon#" ..
 			icon .. " " .. "%#TeSTTFolder#" .. directory .. "/" .. "%#TeSTTFileName#" .. filename .. " "
 	else
-		return "%#TeSTTFileIcon#" .. icon .. "%#TeSTTFileName# TEVIM 󰢚 "
+		return "%#TeSTTFileIcon#" .. icon .. "%#TeSTTFileName# TEVIM "
 	end
 end
 return M
