@@ -118,8 +118,8 @@ return {
 		event = "BufRead",
 		config = function()
 			require("presence").setup {
-				editing_text   = "Coding",
-				reading_text   = "Reading",
+				editing_text   = "Coding...",
+				reading_text   = "Reading...",
 				workspace_text = "Working on repository",
 			}
 		end
