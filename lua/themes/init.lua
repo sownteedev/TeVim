@@ -58,7 +58,6 @@ M.toCache         = function(filename, tb)
 end
 
 M.compile         = function()
-	M.setTermColors()
 	if not vim.loop.fs_stat(vim.g.theme_cache) then
 		vim.fn.mkdir(vim.g.theme_cache, "p")
 	end
@@ -73,6 +72,7 @@ M.load            = function()
 	for _, file in ipairs(vim.fn.readdir(vim.g.theme_cache)) do
 		dofile(vim.g.theme_cache .. file)
 	end
+	M.setTermColors()
 end
 
 vim.api.nvim_create_user_command("TeVimThemes", function()

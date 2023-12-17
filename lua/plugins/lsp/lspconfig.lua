@@ -8,7 +8,7 @@ if not cmp_nvim_lsp_status_ok then
 	return
 end
 
-local on_attach = function(client, bufnr)
+local on_attach = function(bufnr)
 	require "lsp_signature".on_attach({
 		bind = true,
 		handler_opts = { border = "rounded" }
@@ -72,7 +72,7 @@ lspconfig.lua_ls.setup({
 	on_attach = on_attach,
 	settings = {
 		Lua = {
-			diagnostics = { globals = { "vim" } },
+			diagnostics = { globals = { "vim", "awesome", "client", "screen", "mouse", "tag" } },
 			workspace = {
 				library = {
 					[vim.fn.expand "$VIMRUNTIME/lua"] = true,

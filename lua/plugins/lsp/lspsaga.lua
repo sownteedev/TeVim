@@ -63,7 +63,7 @@ saga.setup({
 	},
 	symbol_in_winbar = {
 		enable = true,
-		separator = "    ",
+		separator = "   ",
 		ignore_patterns = {},
 		hide_keyword = false,
 		show_file = false,

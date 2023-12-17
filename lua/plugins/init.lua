@@ -11,21 +11,6 @@ return {
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		cmd = "Neotree",
-		dependencies = {
-			{
-				"folke/edgy.nvim",
-				dependencies = {
-					{
-						"simrat39/symbols-outline.nvim",
-						cmd = "SymbolsOutline",
-						lazy = true,
-						config = function() require("symbols-outline").setup() end
-					},
-				},
-				config = function() require("plugins.others.edgy") end
-			},
-
-		},
 		branch = "v3.x",
 		config = function() require("plugins.others.neotree") end
 	},
@@ -115,7 +100,7 @@ return {
 	},
 	{
 		"andweeb/presence.nvim",
-		event = "BufRead",
+		event = "VeryLazy",
 		config = function()
 			require("presence").setup {
 				editing_text   = "Coding...",
@@ -241,6 +226,7 @@ return {
 		dependencies = {
 			{
 				"nvimdev/lspsaga.nvim",
+				event = "LspAttach",
 				config = function() require("plugins.lsp.lspsaga") end
 			},
 			{
