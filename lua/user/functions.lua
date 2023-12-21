@@ -49,6 +49,8 @@ function M.build_run()
 		vim.cmd("TermExec cmd='dart " .. vim.fn.expand("%") .. "'")
 	elseif filetype == "html" then
 		vim.cmd("TermExec cmd='live-server " .. vim.fn.expand("%:p:h") .. "'")
+	elseif filetype == "markdown" then
+		vim.cmd("MarkdownPreview")
 	end
 end
 

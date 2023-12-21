@@ -101,7 +101,7 @@ M.getTabline = function()
 	local buffline = ""
 	local buffstart = "%#TeBufEmpty#"
 	local run = "%@Run@" .. "  "
-	if vim.bo.filetype == "html" then
+	if vim.bo.filetype == "html" or vim.bo.filetype == "markdown" then
 		run = "%@Run@" .. " 󰀂 "
 	end
 	local theme = "%@ToggleTheme@" .. "   "
