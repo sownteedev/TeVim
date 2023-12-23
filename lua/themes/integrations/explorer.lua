@@ -16,6 +16,6 @@ return {
 	NeoTreeGitIgnored = { fg = colors.grey },
 	NeoTreeGitModified = { fg = colors.orange },
 	NeoTreeGitUnstaged = { fg = colors.baby_pink },
-	NeoTreeGitUntracked = { fg = colors.blue },
+	NeoTreeGitUntracked = { fg = colors.green },
 	NeoTreeGitStaged = { fg = colors.green },
 }

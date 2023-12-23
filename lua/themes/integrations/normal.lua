@@ -8,6 +8,7 @@ return {
 	FloatBorder = { fg = colors.darker_black, bg = colors.darker_black },
 	WinSeparator = { fg = colors.statusline_bg, bg = colors.black },
 	WinBar = { bg = colors.black },
+	WinBarNC = { bg = colors.black },
 
 	MsgArea = { fg = colors.white, bg = colors.black },
 	ModeMsg = { fg = colors.white, bg = colors.black },

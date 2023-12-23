@@ -14,7 +14,6 @@ local logo = {
 
 local buttonss = {
 	{ "  Find File", "󱁐 f f", "Telescope find_files" },
-	{ "󰈭  Find Word", "󱁐 f w", "Telescope live_grep" },
 	{ "  Project", "󱁐 f p", "Telescope projects" },
 	{ "󰈚  TODO List", "󱁐 f t", "TodoTelescope" },
 	{ "  TeVim Themes", "󱁐 f c", "TeVimThemes" },
