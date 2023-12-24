@@ -121,7 +121,7 @@ M.getTabline = function()
 	local treespace
 	if treeWidth() > 2 then
 		treespace = "%#TeBufTree#" ..
-			string.rep(" ", treeWidth() / 2 - 3) .. "       " .. string.rep(" ", treeWidth() / 2 - 2)
+			string.rep(" ", treeWidth() / 2 - 3) .. "      " .. string.rep(" ", treeWidth() / 2 - 2)
 	else
 		treespace = "%#TeBufTree#" .. string.rep(" ", treeWidth())
 	end

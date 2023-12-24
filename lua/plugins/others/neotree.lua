@@ -56,7 +56,7 @@ tree.setup({
 	commands = {},
 	window = {
 		position = "left",
-		width = 33,
+		width = 35,
 		mappings = {
 			["o"] = "open",
 			["<c-x>"] = "open_split",

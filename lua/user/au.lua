@@ -1,6 +1,5 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
-local group = vim.api.nvim_create_augroup('Setup', {})
 
 autocmd({ "UIEnter" }, {
 	callback = function()
@@ -47,6 +46,3 @@ autocmd("TermOpen", {
 	end,
 	desc = "Disable number and cursorline in terminal"
 })
-
-autocmd({ 'InsertLeave', 'WinEnter' }, { command = 'set cursorline', group = group, desc = "CursorLine" })
-autocmd({ 'InsertEnter', 'WinLeave' }, { command = 'set nocursorline', group = group, desc = "CursorLine" })

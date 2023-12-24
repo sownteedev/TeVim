@@ -7,7 +7,6 @@ local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
 
 telescope.load_extension("projects")
-telescope.load_extension("media_files")
 
 telescope.setup {
 	defaults = {
@@ -60,10 +59,5 @@ telescope.setup {
 			}
 		}
 	},
-	extensions = {
-		media_files = {
-			filetypes = { "png", "webp", "jpg", "jpeg", "mp4", "webm", "pdf", "mkv" },
-			find_cmd = "fd"
-		}
-	},
+	extensions = {},
 }
