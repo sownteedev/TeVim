@@ -179,7 +179,7 @@ M.setup = function()
 	vim.opt_local.colorcolumn = "0"
 end
 
-vim.api.nvim_create_user_command("TeDash", function()
+api.nvim_create_user_command("TeDash", function()
 	M.setup()
 end, {})
 
