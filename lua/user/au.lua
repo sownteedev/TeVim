@@ -6,17 +6,11 @@ autocmd({ "UIEnter" }, {
 		require("themes").load()
 		require("ui.testtline").setup()
 		require("ui.tebufline").setup()
-	end,
-	desc = "Load Statusline, TabBufline and Themes"
-})
-
-autocmd({ "UIEnter" }, {
-	callback = function()
 		if vim.fn.argc() == 0 then
 			require("ui.tedash").setup()
 		end
 	end,
-	desc = "Load Dashboard"
+	desc = "Load Statusline, TabBufline, Dashboard and Themes"
 })
 
 autocmd("CursorHold", {
