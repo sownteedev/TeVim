@@ -10,7 +10,6 @@ return {
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		cmd = "Neotree",
 		branch = "v3.x",
 		config = function() require("plugins.others.neotree") end
 	},

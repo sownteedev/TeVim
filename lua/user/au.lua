@@ -7,11 +7,10 @@ autocmd({ "UIEnter" }, {
 		require("ui.testtline").setup()
 		require("ui.tebufline").setup()
 	end,
-	desc = "Load Statusline, TabBufline, Dashboard and Themes"
+	desc = "Load Statusline, TabBufline and Themes"
 })
 
-autocmd({ "BufEnter" }, {
-	pattern = "*",
+autocmd({ "UIEnter" }, {
 	callback = function()
 		if vim.fn.argc() == 0 then
 			require("ui.tedash").setup()
