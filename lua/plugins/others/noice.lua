@@ -43,7 +43,7 @@ noice.setup({
 			search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
 			filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
 			lua = false,
-			help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
+			help = { pattern = "^:%s*he?l?p?%s+", icon = "󰋗 " },
 			input = {},
 		},
 	},

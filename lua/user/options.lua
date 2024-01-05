@@ -111,6 +111,9 @@ end
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
+	if vim.fn.has("nvim-0.10") == 1 then
+		vim.opt.smoothscroll = true
+	end
 end
 
 for k, v in pairs(globals) do

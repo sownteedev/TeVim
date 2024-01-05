@@ -8,77 +8,63 @@
 --                            |_|
 
 local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
 local map = vim.keymap.set
 
--- Select all, Copy and Paste
-keymap("n", "<C-a>", "ggVG", opts)
-keymap("v", "<C-c>", "y", opts)
-keymap("n", "<C-v>", "p", opts)
+map("n", "<C-a>", "ggVG", opts, { desc = "Select All" })
+map("v", "<C-c>", "y", opts, { desc = "Copy" })
+map("n", "<C-v>", "p", opts, { desc = "Paste" })
 
--- Allow moving the cursor through wrapped lines
-keymap("n", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
-keymap("n", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
+map("n", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true },
+	{ desc = "Move Cursor Down (Allow Wrapped)" })
+map("n", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true },
+	{ desc = "Move Cursor Up (Allow Wrapped)" })
 
--- Move the cursor between windows
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+map("n", "<C-h>", "<C-w>h", opts, { desc = "Move Cursor Left Buffer" })
+map("n", "<C-j>", "<C-w>j", opts, { desc = "Move Cursor Down Buffer" })
+map("n", "<C-k>", "<C-w>k", opts, { desc = "Move Cursor Up Buffer" })
+map("n", "<C-l>", "<C-w>l", opts, { desc = "Move Cursor Right Buffer" })
 
--- Save
-keymap("n", "<C-s>", "<cmd>w<CR>", opts)
-keymap("i", "<C-s>", "<ESC>:w<CR>", opts)
+map("n", "<C-s>", "<cmd>w<CR>", opts, { desc = "Save" })
+map("i", "<C-s>", "<ESC>:w<CR>", opts, { desc = "Save (Insert)" })
 
--- Move the line up and down
-keymap("n", "<M-Up>", ":m-2<CR>", opts)
-keymap("n", "<M-Down>", ":m+<CR>", opts)
-keymap("i", "<M-Up>", "<Esc>:m-2<CR>", opts)
-keymap("i", "<M-Down>", "<Esc>:m+<CR>", opts)
-keymap("x", "<M-Up>", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<M-Down>", ":move '>+1<CR>gv-gv", opts)
+map("n", "<M-Up>", ":m-2<CR>", opts, { desc = "Move Line Up" })
+map("n", "<M-Down>", ":m+<CR>", opts, { desc = "Move Line Down" })
+map("i", "<M-Up>", "<Esc>:m-2<CR>", opts, { desc = "Move Line Up (Insert)" })
+map("i", "<M-Down>", "<Esc>:m+<CR>", opts, { desc = "Move Line Down (Insert)" })
+map("x", "<M-Up>", ":move '<-2<CR>gv-gv", opts, { desc = "Move Line Up (Visual)" })
+map("x", "<M-Down>", ":move '>+1<CR>gv-gv", opts, { desc = "Move Line Down (Visual)" })
 
--- Resize window
-keymap("n", "<C-Up>", ":resize +2<CR>", opts)
-keymap("n", "<C-Down>", ":resize -2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize +2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize -2<CR>", opts)
+map("n", "<C-Up>", ":resize +2<CR>", opts, { desc = "Resize Window Up" })
+map("n", "<C-Down>", ":resize -2<CR>", opts, { desc = "Resize Window Down" })
+map("n", "<C-Left>", ":vertical resize +2<CR>", opts, { desc = "Resize Window Left" })
+map("n", "<C-Right>", ":vertical resize -2<CR>", opts, { desc = "Resize Window Right" })
 
--- Move cursor in Insert Mode
-keymap("i", "<C-j>", "<Down>", opts)
-keymap("i", "<C-k>", "<Up>", opts)
-keymap("i", "<C-h>", "<Left>", opts)
-keymap("i", "<C-l>", "<Right>", opts)
+map("i", "<C-j>", "<Down>", opts, { desc = "Move Cursor Down in Insert Mode" })
+map("i", "<C-k>", "<Up>", opts, { desc = "Move Cursor Up in Insert Mode" })
+map("i", "<C-h>", "<Left>", opts, { desc = "Move Cursor Left in Insert Mode" })
+map("i", "<C-l>", "<Right>", opts, { desc = "Move Cursor Right in Insert Mode" })
 
--- Next buffers
-keymap("n", "<TAB>", "<cmd>TeBufNext<CR>", opts)
+map("n", "<TAB>", "<cmd>TeBufNext<CR>", opts, { desc = "Next Buffer" })
 
--- Clear search
-keymap("n", "<Enter>", "<cmd>nohlsearch<CR>", opts)
+map("n", "<Enter>", "<cmd>nohlsearch<CR>", opts, { desc = "Clear Highlight" })
 
--- Rename
-map("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+map("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { silent = true }, { desc = "Rename" })
 
------------------------------------------------ PLUGINS -------------------------------------------
 
--- Explorer
-keymap("n", "<C-e>", "<cmd>Neotree toggle<cr>", opts)
+map("n", "<C-e>", "<cmd>Neotree toggle<cr>", opts, { desc = "Toggle Neotree" })
 
--- Toggle Term
-keymap("n", [[<C-\>]], "<cmd>ToggleTerm size=10 direction=horizontal<cr>", opts)
+map("n", [[<C-\>]], "<cmd>ToggleTerm size=10 direction=horizontal<cr>", opts, { desc = "Toggle Terminal" })
 
--- Telescope
-keymap("n", "<S-TAB>",
+map("n", "<S-TAB>",
 	"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false, follow=true, no_ignore=true, hidden=true})<cr>",
-	opts)
+	opts, { desc = "Find Files" })
 
--- Build and Run
-keymap("n", "<F11>", "<cmd>lua require('user.functions').build_run()<cr>", opts)
+map("n", "<F11>", "<cmd>lua require('user.functions').build_run()<cr>", opts, { desc = "Build and Run" })
 
--- Toggle Inlay Hints
 if vim.lsp.inlay_hint then
-	map("n", "<leader>lI", function() vim.lsp.inlay_hint(0, nil) end, opts)
+	map('n', '<C-i>', function()
+		vim.lsp.inlay_hint.enable(0, nil)
+	end, { desc = 'Toggle Inlay Hints' })
 end
 
--- Copilot
 vim.cmd([[imap <silent><script><expr> <C-c> copilot#Accept("\<CR>")]])

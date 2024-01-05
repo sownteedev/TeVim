@@ -80,12 +80,7 @@ and more plugins...
   ```
     npm i -g neovim live-server
   ```
-- Other dependencies for formatting & finding text :
-  - Prettier
-  ```
-   npm i -g prettier
-  ```
-  - Ripgrep Fzf Lazygit
+- Other dependencies for Git Control & finding text :
   ```
    sudo pacman -S ripgrep fzf lazygit
   ```

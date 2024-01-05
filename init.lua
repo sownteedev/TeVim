@@ -4,7 +4,7 @@
 ------------------------------- WELCOME TO TEVIM -------------------------------
 
 vim.loader.enable()
-require "user.options"
+require "user"
 
 --- @diagnostic disable warning
 local function echo(str)
@@ -20,7 +20,3 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require "lazy".setup "plugins"
-
-require "user.keymaps"
-
-require "user.au"

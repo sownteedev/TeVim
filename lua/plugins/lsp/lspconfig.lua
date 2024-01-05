@@ -8,7 +8,8 @@ if not cmp_nvim_lsp_status_ok then
 	return
 end
 
-local on_attach = function(bufnr)
+local on_attach = function(client, bufnr)
+	vim.lsp.inlay_hint.enable(bufnr, true)
 	require "lsp_signature".on_attach({
 		bind = true,
 		handler_opts = { border = "rounded" }
@@ -45,11 +46,11 @@ end
 local servers = {
 	"cssls",
 	"html",
-	"tsserver",
 	"tailwindcss",
 	"vuels",
 	"eslint",
 	"pyright",
+	"clangd",
 	"emmet_ls",
 	"jsonls",
 	"vimls",
@@ -62,9 +63,33 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
-lspconfig.clangd.setup({
+lspconfig.tsserver.setup({
 	on_attach = on_attach,
-	capabilities = vim.tbl_deep_extend("keep", { offsetEncoding = { "utf-16", "utf-8" } }, capabilities),
+	capabilities = capabilities,
+	settings = {
+		javascript = {
+			inlayHints = {
+				includeInlayEnumMemberValueHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayParameterNameHints = 'all',
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayVariableTypeHints = true,
+			},
+		},
+		typescript = {
+			inlayHints = {
+				includeInlayEnumMemberValueHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayParameterNameHints = 'all',
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayVariableTypeHints = true,
+			}
+		}
+	}
 })
 
 lspconfig.lua_ls.setup({
@@ -72,16 +97,9 @@ lspconfig.lua_ls.setup({
 	on_attach = on_attach,
 	settings = {
 		Lua = {
+			hint = { enable = true },
 			diagnostics = { globals = { "vim", "awesome", "client", "screen", "mouse", "tag" } },
-			workspace = {
-				library = {
-					[vim.fn.expand "$VIMRUNTIME/lua"] = true,
-					[vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-					[vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy"] = true,
-				},
-				maxPreload = 100000,
-				preloadFileSize = 10000,
-			},
+			workspace = { checkThirdParty = false },
 		},
 	},
 })
