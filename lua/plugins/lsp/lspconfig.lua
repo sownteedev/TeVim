@@ -9,7 +9,18 @@ if not cmp_nvim_lsp_status_ok then
 end
 
 local on_attach = function(client, bufnr)
-	vim.lsp.inlay_hint.enable(bufnr, true)
+	if client.supports_method("textDocument/inlayHint") then
+		local value
+		local ih = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
+		if type(ih) == "function" then
+			ih(bufnr, value)
+		elseif type(ih) == "table" and ih.enable then
+			if value == nil then
+				value = not ih.is_enabled(bufnr)
+			end
+			ih.enable(bufnr, value)
+		end
+	end
 	require "lsp_signature".on_attach({
 		bind = true,
 		handler_opts = { border = "rounded" }
