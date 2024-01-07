@@ -45,7 +45,7 @@ M.close_buffer = function(bufnr)
 	else
 		bufnr = bufnr or vim.api.nvim_get_current_buf()
 		if bufnr == vim.api.nvim_get_current_buf() then
-			require("ui.tebufline.modules").tabuflinePrev()
+			M.tebuflinePrev()
 		end
 		vim.cmd("confirm bd" .. bufnr)
 	end

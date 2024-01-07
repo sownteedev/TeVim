@@ -6,9 +6,9 @@ autocmd({ "UIEnter" }, {
 		require("themes").load()
 		require("ui.testtline").setup()
 		require("ui.tebufline").setup()
-		-- if vim.fn.argc() == 0 then
-		require("ui.tedash").setup()
-		-- end
+		if vim.fn.argc() == 0 then
+			require("ui.tedash").setup()
+		end
 	end,
 	desc = "Load Statusline, TabBufline, Dashboard and Themes"
 })

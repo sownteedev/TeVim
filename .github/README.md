@@ -71,7 +71,7 @@ and more plugins...
   ```
   sudo pacman -S xsel xclip
   ```
-- Next we need to install python support (Node is optional)
+- Next we need to install python and node support
   - Neovim python support
   ```
     pip install pynvim
