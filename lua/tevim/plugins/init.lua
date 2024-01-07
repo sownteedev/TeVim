@@ -6,20 +6,20 @@ return {
 	{
 		"nvim-tree/nvim-web-devicons",
 		lazy = true,
-		config = function() require("plugins.others.devicons") end,
+		config = function() require("tevim.plugins.others.devicons") end,
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		cmd = "Neotree",
 		branch = "v3.x",
-		config = function() require("plugins.others.neotree") end
+		config = function() require("tevim.plugins.others.neotree") end
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = "BufRead",
 		build = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
 		dependencies = { "nvim-treesitter/nvim-treesitter-context", "HiPhish/rainbow-delimiters.nvim" },
-		config = function() require("plugins.others.treesitter") end
+		config = function() require("tevim.plugins.others.treesitter") end
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -53,12 +53,12 @@ return {
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		lazy = true,
-		config = function() require("plugins.cmp.autopairs") end
+		config = function() require("tevim.plugins.cmp.autopairs") end
 	},
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		config = function() require("plugins.others.whichkey") end
+		config = function() require("tevim.plugins.others.whichkey") end
 	},
 	{
 		"numToStr/Comment.nvim",
@@ -85,7 +85,7 @@ return {
 		cmd = "Telescope",
 		lazy = true,
 		branch = '0.1.x',
-		config = function() require("plugins.others.telescope") end
+		config = function() require("tevim.plugins.others.telescope") end
 	},
 	{
 		"ahmedkhalf/project.nvim",
@@ -113,12 +113,12 @@ return {
 		lazy = true,
 		event = "BufRead",
 		commit = "7f6f1565ac0d9f4e26d87135c6cbe0b9fdcf70b3",
-		config = function() require("plugins.others.gitsigns") end
+		config = function() require("tevim.plugins.others.gitsigns") end
 	},
 	{
 		"NvChad/nvim-colorizer.lua",
 		event = "BufRead",
-		config = function() require("plugins.others.colorize") end
+		config = function() require("tevim.plugins.others.colorize") end
 	},
 	{
 		"stevearc/dressing.nvim",
@@ -128,7 +128,7 @@ return {
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		dependencies = { "MunifTanjim/nui.nvim" },
-		config = function() require("plugins.others.noice") end
+		config = function() require("tevim.plugins.others.noice") end
 	},
 	{
 		"akinsho/toggleterm.nvim",
@@ -212,7 +212,7 @@ return {
 			},
 			"onsails/lspkind.nvim",
 		},
-		config = function() require("plugins.cmp.cmp") end
+		config = function() require("tevim.plugins.cmp.cmp") end
 	},
 	{
 		"github/copilot.vim",
@@ -226,16 +226,16 @@ return {
 			{
 				"nvimdev/lspsaga.nvim",
 				event = "LspAttach",
-				config = function() require("plugins.lsp.lspsaga") end
+				config = function() require("tevim.plugins.lsp.lspsaga") end
 			},
 			{
 				"jose-elias-alvarez/null-ls.nvim",
-				config = function() require("plugins.lsp.null-ls") end
+				config = function() require("tevim.plugins.lsp.null-ls") end
 			},
 			{
 				"williamboman/mason.nvim",
 				cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
-				config = function() require("plugins.lsp.mason") end
+				config = function() require("tevim.plugins.lsp.mason") end
 			},
 			{
 				"ray-x/lsp_signature.nvim",
@@ -244,7 +244,7 @@ return {
 				config = function(_, opts) require("lsp_signature").setup(opts) end
 			}
 		},
-		config = function() require("plugins.lsp.lspconfig") end
+		config = function() require("tevim.plugins.lsp.lspconfig") end
 	},
 	{
 		"folke/trouble.nvim",
@@ -260,6 +260,6 @@ return {
 		"xeluxee/competitest.nvim",
 		event = "BufRead",
 		dependencies = "MunifTanjim/nui.nvim",
-		config = function() require("plugins.others.competitest") end,
+		config = function() require("tevim.plugins.others.competitest") end,
 	},
 }

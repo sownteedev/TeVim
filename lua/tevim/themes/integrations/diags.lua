@@ -1,4 +1,4 @@
-local colors = require("themes").getCurrentTheme()
+local colors = require("tevim.themes").getCurrentTheme()
 
 return {
 	DiagnosticError = { fg = colors.red, italic = true, bold = true },

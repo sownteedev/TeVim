@@ -16,7 +16,7 @@ end
 M.settheme = function(theme)
 	vim.g.currentTheme = theme
 	vim.cmd("colorscheme " .. theme)
-	local file     = vim.fn.stdpath "config" .. "/lua/user/options.lua"
+	local file     = vim.fn.stdpath "config" .. "/lua/tevim/user/options.lua"
 	local lines    = vim.fn.readfile(file)
 	local newlines = {}
 	local found    = false
@@ -35,7 +35,7 @@ M.settheme = function(theme)
 end
 
 local picker_opts = {
-	prompt_title = " TEVIM THEMES",
+	prompt_title = "TEVIM THEMES",
 	finder = finders.new_table { results = themes },
 	sorter = sorters.get_generic_fuzzy_sorter({}),
 	attach_mappings = function(bufnr, map)

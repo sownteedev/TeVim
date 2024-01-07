@@ -1,14 +1,14 @@
 local M           = {}
-local hl_files    = vim.fn.stdpath "config" .. "/lua/themes/integrations"
+local hl_files    = vim.fn.stdpath "config" .. "/lua/tevim/themes/integrations"
 
 M.getCurrentTheme = function()
-	local path = "themes.schemes." .. vim.g.currentTheme
+	local path = "tevim.themes.schemes." .. vim.g.currentTheme
 	local theme = require(path).get_colors()
 	return theme
 end
 
 M.loadTb          = function(g)
-	g = require("themes.integrations." .. g)
+	g = require("tevim.themes.integrations." .. g)
 	return g
 end
 
@@ -76,11 +76,11 @@ M.load            = function()
 end
 
 vim.api.nvim_create_user_command("TeVimThemes", function()
-	vim.cmd("lua require('themes.switch').setup()")
+	vim.cmd("lua require('tevim.themes.switch').setup()")
 end, {})
 
 vim.api.nvim_create_user_command("TeVimThemesToggle", function()
-	vim.cmd("lua require('themes.switch').toggleTheme()")
+	vim.cmd("lua require('tevim.themes.switch').toggleTheme()")
 end, {})
 
 return M

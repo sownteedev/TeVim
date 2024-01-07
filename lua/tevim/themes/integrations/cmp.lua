@@ -1,4 +1,4 @@
-local colors = require("themes").getCurrentTheme()
+local colors = require("tevim.themes").getCurrentTheme()
 
 return {
 	CmpDocumentationBorder = { fg = colors.darker_black, bg = colors.darker },

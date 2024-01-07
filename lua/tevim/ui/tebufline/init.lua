@@ -6,21 +6,21 @@ local devicons_present, devicons = pcall(require, "nvim-web-devicons")
 vim.cmd "function! TeBufGoToBuf(bufnr,b,c,d) \n execute 'b'..a:bufnr \n endfunction"
 vim.cmd "function! ToggleTheme(a,b,c,d) \n TeVimThemesToggle \n endfunction"
 vim.cmd "function! Split(a,b,c,d) \n vsplit \n endfunction"
-vim.cmd "function! Run(a,b,c,d) \n lua require('user.functions').build_run() \n endfunction"
+vim.cmd "function! Run(a,b,c,d) \n lua require('tevim.user.functions').build_run() \n endfunction"
 vim.cmd "function! Quit(a,b,c,d) \n qa! \n endfunction"
 vim.cmd [[
    function! TeBufKillBuf(bufnr,b,c,d)
-        call luaeval('require("ui.tebufline.modules").close_buffer(_A)', a:bufnr)
+        call luaeval('require("tevim.ui.tebufline.modules").close_buffer(_A)', a:bufnr)
   endfunction]]
 
 vim.api.nvim_create_user_command("TeBufPrev", function()
-	require("ui.tebufline.modules").tebuflinePrev()
+	require("tevim.ui.tebufline.modules").tebuflinePrev()
 end, {})
 vim.api.nvim_create_user_command("TeBufNext", function()
-	require("ui.tebufline.modules").tebuflineNext()
+	require("tevim.ui.tebufline.modules").tebuflineNext()
 end, {})
 vim.api.nvim_create_user_command("TeBufCloseOtherBuf", function()
-	require("ui.tebufline.modules").close_other_buffers()
+	require("tevim.ui.tebufline.modules").close_other_buffers()
 end, {})
 
 -------------------------------------------------------------------------
@@ -141,7 +141,7 @@ end
 M.setup = function()
 	if #vim.fn.getbufinfo { buflisted = 1 } >= 1 then
 		vim.o.showtabline = 2
-		vim.o.tabline = '%!v:lua.require("ui.tebufline").getTabline()'
+		vim.o.tabline = '%!v:lua.require("tevim.ui.tebufline").getTabline()'
 	end
 end
 

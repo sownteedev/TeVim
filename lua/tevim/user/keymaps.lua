@@ -59,7 +59,7 @@ map("n", "<S-TAB>",
 	"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false, follow=true, no_ignore=true, hidden=true})<cr>",
 	opts, { desc = "Find Files" })
 
-map("n", "<F11>", "<cmd>lua require('user.functions').build_run()<cr>", opts, { desc = "Build and Run" })
+map("n", "<F11>", "<cmd>lua require('tevim.user.functions').build_run()<cr>", opts, { desc = "Build and Run" })
 
 if vim.lsp.inlay_hint then
 	map('n', '<C-i>', function()

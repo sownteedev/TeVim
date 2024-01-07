@@ -54,9 +54,9 @@ local mappings = {
 	},
 	o = {
 		name = "  OPTIONS",
-		w = { "<cmd>lua require('user.functions').toggle_option('wrap')<cr>", "Wrap" },
-		s = { "<cmd>lua require('user.functions').toggle_option('spell')<cr>", "Spell" },
-		t = { "<cmd>lua require('user.functions').toggle_tabline()<cr>", "Tabline" },
+		w = { "<cmd>lua require('tevim.user.functions').toggle_option('wrap')<cr>", "Wrap" },
+		s = { "<cmd>lua require('tevim.user.functions').toggle_option('spell')<cr>", "Spell" },
+		t = { "<cmd>lua require('tevim.user.functions').toggle_tabline()<cr>", "Tabline" },
 	},
 	w = {
 		name = "  WINDOWS",
@@ -81,7 +81,7 @@ local mappings = {
 	f = {
 		name = "  TELESCOPE",
 		J = { "<cmd>Telescope media_files follow=true no_ignore=true hidden=true<cr>", "Media Files" },
-		c = { "<cmd>lua require('themes.switch').setup()<cr>", "TeVim Themes" },
+		c = { "<cmd>lua require('tevim.themes.switch').setup()<cr>", "TeVim Themes" },
 		f = { "<cmd>Telescope find_files<cr>", "Find File" },
 		r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
 		w = { "<cmd>Telescope live_grep<cr>", "Find Text" },
@@ -95,7 +95,7 @@ local mappings = {
 	},
 	g = {
 		name = "󰊢  GIT",
-		l = { "<cmd>lua require('user.functions').LazyGit()<cr>", "Lazygit" },
+		l = { "<cmd>lua require('tevim.user.functions').LazyGit()<cr>", "Lazygit" },
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
 		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
 		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
@@ -125,7 +125,7 @@ local mappings = {
 	},
 	r = {
 		name = "  RUNNER",
-		g = { "<cmd>lua require('user.functions').build_run()<cr>", "Build & Run" },
+		g = { "<cmd>lua require('tevim.user.functions').build_run()<cr>", "Build & Run" },
 		r = { "<cmd>CompetiTest run<cr>", "Run" },
 		t = { "<cmd>CompetiTest add_testcase<cr>", "Add Testcase" },
 		e = { "<cmd>CompetiTest edit_testcase<cr>", "Edit Testcase" },

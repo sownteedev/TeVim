@@ -1,4 +1,4 @@
-local colors = require("themes").getCurrentTheme()
+local colors = require("tevim.themes").getCurrentTheme()
 
 return {
 	TodoBgFix = { fg = colors.black2, bg = colors.red, bold = true },
