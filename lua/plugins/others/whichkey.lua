@@ -54,10 +54,9 @@ local mappings = {
 	},
 	o = {
 		name = "  OPTIONS",
-		w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
-		s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
-		t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
-		g = { '<cmd>lua require("user.functions").build_run()<cr>', "Build & Run" },
+		w = { "<cmd>lua require('user.functions').toggle_option('wrap')<cr>", "Wrap" },
+		s = { "<cmd>lua require('user.functions').toggle_option('spell')<cr>", "Spell" },
+		t = { "<cmd>lua require('user.functions').toggle_tabline()<cr>", "Tabline" },
 	},
 	w = {
 		name = "  WINDOWS",
@@ -96,7 +95,7 @@ local mappings = {
 	},
 	g = {
 		name = "󰊢  GIT",
-		l = { '<cmd>lua require("user.functions").LazyGit()<cr>', "Lazygit" },
+		l = { "<cmd>lua require('user.functions').LazyGit()<cr>", "Lazygit" },
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
 		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
 		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
@@ -123,6 +122,15 @@ local mappings = {
 		R    = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
 		s    = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
 		S    = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
+	},
+	r = {
+		name = "  RUNNER",
+		g = { "<cmd>lua require('user.functions').build_run()<cr>", "Build & Run" },
+		r = { "<cmd>CompetiTest run<cr>", "Run" },
+		t = { "<cmd>CompetiTest add_testcase<cr>", "Add Testcase" },
+		e = { "<cmd>CompetiTest edit_testcase<cr>", "Edit Testcase" },
+		d = { "<cmd>CompetiTest delete_testcase<cr>", "Delete Testcase" },
+		u = { "<cmd>CompetiTest show_ui<cr>", "Show UI" },
 	},
 	t = {
 		name = "  TERMINAL",

@@ -10,6 +10,7 @@ return {
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
+		cmd = "Neotree",
 		branch = "v3.x",
 		config = function() require("plugins.others.neotree") end
 	},
@@ -83,7 +84,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		lazy = true,
-		tag = '0.1.3',
+		branch = '0.1.x',
 		config = function() require("plugins.others.telescope") end
 	},
 	{
@@ -98,7 +99,7 @@ return {
 	},
 	{
 		"andweeb/presence.nvim",
-		event = "VeryLazy",
+		event = "BufRead",
 		config = function()
 			require("presence").setup {
 				editing_text   = "Coding...",

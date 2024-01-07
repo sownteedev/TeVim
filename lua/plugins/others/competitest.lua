@@ -1,5 +1,5 @@
-local mason_status_ok, competitest = pcall(require, "competitest")
-if not mason_status_ok then
+local competitest_status_ok, competitest = pcall(require, "competitest")
+if not competitest_status_ok then
 	return
 end
 
