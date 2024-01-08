@@ -77,11 +77,11 @@ local createTab = function(buf)
 		end
 		if buf == vim.api.nvim_get_current_buf() then
 			filename = "%#TeBufOnActive#" .. "   " .. icon .. "%#TeBufOnActive#" .. "  " .. filename
-			close_btn = (vim.bo[0].modified and "%" .. buf .. "@BufflineKillBuf@%#TeBufOnModified# ●   ")
+			close_btn = (vim.bo[0].modified and "%" .. buf .. "@BufflineKillBuf@%#TeBufOnModified#●   ")
 				or ("%#TeBufOnClose#" .. close_btn) .. "   "
 		else
 			filename = "%#TeBufOnInactive#" .. "   " .. icon .. "%#TeBufOnInactive#" .. "  " .. filename
-			close_btn = (vim.bo[buf].modified and "%" .. buf .. "@BufflineKillBuf@%#TeBufOffModified# ●   ")
+			close_btn = (vim.bo[buf].modified and "%" .. buf .. "@BufflineKillBuf@%#TeBufOffModified#●   ")
 				or ("%#TeBufOffClose#" .. close_btn) .. "   "
 		end
 		return "%" .. buf .. "@TeBufGoToBuf@" .. filename .. "  " .. close_btn .. '%X' .. "%#TeBufEmptyColor#"
