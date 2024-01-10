@@ -9,13 +9,13 @@ return {
 	NoiceLspProgressSpinner = { fg = colors.grey_fg },
 
 	-- Notify
-	NotifyBackground = { fg = colors.darker_black, bg = colors.darker_black },
+	NotifyBackground = { bg = colors.darker_black },
+	NotifyLogTime = { bg = colors.darker_black },
 	NotifyINFOBorder = { fg = colors.darker_black, bg = colors.darker_black },
 	NotifyWARNBorder = { fg = colors.darker_black, bg = colors.darker_black },
 	NotifyERRORBorder = { fg = colors.darker_black, bg = colors.darker_black },
 	NotifyDEBUGBorder = { fg = colors.darker_black, bg = colors.darker_black },
 	NotifyTRACEBorder = { fg = colors.darker_black, bg = colors.darker_black },
-	NotifyLogTime = { bg = colors.darker_black },
 	NotifyERRORIcon = { fg = colors.red, bg = colors.darker_black },
 	NotifyWARNIcon = { fg = colors.orange, bg = colors.darker_black },
 	NotifyINFOIcon = { fg = colors.blue, bg = colors.darker_black },

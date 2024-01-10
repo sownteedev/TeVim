@@ -147,19 +147,6 @@ return {
 		end
 	},
 	{
-		"lewis6991/satellite.nvim",
-		event = { "BufReadPost", "BufNewFile" },
-		config = function()
-			require("satellite").setup({
-				excluded_filetypes = { "neo-tree", "Outline" },
-				handlers = {
-					gitsigns = { enable = false },
-					diagnostic = { signs = { '', '', '' } },
-				},
-			})
-		end
-	},
-	{
 		"kevinhwang91/nvim-ufo",
 		event = "BufRead",
 		lazy = true,

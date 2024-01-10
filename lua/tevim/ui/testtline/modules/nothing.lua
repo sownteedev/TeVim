@@ -1,7 +1,7 @@
 local M = function()
 	if vim.o.columns < 120 then
-		return "%#Nothing2#" .. " "
+		return "%#TeSTTNothing2#" .. " "
 	end
-	return "%#Nothing#" .. "  "
+	return "%#TeSTTNothing#" .. "  "
 end
 return M

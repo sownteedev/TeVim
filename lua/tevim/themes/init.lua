@@ -12,8 +12,24 @@ M.loadTb          = function(g)
 	return g
 end
 
+M.merge_tb        = function(...)
+	return vim.tbl_deep_extend("force", ...)
+end
+
+M.setTrans        = function(highlights)
+	local glassy = require("tevim.themes.trans")
+	for key, value in pairs(glassy) do
+		if highlights[key] then
+			highlights[key] = M.merge_tb(highlights[key], value)
+		end
+	end
+end
+
 M.tableToStr      = function(tb)
 	local result = ""
+	if vim.g.transparency then
+		M.setTrans(tb)
+	end
 	for hlgroupName, hlgroup_vals in pairs(tb) do
 		local hlname = "'" .. hlgroupName .. "',"
 		local opts = ""

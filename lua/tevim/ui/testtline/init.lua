@@ -15,7 +15,7 @@ local run = function()
 	if vim.o.columns < 120 then
 		return table.concat {
 			tree(),
-			"%#Nothing2#" .. " ",
+			"%#TeSTTNothing2#" .. " ",
 			"%=",
 			mode(),
 			nothing(),

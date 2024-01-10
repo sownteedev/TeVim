@@ -19,7 +19,7 @@ return {
 	TeBufQuit = { bg = colors.red, fg = colors.black },
 
 	-- TeSttLine
-	StatusLine = { fg = colors.statusline_bg, bg = colors.statusline_bg },
+	StatusLine = { bg = colors.statusline_bg },
 	TeSTTNormalMode = { fg = colors.blue, bg = colors.one_bg },
 	TeSTTVisualMode = { fg = colors.purple, bg = colors.one_bg },
 	TeSTTCommandMode = { fg = colors.red, bg = colors.one_bg },
@@ -40,8 +40,8 @@ return {
 	TeSTTFolder = { fg = colors.red, bg = colors.one_bg },
 	TeSTTModified = { fg = colors.green, bg = colors.one_bg },
 
-	Nothing = { fg = colors.statusline_bg, bg = colors.statusline_bg },
-	Nothing2 = { fg = colors.black, bg = colors.black },
+	TeSTTNothing = { bg = colors.statusline_bg },
+	TeSTTNothing2 = { bg = colors.black },
 
 	TeSTTError = { fg = colors.red, bg = colors.one_bg },
 	TeSTTErrorIcon = { fg = colors.red, bg = colors.one_bg },

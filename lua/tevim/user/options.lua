@@ -3,6 +3,7 @@ vim.cmd("syntax off")
 
 vim.g.currentTheme = "yoru"
 vim.g.theme_cache = vim.fn.stdpath "data" .. "/colors_data/"
+vim.g.transparency = false
 
 local options = {
 	-- NUMBER
