@@ -16,9 +16,8 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
-		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
-		lazy = true,
-		build = ":TSUpdate",
+		event = "BufRead",
+		build = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
 		dependencies = { "nvim-treesitter/nvim-treesitter-context", "HiPhish/rainbow-delimiters.nvim" },
 		config = function() require("tevim.plugins.others.treesitter") end
 	},
@@ -70,6 +69,10 @@ return {
 		end
 	},
 	{
+		"stevearc/dressing.nvim",
+		event = "VeryLazy",
+	},
+	{
 		"folke/todo-comments.nvim",
 		event = "VeryLazy",
 		config = function() require("todo-comments").setup() end
@@ -81,6 +84,7 @@ return {
 		dependencies = {
 			{
 				"ahmedkhalf/project.nvim",
+				event = "VeryLazy",
 				config = function() require("project_nvim").setup() end
 			},
 		},
@@ -123,6 +127,7 @@ return {
 						}
 					)
 				end,
+				desc = "Load gitsigns only if git repository"
 			})
 		end,
 		commit = "7f6f1565ac0d9f4e26d87135c6cbe0b9fdcf70b3",
@@ -230,7 +235,6 @@ return {
 		dependencies = {
 			{
 				"nvimdev/lspsaga.nvim",
-				event = "LspAttach",
 				config = function() require("tevim.plugins.lsp.lspsaga") end
 			},
 			{
@@ -258,7 +262,7 @@ return {
 	},
 	{
 		"xeluxee/competitest.nvim",
-		event = "BufRead",
+		ft = { "c ", "cpp", "java", "python", "rust", "javascript", "typescript" },
 		dependencies = "MunifTanjim/nui.nvim",
 		config = function() require("tevim.plugins.others.competitest") end,
 	},

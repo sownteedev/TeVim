@@ -19,7 +19,6 @@ return {
 	TeBufQuit = { bg = colors.red, fg = colors.black },
 
 	-- TeSttLine
-	StatusLine = { bg = colors.statusline_bg },
 	TeSTTNormalMode = { fg = colors.blue, bg = colors.one_bg },
 	TeSTTVisualMode = { fg = colors.purple, bg = colors.one_bg },
 	TeSTTCommandMode = { fg = colors.red, bg = colors.one_bg },
