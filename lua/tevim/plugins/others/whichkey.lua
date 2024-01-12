@@ -117,7 +117,7 @@ local mappings = {
 		j    = { "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", "Next Diagnostic" },
 		k    = { "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", "Prev Diagnostic" },
 		l    = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-		o    = { "<cmd>SymbolsOutline<cr>", "Outline" },
+		o    = { "<cmd>Lspsaga outline<cr>", "Outline" },
 		r    = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 		R    = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
 		s    = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },

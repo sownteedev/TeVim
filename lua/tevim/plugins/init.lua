@@ -10,7 +10,7 @@ return {
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		cmd = "Neotree",
+		keys = { { "<C-e>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" } },
 		branch = "v3.x",
 		config = function() require("tevim.plugins.others.neotree") end
 	},
@@ -47,8 +47,7 @@ return {
 	},
 	{
 		"windwp/nvim-ts-autotag",
-		event = "InsertEnter",
-		lazy = true,
+		ft = { "html", "javascript", "typescript", "svelte", "vue", "tsx" },
 		config = function()
 			require("nvim-ts-autotag").setup()
 		end,
@@ -137,12 +136,16 @@ return {
 		"NvChad/nvim-colorizer.lua",
 		event = "BufRead",
 		lazy = true,
-		config = function() require("tevim.plugins.others.colorize") end
+		config = function(_, opts)
+			require("colorizer").setup(opts)
+			vim.defer_fn(function()
+				require("colorizer").attach_to_buffer(0)
+			end, 0)
+		end,
 	},
 	{
 		"akinsho/toggleterm.nvim",
-		cmd = "ToggleTerm",
-		lazy = true,
+		keys = { { [[<C-\>]], "<cmd>ToggleTerm size=10 direction=horizontal<cr>", { noremap = true, silent = true }, { desc = "Toggle Terminal" } } },
 		version = "*",
 		config = function() require("toggleterm").setup { shading_factor = 2 } end
 	},
@@ -188,12 +191,11 @@ return {
 	--------------------------------------------------------------
 	{
 		"hrsh7th/nvim-cmp",
-		event = { "InsertEnter", "CmdlineEnter" },
+		event = "InsertEnter",
 		lazy = true,
 		dependencies = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lua",
 			"saadparwaiz1/cmp_luasnip",
@@ -201,16 +203,15 @@ return {
 			{
 				"L3MON4D3/LuaSnip",
 				dependencies = "rafamadriz/friendly-snippets",
-				lazy = true,
+				opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+				config = function(_, opts)
+					require("tevim.plugins.cmp.luasnip").luasnip(opts)
+				end,
 				version = "2.*",
 				build = "make install_jsregexp"
 			},
 			{
 				"windwp/nvim-autopairs",
-				opts = {
-					fast_wrap = {},
-					disable_filetype = { "TelescopePrompt", "vim" },
-				},
 				config = function(_, opts)
 					require("nvim-autopairs").setup(opts)
 					local cmp_autopairs = require "nvim-autopairs.completion.cmp"
@@ -219,7 +220,6 @@ return {
 			},
 			{
 				"jcdickinson/codeium.nvim",
-				event = "InsertEnter",
 				config = function() require("codeium").setup() end
 			},
 		},
@@ -264,6 +264,23 @@ return {
 		"xeluxee/competitest.nvim",
 		ft = { "c ", "cpp", "java", "python", "rust", "javascript", "typescript" },
 		dependencies = "MunifTanjim/nui.nvim",
-		config = function() require("tevim.plugins.others.competitest") end,
+		config = function()
+			require("competitest").setup({
+				editor_ui = { show_nu = false },
+				runner_ui = {
+					interface = "split",
+					show_nu = false,
+					viewer = { show_nu = false },
+				},
+				split_ui = {
+					total_width = 0.4,
+					horizontal_layout = {
+						{ 1, "tc" },
+						{ 1, { { 1, "so" }, { 1, "si" } } },
+						{ 1, { { 1, "eo" }, { 1, "se" } } },
+					},
+				},
+			})
+		end
 	},
 }

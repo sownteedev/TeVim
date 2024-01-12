@@ -50,11 +50,6 @@ map("n", "<Enter>", "<cmd>nohlsearch<CR>", opts, { desc = "Clear Highlight" })
 
 map("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { silent = true }, { desc = "Rename" })
 
-
-map("n", "<C-e>", "<cmd>Neotree toggle<cr>", opts, { desc = "Toggle Neotree" })
-
-map("n", [[<C-\>]], "<cmd>ToggleTerm size=10 direction=horizontal<cr>", opts, { desc = "Toggle Terminal" })
-
 map("n", "<S-TAB>",
 	"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false, follow=true, no_ignore=true, hidden=true})<cr>",
 	opts, { desc = "Find Files" })

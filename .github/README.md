@@ -100,7 +100,7 @@ and more plugins...
   git clone https://github.com/sownteedev/TeVim ~/.config/nvim --depth 1 && nvim
   ```
 - Wait for everything to install, reopen Neovim
-- Use command ":TSInstall all" and ":MasonInstallAll"
+- Use command ":MasonInstallAll" to install all LSP
 
 ENJOY !
 

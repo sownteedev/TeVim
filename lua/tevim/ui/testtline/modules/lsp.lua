@@ -67,9 +67,9 @@ local M = function()
 	-- RETURN CLIENTS
 	if #buf_client_names > 3 then
 		return "%#TeSTTLsp#" ..
-			" " .. buf_client_names[1] .. ", " .. buf_client_names[2] .. ", " .. buf_client_names[3] .. " "
+			" " .. buf_client_names[1] .. ", " .. buf_client_names[2] .. ", " .. buf_client_names[3]
 	end
-	return "%#TeSTTLsp#" .. " " .. table.concat(vim.fn.uniq(buf_client_names), ", ") .. " "
+	return "%#TeSTTLsp#" .. " " .. table.concat(vim.fn.uniq(buf_client_names), ", ")
 end
 
 return M
