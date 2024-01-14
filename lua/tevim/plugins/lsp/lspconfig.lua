@@ -21,14 +21,14 @@ local on_attach = function(client, bufnr)
 			ih.enable(bufnr, value)
 		end
 	end
-	require "lsp_signature".on_attach({
+	require("lsp_signature").on_attach({
 		bind = true,
-		handler_opts = { border = "rounded" }
+		handler_opts = { border = "rounded" },
 	}, bufnr)
 end
 
-local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(),
-	cmp_nvim_lsp.default_capabilities())
+local capabilities =
+	vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), cmp_nvim_lsp.default_capabilities())
 
 capabilities.offsetEncoding = { "utf-16", "utf-8" }
 
@@ -40,10 +40,12 @@ vim.diagnostic.config({
 	severity_sort = true,
 	float = {
 		focusable = false,
-		suffix = '',
+		suffix = "",
 		header = { "  Diagnostics", "String" },
-		prefix = function(_, _, _) return "  ", "String" end,
-	}
+		prefix = function(_, _, _)
+			return "  ", "String"
+		end,
+	},
 })
 
 -- Diagnostic symbols
@@ -83,7 +85,7 @@ lspconfig.tsserver.setup({
 				includeInlayEnumMemberValueHints = true,
 				includeInlayFunctionLikeReturnTypeHints = true,
 				includeInlayFunctionParameterTypeHints = true,
-				includeInlayParameterNameHints = 'all',
+				includeInlayParameterNameHints = "all",
 				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
 				includeInlayPropertyDeclarationTypeHints = true,
 				includeInlayVariableTypeHints = true,
@@ -94,13 +96,13 @@ lspconfig.tsserver.setup({
 				includeInlayEnumMemberValueHints = true,
 				includeInlayFunctionLikeReturnTypeHints = true,
 				includeInlayFunctionParameterTypeHints = true,
-				includeInlayParameterNameHints = 'all',
+				includeInlayParameterNameHints = "all",
 				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
 				includeInlayPropertyDeclarationTypeHints = true,
 				includeInlayVariableTypeHints = true,
-			}
-		}
-	}
+			},
+		},
+	},
 })
 
 lspconfig.lua_ls.setup({

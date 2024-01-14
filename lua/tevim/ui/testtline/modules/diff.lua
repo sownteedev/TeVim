@@ -9,9 +9,15 @@ local M = function()
 	local changed = (git_status.changed and git_status.changed ~= 0) and ("  " .. git_status.changed) or ""
 	local removed = (git_status.removed and git_status.removed ~= 0) and ("  " .. git_status.removed) or ""
 	if (#added > 0) or (#changed > 0) or (#removed > 0) then
-		return "%#TeSTTDiffAdd#" ..
-			added ..
-			"%#TeSTTDiffChange#" .. changed .. "%#TeSTTDiffRemove#" .. removed .. " " .. "%#TeSTTGithub#" .. "  "
+		return "%#TeSTTDiffAdd#"
+			.. added
+			.. "%#TeSTTDiffChange#"
+			.. changed
+			.. "%#TeSTTDiffRemove#"
+			.. removed
+			.. " "
+			.. "%#TeSTTGithub#"
+			.. "  "
 	else
 		return ""
 	end

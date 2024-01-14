@@ -30,5 +30,5 @@ return {
 	NotifyWARNBody = { fg = colors.orange, bg = colors.darker_black },
 	NotifyINFOBody = { fg = colors.blue, bg = colors.darker_black },
 	NotifyDEBUGBody = { fg = colors.cyan, bg = colors.darker_black },
-	NotifyTRACEBody = { fg = colors.purple, bg = colors.darker_black }
+	NotifyTRACEBody = { fg = colors.purple, bg = colors.darker_black },
 }

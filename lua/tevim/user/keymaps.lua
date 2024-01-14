@@ -14,10 +14,20 @@ map("n", "<C-a>", "ggVG", opts, { desc = "Select All" })
 map("v", "<C-c>", "y", opts, { desc = "Copy" })
 map("n", "<C-v>", "p", opts, { desc = "Paste" })
 
-map("n", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true },
-	{ desc = "Move Cursor Down (Allow Wrapped)" })
-map("n", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true },
-	{ desc = "Move Cursor Up (Allow Wrapped)" })
+map(
+	"n",
+	"j",
+	'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
+	{ expr = true },
+	{ desc = "Move Cursor Down (Allow Wrapped)" }
+)
+map(
+	"n",
+	"k",
+	'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
+	{ expr = true },
+	{ desc = "Move Cursor Up (Allow Wrapped)" }
+)
 
 map("n", "<C-h>", "<C-w>h", opts, { desc = "Move Cursor Left Buffer" })
 map("n", "<C-j>", "<C-w>j", opts, { desc = "Move Cursor Down Buffer" })
@@ -50,16 +60,12 @@ map("n", "<Enter>", "<cmd>nohlsearch<CR>", opts, { desc = "Clear Highlight" })
 
 map("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { silent = true }, { desc = "Rename" })
 
-map("n", "<S-TAB>",
+map(
+	"n",
+	"<S-TAB>",
 	"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false, follow=true, no_ignore=true, hidden=true})<cr>",
-	opts, { desc = "Find Files" })
-
-map("n", "<F11>", "<cmd>lua require('tevim.user.functions').build_run()<cr>", opts, { desc = "Build and Run" })
-
-if vim.lsp.inlay_hint then
-	map('n', '<C-i>', function()
-		vim.lsp.inlay_hint.enable(0, nil)
-	end, { desc = 'Toggle Inlay Hints' })
-end
+	opts,
+	{ desc = "Find Files" }
+)
 
 vim.cmd([[imap <silent><script><expr> <C-c> copilot#Accept("\<CR>")]])

@@ -2,7 +2,7 @@ vim.cmd("filetype plugin indent off")
 vim.cmd("syntax off")
 
 vim.g.currentTheme = "yoru"
-vim.g.theme_cache = vim.fn.stdpath "data" .. "/colors_data/"
+vim.g.theme_cache = vim.fn.stdpath("data") .. "/colors_data/"
 vim.g.transparency = false
 
 local options = {
@@ -51,25 +51,25 @@ local options = {
 	splitkeep = "screen",
 	-- FOLD
 	foldenable = true,
-	foldcolumn = '1',
+	foldcolumn = "1",
 	foldlevelstart = 99,
 }
 
 local globals = {
-	mapleader = ' ',
-	maplocalleader = ' ',
+	mapleader = " ",
+	maplocalleader = " ",
 	speeddating_no_mappings = 1,
 }
 
 vim.opt.listchars = "tab:  "
 vim.opt.fillchars = { eob = " ", foldopen = "", foldsep = " ", foldclose = "" }
-vim.opt.shortmess:append "sI"
-vim.opt.formatoptions:remove('c', 'r', 'o');
+vim.opt.shortmess:append("sI")
+vim.opt.formatoptions:remove("c", "r", "o")
 
 -- COPILOT
-vim.g.copilot_no_tab_map = true;
-vim.g.copilot_assume_mapped = true;
-vim.g.copilot_tab_fallback = "";
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true
+vim.g.copilot_tab_fallback = ""
 
 local builtins = {
 	"2html_plugin",
@@ -103,7 +103,7 @@ local builtins = {
 	"fzf",
 	"tutor_mode_plugin",
 	"sleuth",
-	"vimgrep"
+	"vimgrep",
 }
 
 for _, plugin in ipairs(builtins) do

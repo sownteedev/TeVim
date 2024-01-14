@@ -57,8 +57,17 @@ local icon = {
 
 local M = function()
 	local mode = vim.api.nvim_get_mode().mode
-	return "%#" ..
-		icon[mode][2] .. "#" .. icon[mode][1] .. " " .. "%#" .. modes[mode][2] .. "#" .. " " .. modes[mode][1] .. " ";
+	return "%#"
+		.. icon[mode][2]
+		.. "#"
+		.. icon[mode][1]
+		.. " "
+		.. "%#"
+		.. modes[mode][2]
+		.. "#"
+		.. " "
+		.. modes[mode][1]
+		.. " "
 end
 
 return M

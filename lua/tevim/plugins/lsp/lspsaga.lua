@@ -9,14 +9,14 @@ saga.setup({
 		max_height = 0.5,
 		force_max_height = false,
 		keys = {
-			jump_to = 'p',
-			edit = { 'o', '<CR>' },
-			vsplit = 's',
-			split = 'i',
-			tabe = 't',
-			tabnew = 'r',
-			quit = { 'q', '<ESC>' },
-			close_in_preview = '<ESC>'
+			jump_to = "p",
+			edit = { "o", "<CR>" },
+			vsplit = "s",
+			split = "i",
+			tabe = "t",
+			tabnew = "r",
+			quit = { "q", "<ESC>" },
+			close_in_preview = "<ESC>",
 		},
 	},
 	definition = {
@@ -58,7 +58,7 @@ saga.setup({
 		keys = {
 			exec_action = "o",
 			quit = "q",
-			go_action = "g"
+			go_action = "g",
 		},
 	},
 	symbol_in_winbar = {
@@ -76,5 +76,5 @@ saga.setup({
 		sign = true,
 		virtual_text = true,
 		priority = 0,
-	}
+	},
 })

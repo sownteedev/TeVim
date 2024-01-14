@@ -25,7 +25,6 @@ for _, normal_hl in ipairs(normal) do
 	}
 end
 
-
 --- UI ---
 local ui = {
 	"StatusLine",
@@ -47,7 +46,6 @@ for _, ui_hl in ipairs(ui) do
 		bg = "NONE",
 	}
 end
-
 
 --- Telescope ---
 local telescope = {
@@ -72,7 +70,6 @@ for _, telescope_hl in ipairs(telescope) do
 	}
 end
 
-
 --- NeoTree ---
 local tree = {
 	"NeoTreeNormal",
@@ -85,7 +82,6 @@ for _, tree_hl in ipairs(tree) do
 		bg = "NONE",
 	}
 end
-
 
 --- WhichKey ---
 local whichkey = {
@@ -121,7 +117,6 @@ for _, cmp_hl in ipairs(cmp) do
 		bg = "NONE",
 	}
 end
-
 
 --- Noice ---
 local noice = {

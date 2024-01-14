@@ -16,12 +16,14 @@ end
 local compare = require("cmp.config.compare")
 
 local check_backspace = function()
-	local col = vim.fn.col "." - 1
-	return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+	local col = vim.fn.col(".") - 1
+	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
 local has_words_before = function()
-	if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+	if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+		return false
+	end
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
 end
@@ -83,7 +85,7 @@ cmp.setup({
 		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
 			local kind = lspkind.cmp_format({
-				symbol_map = { Copilot = "", Codeium = "", Snippet = "", Keyword = "" },
+				symbol_map = { Copilot = "", Codeium = "", Snippet = "", Keyword = "" },
 				preset = "codicons",
 				maxwidth = 40,
 			})(entry, vim_item)
@@ -137,6 +139,6 @@ cmp.setup({
 	},
 	experimental = {
 		ghost_text = true,
-		native_menu = false
+		native_menu = false,
 	},
 })

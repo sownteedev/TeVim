@@ -13,16 +13,16 @@ local run = function()
 	local nothing = require("tevim.ui.testtline.modules.nothing")
 
 	if vim.o.columns < 120 then
-		return table.concat {
+		return table.concat({
 			tree(),
 			"%#TeSTTNothing2#" .. " ",
 			"%=",
 			mode(),
 			nothing(),
 			diagnostics(),
-		}
+		})
 	else
-		return table.concat {
+		return table.concat({
 			mode(),
 			nothing(),
 			filename(),
@@ -41,7 +41,7 @@ local run = function()
 			progress(),
 			nothing(),
 			location(),
-		}
+		})
 	end
 end
 
@@ -50,7 +50,7 @@ local setup = function()
 	vim.api.nvim_create_autocmd({ "ModeChanged", "CursorHold" }, {
 		callback = function()
 			vim.opt.statusline = run()
-		end
+		end,
 	})
 end
 

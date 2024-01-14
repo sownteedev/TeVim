@@ -104,7 +104,7 @@ M.setup = function()
 
 	api.nvim_buf_set_lines(buf, 0, -1, false, result)
 
-	local tedash = api.nvim_create_namespace "tedash"
+	local tedash = api.nvim_create_namespace("tedash")
 	local horiz_pad_index = math.floor((api.nvim_win_get_width(win) / 2) - (tedashWidth / 2)) - 2
 
 	for i = abc, abc + #header do
@@ -131,32 +131,32 @@ M.setup = function()
 	vim.keymap.set("n", "<Right>", "", { buffer = true })
 
 	vim.keymap.set("n", "k", function()
-		local cur = fn.line "."
+		local cur = fn.line(".")
 		local target_line = cur == keybind_lineNrs[1] and keybind_lineNrs[#keybind_lineNrs] or cur - 2
 		api.nvim_win_set_cursor(win, { target_line, math.floor(vim.o.columns / 2) - 13 })
 	end, { buffer = true })
 
 	vim.keymap.set("n", "j", function()
-		local cur = fn.line "."
+		local cur = fn.line(".")
 		local target_line = cur == keybind_lineNrs[#keybind_lineNrs] and keybind_lineNrs[1] or cur + 2
 		api.nvim_win_set_cursor(win, { target_line, math.floor(vim.o.columns / 2) - 13 })
 	end, { buffer = true })
 
 	vim.keymap.set("n", "<Up>", function()
-		local cur = fn.line "."
+		local cur = fn.line(".")
 		local target_line = cur == keybind_lineNrs[1] and keybind_lineNrs[#keybind_lineNrs] or cur - 2
 		api.nvim_win_set_cursor(win, { target_line, math.floor(vim.o.columns / 2) - 13 })
 	end, { buffer = true })
 
 	vim.keymap.set("n", "<Down>", function()
-		local cur = fn.line "."
+		local cur = fn.line(".")
 		local target_line = cur == keybind_lineNrs[#keybind_lineNrs] and keybind_lineNrs[1] or cur + 2
 		api.nvim_win_set_cursor(win, { target_line, math.floor(vim.o.columns / 2) - 13 })
 	end, { buffer = true })
 
 	vim.keymap.set("n", "<CR>", function()
 		for i, val in ipairs(keybind_lineNrs) do
-			if val == fn.line "." then
+			if val == fn.line(".") then
 				local action = buttonss[i][3]
 				if type(action) == "string" then
 					vim.cmd(action)

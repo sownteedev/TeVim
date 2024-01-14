@@ -6,44 +6,39 @@ return {
 	{
 		"nvim-tree/nvim-web-devicons",
 		lazy = true,
-		config = function() require("tevim.plugins.others.devicons") end,
+		config = function()
+			require("tevim.plugins.others.devicons")
+		end,
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		keys = { { "<C-e>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" } },
 		branch = "v3.x",
-		config = function() require("tevim.plugins.others.neotree") end
+		config = function()
+			require("tevim.plugins.others.neotree")
+		end,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = "BufRead",
-		build = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+		build = function()
+			require("nvim-treesitter.install").update({ with_sync = true })
+		end,
 		dependencies = { "nvim-treesitter/nvim-treesitter-context", "HiPhish/rainbow-delimiters.nvim" },
-		config = function() require("tevim.plugins.others.treesitter") end
+		config = function()
+			require("tevim.plugins.others.treesitter")
+		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufReadPost",
 		version = "2.20.8",
-		dependencies = {
-			{
-				"shellRaining/hlchunk.nvim",
-				config = function()
-					require("hlchunk").setup {
-						chunk = { notify = false },
-						indent = { enable = false },
-						line_num = { enable = false },
-						blank = { enable = false }
-					}
-				end
-			},
-		},
 		config = function()
 			require("indent_blankline").setup({
 				char = "▏",
 				show_first_indent_level = false,
 			})
-		end
+		end,
 	},
 	{
 		"windwp/nvim-ts-autotag",
@@ -55,7 +50,9 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		config = function() require("tevim.plugins.others.whichkey") end
+		config = function()
+			require("tevim.plugins.others.whichkey")
+		end,
 	},
 	{
 		"numToStr/Comment.nvim",
@@ -65,7 +62,7 @@ return {
 			require("Comment").setup({
 				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
 			})
-		end
+		end,
 	},
 	{
 		"stevearc/dressing.nvim",
@@ -74,7 +71,9 @@ return {
 	{
 		"folke/todo-comments.nvim",
 		event = "VeryLazy",
-		config = function() require("todo-comments").setup() end
+		config = function()
+			require("todo-comments").setup()
+		end,
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -84,27 +83,33 @@ return {
 			{
 				"ahmedkhalf/project.nvim",
 				event = "VeryLazy",
-				config = function() require("project_nvim").setup() end
+				config = function()
+					require("project_nvim").setup()
+				end,
 			},
 		},
-		branch = '0.1.x',
-		config = function() require("tevim.plugins.others.telescope") end
+		branch = "0.1.x",
+		config = function()
+			require("tevim.plugins.others.telescope")
+		end,
 	},
 	{
 		"iamcco/markdown-preview.nvim",
 		ft = "markdown",
-		build = function() vim.fn["mkdp#util#install"]() end
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
 	},
 	{
 		"andweeb/presence.nvim",
 		event = "BufReadPost",
 		config = function()
-			require("presence").setup {
-				editing_text   = "Coding...",
-				reading_text   = "Reading...",
+			require("presence").setup({
+				editing_text = "Coding...",
+				reading_text = "Reading...",
 				workspace_text = "Working on repository",
-			}
-		end
+			})
+		end,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -113,24 +118,24 @@ return {
 			vim.api.nvim_create_autocmd({ "BufRead" }, {
 				group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
 				callback = function()
-					vim.fn.jobstart({ "git", "-C", vim.loop.cwd(), "rev-parse" },
-						{
-							on_exit = function(_, return_code)
-								if return_code == 0 then
-									vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
-									vim.schedule(function()
-										require("lazy").load { plugins = { "gitsigns.nvim" } }
-									end)
-								end
+					vim.fn.jobstart({ "git", "-C", vim.loop.cwd(), "rev-parse" }, {
+						on_exit = function(_, return_code)
+							if return_code == 0 then
+								vim.api.nvim_del_augroup_by_name("GitSignsLazyLoad")
+								vim.schedule(function()
+									require("lazy").load({ plugins = { "gitsigns.nvim" } })
+								end)
 							end
-						}
-					)
+						end,
+					})
 				end,
-				desc = "Load gitsigns only if git repository"
+				desc = "Load gitsigns only if git repository",
 			})
 		end,
 		commit = "7f6f1565ac0d9f4e26d87135c6cbe0b9fdcf70b3",
-		config = function() require("tevim.plugins.others.gitsigns") end
+		config = function()
+			require("tevim.plugins.others.gitsigns")
+		end,
 	},
 	{
 		"NvChad/nvim-colorizer.lua",
@@ -145,18 +150,28 @@ return {
 	},
 	{
 		"akinsho/toggleterm.nvim",
-		keys = { { [[<C-\>]], "<cmd>ToggleTerm size=10 direction=horizontal<cr>", { noremap = true, silent = true }, { desc = "Toggle Terminal" } } },
+		cmd = "ToggleTerm",
+		keys = {
+			{
+				[[<C-\>]],
+				"<cmd>ToggleTerm size=10 direction=horizontal<cr>",
+				{ noremap = true,          silent = true },
+				{ desc = "Toggle Terminal" },
+			},
+		},
 		version = "*",
-		config = function() require("toggleterm").setup { shading_factor = 2 } end
+		config = function()
+			require("toggleterm").setup({ shading_factor = 2 })
+		end,
 	},
 	{
 		"RRethy/vim-illuminate",
 		event = { "BufReadPost", "BufNewFile" },
 		config = function()
-			require("illuminate").configure {
-				filetypes_denylist = { "neo-tree", "Trouble", "DressingSelect", "TelescopePrompt" }
-			}
-		end
+			require("illuminate").configure({
+				filetypes_denylist = { "neo-tree", "Trouble", "DressingSelect", "TelescopePrompt" },
+			})
+		end,
 	},
 	{
 		"kevinhwang91/nvim-ufo",
@@ -177,88 +192,16 @@ return {
 							{ text = { builtin.foldfunc, "  " },  click = "v:lua.ScFa" },
 						},
 					})
-				end
+				end,
 			},
 		},
 		config = function()
 			require("ufo").setup({
 				provider_selector = function()
-					return { 'treesitter', 'indent' }
+					return { "treesitter", "indent" }
 				end,
 			})
-		end
-	},
-	--------------------------------------------------------------
-	{
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
-		lazy = true,
-		dependencies = {
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-nvim-lua",
-			"saadparwaiz1/cmp_luasnip",
-			"onsails/lspkind.nvim",
-			{
-				"L3MON4D3/LuaSnip",
-				dependencies = "rafamadriz/friendly-snippets",
-				opts = { history = true, updateevents = "TextChanged,TextChangedI" },
-				config = function(_, opts)
-					require("tevim.plugins.cmp.luasnip").luasnip(opts)
-				end,
-				version = "2.*",
-				build = "make install_jsregexp"
-			},
-			{
-				"windwp/nvim-autopairs",
-				config = function(_, opts)
-					require("nvim-autopairs").setup(opts)
-					local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-					require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
-				end,
-			},
-			{
-				"jcdickinson/codeium.nvim",
-				config = function() require("codeium").setup() end
-			},
-		},
-		config = function() require("tevim.plugins.cmp.cmp") end
-	},
-	{
-		"github/copilot.vim",
-	},
-	{
-		"neovim/nvim-lspconfig",
-		event = { "BufReadPost", "BufNewFile" },
-		lazy = true,
-		dependencies = {
-			{
-				"nvimdev/lspsaga.nvim",
-				config = function() require("tevim.plugins.lsp.lspsaga") end
-			},
-			{
-				"jose-elias-alvarez/null-ls.nvim",
-				config = function() require("tevim.plugins.lsp.null-ls") end
-			},
-			{
-				"williamboman/mason.nvim",
-				cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
-				lazy = true,
-				config = function() require("tevim.plugins.lsp.mason") end
-			},
-			{
-				"ray-x/lsp_signature.nvim",
-				opts = { hint_enable = false },
-				config = function(_, opts) require("lsp_signature").setup(opts) end
-			}
-		},
-		config = function() require("tevim.plugins.lsp.lspconfig") end
-	},
-	{
-		"folke/trouble.nvim",
-		cmd = { "TroubleToggle", "Trouble" },
-		lazy = true,
+		end,
 	},
 	{
 		"xeluxee/competitest.nvim",
@@ -281,6 +224,100 @@ return {
 					},
 				},
 			})
-		end
+		end,
+	},
+	{
+		"max397574/better-escape.nvim",
+		event = "InsertEnter",
+		config = function()
+			require("better_escape").setup()
+		end,
+	},
+	--------------------------------------------------------------
+	{
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		lazy = true,
+		dependencies = {
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lua",
+			"saadparwaiz1/cmp_luasnip",
+			"onsails/lspkind.nvim",
+			{
+				"L3MON4D3/LuaSnip",
+				dependencies = "rafamadriz/friendly-snippets",
+				opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+				config = function(_, opts)
+					require("tevim.plugins.cmp.luasnip").luasnip(opts)
+				end,
+				version = "2.*",
+				build = "make install_jsregexp",
+			},
+			{
+				"windwp/nvim-autopairs",
+				config = function(_, opts)
+					require("nvim-autopairs").setup(opts)
+					local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+					require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+				end,
+			},
+			-- {
+			-- 	"jcdickinson/codeium.nvim",
+			-- 	config = function()
+			-- 		require("codeium").setup()
+			-- 	end,
+			-- },
+		},
+		config = function()
+			require("tevim.plugins.cmp.cmp")
+		end,
+	},
+	{
+		"github/copilot.vim",
+	},
+	{
+		"neovim/nvim-lspconfig",
+		event = { "BufReadPost", "BufNewFile" },
+		lazy = true,
+		dependencies = {
+			{
+				"nvimdev/lspsaga.nvim",
+				config = function()
+					require("tevim.plugins.lsp.lspsaga")
+				end,
+			},
+			{
+				"williamboman/mason.nvim",
+				cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
+				lazy = true,
+				config = function()
+					require("tevim.plugins.lsp.mason")
+				end,
+			},
+			{
+				"ray-x/lsp_signature.nvim",
+				opts = { hint_enable = false },
+				config = function(_, opts)
+					require("lsp_signature").setup(opts)
+				end,
+			},
+		},
+		config = function()
+			require("tevim.plugins.lsp.lspconfig")
+		end,
+	},
+	{
+		"stevearc/conform.nvim",
+		event = "BufWritePre",
+		config = function()
+			require("tevim.plugins.lsp.conform")
+		end,
+	},
+	{
+		"folke/trouble.nvim",
+		cmd = { "TroubleToggle", "Trouble" },
+		lazy = true,
 	},
 }

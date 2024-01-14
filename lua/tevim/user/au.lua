@@ -9,13 +9,13 @@ autocmd({ "UIEnter" }, {
 			require("tevim.ui.tedash").setup()
 		end
 	end,
-	desc = "Load Statusline, Dashboard and Themes"
+	desc = "Load Statusline, Dashboard and Themes",
 })
 autocmd({ "BufNewFile", "BufReadPost" }, {
 	callback = function()
 		require("tevim.ui.tebufline").setup()
 	end,
-	desc = "Load TabBufline"
+	desc = "Load TabBufline",
 })
 
 autocmd("CursorHold", {
@@ -23,7 +23,7 @@ autocmd("CursorHold", {
 	callback = function()
 		vim.diagnostic.open_float({ scope = "cursor", focusable = false })
 	end,
-	desc = "Open Float Window for LSP Diagnostics"
+	desc = "Open Float Window for LSP Diagnostics",
 })
 
 autocmd("TextYankPost", {
@@ -32,7 +32,7 @@ autocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 300 })
 	end,
-	desc = "Highlight yanked text"
+	desc = "Highlight yanked text",
 })
 
 autocmd("TermOpen", {
@@ -42,7 +42,7 @@ autocmd("TermOpen", {
 		vim.opt_local.cursorline = false
 		vim.cmd("startinsert")
 	end,
-	desc = "Disable number and cursorline in terminal"
+	desc = "Disable number and cursorline in terminal",
 })
 
 autocmd("FileType", {
@@ -50,7 +50,7 @@ autocmd("FileType", {
 	callback = function()
 		vim.opt_local.buflisted = false
 	end,
-	desc = "Don't list quickfix buffer"
+	desc = "Don't list quickfix buffer",
 })
 
 autocmd("BufWritePost", {
@@ -61,13 +61,13 @@ autocmd("BufWritePost", {
 		local module = string.gsub(fp, "^.*/" .. app_name .. "/lua/", ""):gsub("/", ".")
 		vim.cmd("silent source %")
 
-		require("plenary.reload").reload_module "tevim.themes"
+		require("plenary.reload").reload_module("tevim.themes")
 		require("plenary.reload").reload_module(module)
 
-		require("plenary.reload").reload_module "tevim.ui.tebufline"
+		require("plenary.reload").reload_module("tevim.ui.tebufline")
 		vim.opt.tabline = "%!v:lua.require('tevim.ui.tebufline').getTabline()"
 
-		require("plenary.reload").reload_module "tevim.ui.testtline"
+		require("plenary.reload").reload_module("tevim.ui.testtline")
 		vim.opt.statusline = "%!v:lua.require('tevim.ui.testtline').setup()"
 
 		require("tevim.themes").load()
