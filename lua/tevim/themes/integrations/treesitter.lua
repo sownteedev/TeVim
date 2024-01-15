@@ -1,7 +1,6 @@
 local colors = require("tevim.themes").getCurrentTheme()
 
 return {
-	["@boolean"] = { link = "Boolean" },
 	["@annotation"] = { fg = colors.base0F },
 	["@attribute"] = { fg = colors.base0A },
 	["@character"] = { fg = colors.base08 },
@@ -12,11 +11,11 @@ return {
 	["@constant.macro"] = { fg = colors.base08 },
 
 	["@error"] = { fg = colors.base08 },
-	["@exception"] = { fg = colors.base08 },
-	["@float"] = { fg = colors.base09 },
+	["@number.float"] = { fg = colors.base09 },
 
 	["@keyword"] = { fg = colors.base0E },
 	["@keyword.function"] = { fg = colors.base0E },
+	["@keyword.exception"] = { fg = colors.base08 },
 	["@keyword.return"] = { fg = colors.base0E },
 
 	["@function"] = { fg = colors.base0D },
@@ -27,22 +26,21 @@ return {
 	["@operator"] = { fg = colors.base05 },
 	["@keyword.operator"] = { fg = colors.base0E },
 
-	["@method"] = { fg = colors.base0D },
-	["@method.call"] = { fg = colors.base0D },
+	["@function.method"] = { fg = colors.base0D },
+	["@function.method.call"] = { fg = colors.base0D },
+	["@module"] = { fg = colors.base08 },
 
 	["@namespace"] = { fg = colors.base08 },
 	["@none"] = { fg = colors.base05 },
-	["@parameter"] = { fg = colors.base08 },
+	["@variable.parameter"] = { fg = colors.base08 },
 	["@reference"] = { fg = colors.base05 },
 
 	["@punctuation.bracket"] = { fg = colors.base0F },
 	["@punctuation.delimiter"] = { fg = colors.base0F },
-	["@punctuation.special"] = { fg = colors.base08 },
 
 	["@string"] = { fg = colors.base0B },
 	["@string.regex"] = { fg = colors.base0C },
 	["@string.escape"] = { fg = colors.base0C },
-	["@string.special"] = { fg = colors.base0C },
 
 	["@symbol"] = { fg = colors.base0B },
 	["@tag"] = { link = "Tag" },
@@ -53,21 +51,44 @@ return {
 	["@text.strong"] = { bold = true },
 	["@text.emphasis"] = { fg = colors.base09 },
 	["@text.strike"] = { fg = colors.base0F, strikethrough = true },
-	["@text.literal"] = { fg = colors.base09 },
-	["@text.uri"] = { fg = colors.base09, underline = true },
+	["@string.special.url"] = { fg = colors.base09, underline = true },
 
 	["@type.builtin"] = { fg = colors.base0A },
 	["@variable"] = { link = "Variable" },
 	["@variable.builtin"] = { fg = colors.base09 },
+	["@variable.member"] = { fg = colors.base08 },
+	["@variable.member.key"] = { fg = colors.base08 },
 
-	-- variable.global
 	["@definition"] = { sp = colors.base04, underline = true },
 	["@scope"] = { bold = true },
-	["@field"] = { fg = colors.base08 },
-	["@field.key"] = { fg = colors.base08 },
 	["@property"] = { fg = colors.base08 },
-	["@include"] = { link = "Include" },
-	["@conditional"] = { link = "Conditional" },
+	["@keyword.import"] = { link = "Include" },
+	["@keyword.conditional"] = { fg = colors.base0E },
+	["@keyword.conditional.ternary"] = { fg = colors.base0E },
+	["@keyword.repeat"] = { fg = colors.base0A },
+	["@keyword.storage"] = { fg = colors.base0A },
+	["@keyword.directive.define"] = { fg = colors.base0E },
+	["@keyword.directive"] = { fg = colors.base0A },
+
+	["@markup.heading"] = { fg = colors.base0D },
+	["@markup.raw"] = { fg = colors.base09 },
+	["@markup.link"] = { fg = colors.base08 },
+	["@markup.link.url"] = { fg = colors.base09, underline = true },
+	["@markup.link.label"] = { fg = colors.base0C },
+	["@markup.list"] = { fg = colors.base08 },
+	["@markup.strong"] = { bold = true },
+	["@markup.italic"] = { italic = true },
+	["@markup.strikethrough"] = { strikethrough = true },
+
+	["@comment"] = { fg = colors.grey_fg },
+	["@comment.todo"] = { fg = colors.grey, bg = colors.white },
+	["@comment.warning"] = { fg = colors.black2, bg = colors.base09 },
+	["@comment.note"] = { fg = colors.black2, bg = colors.white },
+	["@comment.danger"] = { fg = colors.black2, bg = colors.red },
+
+	["@diff.plus"] = { fg = colors.green },
+	["@diff.minus"] = { fg = colors.red },
+	["@diff.delta"] = { fg = colors.light_grey },
 
 	-- Set underlines for TreesitterContext
 	TreesitterContext = { bg = colors.base01, bold = true },

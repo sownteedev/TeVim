@@ -65,13 +65,8 @@ local picker_opts = {
 	end,
 }
 
-local mini = {
-	layout_strategy = "vertical",
-	layout_config = { height = 0.4, width = 0.25 },
-}
-
 M.setup = function()
-	local picker = pickers.new(mini, picker_opts)
+	local picker = pickers.new({ layout_config = { height = 0.5, width = 0.25 } }, picker_opts)
 	picker:find()
 end
 

@@ -132,7 +132,6 @@ return {
 				desc = "Load gitsigns only if git repository",
 			})
 		end,
-		commit = "7f6f1565ac0d9f4e26d87135c6cbe0b9fdcf70b3",
 		config = function()
 			require("tevim.plugins.others.gitsigns")
 		end,
@@ -155,7 +154,7 @@ return {
 			{
 				[[<C-\>]],
 				"<cmd>ToggleTerm size=10 direction=horizontal<cr>",
-				{ noremap = true,          silent = true },
+				{ noremap = true, silent = true },
 				{ desc = "Toggle Terminal" },
 			},
 		},
@@ -186,10 +185,10 @@ return {
 					require("statuscol").setup({
 						ft_ignore = { "neo-tree", "Outline" },
 						segments = {
-							{ sign = { name = { "Diagnostic" } }, click = "v:lua.ScFa" },
-							{ sign = { name = { "GitSigns" } },   click = "v:lua.ScSa" },
-							{ text = { builtin.lnumfunc, "  " },  click = "v:lua.ScLa" },
-							{ text = { builtin.foldfunc, "  " },  click = "v:lua.ScFa" },
+							{ sign = { namespace = { "diagnostic*" } } },
+							{ sign = { namespace = { "gitsign" } }, click = "v:lua.ScSa" },
+							{ text = { builtin.lnumfunc, "  " }, click = "v:lua.ScLa" },
+							{ text = { builtin.foldfunc, "  " }, click = "v:lua.ScFa" },
 						},
 					})
 				end,
@@ -226,13 +225,7 @@ return {
 			})
 		end,
 	},
-	{
-		"max397574/better-escape.nvim",
-		event = "InsertEnter",
-		config = function()
-			require("better_escape").setup()
-		end,
-	},
+
 	--------------------------------------------------------------
 	{
 		"hrsh7th/nvim-cmp",
@@ -263,12 +256,12 @@ return {
 					require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
 				end,
 			},
-			-- {
-			-- 	"jcdickinson/codeium.nvim",
-			-- 	config = function()
-			-- 		require("codeium").setup()
-			-- 	end,
-			-- },
+			{
+				"jcdickinson/codeium.nvim",
+				config = function()
+					require("codeium").setup()
+				end,
+			},
 		},
 		config = function()
 			require("tevim.plugins.cmp.cmp")
