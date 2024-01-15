@@ -90,11 +90,12 @@ return {
 	["@diff.minus"] = { fg = colors.red },
 	["@diff.delta"] = { fg = colors.light_grey },
 
-	-- Set underlines for TreesitterContext
+	-- TreesitterContext
 	TreesitterContext = { bg = colors.base01, bold = true },
 	TreesitterContextBottom = { bold = true },
 	TreesitterContextLineNumber = { fg = colors.light_grey, bold = true },
 
+	-- Rainbow Brackets
 	RainbowDelimiterRed = { fg = colors.red },
 	RainbowDelimiterYellow = { fg = colors.yellow },
 	RainbowDelimiterBlue = { fg = colors.blue },

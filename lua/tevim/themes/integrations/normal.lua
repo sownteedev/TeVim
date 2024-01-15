@@ -10,8 +10,12 @@ return {
 	WinBar = { bg = colors.black },
 	WinBarNC = { bg = colors.black },
 
-	MsgArea = { fg = colors.white, bg = colors.black },
-	ModeMsg = { fg = colors.white, bg = colors.black },
+	Pmenu = { bg = colors.one_bg },
+	PmenuSbar = { bg = colors.one_bg },
+	PmenuSel = { bg = colors.pmenu_bg, fg = colors.black },
+	PmenuThumb = { bg = colors.grey },
+
+	ModeMsg = { fg = colors.white },
 	MsgSeparator = { fg = colors.white, bg = colors.black },
 
 	WildMenu = { fg = colors.base08, bg = colors.base0A },
@@ -35,10 +39,10 @@ return {
 	Visual = { bg = colors.base03, fg = colors.white },
 	VisualNOS = { fg = colors.base08, bg = colors.black },
 
-	WarningMsg = { fg = colors.base08, bg = colors.black },
+	WarningMsg = { fg = colors.base08 },
 	Error = { fg = colors.base00, bg = colors.base08 },
-	ErrorMsg = { fg = colors.base08, bg = colors.black },
-	MoreMsg = { fg = colors.base0B, bg = colors.black },
+	ErrorMsg = { fg = colors.base08 },
+	MoreMsg = { fg = colors.base0B },
 
 	QuickFixLine = { bg = colors.base01, sp = colors.none },
 	MatchWord = { bg = colors.grey, fg = colors.white },

@@ -125,13 +125,13 @@ cmp.setup({
 	window = {
 		documentation = {
 			border = "rounded",
-			winhighlight = "Normal:Pmenu,FloatBorder:PmenuBorder,CursorLine:PmenuSel,Search:None",
+			winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder,CursorLine:CmpSelection,Search:None",
 			scrollbar = false,
 			col_offset = 0,
 		},
 		completion = {
 			border = "rounded",
-			winhighlight = "Normal:Pmenu,FloatBorder:PmenuBorder,CursorLine:PmenuSel,Search:None",
+			winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder,CursorLine:CmpSelection,Search:None",
 			scrollbar = false,
 			col_offset = 0,
 			side_padding = 0,

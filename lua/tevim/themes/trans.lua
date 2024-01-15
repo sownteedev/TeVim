@@ -9,7 +9,6 @@ local normal = {
 	"NormalNC",
 	"WinBar",
 	"WinBarNC",
-	"WinSeparator",
 	"Folded",
 	"FoldColumn",
 	"LineNr",
@@ -19,9 +18,14 @@ local normal = {
 	"CursorLine",
 }
 
+M.WinSeparator = {
+	fg = colors.one_bg2,
+	bg = colors.none,
+}
+
 for _, normal_hl in ipairs(normal) do
 	M[normal_hl] = {
-		bg = "NONE",
+		bg = colors.none,
 	}
 end
 
@@ -43,7 +47,7 @@ local ui = {
 
 for _, ui_hl in ipairs(ui) do
 	M[ui_hl] = {
-		bg = "NONE",
+		bg = colors.none,
 	}
 end
 
@@ -55,18 +59,27 @@ local telescope = {
 	"TelescopeResults",
 	"TelescopePromptNormal",
 	"TelescopePromptPrefix",
-	"TelescopeMatching",
-	"TelescopePreviewBorder",
-	"TelescopeResultsBorder",
+	"TelescopeSelection",
 }
 
 M.TelescopePromptBorder = {
-	fg = colors.darker_black,
-	bg = "NONE",
+	fg = colors.one_bg2,
+	bg = colors.none,
 }
+
+M.TelescopePreviewBorder = {
+	fg = colors.one_bg2,
+	bg = colors.none,
+}
+
+M.TelescopeResultsBorder = {
+	fg = colors.one_bg2,
+	bg = colors.none,
+}
+
 for _, telescope_hl in ipairs(telescope) do
 	M[telescope_hl] = {
-		bg = "NONE",
+		bg = colors.none,
 	}
 end
 
@@ -74,12 +87,16 @@ end
 local tree = {
 	"NeoTreeNormal",
 	"NeoTreeNormalNC",
-	"NeoTreeWinSeparator",
+}
+
+M.NeoTreeWinSeparator = {
+	fg = colors.one_bg2,
+	bg = colors.none,
 }
 
 for _, tree_hl in ipairs(tree) do
 	M[tree_hl] = {
-		bg = "NONE",
+		bg = colors.none,
 	}
 end
 
@@ -93,28 +110,31 @@ local whichkey = {
 
 for _, whichkey_hl in ipairs(whichkey) do
 	M[whichkey_hl] = {
-		bg = "NONE",
+		bg = colors.none,
 	}
 end
 
 --- CMP ---
 local cmp = {
-	"Pmenu",
-	"PmenuBorder",
-	"PmenuSbar",
+	"CmpNormal",
 	"CmpItemAbbr",
 	"CmpItemAbbrDeprecated",
 	"CmpItemMenu",
 }
 
+M.CmpBorder = {
+	fg = colors.one_bg2,
+	bg = colors.none,
+}
+
 M.CmpItemAbbrMatch = {
-	bg = "NONE",
+	bg = colors.none,
 	bold = true,
 }
 
 for _, cmp_hl in ipairs(cmp) do
 	M[cmp_hl] = {
-		bg = "NONE",
+		bg = colors.none,
 	}
 end
 
@@ -151,8 +171,13 @@ local noice = {
 
 for _, noice_hl in ipairs(noice) do
 	M[noice_hl] = {
-		bg = "NONE",
+		bg = colors.none,
 	}
 end
+
+-- Treesitter Context --
+M.TreesitterContext = {
+	bg = colors.none,
+}
 
 return M
