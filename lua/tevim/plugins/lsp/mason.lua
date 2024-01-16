@@ -24,6 +24,7 @@ local config = {
 }
 
 mason.setup(config)
+
 local install_server = {
 	"lua-language-server",
 	"stylua",
@@ -39,6 +40,9 @@ local install_server = {
 	"emmet-ls",
 	"json-lsp",
 	"eslint_d",
+
+	"bash-language-server",
+	"shfmt",
 
 	"pyright",
 	"black",

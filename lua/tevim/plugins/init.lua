@@ -20,10 +20,9 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = "BufRead",
-		build = function()
-			require("nvim-treesitter.install").update({ with_sync = true })
-		end,
+		run = ":TSUpdate",
+		lazy = true,
+		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
 		dependencies = { "nvim-treesitter/nvim-treesitter-context", "HiPhish/rainbow-delimiters.nvim" },
 		config = function()
 			require("tevim.plugins.others.treesitter")

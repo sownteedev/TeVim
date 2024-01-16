@@ -8,7 +8,7 @@ return {
 	Define = { fg = colors.base0E, sp = "none" },
 	Delimiter = { fg = colors.base0F },
 	Float = { fg = colors.base09 },
-	Variable = { fg = colors.base0E },
+	Variable = { fg = colors.base09 },
 	Function = { fg = colors.base0D, bold = true },
 	Identifier = { fg = colors.base08, sp = "none" },
 	Include = { fg = colors.base0D },

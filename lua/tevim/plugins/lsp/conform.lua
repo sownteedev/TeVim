@@ -5,6 +5,12 @@ local options = {
 		javascript = { "prettier" },
 		css = { "prettier" },
 		html = { "prettier" },
+		json = { "prettier" },
+		typescript = { "prettier" },
+		typescriptreact = { "prettier" },
+		javascriptreact = { "prettier" },
+
+		sh = { "shfmt" },
 
 		c = { "clang-format" },
 		cpp = { "clang-format" },

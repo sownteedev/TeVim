@@ -66,6 +66,8 @@ local servers = {
 	"clangd",
 	"emmet_ls",
 	"jsonls",
+	"denols",
+	"bashls",
 	"vimls",
 }
 
