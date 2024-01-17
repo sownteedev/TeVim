@@ -63,6 +63,7 @@ autocmd("BufWritePost", {
 
 		require("plenary.reload").reload_module("tevim.themes")
 		require("plenary.reload").reload_module(module)
+		require("plenary.reload").reload_module("custom")
 
 		require("plenary.reload").reload_module("tevim.ui.tebufline")
 		vim.opt.tabline = "%!v:lua.require('tevim.ui.tebufline').getTabline()"

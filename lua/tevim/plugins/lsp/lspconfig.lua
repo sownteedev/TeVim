@@ -1,3 +1,4 @@
+local M = {}
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status_ok then
 	return
@@ -8,7 +9,7 @@ if not cmp_nvim_lsp_status_ok then
 	return
 end
 
-local on_attach = function(client, bufnr)
+M.on_attach = function(client, bufnr)
 	if client.supports_method("textDocument/inlayHint") then
 		local value
 		local ih = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
@@ -27,17 +28,19 @@ local on_attach = function(client, bufnr)
 	}, bufnr)
 end
 
-local capabilities =
+M.capabilities =
 	vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), cmp_nvim_lsp.default_capabilities())
 
-capabilities.offsetEncoding = { "utf-16", "utf-8" }
+M.capabilities.offsetEncoding = { "utf-16", "utf-8" }
 
 vim.diagnostic.config({
 	virtual_text = false,
-	signs = true,
 	underline = true,
 	update_in_insert = false,
 	severity_sort = true,
+	signs = {
+		text = { [1] = "", [2] = "", [3] = "", [4] = "" },
+	},
 	float = {
 		focusable = false,
 		suffix = "",
@@ -48,68 +51,10 @@ vim.diagnostic.config({
 	},
 })
 
--- Diagnostic symbols
-local signs = { Error = " ", Warn = " ", Hint = "󰛨 ", Info = " ", Question = " " }
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
 -- CONFIGS
-local servers = {
-	"cssls",
-	"html",
-	"tailwindcss",
-	"vuels",
-	"eslint",
-	"pyright",
-	"clangd",
-	"emmet_ls",
-	"jsonls",
-	"denols",
-	"bashls",
-	"vimls",
-}
-
-for _, lsp in ipairs(servers) do
-	lspconfig[lsp].setup({
-		on_attach = on_attach,
-		capabilities = capabilities,
-	})
-end
-
-lspconfig.tsserver.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	settings = {
-		javascript = {
-			inlayHints = {
-				includeInlayEnumMemberValueHints = true,
-				includeInlayFunctionLikeReturnTypeHints = true,
-				includeInlayFunctionParameterTypeHints = true,
-				includeInlayParameterNameHints = "all",
-				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-				includeInlayPropertyDeclarationTypeHints = true,
-				includeInlayVariableTypeHints = true,
-			},
-		},
-		typescript = {
-			inlayHints = {
-				includeInlayEnumMemberValueHints = true,
-				includeInlayFunctionLikeReturnTypeHints = true,
-				includeInlayFunctionParameterTypeHints = true,
-				includeInlayParameterNameHints = "all",
-				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-				includeInlayPropertyDeclarationTypeHints = true,
-				includeInlayVariableTypeHints = true,
-			},
-		},
-	},
-})
-
 lspconfig.lua_ls.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
+	on_attach = M.on_attach,
+	capabilities = M.capabilities,
 	settings = {
 		Lua = {
 			hint = { enable = true },
@@ -118,3 +63,5 @@ lspconfig.lua_ls.setup({
 		},
 	},
 })
+
+return M

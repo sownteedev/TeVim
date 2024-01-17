@@ -33,22 +33,22 @@ function M.build_run()
 	if filetype == "c" then
 		vim.cmd(
 			"TermExec cmd='gcc "
-				.. vim.fn.expand("%")
-				.. " -o "
-				.. vim.fn.expand("%:r")
-				.. " && "
-				.. vim.fn.expand("%:r")
-				.. "'"
+			.. vim.fn.expand("%")
+			.. " -o "
+			.. vim.fn.expand("%:r")
+			.. " && "
+			.. vim.fn.expand("%:r")
+			.. "'"
 		)
 	elseif filetype == "cpp" then
 		vim.cmd(
 			"TermExec cmd='g++ "
-				.. vim.fn.expand("%")
-				.. " -o "
-				.. vim.fn.expand("%:r")
-				.. " && "
-				.. vim.fn.expand("%:r")
-				.. "'"
+			.. vim.fn.expand("%")
+			.. " -o "
+			.. vim.fn.expand("%:r")
+			.. " && "
+			.. vim.fn.expand("%:r")
+			.. "'"
 		)
 	elseif filetype == "python" then
 		vim.cmd("TermExec cmd='python3 " .. vim.fn.expand("%") .. "'")

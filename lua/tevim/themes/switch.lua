@@ -16,7 +16,7 @@ end
 M.settheme = function(theme)
 	vim.g.currentTheme = theme
 	vim.cmd("colorscheme " .. theme)
-	local file = vim.fn.stdpath("config") .. "/lua/tevim/user/options.lua"
+	local file = vim.fn.stdpath("config") .. "/lua/custom/options.lua"
 	local lines = vim.fn.readfile(file)
 	local newlines = {}
 	local found = false

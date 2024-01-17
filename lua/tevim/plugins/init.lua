@@ -1,4 +1,4 @@
-return {
+local plugins = {
 	{
 		"nvim-lua/plenary.nvim",
 		lazy = true,
@@ -12,8 +12,17 @@ return {
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
+		cmd = "Neotree",
 		keys = { { "<C-e>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" } },
 		branch = "v3.x",
+		init = function()
+			if vim.fn.argc(-1) == 1 then
+				local stat = vim.loop.fs_stat(vim.fn.argv(0))
+				if stat and stat.type == "directory" then
+					require("neo-tree")
+				end
+			end
+		end,
 		config = function()
 			require("tevim.plugins.others.neotree")
 		end,
@@ -24,20 +33,24 @@ return {
 		lazy = true,
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
 		dependencies = { "nvim-treesitter/nvim-treesitter-context", "HiPhish/rainbow-delimiters.nvim" },
-		config = function()
-			require("tevim.plugins.others.treesitter")
+		opts = function()
+			require("nvim-treesitter.install").compilers = { "clang" }
+			return require("tevim.plugins.others.treesitter")
+		end,
+		config = function(_, opts)
+			require("nvim-treesitter.configs").setup(opts)
 		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufReadPost",
-		version = "2.20.8",
 		config = function()
-			require("indent_blankline").setup({
-				char = "▏",
-				show_first_indent_level = false,
+			require("ibl").setup({
+				indent = { tab_char = "│" },
+				scope = { enabled = false },
 			})
 		end,
+		main = "ibl",
 	},
 	{
 		"windwp/nvim-ts-autotag",
@@ -49,8 +62,13 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		config = function()
-			require("tevim.plugins.others.whichkey")
+		opts = function()
+			return require("tevim.plugins.others.whichkey")
+		end,
+		config = function(_, opts)
+			require("which-key").setup(opts.setup)
+			require("which-key").register(opts.mappings, opts.opts)
+			require("which-key").register(opts.vmappings, opts.vopts)
 		end,
 	},
 	{
@@ -97,17 +115,6 @@ return {
 		ft = "markdown",
 		build = function()
 			vim.fn["mkdp#util#install"]()
-		end,
-	},
-	{
-		"andweeb/presence.nvim",
-		event = "BufReadPost",
-		config = function()
-			require("presence").setup({
-				editing_text = "Coding...",
-				reading_text = "Reading...",
-				workspace_text = "Working on repository",
-			})
 		end,
 	},
 	{
@@ -201,29 +208,6 @@ return {
 			})
 		end,
 	},
-	{
-		"xeluxee/competitest.nvim",
-		ft = { "c ", "cpp", "java", "python", "rust", "javascript", "typescript" },
-		dependencies = "MunifTanjim/nui.nvim",
-		config = function()
-			require("competitest").setup({
-				editor_ui = { show_nu = false },
-				runner_ui = {
-					interface = "split",
-					show_nu = false,
-					viewer = { show_nu = false },
-				},
-				split_ui = {
-					total_width = 0.4,
-					horizontal_layout = {
-						{ 1, "tc" },
-						{ 1, { { 1, "so" }, { 1, "si" } } },
-						{ 1, { { 1, "eo" }, { 1, "se" } } },
-					},
-				},
-			})
-		end,
-	},
 
 	--------------------------------------------------------------
 	{
@@ -255,19 +239,10 @@ return {
 					require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
 				end,
 			},
-			{
-				"jcdickinson/codeium.nvim",
-				config = function()
-					require("codeium").setup()
-				end,
-			},
 		},
 		config = function()
 			require("tevim.plugins.cmp.cmp")
 		end,
-	},
-	{
-		"github/copilot.vim",
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -277,15 +252,27 @@ return {
 			{
 				"nvimdev/lspsaga.nvim",
 				config = function()
-					require("tevim.plugins.lsp.lspsaga")
+					require("lspsaga").setup({
+						symbol_in_winbar = { show_file = false },
+					})
 				end,
 			},
 			{
 				"williamboman/mason.nvim",
 				cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
 				lazy = true,
-				config = function()
-					require("tevim.plugins.lsp.mason")
+				opts = function()
+					return require("tevim.plugins.lsp.mason")
+				end,
+				config = function(_, opts)
+					require("mason").setup(opts)
+					vim.api.nvim_create_user_command("MasonInstallAll", function()
+						if opts.ensure_installed and #opts.ensure_installed > 0 then
+							vim.cmd(
+								"MasonInstall " .. "lua-language-server " .. table.concat(opts.ensure_installed, " ")
+							)
+						end
+					end, {})
 				end,
 			},
 			{
@@ -303,8 +290,13 @@ return {
 	{
 		"stevearc/conform.nvim",
 		event = "BufWritePre",
-		config = function()
-			require("tevim.plugins.lsp.conform")
+		lazy = true,
+		cmd = "ConformInfo",
+		opts = function()
+			return require("tevim.plugins.lsp.conform")
+		end,
+		config = function(_, opts)
+			require("conform").setup(opts)
 		end,
 	},
 	{
@@ -313,3 +305,20 @@ return {
 		lazy = true,
 	},
 }
+
+local custom_path = vim.fn.stdpath("config") .. "/lua/custom"
+if vim.loop.fs_stat(custom_path) then
+	require("custom")
+	local custom_plugins = require("custom.plugins")
+	if #custom_plugins > 0 then
+		for _, plugin in ipairs(custom_plugins) do
+			table.insert(plugins, plugin)
+		end
+	end
+else
+	vim.cmd([[echohl WarningMsg]])
+	vim.cmd([[echomsg "Custom folder not found. Please create folder at ~/.config/nvim/lua/custom/ and read the docs"]])
+	vim.cmd([[echohl None]])
+end
+
+require("lazy").setup(plugins)

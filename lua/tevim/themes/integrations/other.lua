@@ -11,5 +11,5 @@ return {
 	MasonMutedBlock = { fg = colors.light_grey, bg = colors.one_bg },
 
 	CopilotSuggestion = { fg = colors.light_grey, italic = true },
-	IndentBlanklineChar = { fg = colors.one_bg },
+	IblIndent = { fg = colors.one_bg },
 }

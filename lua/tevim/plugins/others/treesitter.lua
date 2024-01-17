@@ -1,11 +1,4 @@
-local status, treesitter = pcall(require, "nvim-treesitter.configs")
-if not status then
-	return
-end
-
-require("nvim-treesitter.install").compilers = { "clang" }
-
-treesitter.setup({
+local options = {
 	highlight = {
 		enable = true,
 		use_languagetree = true,
@@ -17,4 +10,6 @@ treesitter.setup({
 	ensure_installed = { "lua" },
 	auto_install = true,
 	sync_install = false,
-})
+}
+
+return options

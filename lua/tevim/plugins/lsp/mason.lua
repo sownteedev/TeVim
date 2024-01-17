@@ -1,8 +1,3 @@
-local mason_status_ok, mason = pcall(require, "mason")
-if not mason_status_ok then
-	return
-end
-
 local config = {
 	ui = {
 		icons = {
@@ -23,34 +18,4 @@ local config = {
 	},
 }
 
-mason.setup(config)
-
-local install_server = {
-	"lua-language-server",
-	"stylua",
-
-	"css-lsp",
-	"html-lsp",
-	"typescript-language-server",
-	"prettier",
-	"tailwindcss-language-server",
-	"vue-language-server",
-	"eslint-lsp",
-	"deno",
-	"emmet-ls",
-	"json-lsp",
-	"eslint_d",
-
-	"bash-language-server",
-	"shfmt",
-
-	"pyright",
-	"black",
-
-	"clangd",
-	"clang-format",
-	"vim-language-server",
-}
-vim.api.nvim_create_user_command("MasonInstallAll", function()
-	vim.cmd("MasonInstall " .. table.concat(install_server, " "))
-end, {})
+return config

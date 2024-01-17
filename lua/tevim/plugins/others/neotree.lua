@@ -5,13 +5,9 @@ end
 
 vim.g.neo_tree_remove_legacy_commands = 1
 
-vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticWarn" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticHint" })
-
 tree.setup({
 	close_if_last_window = true,
+	open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
 	popup_border_style = "rounded",
 	enable_git_status = true,
 	enable_diagnostics = true,
@@ -72,6 +68,7 @@ tree.setup({
 		},
 		follow_current_file = { enabled = true },
 		group_empty_dirs = true,
+		bind_to_cwd = false,
 		use_libuv_file_watcher = true,
 		components = {
 			name = function(config, node, state)
