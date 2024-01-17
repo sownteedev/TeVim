@@ -15,6 +15,7 @@ local plugins = {
 		cmd = "Neotree",
 		keys = { { "<C-e>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" } },
 		branch = "v3.x",
+		dependencies = { "MunifTanjim/nui.nvim" },
 		init = function()
 			if vim.fn.argc(-1) == 1 then
 				local stat = vim.loop.fs_stat(vim.fn.argv(0))
@@ -317,7 +318,7 @@ if vim.loop.fs_stat(custom_path) then
 	end
 else
 	vim.cmd([[echohl WarningMsg]])
-	vim.cmd([[echomsg "Custom folder not found. Please create folder at ~/.config/nvim/lua/custom/ and read the docs"]])
+	vim.cmd([[echomsg "Custom folder not found. Please create folder at ~/.config/nvim/lua/ and read the docs"]])
 	vim.cmd([[echohl None]])
 end
 

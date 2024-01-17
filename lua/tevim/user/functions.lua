@@ -33,22 +33,22 @@ function M.build_run()
 	if filetype == "c" then
 		vim.cmd(
 			"TermExec cmd='gcc "
-			.. vim.fn.expand("%")
-			.. " -o "
-			.. vim.fn.expand("%:r")
-			.. " && "
-			.. vim.fn.expand("%:r")
-			.. "'"
+				.. vim.fn.expand("%")
+				.. " -o "
+				.. vim.fn.expand("%:r")
+				.. " && "
+				.. vim.fn.expand("%:r")
+				.. "'"
 		)
 	elseif filetype == "cpp" then
 		vim.cmd(
 			"TermExec cmd='g++ "
-			.. vim.fn.expand("%")
-			.. " -o "
-			.. vim.fn.expand("%:r")
-			.. " && "
-			.. vim.fn.expand("%:r")
-			.. "'"
+				.. vim.fn.expand("%")
+				.. " -o "
+				.. vim.fn.expand("%:r")
+				.. " && "
+				.. vim.fn.expand("%:r")
+				.. "'"
 		)
 	elseif filetype == "python" then
 		vim.cmd("TermExec cmd='python3 " .. vim.fn.expand("%") .. "'")
@@ -91,6 +91,17 @@ local lazygit = require("toggleterm.terminal").Terminal:new({
 })
 function M.LazyGit()
 	lazygit:toggle()
+end
+
+M.CreateCustom = function()
+	local path = vim.fn.stdpath("config") .. "/lua/custom"
+	if vim.fn.isdirectory(path) ~= 1 then
+		vim.fn.mkdir(path, "p")
+		local file = io.open(path .. "/init.lua", "w")
+		file:write('local M = {}\n\nM.plugins = "custom.plugins"\n\nreturn M')
+		local plugins = io.open(path .. "/plugins.lua", "w")
+		plugins:write("local plugins = {}\n\nreturn plugins")
+	end
 end
 
 return M

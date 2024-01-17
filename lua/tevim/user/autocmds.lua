@@ -75,3 +75,8 @@ autocmd("BufWritePost", {
 	end,
 	desc = "Reload neovim config on save",
 })
+
+-- Create custom command to Create Custom Config
+vim.api.nvim_create_user_command("TeVimCreateCustom", function()
+	vim.cmd("lua require('tevim.user.functions').CreateCustom()")
+end, {})
