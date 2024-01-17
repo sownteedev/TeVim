@@ -52,7 +52,6 @@ On Battery                            : 0.021s - 0.026s
 | [nvimdev/lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim)                       | responsible for the winbar and lightbulb                       | `true`  |
 | [kevinhwang91/nvim-ufo](https://github.com/kevinhwang91/nvim-ufo)                     | folds in neovim arent that bad! actually, better than vscode   | `true`  |
 | [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip)                               | very simple and easy to use snippet engine                     | `true`  |
-| [simrat39/symbols-outline.nvim](https://github.com/simrat39/symbols-outline.nvim)     | a tree like view for symbols via lsp                           | `true`  |
 | [numToStr/Comment.nvim](https://github.com/numToStr/Comment.nvim)                     | quik and easy commenting                                       | `true`  |
 | [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim)               | beautiful highlights for TODO comments                         | `true`  |
 | [folke/trouble.nvim](https://github.com/folke/trouble.nvim)                           | pretty list for showing diagnostics, references, etc           | `true`  |
@@ -100,9 +99,12 @@ and more plugins...
   git clone https://github.com/sownteedev/TeVim ~/.config/nvim --depth 1 && nvim
   ```
 - Wait for everything to install, reopen Neovim
-- Use command ":MasonInstallAll" to install all LSP
+- Use command ":TeVimCreateCustom" to create files and folders for custom
+- Use command ":MasonInstallAll" to install all LSPs
 
 ENJOY !
+
+<h2> Docs for custom updating... Please wait </h2>
 
 <details><summary> <b><i>Credits</b></i></summary>
 
