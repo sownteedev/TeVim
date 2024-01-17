@@ -316,7 +316,7 @@ if vim.loop.fs_stat(custom_path) then
 	end
 else
 	vim.cmd([[echohl WarningMsg]])
-	vim.cmd([[echomsg "Custom folder not found. Please create folder at ~/.config/nvim/lua/ and read the docs"]])
+	vim.cmd([[echomsg "Custom folder not found. Please use :TeVimCreateCustom and read the docs"]])
 	vim.cmd([[echohl None]])
 end
 
