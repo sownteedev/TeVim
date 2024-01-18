@@ -1,11 +1,4 @@
-local status_ok, tree = pcall(require, "neo-tree")
-if not status_ok then
-	return
-end
-
-vim.g.neo_tree_remove_legacy_commands = 1
-
-tree.setup({
+local options = {
 	close_if_last_window = true,
 	open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
 	popup_border_style = "rounded",
@@ -89,4 +82,6 @@ tree.setup({
 			{ source = "git_status", display_name = "  Git " },
 		},
 	},
-})
+}
+
+return options

@@ -17,6 +17,7 @@ local plugins = {
 		branch = "v3.x",
 		dependencies = { "MunifTanjim/nui.nvim" },
 		init = function()
+			vim.g.neo_tree_remove_legacy_commands = 1
 			if vim.fn.argc(-1) == 1 then
 				local stat = vim.loop.fs_stat(vim.fn.argv(0))
 				if stat and stat.type == "directory" then
@@ -24,8 +25,11 @@ local plugins = {
 				end
 			end
 		end,
-		config = function()
-			require("tevim.plugins.others.neotree")
+		opts = function()
+			return require("tevim.plugins.others.neotree")
+		end,
+		config = function(_, opts)
+			require("neo-tree").setup(opts)
 		end,
 	},
 	{
@@ -96,15 +100,6 @@ local plugins = {
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		lazy = true,
-		dependencies = {
-			{
-				"ahmedkhalf/project.nvim",
-				event = "VeryLazy",
-				config = function()
-					require("project_nvim").setup()
-				end,
-			},
-		},
 		branch = "0.1.x",
 		config = function()
 			require("tevim.plugins.others.telescope")
@@ -138,8 +133,11 @@ local plugins = {
 				desc = "Load gitsigns only if git repository",
 			})
 		end,
-		config = function()
-			require("tevim.plugins.others.gitsigns")
+		opts = function()
+			return require("tevim.plugins.others.gitsigns")
+		end,
+		config = function(_, opts)
+			require("gitsigns").setup(opts)
 		end,
 	},
 	{

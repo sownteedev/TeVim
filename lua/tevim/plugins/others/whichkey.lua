@@ -1,4 +1,4 @@
-local configs = {
+local options = {
 	setup = {
 		operators = { gc = "Comments" },
 		key_labels = {
@@ -147,4 +147,4 @@ local configs = {
 	},
 }
 
-return configs
+return options

@@ -6,8 +6,6 @@ end
 local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
 
-telescope.load_extension("projects")
-
 telescope.setup({
 	defaults = {
 		layout_config = {

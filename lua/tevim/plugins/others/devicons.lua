@@ -3,7 +3,7 @@ if not status_ok then
 	return
 end
 
-local config = {
+local options = {
 	override = {
 		c = { icon = "", name = "C" },
 		css = { icon = "", name = "CSS" },
@@ -83,4 +83,4 @@ local config = {
 }
 
 devicons.set_default_icon("󰈚")
-devicons.setup(config)
+devicons.setup(options)
