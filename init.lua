@@ -3,7 +3,6 @@
 
 ------------------------------- WELCOME TO TEVIM -------------------------------
 
-vim.loader.enable()
 require("tevim.user")
 
 --- @diagnostic disable warning

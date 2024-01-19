@@ -38,9 +38,9 @@ local plugins = {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
-		lazy = true,
+		tag = "v0.9.2",
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+		run = ":TSUpdate",
 		dependencies = { "nvim-treesitter/nvim-treesitter-context", "HiPhish/rainbow-delimiters.nvim" },
 		opts = function()
 			return require("tevim.plugins.others.treesitter")
@@ -233,8 +233,6 @@ local plugins = {
 				config = function(_, opts)
 					require("tevim.plugins.cmp.luasnip").luasnip(opts)
 				end,
-				version = "2.*",
-				build = "make install_jsregexp",
 			},
 			{
 				"windwp/nvim-autopairs",

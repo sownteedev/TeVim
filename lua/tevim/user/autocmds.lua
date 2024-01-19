@@ -30,7 +30,7 @@ autocmd("TextYankPost", {
 	group = augroup("yank_highlight", {}),
 	pattern = "*",
 	callback = function()
-		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 300 })
+		vim.highlight.on_yank()
 	end,
 	desc = "Highlight yanked text",
 })
@@ -43,6 +43,32 @@ autocmd("TermOpen", {
 		vim.cmd("startinsert")
 	end,
 	desc = "Disable number and cursorline in terminal",
+})
+
+autocmd({ "FileType" }, {
+	pattern = {
+		"PlenaryTestPopup",
+		"checkhealth",
+		"fugitive",
+		"git",
+		"gitcommit",
+		"help",
+		"lazy",
+		"lspinfo",
+		"man",
+		"mason",
+		"notify",
+		"qf",
+		"query",
+		"spectre_panel",
+		"startuptime",
+		"tsplayground",
+	},
+	callback = function()
+		vim.opt.number = false
+		vim.opt_local.cursorline = false
+	end,
+	desc = "Disable number and cursorline",
 })
 
 autocmd("FileType", {

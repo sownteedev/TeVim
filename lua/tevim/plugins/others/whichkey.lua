@@ -49,6 +49,7 @@ local configs = {
 		},
 		o = {
 			name = "  OPTIONS",
+			a = { "<cmd>lua require('tevim.user.functions').Ranger()<cr>", "Ranger" },
 			w = { "<cmd>lua require('tevim.user.functions').toggle_option('wrap')<cr>", "Wrap" },
 			s = { "<cmd>lua require('tevim.user.functions').toggle_option('spell')<cr>", "Spell" },
 			n = { "<cmd>lua require('tevim.user.functions').toggle_option('number')<cr>", "Number" },

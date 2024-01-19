@@ -111,10 +111,11 @@ for _, plugin in ipairs(builtins) do
 end
 
 for k, v in pairs(options) do
-	vim.opt[k] = v
 	if vim.fn.has("nvim-0.10") == 1 then
+		vim.loader.enable()
 		vim.opt.smoothscroll = true
 	end
+	vim.opt[k] = v
 end
 
 for k, v in pairs(globals) do

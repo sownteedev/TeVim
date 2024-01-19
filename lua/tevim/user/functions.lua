@@ -93,6 +93,20 @@ function M.LazyGit()
 	lazygit:toggle()
 end
 
+local ranger = require("toggleterm.terminal").Terminal:new({
+	cmd = "ranger",
+	dir = "git_dir",
+	direction = "float",
+	float_opts = { border = "curved" },
+	on_open = function(term)
+		vim.cmd("startinsert!")
+		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+	end,
+})
+function M.Ranger()
+	ranger:toggle()
+end
+
 M.CreateCustom = function()
 	local path = vim.fn.stdpath("config") .. "/lua/custom"
 	if vim.fn.isdirectory(path) ~= 1 then
