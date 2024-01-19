@@ -1,4 +1,4 @@
-local options = {
+local configs = {
 	signs = {
 		add = { text = "│" },
 		change = { text = "│" },
@@ -11,4 +11,4 @@ local options = {
 	current_line_blame_formatter = "     <author> (<author_time:%h %d, %Y>) • <summary>",
 }
 
-return options
+return configs

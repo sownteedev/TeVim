@@ -1,4 +1,4 @@
-local options = {
+local configs = {
 	close_if_last_window = true,
 	open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
 	popup_border_style = "rounded",
@@ -84,4 +84,4 @@ local options = {
 	},
 }
 
-return options
+return configs

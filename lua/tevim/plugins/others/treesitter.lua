@@ -1,4 +1,4 @@
-local options = {
+local configs = {
 	highlight = {
 		enable = true,
 		use_languagetree = true,
@@ -12,4 +12,4 @@ local options = {
 	sync_install = false,
 }
 
-return options
+return configs

@@ -1,14 +1,7 @@
 local M = {}
 
-local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status_ok then
-	return
-end
-
-local cmp_nvim_lsp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not cmp_nvim_lsp_status_ok then
-	return
-end
+local lspconfig = require("lspconfig")
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 M.on_attach = function(client, bufnr)
 	if client.supports_method("textDocument/inlayHint") then

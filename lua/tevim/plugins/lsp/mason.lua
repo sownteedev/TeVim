@@ -1,4 +1,4 @@
-local options = {
+local configs = {
 	ui = {
 		icons = {
 			package_pending = "󰁇 ",
@@ -18,4 +18,4 @@ local options = {
 	},
 }
 
-return options
+return configs

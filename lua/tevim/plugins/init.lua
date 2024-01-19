@@ -6,8 +6,12 @@ local plugins = {
 	{
 		"nvim-tree/nvim-web-devicons",
 		lazy = true,
-		config = function()
-			require("tevim.plugins.others.devicons")
+		opts = function()
+			return require("tevim.plugins.others.devicons")
+		end,
+		config = function(_, opts)
+			require("nvim-web-devicons").set_default_icon("󰈚")
+			require("nvim-web-devicons").setup(opts)
 		end,
 	},
 	{
@@ -101,8 +105,11 @@ local plugins = {
 		cmd = "Telescope",
 		lazy = true,
 		branch = "0.1.x",
-		config = function()
-			require("tevim.plugins.others.telescope")
+		opts = function()
+			return require("tevim.plugins.others.telescope")
+		end,
+		config = function(_, opts)
+			require("telescope").setup(opts)
 		end,
 	},
 	{
@@ -238,8 +245,11 @@ local plugins = {
 				end,
 			},
 		},
-		config = function()
-			require("tevim.plugins.cmp.cmp")
+		opts = function()
+			return require("tevim.plugins.cmp.cmp")
+		end,
+		config = function(_, opts)
+			require("cmp").setup(opts)
 		end,
 	},
 	{
@@ -314,7 +324,9 @@ if vim.loop.fs_stat(custom_path) then
 	end
 else
 	vim.cmd([[echohl WarningMsg]])
-	vim.cmd([[echomsg "Custom folder not found. Please use :TeVimCreateCustom and read the docs"]])
+	vim.cmd(
+		[[echomsg "Custom folder not found. Please use :TeVimCreateCustom to create folder and file then read the docs!"]]
+	)
 	vim.cmd([[echohl None]])
 end
 

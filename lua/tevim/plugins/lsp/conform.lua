@@ -1,4 +1,4 @@
-local options = {
+local configs = {
 	formatters_by_ft = {
 		lua = { "stylua" },
 	},
@@ -13,4 +13,4 @@ local options = {
 	},
 }
 
-return options
+return configs

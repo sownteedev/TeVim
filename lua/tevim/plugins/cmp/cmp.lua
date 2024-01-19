@@ -1,19 +1,6 @@
-local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-	return
-end
-
-local snip_status_ok, luasnip = pcall(require, "luasnip")
-if not snip_status_ok then
-	return
-end
-
-local lspkind_status_ok, lspkind = pcall(require, "lspkind")
-if not lspkind_status_ok then
-	return
-end
-
-local compare = require("cmp.config.compare")
+local cmp = require("cmp")
+local luasnip = require("luasnip")
+local lspkind = require("lspkind")
 
 local check_backspace = function()
 	local col = vim.fn.col(".") - 1
@@ -28,7 +15,7 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
 end
 
-cmp.setup({
+local configs = {
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body)
@@ -100,24 +87,12 @@ cmp.setup({
 		{ name = "buffer" },
 		{ name = "path" },
 	},
-	sorting = {
-		priority_weight = 2,
-		comparators = {
-			compare.offset,
-			compare.exact,
-			compare.scopes,
-			compare.score,
-			compare.recently_used,
-			compare.locality,
-			compare.kind,
-			compare.sort_text,
-			compare.length,
-			compare.order,
-		},
-	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
 		select = false,
+	},
+	completion = {
+		completeopt = "menu,menuone",
 	},
 	window = {
 		documentation = {
@@ -138,4 +113,6 @@ cmp.setup({
 		ghost_text = true,
 		native_menu = false,
 	},
-})
+}
+
+return configs

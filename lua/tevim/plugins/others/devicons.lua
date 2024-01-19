@@ -1,9 +1,4 @@
-local status_ok, devicons = pcall(require, "nvim-web-devicons")
-if not status_ok then
-	return
-end
-
-local options = {
+local configs = {
 	override = {
 		c = { icon = "", name = "C" },
 		css = { icon = "", name = "CSS" },
@@ -82,5 +77,4 @@ local options = {
 	},
 }
 
-devicons.set_default_icon("󰈚")
-devicons.setup(options)
+return configs
