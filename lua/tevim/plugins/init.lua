@@ -41,7 +41,11 @@ local plugins = {
 		tag = "v0.9.2",
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
 		run = ":TSUpdate",
-		dependencies = { "nvim-treesitter/nvim-treesitter-context", "HiPhish/rainbow-delimiters.nvim" },
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-context",
+			"HiPhish/rainbow-delimiters.nvim",
+			"windwp/nvim-ts-autotag",
+		},
 		opts = function()
 			return require("tevim.plugins.others.treesitter")
 		end,
@@ -59,13 +63,6 @@ local plugins = {
 			})
 		end,
 		main = "ibl",
-	},
-	{
-		"windwp/nvim-ts-autotag",
-		ft = { "html", "javascript", "typescript", "svelte", "vue", "tsx" },
-		config = function()
-			require("nvim-ts-autotag").setup()
-		end,
 	},
 	{
 		"folke/which-key.nvim",
@@ -185,7 +182,7 @@ local plugins = {
 	},
 	{
 		"kevinhwang91/nvim-ufo",
-		event = "BufReadPost",
+		event = { "BufReadPost", "BufNewFile" },
 		lazy = true,
 		dependencies = {
 			"kevinhwang91/promise-async",
