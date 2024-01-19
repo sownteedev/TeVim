@@ -1,5 +1,8 @@
-vim.cmd("filetype plugin indent off")
-vim.cmd("syntax off")
+vim.cmd([[
+	syntax off
+	filetype off
+	filetype plugin indent off
+]])
 
 vim.g.currentTheme = "yoru"
 vim.g.theme_cache = vim.fn.stdpath("data") .. "/colors_data/"

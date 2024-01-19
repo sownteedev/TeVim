@@ -1,3 +1,3 @@
-require(... .. ".autocmds")
-require(... .. ".keymaps")
-require(... .. ".options")
+require("tevim.user.options")
+require("tevim.user.keymaps")
+require("tevim.user.autocmds")

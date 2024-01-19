@@ -2,7 +2,6 @@
 -- Github : @sownteedev
 
 ------------------------------- WELCOME TO TEVIM -------------------------------
-
 require("tevim.user")
 
 --- @diagnostic disable warning
