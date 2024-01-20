@@ -38,7 +38,6 @@ local plugins = {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
-		tag = "v0.9.2",
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
 		run = ":TSUpdate",
 		dependencies = {
@@ -56,13 +55,13 @@ local plugins = {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufReadPost",
+		main = "ibl",
 		config = function()
 			require("ibl").setup({
 				indent = { tab_char = "│" },
 				scope = { enabled = false },
 			})
 		end,
-		main = "ibl",
 	},
 	{
 		"folke/which-key.nvim",

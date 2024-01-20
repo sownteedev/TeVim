@@ -10,6 +10,23 @@ return {
 	MasonMuted = { fg = colors.light_grey },
 	MasonMutedBlock = { fg = colors.light_grey, bg = colors.one_bg },
 
-	CopilotSuggestion = { fg = colors.light_grey, italic = true },
+	-- Lsp Saga
+	SagaBorder = { bg = colors.darker_black },
+	SagaNormal = { bg = colors.darker_black },
+
+	-- Indent Blankline
 	IblIndent = { fg = colors.one_bg },
+
+	-- Vim-illuminate
+	IlluminatedWordText = { bold = true, underline = true },
+	IlluminatedWordRead = { bold = true, underline = true },
+	IlluminatedWordWrite = { bold = true, underline = true },
+
+	-- Hop
+	HopNextKey = { fg = colors.red, bold = true },
+	HopNextKey1 = { fg = colors.cyan, bold = true },
+	HopNextKey2 = { fg = colors.blue, bold = true },
+
+	-- Copilot
+	CopilotSuggestion = { fg = colors.light_grey, italic = true },
 }
