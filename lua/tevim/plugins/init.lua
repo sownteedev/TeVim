@@ -68,7 +68,7 @@ local plugins = {
 	{
 		"folke/which-key.nvim",
 		lazy = true,
-		event = { "CursorHold", "CursorHoldI" },
+		event = "VeryLazy",
 		opts = function()
 			return require("tevim.plugins.others.whichkey")
 		end,
@@ -222,12 +222,13 @@ local plugins = {
 	{
 		"hrsh7th/nvim-cmp",
 		lazy = true,
-		event = "InsertEnter",
+		event = { "InsertEnter", "CmdlineEnter" },
 		dependencies = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-cmdline",
 			"saadparwaiz1/cmp_luasnip",
 			"onsails/lspkind.nvim",
 			{
@@ -257,7 +258,7 @@ local plugins = {
 	{
 		"neovim/nvim-lspconfig",
 		lazy = true,
-		event = "BufReadPre",
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			{
 				"nvimdev/lspsaga.nvim",
