@@ -12,13 +12,6 @@ local configs = {
 			separator = "",
 			group = " ",
 		},
-		window = {
-			border = "none",
-			position = "bottom",
-			margin = { 1, 0, 1, 0 },
-			padding = { 0, 0, 0, 0 },
-			winblend = 0,
-		},
 		layout = {
 			height = { min = 3, max = 20 },
 			width = { min = 20, max = 50 },
@@ -26,7 +19,6 @@ local configs = {
 			align = "center",
 		},
 		ignore_missing = true,
-		-- hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " },
 		show_help = true,
 		triggers = { "<leader>" },
 		triggers_blacklist = {

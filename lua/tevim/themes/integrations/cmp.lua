@@ -42,4 +42,7 @@ return {
 	CmpItemKindTypeParameter = { fg = colors.base08 },
 	CmpItemKindCopilot = { fg = colors.green },
 	CmpItemKindCodeium = { fg = colors.yellow },
+
+	-- Copilot.vim
+	CopilotSuggestion = { fg = colors.light_grey, italic = true },
 }

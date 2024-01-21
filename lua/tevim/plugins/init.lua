@@ -16,6 +16,7 @@ local plugins = {
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
+		lazy = true,
 		cmd = "Neotree",
 		keys = { { "<C-e>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" } },
 		branch = "v3.x",
@@ -38,6 +39,7 @@ local plugins = {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		lazy = true,
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
 		run = ":TSUpdate",
 		dependencies = {
@@ -54,8 +56,8 @@ local plugins = {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "BufReadPost",
-		main = "ibl",
+		lazy = true,
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("ibl").setup({
 				indent = { tab_char = "│" },
@@ -65,7 +67,8 @@ local plugins = {
 	},
 	{
 		"folke/which-key.nvim",
-		event = "VeryLazy",
+		lazy = true,
+		event = { "CursorHold", "CursorHoldI" },
 		opts = function()
 			return require("tevim.plugins.others.whichkey")
 		end,
@@ -77,7 +80,8 @@ local plugins = {
 	},
 	{
 		"numToStr/Comment.nvim",
-		event = "BufReadPost",
+		lazy = true,
+		event = "BufRead",
 		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
 		config = function()
 			require("Comment").setup({
@@ -87,10 +91,12 @@ local plugins = {
 	},
 	{
 		"stevearc/dressing.nvim",
+		lazy = true,
 		event = "VeryLazy",
 	},
 	{
 		"folke/todo-comments.nvim",
+		lazy = true,
 		event = "VeryLazy",
 		config = function()
 			require("todo-comments").setup()
@@ -98,8 +104,8 @@ local plugins = {
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		cmd = "Telescope",
 		lazy = true,
+		cmd = "Telescope",
 		branch = "0.1.x",
 		opts = function()
 			return require("tevim.plugins.others.telescope")
@@ -110,13 +116,13 @@ local plugins = {
 	},
 	{
 		"iamcco/markdown-preview.nvim",
+		lazy = true,
 		ft = "markdown",
-		build = function()
-			vim.fn["mkdp#util#install"]()
-		end,
+		build = ":call mkdp#util#install()",
 	},
 	{
 		"lewis6991/gitsigns.nvim",
+		lazy = true,
 		ft = { "gitcommit", "diff" },
 		init = function()
 			vim.api.nvim_create_autocmd({ "BufRead" }, {
@@ -145,8 +151,8 @@ local plugins = {
 	},
 	{
 		"NvChad/nvim-colorizer.lua",
-		event = "BufRead",
 		lazy = true,
+		event = "BufRead",
 		config = function(_, opts)
 			require("colorizer").setup(opts)
 			vim.defer_fn(function()
@@ -156,6 +162,7 @@ local plugins = {
 	},
 	{
 		"akinsho/toggleterm.nvim",
+		lazy = true,
 		cmd = "ToggleTerm",
 		keys = {
 			{
@@ -172,6 +179,7 @@ local plugins = {
 	},
 	{
 		"RRethy/vim-illuminate",
+		lazy = true,
 		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("illuminate").configure({
@@ -181,8 +189,8 @@ local plugins = {
 	},
 	{
 		"kevinhwang91/nvim-ufo",
-		event = { "BufReadPost", "BufNewFile" },
 		lazy = true,
+		event = { "BufReadPost", "BufNewFile" },
 		dependencies = {
 			"kevinhwang91/promise-async",
 			{
@@ -213,8 +221,8 @@ local plugins = {
 	--------------------------------------------------------------
 	{
 		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
 		lazy = true,
+		event = "InsertEnter",
 		dependencies = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
@@ -248,8 +256,8 @@ local plugins = {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		event = { "BufReadPost", "BufNewFile" },
 		lazy = true,
+		event = "BufReadPre",
 		dependencies = {
 			{
 				"nvimdev/lspsaga.nvim",
@@ -290,8 +298,8 @@ local plugins = {
 	},
 	{
 		"stevearc/conform.nvim",
-		event = "BufWritePre",
 		lazy = true,
+		event = "BufWritePre",
 		cmd = "ConformInfo",
 		opts = function()
 			return require("tevim.plugins.lsp.conform")
@@ -302,8 +310,8 @@ local plugins = {
 	},
 	{
 		"folke/trouble.nvim",
-		cmd = { "TroubleToggle", "Trouble" },
 		lazy = true,
+		cmd = { "TroubleToggle", "Trouble" },
 	},
 }
 

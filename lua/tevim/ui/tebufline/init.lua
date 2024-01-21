@@ -93,7 +93,8 @@ local createTab = function(buf)
 	end
 end
 
-local excludedFileTypes = { "neo-tree", "help", "dasher", "lir", "alpha", "toggleterm" }
+local excludedFileTypes = { "neo-tree", "help", "dasher", "lir", "alpha", "toggleterm", "tedash" }
+
 local treeWidth = function()
 	for _, win in pairs(vim.api.nvim_tabpage_list_wins(0)) do
 		if vim.bo[vim.api.nvim_win_get_buf(win)].ft == "neo-tree" then
@@ -102,15 +103,17 @@ local treeWidth = function()
 	end
 	return 0
 end
+
 M.getTabline = function()
+	local treespace = "%#TeBufTree#" .. string.rep(" ", treeWidth())
 	local buffline = ""
 	local buffstart = "%#TeBufEmpty#"
 	local run = "%@Run@" .. "  "
 	if vim.bo.filetype == "html" or vim.bo.filetype == "markdown" then
 		run = "%@Run@" .. " 󰀂 "
 	end
-	local theme = "%@ToggleTheme@" .. "   "
 	local split = "%@Split@" .. "  "
+	local theme = "%@ToggleTheme@" .. "   "
 	local quit = "%@Quit@" .. " 󰅜 "
 	local counter = 0
 	for _, buf in pairs(vim.api.nvim_list_bufs()) do
@@ -132,15 +135,7 @@ M.getTabline = function()
 		end
 		::do_nothing::
 	end
-	local treespace
-	if treeWidth() > 2 then
-		treespace = "%#TeBufTree#"
-			.. string.rep(" ", treeWidth() / 2 - 3)
-			.. "      "
-			.. string.rep(" ", treeWidth() / 2 - 2)
-	else
-		treespace = "%#TeBufTree#" .. string.rep(" ", treeWidth())
-	end
+
 	if counter < 2 or vim.o.columns < 120 then
 		return treespace
 			.. buffstart
@@ -154,11 +149,7 @@ M.getTabline = function()
 			.. "%#TeBufQuit#"
 			.. quit
 	end
-	if counter > 1 then
-		buffstart = "%#TeBufEmptyColor#"
-	end
 	return treespace
-		.. buffstart
 		.. buffline
 		.. "%="
 		.. "%#TeBufRun#"
