@@ -28,6 +28,15 @@ function M.toggle_statusline()
 	vim.notify("laststatus" .. " set to " .. tostring(value))
 end
 
+function M.toggle_inlayHint()
+	local inlayHint = require("tevim.plugins.lsp.lspconfig").inlayHint
+	if inlayHint == true then
+		require("tevim.plugins.lsp.lspconfig").inlayHint = false
+	else
+		require("tevim.plugins.lsp.lspconfig").inlayHint = true
+	end
+end
+
 function M.build_run()
 	local filetype = vim.bo.filetype
 	if filetype == "c" then
