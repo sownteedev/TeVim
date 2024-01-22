@@ -30,10 +30,14 @@ end
 
 function M.toggle_inlayHint()
 	local inlayHint = require("tevim.plugins.lsp.lspconfig").inlayHint
-	if inlayHint == true then
+	if inlayHint then
 		require("tevim.plugins.lsp.lspconfig").inlayHint = false
+		vim.cmd("LspRestart")
+		vim.notify("Inlay hints disabled")
 	else
 		require("tevim.plugins.lsp.lspconfig").inlayHint = true
+		vim.cmd("LspRestart")
+		vim.notify("Inlay hints enabled")
 	end
 end
 
