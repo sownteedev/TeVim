@@ -3,8 +3,10 @@ local M = {}
 local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
+M.inlayHint = true
+
 M.on_attach = function(client, bufnr)
-	if client.supports_method("textDocument/inlayHint") then
+	if M.inlayHint and client.supports_method("textDocument/inlayHint") then
 		local value
 		local ih = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
 		if type(ih) == "function" then
