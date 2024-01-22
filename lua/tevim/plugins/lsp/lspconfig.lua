@@ -34,7 +34,7 @@ vim.diagnostic.config({
 	severity_sort = true,
 	signs = { text = { [1] = " ", [2] = " ", [3] = " ", [4] = "󰛨 " } },
 	float = {
-		focusable = false,
+		suffix = "",
 		header = { "  Diagnostics", "String" },
 		prefix = function(_, _, _)
 			return "  ", "String"

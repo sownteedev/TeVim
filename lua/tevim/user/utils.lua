@@ -114,7 +114,8 @@ M.CreateCustom = function()
 		local file = io.open(path .. "/init.lua", "w")
 		file:write('local M = {}\n\nM.plugins = "custom.plugins"\n\nreturn M')
 		local plugins = io.open(path .. "/plugins.lua", "w")
-		plugins:write("local plugins = {}\n\nreturn plugins")
+		plugins:write("local plugins = {\n\n-- add plugins or override my plugins in here\n\n}\n\nreturn plugins")
+		vim.notify("Created custom folder. Please read the docs!")
 	end
 end
 

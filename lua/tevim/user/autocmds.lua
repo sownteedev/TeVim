@@ -104,5 +104,5 @@ autocmd("BufWritePost", {
 
 -- Create custom command to Create Custom Config
 vim.api.nvim_create_user_command("TeVimCreateCustom", function()
-	vim.cmd("lua require('tevim.user.functions').CreateCustom()")
+	vim.cmd("lua require('tevim.user.utils').CreateCustom()")
 end, {})

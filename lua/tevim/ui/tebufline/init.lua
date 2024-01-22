@@ -6,7 +6,7 @@ local devicons_present, devicons = pcall(require, "nvim-web-devicons")
 vim.cmd("function! TeBufGoToBuf(bufnr,b,c,d) \n execute 'b'..a:bufnr \n endfunction")
 vim.cmd("function! ToggleTheme(a,b,c,d) \n TeVimThemesToggle \n endfunction")
 vim.cmd("function! Split(a,b,c,d) \n vsplit \n endfunction")
-vim.cmd("function! Run(a,b,c,d) \n lua require('tevim.user.functions').build_run() \n endfunction")
+vim.cmd("function! Run(a,b,c,d) \n lua require('tevim.user.utils').build_run() \n endfunction")
 vim.cmd("function! Quit(a,b,c,d) \n qa! \n endfunction")
 vim.cmd([[
    function! TeBufKillBuf(bufnr,b,c,d)
@@ -47,39 +47,39 @@ local createTab = function(buf)
 			or new_hl(icon_hl, "TeBufOnInactive") .. " " .. icon
 		)
 		local close_btn = "%" .. buf .. "@TeBufKillBuf@󰅖%X"
-		for _, buffer in pairs(vim.api.nvim_list_bufs()) do
-			if
-				vim.api.nvim_buf_is_valid(buffer)
-				and vim.api.nvim_buf_is_loaded(buffer)
-				and vim.bo[buffer].buflisted
-				and filename ~= ""
-			then
-				if filename == vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buffer), ":t") and buffer ~= buf then
-					local other = {}
-					for match in (vim.api.nvim_buf_get_name(buffer) .. "/"):gmatch("(.-)" .. "/") do
-						table.insert(other, match)
-					end
+		-- for _, buffer in pairs(vim.api.nvim_list_bufs()) do
+		-- 	if
+		-- 		vim.api.nvim_buf_is_valid(buffer)
+		-- 		and vim.api.nvim_buf_is_loaded(buffer)
+		-- 		and vim.bo[buffer].buflisted
+		-- 		and filename ~= ""
+		-- 	then
+		-- if filename == vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buffer), ":t") and buffer ~= buf then
+		-- local other = {}
+		-- for match in (vim.api.nvim_buf_get_name(buffer) .. "/"):gmatch("(.-)" .. "/") do
+		-- 	table.insert(other, match)
+		-- end
 
-					local current = {}
-					for match in (vim.api.nvim_buf_get_name(buf) .. "/"):gmatch("(.-)" .. "/") do
-						table.insert(current, match)
-					end
-
-					filename = current[#current]
-
-					for i = #current - 1, 1, -1 do
-						local value_current = current[i]
-						local other_current = other[i]
-
-						if value_current ~= other_current then
-							filename = value_current .. "/" .. filename
-							break
-						end
-					end
-					break
-				end
-			end
+		local current = {}
+		for match in (vim.api.nvim_buf_get_name(buf) .. "/"):gmatch("(.-)" .. "/") do
+			table.insert(current, match)
 		end
+
+		filename = current[#current]
+
+		-- for i = #current - 1, 1, -1 do
+		-- 	local value_current = current[i]
+		-- 	local other_current = other[i]
+		--
+		-- 	if value_current ~= other_current then
+		-- 		filename = value_current .. "/" .. filename
+		-- 		break
+		-- 	end
+		-- end
+		-- break
+		-- end
+		-- end
+		-- end
 		if buf == vim.api.nvim_get_current_buf() then
 			filename = "%#TeBufOnActive#" .. "   " .. icon .. "%#TeBufOnActive#" .. "  " .. filename
 			close_btn = (vim.bo[0].modified and "%" .. buf .. "@BufflineKillBuf@%#TeBufOnModified#●   ")
