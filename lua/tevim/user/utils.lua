@@ -107,9 +107,8 @@ local lazygit = require("toggleterm.terminal").Terminal:new({
 	cmd = "lazygit",
 	dir = "git_dir",
 	direction = "float",
-	float_opts = { border = "curved" },
+	float_opts = { border = "none" },
 	on_open = function(term)
-		vim.cmd("startinsert!")
 		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
 	end,
 })
@@ -119,11 +118,9 @@ end
 
 local ranger = require("toggleterm.terminal").Terminal:new({
 	cmd = "ranger",
-	dir = "git_dir",
 	direction = "float",
-	float_opts = { border = "curved" },
+	float_opts = { border = "none" },
 	on_open = function(term)
-		vim.cmd("startinsert!")
 		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
 	end,
 })

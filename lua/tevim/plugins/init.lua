@@ -174,7 +174,10 @@ local plugins = {
 		},
 		version = "*",
 		config = function()
-			require("toggleterm").setup({ shading_factor = 2 })
+			require("toggleterm").setup({
+				shading_factor = 2,
+				highlights = { NormalFloat = { link = "NormalFloat" } },
+			})
 		end,
 	},
 	{
