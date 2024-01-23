@@ -45,6 +45,16 @@ autocmd("TermOpen", {
 	desc = "Disable number and cursorline in terminal",
 })
 
+autocmd("BufWritePre", {
+	callback = function()
+		local formatOnSave = require("tevim.plugins.lsp.conform").formatOnSave
+		if formatOnSave then
+			vim.cmd("lua require('conform').format()")
+		end
+	end,
+	desc = "Format on save",
+})
+
 autocmd({ "FileType" }, {
 	pattern = {
 		"PlenaryTestPopup",

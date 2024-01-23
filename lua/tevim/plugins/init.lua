@@ -311,7 +311,7 @@ local plugins = {
 	},
 	{
 		"folke/trouble.nvim",
-		lazy = true,
+		-- lazy = true,
 		cmd = { "TroubleToggle", "Trouble" },
 	},
 }

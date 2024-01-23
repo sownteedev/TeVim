@@ -41,6 +41,17 @@ function M.toggle_inlayHint()
 	end
 end
 
+function M.toggle_formatOnSave()
+	local formatOnSave = require("tevim.plugins.lsp.conform").formatOnSave
+	if formatOnSave then
+		require("tevim.plugins.lsp.conform").formatOnSave = false
+		vim.notify("Format on save disabled")
+	else
+		require("tevim.plugins.lsp.conform").formatOnSave = true
+		vim.notify("Format on save enabled")
+	end
+end
+
 function M.build_run()
 	local filetype = vim.bo.filetype
 	if filetype == "c" then
