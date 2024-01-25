@@ -39,9 +39,9 @@ local plugins = {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
 		lazy = true,
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
-		run = ":TSUpdate",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-context",
 			"HiPhish/rainbow-delimiters.nvim",
@@ -57,7 +57,7 @@ local plugins = {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		lazy = true,
-		event = { "BufReadPre", "BufNewFile" },
+		event = { "BufReadPost", "BufNewFile" },
 		opts = { indent = { tab_char = "│" }, scope = { enabled = false } },
 		config = function(_, opts)
 			require("ibl").setup(opts)
@@ -66,7 +66,7 @@ local plugins = {
 	{
 		"folke/which-key.nvim",
 		lazy = true,
-		event = "VeryLazy",
+		keys = { "<leader>", " ", "'", "`" },
 		opts = function()
 			return require("tevim.plugins.others.whichkey")
 		end,
@@ -91,21 +91,19 @@ local plugins = {
 		"stevearc/dressing.nvim",
 		lazy = true,
 		event = "VeryLazy",
+		opts = {},
 	},
 	{
 		"folke/todo-comments.nvim",
 		lazy = true,
-		event = "VeryLazy",
-		opts = {},
-		config = function(_, opts)
-			require("todo-comments").setup(opts)
-		end,
+		event = { "BufReadPost", "InsertEnter" },
+		cmd = { "TodoTrouble", "TodoTelescope" },
+		opts = { signs = false },
 	},
 	{
 		"nvim-telescope/telescope.nvim",
 		lazy = true,
 		cmd = "Telescope",
-		branch = "0.1.x",
 		opts = function()
 			return require("tevim.plugins.others.telescope")
 		end,
@@ -235,6 +233,7 @@ local plugins = {
 			"onsails/lspkind.nvim",
 			{
 				"L3MON4D3/LuaSnip",
+				lazy = true,
 				dependencies = "rafamadriz/friendly-snippets",
 				opts = { history = true, updateevents = "TextChanged,TextChangedI" },
 				config = function(_, opts)
@@ -243,6 +242,9 @@ local plugins = {
 			},
 			{
 				"windwp/nvim-autopairs",
+				event = "InsertEnter",
+				lazy = true,
+				opts = { fast_wrap = {}, disable_filetype = { "TelescopePrompt", "vim" } },
 				config = function(_, opts)
 					require("nvim-autopairs").setup(opts)
 					local cmp_autopairs = require("nvim-autopairs.completion.cmp")
@@ -260,7 +262,8 @@ local plugins = {
 	{
 		"neovim/nvim-lspconfig",
 		lazy = true,
-		event = { "BufReadPre", "BufNewFile" },
+		event = { "BufReadPost", "BufNewFile" },
+		cmd = { "LspInfo", "LspInstall", "LspUninstall", "LspStart" },
 		dependencies = {
 			{
 				"nvimdev/lspsaga.nvim",
@@ -313,7 +316,7 @@ local plugins = {
 	},
 	{
 		"folke/trouble.nvim",
-		-- lazy = true,
+		lazy = true,
 		cmd = { "TroubleToggle", "Trouble" },
 	},
 }
