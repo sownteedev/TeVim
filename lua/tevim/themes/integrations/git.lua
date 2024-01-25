@@ -3,18 +3,12 @@ local colors = require("tevim.themes").getCurrentTheme()
 return {
 	GitSignsCurrentLineBlame = { fg = colors.grey_fg },
 
-	diffAdded = { fg = colors.green },
-	diffRemoved = { fg = colors.red },
-	diffChanged = { fg = colors.orange },
-	diffFile = { fg = colors.color7 },
-	diffLine = { fg = colors.color1 },
-	diffIndexLine = { fg = colors.color12 },
 	diffOldFile = { fg = colors.baby_pink },
 	diffNewFile = { fg = colors.blue },
 
-	DiffAdd = { fg = colors.blue },
-	DiffAdded = { fg = colors.green },
-	DiffChange = { fg = colors.light_grey },
+	DiffAdd = { fg = colors.green },
+	DiffAdded = { fg = colors.blue },
+	DiffChange = { fg = colors.orange },
 	DiffChangeDelete = { fg = colors.red },
 	DiffModified = { fg = colors.orange },
 	DiffDelete = { fg = colors.red },

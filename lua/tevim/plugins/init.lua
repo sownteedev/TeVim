@@ -58,11 +58,9 @@ local plugins = {
 		"lukas-reineke/indent-blankline.nvim",
 		lazy = true,
 		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			require("ibl").setup({
-				indent = { tab_char = "│" },
-				scope = { enabled = false },
-			})
+		opts = { indent = { tab_char = "│" }, scope = { enabled = false } },
+		config = function(_, opts)
+			require("ibl").setup(opts)
 		end,
 	},
 	{
@@ -98,8 +96,9 @@ local plugins = {
 		"folke/todo-comments.nvim",
 		lazy = true,
 		event = "VeryLazy",
-		config = function()
-			require("todo-comments").setup()
+		opts = {},
+		config = function(_, opts)
+			require("todo-comments").setup(opts)
 		end,
 	},
 	{
@@ -173,21 +172,21 @@ local plugins = {
 			},
 		},
 		version = "*",
-		config = function()
-			require("toggleterm").setup({
-				shading_factor = 2,
-				highlights = { NormalFloat = { link = "NormalFloat" } },
-			})
+		opts = {
+			shading_factor = 2,
+			highlights = { NormalFloat = { link = "NormalFloat" } },
+		},
+		config = function(_, opts)
+			require("toggleterm").setup(opts)
 		end,
 	},
 	{
 		"RRethy/vim-illuminate",
 		lazy = true,
 		event = { "BufReadPost", "BufNewFile" },
-		config = function()
-			require("illuminate").configure({
-				filetypes_denylist = { "neo-tree", "Trouble", "DressingSelect", "TelescopePrompt" },
-			})
+		opts = { filetypes_denylist = { "neo-tree", "Trouble", "DressingSelect", "TelescopePrompt" } },
+		config = function(_, opts)
+			require("illuminate").configure(opts)
 		end,
 	},
 	{
@@ -265,10 +264,10 @@ local plugins = {
 		dependencies = {
 			{
 				"nvimdev/lspsaga.nvim",
-				config = function()
-					require("lspsaga").setup({
-						symbol_in_winbar = { show_file = false },
-					})
+				lazy = true,
+				opts = { symbol_in_winbar = { show_file = false } },
+				config = function(_, opts)
+					require("lspsaga").setup(opts)
 				end,
 			},
 			{
