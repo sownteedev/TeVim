@@ -21,6 +21,9 @@ local plugins = {
 		keys = { { "<C-e>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" } },
 		branch = "v3.x",
 		dependencies = { "MunifTanjim/nui.nvim" },
+		deactivate = function()
+			vim.cmd([[Neotree close]])
+		end,
 		init = function()
 			vim.g.neo_tree_remove_legacy_commands = 1
 			if vim.fn.argc(-1) == 1 then
@@ -58,12 +61,17 @@ local plugins = {
 		"lukas-reineke/indent-blankline.nvim",
 		lazy = true,
 		event = { "BufReadPost", "BufNewFile" },
-		version = "2.20.7",
+		dependencies = {
+			{
+				"echasnovski/mini.indentscope",
+				opts = { symbol = "│", options = { try_as_border = true } },
+			},
+		},
 		opts = function()
 			return require("tevim.plugins.others.others").blankline
 		end,
 		config = function(_, opts)
-			require("indent_blankline").setup(opts)
+			require("ibl").setup(opts)
 		end,
 	},
 	{
@@ -96,8 +104,16 @@ local plugins = {
 	{
 		"stevearc/dressing.nvim",
 		lazy = true,
-		event = "VeryLazy",
-		opts = {},
+		init = function()
+			vim.ui.select = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.select(...)
+			end
+			vim.ui.input = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.input(...)
+			end
+		end,
 	},
 	{
 		"folke/todo-comments.nvim",

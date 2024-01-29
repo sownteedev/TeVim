@@ -81,6 +81,26 @@ autocmd({ "FileType" }, {
 	desc = "Disable number and cursorline",
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = {
+		"help",
+		"alpha",
+		"tedash",
+		"neo-tree",
+		"Trouble",
+		"trouble",
+		"lazy",
+		"mason",
+		"notify",
+		"toggleterm",
+		"lazyterm",
+	},
+	callback = function()
+		vim.b.miniindentscope_disable = true
+	end,
+	desc = "Disable miniindent",
+})
+
 autocmd("FileType", {
 	pattern = "qf",
 	callback = function()
