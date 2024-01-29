@@ -3,6 +3,27 @@ local M = {}
 function M.toggle_option(option)
 	local value = not vim.api.nvim_get_option_value(option, {})
 	vim.opt[option] = value
+	local options = io.open(vim.fn.stdpath("config") .. "/lua/custom/options.lua", "a")
+	if options == nil then
+		vim.notify("Please create a custom folder to save options! Use :TeVimCreateCustom")
+	else
+		local file = vim.fn.stdpath("config") .. "/lua/custom/options.lua"
+		local lines = vim.fn.readfile(file)
+		local newlines = {}
+		local found = false
+		for _, line in ipairs(lines) do
+			if line == "vim.opt." .. option .. " = " .. tostring(not value) then
+				table.insert(newlines, "vim.opt." .. option .. " = " .. tostring(value))
+				found = true
+			else
+				table.insert(newlines, line)
+			end
+		end
+		if not found then
+			table.insert(newlines, "vim.opt." .. option .. " = " .. tostring(value))
+		end
+		vim.fn.writefile(newlines, file)
+	end
 	vim.notify(option .. " set to " .. tostring(value))
 end
 
@@ -103,28 +124,54 @@ function M.build_run()
 	end
 end
 
-local lazygit = require("toggleterm.terminal").Terminal:new({
-	cmd = "lazygit",
-	dir = "git_dir",
-	direction = "float",
-	float_opts = { border = "none" },
-	on_open = function(term)
-		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-	end,
-})
 function M.LazyGit()
+	local status_ok, _ = pcall(require, "toggleterm")
+	if not status_ok then
+		return vim.notify("toggleterm.nvim isn't installed!")
+	end
+	for _, cmd in ipairs({ "lazygit" }) do
+		local name = type(cmd) == "string" and cmd or vim.inspect(cmd)
+		local commands = type(cmd) == "string" and { cmd } or cmd
+		---@cast commands string[]
+		for _, c in ipairs(commands) do
+			if vim.fn.executable(c) == 0 then
+				return vim.notify(("%s isn't installed"):format(name))
+			end
+		end
+	end
+	local lazygit = require("toggleterm.terminal").Terminal:new({
+		cmd = "lazygit",
+		dir = "git_dir",
+		direction = "float",
+		on_open = function(term)
+			vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+		end,
+	})
 	lazygit:toggle()
 end
 
-local ranger = require("toggleterm.terminal").Terminal:new({
-	cmd = "ranger",
-	direction = "float",
-	float_opts = { border = "none" },
-	on_open = function(term)
-		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-	end,
-})
 function M.Ranger()
+	local status_ok, _ = pcall(require, "toggleterm")
+	if not status_ok then
+		return vim.notify("toggleterm.nvim isn't installed!")
+	end
+	for _, cmd in ipairs({ "ranger" }) do
+		local name = type(cmd) == "string" and cmd or vim.inspect(cmd)
+		local commands = type(cmd) == "string" and { cmd } or cmd
+		---@cast commands string[]
+		for _, c in ipairs(commands) do
+			if vim.fn.executable(c) == 0 then
+				return warn(("%s isn't installed"):format(name))
+			end
+		end
+	end
+	local ranger = require("toggleterm.terminal").Terminal:new({
+		cmd = "ranger",
+		direction = "float",
+		on_open = function(term)
+			vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+		end,
+	})
 	ranger:toggle()
 end
 
@@ -133,9 +180,15 @@ M.CreateCustom = function()
 	if vim.fn.isdirectory(path) ~= 1 then
 		vim.fn.mkdir(path, "p")
 		local file = io.open(path .. "/init.lua", "w")
-		file:write('local M = {}\n\nM.plugins = "custom.plugins"\n\nreturn M')
+		file:write(
+			'local M = {}\n\nM.keymaps = require("custom.keymaps")\nM.options = require("custom.options")\n\nM.plugins = "custom.plugins"\n\nreturn M'
+		)
 		local plugins = io.open(path .. "/plugins.lua", "w")
 		plugins:write("local plugins = {\n\n-- add plugins or override my plugins in here\n\n}\n\nreturn plugins")
+		local options = io.open(path .. "/options.lua", "w")
+		options:write("-- add options or override my options in here")
+		local keymaps = io.open(path .. "/keymaps.lua", "w")
+		keymaps:write("-- add your keymaps in here")
 		vim.notify("Created custom folder. Please read the docs!")
 	end
 end

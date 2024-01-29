@@ -58,28 +58,34 @@ local plugins = {
 		"lukas-reineke/indent-blankline.nvim",
 		lazy = true,
 		event = { "BufReadPost", "BufNewFile" },
-		opts = { indent = { tab_char = "│" }, scope = { enabled = false } },
+		version = "2.20.7",
+		opts = function()
+			return require("tevim.plugins.others.others").blankline
+		end,
 		config = function(_, opts)
-			require("ibl").setup(opts)
+			require("indent_blankline").setup(opts)
 		end,
 	},
 	{
 		"folke/which-key.nvim",
 		lazy = true,
 		keys = { "<leader>", " ", "'", "`" },
+		event = "VeryLazy",
 		opts = function()
 			return require("tevim.plugins.others.whichkey")
 		end,
 		config = function(_, opts)
 			require("which-key").setup(opts.setup)
 			require("which-key").register(opts.mappings, opts.opts)
-			require("which-key").register(opts.vmappings, opts.vopts)
 		end,
 	},
 	{
 		"numToStr/Comment.nvim",
 		lazy = true,
-		event = "BufRead",
+		keys = {
+			{ mode = "n", "<C-/>", "<Plug>(comment_toggle_linewise_current)", desc = "Toggle Comment" },
+			{ mode = "v", "<C-/>", "<Plug>(comment_toggle_linewise_visual)", desc = "Toggle Comment(Visual)" },
+		},
 		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
 		config = function()
 			require("Comment").setup({
@@ -140,7 +146,7 @@ local plugins = {
 			})
 		end,
 		opts = function()
-			return require("tevim.plugins.others.gitsigns")
+			return require("tevim.plugins.others.others").gitsigns
 		end,
 		config = function(_, opts)
 			require("gitsigns").setup(opts)
@@ -150,6 +156,7 @@ local plugins = {
 		"NvChad/nvim-colorizer.lua",
 		lazy = true,
 		event = "BufRead",
+		opts = {},
 		config = function(_, opts)
 			require("colorizer").setup(opts)
 			vim.defer_fn(function()
@@ -161,18 +168,12 @@ local plugins = {
 		"akinsho/toggleterm.nvim",
 		lazy = true,
 		cmd = "ToggleTerm",
-		keys = {
-			{
-				[[<C-\>]],
-				"<cmd>ToggleTerm size=10 direction=horizontal<cr>",
-				{ noremap = true, silent = true },
-				{ desc = "Toggle Terminal" },
-			},
-		},
+		keys = { { [[<C-`>]], "<cmd>ToggleTerm size=10 direction=horizontal<cr>", { desc = "Toggle Terminal" } } },
 		version = "*",
 		opts = {
 			shading_factor = 2,
 			highlights = { NormalFloat = { link = "NormalFloat" } },
+			float_opts = { border = "none" },
 		},
 		config = function(_, opts)
 			require("toggleterm").setup(opts)

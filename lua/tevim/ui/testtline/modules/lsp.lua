@@ -24,6 +24,14 @@ local M = function()
 	end
 	local buf_client_names = add_client(buf_ft)
 
+	local conform_ok, conform = pcall(require, "conform")
+	if conform_ok then
+		local formatters = conform.list_formatters(0)
+		for _, formatter in pairs(formatters) do
+			table.insert(buf_client_names, formatter.name)
+		end
+	end
+
 	-- RETURN CLIENTS
 	if #buf_client_names > 3 then
 		return "%#TeSTTLsp#" .. " " .. buf_client_names[1] .. ", " .. buf_client_names[2] .. ", " .. buf_client_names[3]

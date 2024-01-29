@@ -66,11 +66,19 @@ local picker_opts = {
 }
 
 M.setup = function()
+	local path = vim.fn.stdpath("config") .. "/lua/custom"
+	if vim.fn.isdirectory(path) ~= 1 then
+		return vim.notify("Please create a custom folder to save theme! Use :TeVimCreateCustom")
+	end
 	local picker = pickers.new({ layout_config = { height = 0.5, width = 0.25 } }, picker_opts)
 	picker:find()
 end
 
 M.toggleTheme = function()
+	local path = vim.fn.stdpath("config") .. "/lua/custom"
+	if vim.fn.isdirectory(path) ~= 1 then
+		return vim.notify("Please create a custom folder to save theme! Use :TeVimCreateCustom")
+	end
 	local theme = themes[math.random(#themes)]
 	M.settheme(theme)
 end

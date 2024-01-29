@@ -104,10 +104,10 @@ and more plugins...
 
 ENJOY !
 
-<h2> Docs for custom updating... Please wait </h2>
+<h3> Docs for custom updating... Please wait </h3>
 
-<details><summary> <b><i>Credits</b></i></summary>
+<details><summary> <b>Credits</b></summary>
 
-- [Nvchad](https://github.com/nvchad/base46) helped me with NeoVim themes
+- [Nvchad](https://github.com/nvchad/base46) helped me with NeoVim Themes, TeDash and TeBufline
 
 </details>

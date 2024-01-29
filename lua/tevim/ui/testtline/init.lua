@@ -1,4 +1,6 @@
-local run = function()
+local M = {}
+
+M.run = function()
 	local mode = require("tevim.ui.testtline.modules.mode")
 	local filename = require("tevim.ui.testtline.modules.filename")
 	local branch = require("tevim.ui.testtline.modules.branch")
@@ -45,13 +47,13 @@ local run = function()
 	end
 end
 
-local setup = function()
-	vim.opt.statusline = run()
+M.setup = function()
+	vim.opt.statusline = M.run()
 	vim.api.nvim_create_autocmd({ "ModeChanged", "CursorHold" }, {
 		callback = function()
-			vim.opt.statusline = run()
+			vim.opt.statusline = M.run()
 		end,
 	})
 end
 
-return { run = run, setup = setup }
+return M

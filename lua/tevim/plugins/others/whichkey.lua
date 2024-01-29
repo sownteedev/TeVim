@@ -28,7 +28,6 @@ local configs = {
 	},
 
 	mappings = {
-		["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
 		["q"] = { "<cmd>qa!<CR>", "Quit" },
 		p = {
 			name = "󰏖  LAZY",
@@ -118,20 +117,9 @@ local configs = {
 			v = { "<cmd>ToggleTerm size=50 direction=vertical<cr>", "Vertical" },
 		},
 	},
-	vmappings = {
-		["/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment toggle linewise (visual)" },
-	},
 
 	opts = {
-		mode = "n", -- NORMAL mode
-		prefix = "<leader>",
-		buffer = nil,
-		silent = true,
-		noremap = true,
-		nowait = true,
-	},
-	vopts = {
-		mode = "v", -- VISUAL mode
+		mode = "n",
 		prefix = "<leader>",
 		buffer = nil,
 		silent = true,
