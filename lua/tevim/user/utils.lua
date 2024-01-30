@@ -1,5 +1,10 @@
 local M = {}
 
+function M.is_available(plugin)
+	local lazy_config_avail, lazy_config = pcall(require, "lazy.core.config")
+	return lazy_config_avail and lazy_config.spec.plugins[plugin] ~= nil
+end
+
 function M.toggle_option(option)
 	local value = not vim.api.nvim_get_option_value(option, {})
 	vim.opt[option] = value

@@ -4,6 +4,10 @@ local plugins = {
 		lazy = true,
 	},
 	{
+		"MunifTanjim/nui.nvim",
+		lazy = true,
+	},
+	{
 		"nvim-tree/nvim-web-devicons",
 		lazy = true,
 		opts = function()
@@ -20,7 +24,6 @@ local plugins = {
 		cmd = "Neotree",
 		keys = { { "<C-e>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" } },
 		branch = "v3.x",
-		dependencies = { "MunifTanjim/nui.nvim" },
 		deactivate = function()
 			vim.cmd([[Neotree close]])
 		end,
@@ -45,16 +48,19 @@ local plugins = {
 		run = ":TSUpdate",
 		lazy = true,
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-context",
-			"HiPhish/rainbow-delimiters.nvim",
-			"windwp/nvim-ts-autotag",
-		},
+		dependencies = { "nvim-treesitter/nvim-treesitter-context", "HiPhish/rainbow-delimiters.nvim" },
 		opts = function()
 			return require("tevim.plugins.others.treesitter")
 		end,
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
+		end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		ft = { "html", "javascript", "jsx", "typescript", "tsx", "svelte", "vue", "xml", "markdown" },
+		config = function(_, opts)
+			require("nvim-ts-autotag").setup(opts)
 		end,
 	},
 	{

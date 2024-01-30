@@ -17,7 +17,7 @@ local M = function()
 			.. removed
 			.. " "
 			.. "%#TeSTTGithub#"
-			.. "  "
+			.. " 󰊤 "
 	else
 		return ""
 	end
