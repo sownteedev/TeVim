@@ -2,7 +2,7 @@
 -- Github : @sownteedev
 
 ------------------------------- WELCOME TO TEVIM -------------------------------
-require("tevim.user")
+require("tevim.core")
 
 --- @diagnostic disable warning
 local function echo(str)

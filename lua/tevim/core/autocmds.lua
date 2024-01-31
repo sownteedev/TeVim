@@ -1,6 +1,6 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
-local is_available = require("tevim.user.utils").is_available
+local is_available = require("tevim.core.utils").is_available
 
 autocmd({ "UIEnter" }, {
 	callback = function()
@@ -174,30 +174,30 @@ autocmd("FileType", {
 	desc = "Don't list quickfix buffer",
 })
 
-autocmd("BufWritePost", {
-	pattern = "*/lua/*",
-	callback = function(opts)
-		local fp = vim.fn.fnamemodify(vim.fs.normalize(vim.api.nvim_buf_get_name(opts.buf)), ":r")
-		local app_name = vim.env.NVIM_APPNAME and vim.env.NVIM_APPNAME or "nvim"
-		local module = string.gsub(fp, "^.*/" .. app_name .. "/lua/", ""):gsub("/", ".")
-		vim.cmd("silent source %")
-
-		require("plenary.reload").reload_module("tevim.themes")
-		require("plenary.reload").reload_module(module)
-		require("plenary.reload").reload_module("custom")
-
-		require("plenary.reload").reload_module("tevim.ui.tebufline")
-		vim.opt.tabline = "%!v:lua.require('tevim.ui.tebufline').getTabline()"
-
-		require("plenary.reload").reload_module("tevim.ui.testtline")
-		vim.opt.statusline = "%!v:lua.require('tevim.ui.testtline').setup()"
-
-		require("tevim.themes").load()
-	end,
-	desc = "Reload neovim config on save",
-})
+-- autocmd("BufWritePost", {
+-- 	pattern = "*/lua/*",
+-- 	callback = function(opts)
+-- 		local fp = vim.fn.fnamemodify(vim.fs.normalize(vim.api.nvim_buf_get_name(opts.buf)), ":r")
+-- 		local app_name = vim.env.NVIM_APPNAME and vim.env.NVIM_APPNAME or "nvim"
+-- 		local module = string.gsub(fp, "^.*/" .. app_name .. "/lua/", ""):gsub("/", ".")
+-- 		vim.cmd("silent source %")
+--
+-- 		require("plenary.reload").reload_module("tevim.themes")
+-- 		require("plenary.reload").reload_module(module)
+-- 		require("plenary.reload").reload_module("custom")
+--
+-- 		require("plenary.reload").reload_module("tevim.ui.tebufline")
+-- 		vim.opt.tabline = "%!v:lua.require('tevim.ui.tebufline').getTabline()"
+--
+-- 		require("plenary.reload").reload_module("tevim.ui.testtline")
+-- 		vim.opt.statusline = "%!v:lua.require('tevim.ui.testtline').setup()"
+--
+-- 		require("tevim.themes").load()
+-- 	end,
+-- 	desc = "Reload neovim config on save",
+-- })
 
 -- Create custom command to Create Custom Config
 vim.api.nvim_create_user_command("TeVimCreateCustom", function()
-	vim.cmd("lua require('tevim.user.utils').CreateCustom()")
+	vim.cmd("lua require('tevim.core.utils').CreateCustom()")
 end, {})
