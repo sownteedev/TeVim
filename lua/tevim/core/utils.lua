@@ -134,15 +134,8 @@ function M.LazyGit()
 	if not status_ok then
 		return vim.notify("toggleterm.nvim isn't installed!")
 	end
-	for _, cmd in ipairs({ "lazygit" }) do
-		local name = type(cmd) == "string" and cmd or vim.inspect(cmd)
-		local commands = type(cmd) == "string" and { cmd } or cmd
-		---@cast commands string[]
-		for _, c in ipairs(commands) do
-			if vim.fn.executable(c) == 0 then
-				return vim.notify(("%s isn't installed"):format(name))
-			end
-		end
+	if vim.fn.executable("lazygit") == 0 then
+		return vim.notify("lazygit isn't installed")
 	end
 	local lazygit = require("toggleterm.terminal").Terminal:new({
 		cmd = "lazygit",
@@ -160,15 +153,8 @@ function M.Ranger()
 	if not status_ok then
 		return vim.notify("toggleterm.nvim isn't installed!")
 	end
-	for _, cmd in ipairs({ "ranger" }) do
-		local name = type(cmd) == "string" and cmd or vim.inspect(cmd)
-		local commands = type(cmd) == "string" and { cmd } or cmd
-		---@cast commands string[]
-		for _, c in ipairs(commands) do
-			if vim.fn.executable(c) == 0 then
-				return warn(("%s isn't installed"):format(name))
-			end
-		end
+	if vim.fn.executable("ranger") == 0 then
+		return vim.notify("ranger isn't installed")
 	end
 	local ranger = require("toggleterm.terminal").Terminal:new({
 		cmd = "ranger",
