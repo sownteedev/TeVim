@@ -4,10 +4,6 @@ vim.cmd([[
 	filetype plugin indent off
 ]])
 
-vim.g.currentTheme = "yoru"
-vim.g.theme_cache = vim.fn.stdpath("data") .. "/colors_data/"
-vim.g.transparency = false
-
 local options = {
 	-- NUMBER
 	number = true,
@@ -62,17 +58,16 @@ local globals = {
 	mapleader = " ",
 	maplocalleader = " ",
 	speeddating_no_mappings = 1,
+	currentTheme = "yoru",
+	theme_cache = vim.fn.stdpath("data") .. "/colors_data/",
+	transparency = false,
+	snipmate_snippets_path = "",
 }
 
 vim.opt.listchars = "tab:  "
 vim.opt.fillchars = { eob = " ", foldopen = "", foldsep = " ", foldclose = "" }
 vim.opt.shortmess:append("sI")
 vim.opt.formatoptions:remove("c", "r", "o")
-
--- COPILOT
-vim.g.copilot_no_tab_map = true
-vim.g.copilot_assume_mapped = true
-vim.g.copilot_tab_fallback = ""
 
 local builtins = {
 	"2html_plugin",
