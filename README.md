@@ -12,7 +12,7 @@
 
 ## 📷 Showcase
 
-<img src="screenshot/full.png">
+<img src="https://github.com/sownteedev/TeVim/assets/90148193/48251bcf-864a-41e5-8c37-1418effcc662">
 
 <div align="center">
 
@@ -25,11 +25,11 @@ On Battery                            : 0.021s - 0.026s
 </div>
 <h5> Themes Showcase with 16 colorschemes </h5>
 
-|    <img src="screenshot/ayu.png" align="center" width="200px">    | <img src="screenshot/catppuccin.png" align="center" width="200px"> |   <img src="screenshot/decay.png" align="center" width="200px">    | <img src="screenshot/decaydark.png" align="center" width="200px">    |
-| :---------------------------------------------------------------: | :----------------------------------------------------------------: | :----------------------------------------------------------------: | -------------------------------------------------------------------- |
-| <img src="screenshot/everblush.png" align="center" width="200px"> | <img src="screenshot/everforest.png" align="center" width="200px"> |  <img src="screenshot/dracula.png" align="center" width="200px">   | <img src="screenshot/github_light.png" align="center" width="200px"> |
-|  <img src="screenshot/gruvbox.png" align="center" width="200px">  |  <img src="screenshot/onedark.png" align="center" width="200px">   | <img src="screenshot/oxocarbon.png" align="center" width="200px">  | <img src="screenshot/rosepine.png" align="center" width="200px">     |
-| <img src="screenshot/solarized.png" align="center" width="200px"> | <img src="screenshot/tokyodark.png" align="center" width="200px">  | <img src="screenshot/tokyonight.png" align="center" width="200px"> | <img src="screenshot/yoru.png" align="center" width="200px">         |
+| <img src="https://github.com/sownteedev/TeVim/assets/90148193/7b5e73eb-244c-48b0-937a-bd9590ca151c" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/0dad550e-08f0-4ed3-a0a5-b8ace6e561d2" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/a3f2a5ab-e17f-4132-9c52-7ea8b0962ab8" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/ed8f0347-b809-4570-b0d9-6b49e81257d9" align="center" width="200px"> |
+| :-------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------: | --------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://github.com/sownteedev/TeVim/assets/90148193/a7426bf0-43cd-4eb5-943c-7995b23a5b4b" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/49100402-f82c-40e3-9197-debdc04a0e54" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/7ec88e9b-5e40-475c-b765-82cc83571dd5" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/2148b26a-b799-426b-89ec-5ceda8a1006b" align="center" width="200px"> |
+| <img src="https://github.com/sownteedev/TeVim/assets/90148193/c4fe9259-0714-4247-8c95-9cec37c0c697" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/073d64fd-f049-43a4-903d-6fde8ab1fbe3" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/a77bc174-cc25-4610-9c58-32590ad8c577" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/2ff7f908-51e7-4214-9609-9c4b72da8f90" align="center" width="200px"> |
+| <img src="https://github.com/sownteedev/TeVim/assets/90148193/c9bc8b70-1912-4700-8f8c-928493189805" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/974c9cec-5479-49a1-9d37-05e82749ac97" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/eabb7fba-1596-44ec-b93c-98fb2244c911" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/f7502d7c-fe4b-4970-899c-d32cd83bec73" align="center" width="200px"> |
 
 </details>
 
@@ -60,29 +60,20 @@ and more plugins...
 <br>
 
 <h2>🔎 Requirement </h2>
-- Make you sure, you're using NeoVim Nightly
 
-- Install all libaries support (optional)
-  ```
-  sudo pacman -S nodejs npm yarn python python-pip clang jdk-openjdk rustup
-  ```
-- If you on X11 install xsel and xclip to copy and paste
-  ```
-  sudo pacman -S xsel xclip
-  ```
-- Next we need to install python and node support
-  - Neovim python support
-  ```
-    pip install pynvim
-  ```
-  - Neovim Node support / Live-server (for dev)
-  ```
-    npm i -g neovim live-server
-  ```
-- Other dependencies for Git Control & finding text :
-  ```
-   sudo pacman -S ripgrep fzf lazygit
-  ```
+- Neovim >= v0.9.4.
+
+- Nerd Font as your terminal font.
+
+- Ripgrep and Fzf are required for grep searching with Telescope.
+
+- Xsel and Xclip for copy and paste (If you use X11).
+
+- GCC (Clang), Windows users must have mingw installed and set on path.
+
+- Npm(neovim) and Pynvim for Neovim.
+
+- Lazygit and Ranger(OPTIONAL).
 
 <h2> ⬇️  Installation </h2>
 

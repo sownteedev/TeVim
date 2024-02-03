@@ -5,11 +5,9 @@ vim.cmd([[
 ]])
 
 local options = {
-	-- NUMBER
 	number = true,
 	relativenumber = false,
 	numberwidth = 5,
-	-- INDENT
 	expandtab = false,
 	smarttab = true,
 	shiftwidth = 4,
@@ -18,7 +16,6 @@ local options = {
 	smartindent = true,
 	autoindent = true,
 	cindent = true,
-	-- OTHER
 	smartcase = true,
 	ignorecase = true,
 	fileencoding = "utf-8",
@@ -48,11 +45,14 @@ local options = {
 	wrap = true,
 	list = true,
 	splitkeep = "screen",
-	-- FOLD
+	fillchars = { eob = " ", foldopen = "", foldsep = " ", foldclose = "", lastline = " " },
 	foldenable = true,
 	foldcolumn = "1",
 	foldlevelstart = 99,
 }
+
+vim.opt.shortmess:append("sI")
+vim.opt.formatoptions:remove("c", "r", "o")
 
 local globals = {
 	mapleader = " ",
@@ -63,11 +63,6 @@ local globals = {
 	transparency = false,
 	snipmate_snippets_path = "",
 }
-
-vim.opt.listchars = "tab:  "
-vim.opt.fillchars = { eob = " ", foldopen = "", foldsep = " ", foldclose = "" }
-vim.opt.shortmess:append("sI")
-vim.opt.formatoptions:remove("c", "r", "o")
 
 local builtins = {
 	"2html_plugin",
