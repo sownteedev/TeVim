@@ -6,17 +6,37 @@ autocmd({ "UIEnter" }, {
 	callback = function()
 		require("tevim.themes").load()
 		require("tevim.ui.testtline").setup()
-		if vim.fn.argc() == 0 then
-			require("tevim.ui.tedash").setup()
-		end
 	end,
 	desc = "Load Statusline, Dashboard and Themes",
 })
+
 autocmd({ "BufNewFile", "BufReadPost" }, {
 	callback = function()
 		require("tevim.ui.tebufline").setup()
 	end,
 	desc = "Load TabBufline",
+})
+
+if vim.g.load_tedash_on_startup then
+	autocmd({ "UIEnter" }, {
+		callback = function()
+			if vim.fn.argc() == 0 then
+				require("tevim.ui.tedash").setup()
+			end
+		end,
+		desc = "Load Dashboard",
+	})
+end
+
+vim.api.nvim_create_autocmd("VimResized", {
+	callback = function()
+		if vim.bo.filetype == "tedash" then
+			vim.opt_local.modifiable = true
+			vim.api.nvim_buf_set_lines(0, 0, -1, false, { "" })
+			require("tevim.ui.tedash").setup()
+		end
+	end,
+	desc = "Resize Dashboard",
 })
 
 autocmd("BufWritePre", {

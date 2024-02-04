@@ -1,6 +1,6 @@
 <h1 align="center">TeVim</h1>
 
-<h4 align="center">Neovim config for full-stack developer</h2>
+<h3 align="center">Neovim configuration for Developer</h3>
 
 <div align="center">
  
@@ -18,8 +18,8 @@
 
 ```txt
 Performance for time startup
-On Power                              : 0.020s - 0.024s
-On Battery                            : 0.021s - 0.026s
+On Power                              : 0.030s - 0.034s
+On Battery                            : 0.031s - 0.036s
 ```
 
 </div>
@@ -33,9 +33,9 @@ On Battery                            : 0.021s - 0.026s
 
 </details>
 
-<h6>Updating...</h6>
+<h7>Updating...</h7>
 
-## Plugins And Features
+## Plugins
 
 | Plugin                                                                                | Description                                                    |  Lazy   |
 | ------------------------------------------------------------------------------------- | -------------------------------------------------------------- | :-----: |
@@ -59,7 +59,7 @@ On Battery                            : 0.021s - 0.026s
 and more plugins...
 <br>
 
-<h2>🔎 Requirement </h2>
+<h3>🔎 Requirement </h3>
 
 - Neovim >= v0.9.4.
 
@@ -73,15 +73,15 @@ and more plugins...
 
 - Npm(neovim) and Pynvim for Neovim.
 
-- Lazygit and Ranger(OPTIONAL).
+- Lazygit and Ranger (OPTIONAL).
 
-<h2> ⬇️  Installation </h2>
+<h3> ⬇️  Installation </h3>
 
-- Backup old config
+- Backup your config
   ```
   mv ~/.config/nvim ~/.config/nvim.bak
   ```
-- Remove old plugins and setup
+- Remove cache setup
   ```
   rm -rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim ~/.config/nvim/lazy-lock.json
   ```
@@ -95,10 +95,8 @@ and more plugins...
 
 ENJOY !
 
-<h3> Docs for custom updating... Please wait </h3>
-
 <details><summary> <b>Credits</b></summary>
 
-- [Nvchad](https://github.com/nvchad/base46) helped me with NeoVim Themes, TeDash and TeBufline
+- [Nvchad](https://github.com/nvchad) helped me with TeDash and TeBufline
 
 </details>

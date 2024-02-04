@@ -1,4 +1,3 @@
--- Thanks NvChad for dashboard <3
 local M = {}
 
 local logo = {
@@ -179,7 +178,11 @@ M.setup = function()
 end
 
 api.nvim_create_user_command("TeDash", function()
-	M.setup()
+	if vim.g.tedash_displayed then
+		require("tevim.ui.tebufline.modules").close_buffer()
+	else
+		M.setup()
+	end
 end, {})
 
 return M
