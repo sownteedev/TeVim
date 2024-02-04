@@ -2,7 +2,7 @@ local M = {}
 local hl_files = vim.fn.stdpath("config") .. "/lua/tevim/themes/integrations"
 
 M.getCurrentTheme = function()
-	local path = "tevim.themes.schemes." .. vim.g.currentTheme
+	local path = "tevim.themes.schemes." .. vim.g.TeVimTheme
 	local theme = require(path).get_colors()
 	return theme
 end
@@ -81,14 +81,15 @@ M.compile = function()
 		local filename = vim.fn.fnamemodify(file, ":r")
 		M.toCache(filename, M.loadTb(filename))
 	end
+	M.setTermColors()
 end
 
 M.load = function()
+	require("plenary.reload").reload_module("tevim.themes")
 	M.compile()
 	for _, file in ipairs(vim.fn.readdir(vim.g.theme_cache)) do
 		dofile(vim.g.theme_cache .. file)
 	end
-	M.setTermColors()
 end
 
 vim.api.nvim_create_user_command("TeVimThemes", function()

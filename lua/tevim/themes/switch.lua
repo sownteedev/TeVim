@@ -6,7 +6,7 @@ local sorters = require("telescope.sorters")
 
 local M = {}
 local themes = {}
-local files = vim.fn.stdpath("config") .. "/colors/"
+local files = vim.fn.stdpath("config") .. "/lua/tevim/themes/schemes/"
 
 for _, file in ipairs(vim.fn.readdir(files)) do
 	local f = vim.fn.fnamemodify(file, ":r")
@@ -14,22 +14,22 @@ for _, file in ipairs(vim.fn.readdir(files)) do
 end
 
 M.settheme = function(theme)
-	vim.g.currentTheme = theme
-	vim.cmd("colorscheme " .. theme)
+	vim.g.TeVimTheme = theme
+	require("tevim.themes").load()
 	local file = vim.fn.stdpath("config") .. "/lua/custom/options.lua"
 	local lines = vim.fn.readfile(file)
 	local newlines = {}
 	local found = false
 	for _, line in ipairs(lines) do
-		if line:find("vim.g.currentTheme") then
-			table.insert(newlines, 'vim.g.currentTheme = "' .. theme .. '"')
+		if line:find("vim.g.TeVimTheme") then
+			table.insert(newlines, 'vim.g.TeVimTheme = "' .. theme .. '"')
 			found = true
 		else
 			table.insert(newlines, line)
 		end
 	end
 	if not found then
-		table.insert(newlines, 'vim.g.currentTheme = "' .. theme .. '"')
+		table.insert(newlines, 'vim.g.TeVimTheme = "' .. theme .. '"')
 	end
 	vim.fn.writefile(newlines, file)
 end
@@ -81,6 +81,7 @@ M.toggleTheme = function()
 	end
 	local theme = themes[math.random(#themes)]
 	M.settheme(theme)
+	require("tevim.themes").load()
 end
 
 return M
