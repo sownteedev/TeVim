@@ -81,10 +81,10 @@ M.compile = function()
 		local filename = vim.fn.fnamemodify(file, ":r")
 		M.toCache(filename, M.loadTb(filename))
 	end
-	M.setTermColors()
 end
 
 M.load = function()
+	M.setTermColors()
 	require("plenary.reload").reload_module("tevim.themes")
 	M.compile()
 	for _, file in ipairs(vim.fn.readdir(vim.g.theme_cache)) do
@@ -98,6 +98,10 @@ end, {})
 
 vim.api.nvim_create_user_command("TeVimThemesToggle", function()
 	vim.cmd("lua require('tevim.themes.switch').toggleTheme()")
+end, {})
+
+vim.api.nvim_create_user_command("TeVimThemesToggleTrans", function()
+	vim.cmd("lua require('tevim.themes.switch').toggleTransparency()")
 end, {})
 
 return M

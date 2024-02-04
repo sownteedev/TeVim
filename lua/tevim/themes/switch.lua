@@ -81,7 +81,31 @@ M.toggleTheme = function()
 	end
 	local theme = themes[math.random(#themes)]
 	M.settheme(theme)
+end
+
+M.toggleTransparency = function()
+	vim.g.transparency = not vim.g.transparency
 	require("tevim.themes").load()
+	local file = vim.fn.stdpath("config") .. "/lua/custom/options.lua"
+	local lines = vim.fn.readfile(file)
+	local newlines = {}
+	local found = false
+	for _, line in ipairs(lines) do
+		if line:find("vim.g.transparency") then
+			if line:find("true") then
+				table.insert(newlines, "vim.g.transparency = false")
+			else
+				table.insert(newlines, "vim.g.transparency = true")
+			end
+			found = true
+		else
+			table.insert(newlines, line)
+		end
+	end
+	if not found then
+		table.insert(newlines, "vim.g.transparency = true")
+	end
+	vim.fn.writefile(newlines, file)
 end
 
 return M
