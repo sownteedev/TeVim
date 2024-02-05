@@ -2,17 +2,6 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local is_available = require("tevim.core.utils").is_available
 
-vim.api.nvim_create_autocmd("VimResized", {
-	callback = function()
-		if vim.bo.filetype == "tedash" then
-			vim.opt_local.modifiable = true
-			vim.api.nvim_buf_set_lines(0, 0, -1, false, { "" })
-			require("tevim.ui.tedash").setup()
-		end
-	end,
-	desc = "Resize Dashboard",
-})
-
 autocmd("BufWritePre", {
 	group = augroup("create_dir", { clear = true }),
 	callback = function(args)
@@ -176,7 +165,6 @@ autocmd({ "UIEnter" }, {
 })
 
 autocmd({ "FileType" }, {
-	pattern = "tedash",
 	callback = function()
 		require("tevim.ui.testtline").setup()
 	end,
@@ -200,6 +188,17 @@ if vim.g.load_tedash_on_startup then
 		desc = "Load TeDash",
 	})
 end
+
+autocmd("VimResized", {
+	callback = function()
+		if vim.bo.filetype == "tedash" then
+			vim.opt_local.modifiable = true
+			vim.api.nvim_buf_set_lines(0, 0, -1, false, { "" })
+			require("tevim.ui.tedash").setup()
+		end
+	end,
+	desc = "Resize Dashboard",
+})
 
 autocmd("BufWritePost", {
 	pattern = "*/lua/*",

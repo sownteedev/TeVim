@@ -137,8 +137,9 @@ M.getTabline = function()
 		end
 		::do_nothing::
 	end
-
-	if counter < 2 or vim.o.columns < 120 then
+	if vim.bo.filetype == "tedash" then
+		return ""
+	elseif counter < 2 or vim.o.columns < 120 then
 		return treespace
 			.. buffstart
 			.. "%="
@@ -152,8 +153,6 @@ M.getTabline = function()
 			.. theme
 			.. "%#TeBufQuit#"
 			.. quit
-	elseif vim.bo.filetype == "tedash" then
-		return ""
 	end
 	return treespace
 		.. buffline

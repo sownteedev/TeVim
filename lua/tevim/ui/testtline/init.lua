@@ -14,8 +14,10 @@ M.run = function()
 	local tree = require("tevim.ui.testtline.modules.tree")
 	local nothing = require("tevim.ui.testtline.modules.nothing")
 	if vim.bo.filetype == "tedash" then
-		return nothing()
-	elseif vim.o.columns < 120 then
+		return table.concat({
+			nothing(),
+		})
+	elseif vim.o.columns < 120 and vim.bo.filetype ~= "tedash" then
 		return table.concat({
 			tree(),
 			"%#TeSTTNothing2#" .. " ",
