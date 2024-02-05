@@ -33,6 +33,7 @@ function M.get_colors()
 		lightbg = "#1a2529",
 		pmenu_bg = "#78B892",
 		folder_bg = "#6791C9",
+		none = "NONE",
 
 		-- base16
 		base00 = "#061115",
