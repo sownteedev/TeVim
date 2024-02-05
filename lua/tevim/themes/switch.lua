@@ -7,8 +7,13 @@ local sorters = require("telescope.sorters")
 local M = {}
 local themes = {}
 local files = vim.fn.stdpath("config") .. "/lua/tevim/themes/schemes/"
+local custom = vim.fn.stdpath("config") .. "/lua/custom/themes/schemes/"
 
 for _, file in ipairs(vim.fn.readdir(files)) do
+	local f = vim.fn.fnamemodify(file, ":r")
+	table.insert(themes, f)
+end
+for _, file in ipairs(vim.fn.readdir(custom)) do
 	local f = vim.fn.fnamemodify(file, ":r")
 	table.insert(themes, f)
 end
@@ -75,6 +80,10 @@ M.setup = function()
 end
 
 M.toggleTransparency = function()
+	local path = vim.fn.stdpath("config") .. "/lua/custom"
+	if vim.fn.isdirectory(path) ~= 1 then
+		return vim.notify("Please create a custom folder to save theme! Use :TeVimCreateCustom")
+	end
 	vim.g.transparency = not vim.g.transparency
 	require("tevim.themes").load()
 	local file = vim.fn.stdpath("config") .. "/lua/custom/options.lua"

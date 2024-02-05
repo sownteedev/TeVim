@@ -180,6 +180,10 @@ M.CreateCustom = function()
 		options:write("-- add options or override my options in here")
 		local keymaps = io.open(path .. "/keymaps.lua", "w")
 		keymaps:write("-- add your keymaps in here")
+		local themes = io.open(path .. "/themes/schemes/yourtheme.lua", "w")
+		themes:write(
+			"local M = {}\n\nfunction M.get_colors()\n\treturn {\n\t\t-- add your colors in here(check my color to setup)\n\t}\nend\n\nreturn M"
+		)
 		vim.notify("Created custom folder. Please read the docs!")
 	end
 end

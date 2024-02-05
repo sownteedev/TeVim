@@ -1,8 +1,23 @@
 local M = {}
 local hl_files = vim.fn.stdpath("config") .. "/lua/tevim/themes/integrations"
 
+M.check = function()
+	local custom = vim.fn.stdpath("config") .. "/lua/custom/themes/schemes/"
+	for _, file in ipairs(vim.fn.readdir(custom)) do
+		if file == vim.g.TeVimTheme .. ".lua" then
+			return true
+		end
+	end
+	return false
+end
+
 M.getCurrentTheme = function()
-	local path = "tevim.themes.schemes." .. vim.g.TeVimTheme
+	local path = ""
+	if not M.check() then
+		path = "tevim.themes.schemes." .. vim.g.TeVimTheme
+	else
+		path = "custom.themes.schemes." .. vim.g.TeVimTheme
+	end
 	local theme = require(path).get_colors()
 	return theme
 end
