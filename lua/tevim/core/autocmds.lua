@@ -76,15 +76,17 @@ autocmd("TermOpen", {
 	desc = "Disable number and cursorline in terminal",
 })
 
-autocmd("BufWritePre", {
-	callback = function()
-		local formatOnSave = require("tevim.plugins.lsp.conform").formatOnSave
-		if formatOnSave then
-			vim.cmd("lua require('conform').format()")
-		end
-	end,
-	desc = "Format on save",
-})
+if is_available("conform.nvim") then
+	autocmd("BufWritePre", {
+		callback = function()
+			local formatOnSave = require("tevim.plugins.lsp.conform").formatOnSave
+			if formatOnSave then
+				vim.cmd("lua require('conform').format()")
+			end
+		end,
+		desc = "Format on save",
+	})
+end
 
 autocmd({ "FileType" }, {
 	pattern = {
@@ -109,7 +111,7 @@ autocmd({ "FileType" }, {
 		vim.opt_local.number = false
 		vim.opt_local.cursorline = false
 	end,
-	desc = "Disable number and cursorline",
+	desc = "Disable number and cursorline in specific filetypes",
 })
 
 autocmd("BufWinEnter", {
@@ -128,25 +130,27 @@ autocmd("BufWinEnter", {
 	desc = "Make q close help, man, quickfix, dap floats",
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = {
-		"help",
-		"alpha",
-		"tedash",
-		"neo-tree",
-		"Trouble",
-		"trouble",
-		"lazy",
-		"mason",
-		"notify",
-		"toggleterm",
-		"lazyterm",
-	},
-	callback = function()
-		vim.b.miniindentscope_disable = true
-	end,
-	desc = "Disable miniindent",
-})
+if is_available("mini.indentscope") then
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = {
+			"help",
+			"alpha",
+			"tedash",
+			"neo-tree",
+			"Trouble",
+			"trouble",
+			"lazy",
+			"mason",
+			"notify",
+			"toggleterm",
+			"lazyterm",
+		},
+		callback = function()
+			vim.b.miniindentscope_disable = true
+		end,
+		desc = "Disable miniindent for specific filetypes",
+	})
+end
 
 autocmd("FileType", {
 	group = augroup("unlist_quickfist", { clear = true }),

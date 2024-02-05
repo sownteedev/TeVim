@@ -49,6 +49,9 @@ function M.toggle_statusline()
 end
 
 function M.toggle_inlayHint()
+	if not M.is_available("nvim-lspconfig") then
+		return vim.notify("nvim-lspconfig isn't installed!")
+	end
 	local inlayHint = require("tevim.plugins.lsp.lspconfig").inlayHint
 	if inlayHint then
 		require("tevim.plugins.lsp.lspconfig").inlayHint = false
@@ -62,6 +65,9 @@ function M.toggle_inlayHint()
 end
 
 function M.toggle_formatOnSave()
+	if not M.is_available("conform.nvim") then
+		return vim.notify("conform.nvim isn't installed!")
+	end
 	local formatOnSave = require("tevim.plugins.lsp.conform").formatOnSave
 	if formatOnSave then
 		require("tevim.plugins.lsp.conform").formatOnSave = false
