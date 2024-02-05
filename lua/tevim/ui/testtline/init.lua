@@ -13,8 +13,9 @@ M.run = function()
 	local location = require("tevim.ui.testtline.modules.location")
 	local tree = require("tevim.ui.testtline.modules.tree")
 	local nothing = require("tevim.ui.testtline.modules.nothing")
-
-	if vim.o.columns < 120 then
+	if vim.bo.filetype == "tedash" then
+		return nothing()
+	elseif vim.o.columns < 120 then
 		return table.concat({
 			tree(),
 			"%#TeSTTNothing2#" .. " ",
@@ -23,28 +24,27 @@ M.run = function()
 			nothing(),
 			diagnostics(),
 		})
-	else
-		return table.concat({
-			mode(),
-			nothing(),
-			filename(),
-			nothing(),
-			branch(),
-			nothing(),
-			diff(),
-			nothing(),
-			"%=",
-			diagnostics(),
-			lsp(),
-			copilot(),
-			nothing(),
-			tab(),
-			nothing(),
-			progress(),
-			nothing(),
-			location(),
-		})
 	end
+	return table.concat({
+		mode(),
+		nothing(),
+		filename(),
+		nothing(),
+		branch(),
+		nothing(),
+		diff(),
+		nothing(),
+		"%=",
+		diagnostics(),
+		lsp(),
+		copilot(),
+		nothing(),
+		tab(),
+		nothing(),
+		progress(),
+		nothing(),
+		location(),
+	})
 end
 
 M.setup = function()

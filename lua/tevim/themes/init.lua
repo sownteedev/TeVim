@@ -96,10 +96,6 @@ vim.api.nvim_create_user_command("TeVimThemes", function()
 	vim.cmd("lua require('tevim.themes.switch').setup()")
 end, {})
 
-vim.api.nvim_create_user_command("TeVimThemesToggle", function()
-	vim.cmd("lua require('tevim.themes.switch').toggleTheme()")
-end, {})
-
 vim.api.nvim_create_user_command("TeVimThemesToggleTrans", function()
 	vim.cmd("lua require('tevim.themes.switch').toggleTransparency()")
 end, {})

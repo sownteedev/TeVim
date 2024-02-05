@@ -15,8 +15,9 @@ return {
 
 	TeBufRun = { bg = colors.one_bg2, fg = colors.yellow },
 	TeBufSplit = { bg = colors.one_bg2, fg = colors.blue },
+	TeBufTrans = { bg = colors.one_bg2, fg = colors.cyan },
 	TeBufTheme = { bg = colors.one_bg2, fg = colors.green },
-	TeBufQuit = { bg = colors.red, fg = colors.black },
+	TeBufQuit = { bg = colors.red, fg = colors.one_bg2 },
 
 	-- TeSttLine
 	TeSTTNormalMode = { fg = colors.blue, bg = colors.one_bg },

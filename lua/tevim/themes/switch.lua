@@ -74,15 +74,6 @@ M.setup = function()
 	picker:find()
 end
 
-M.toggleTheme = function()
-	local path = vim.fn.stdpath("config") .. "/lua/custom"
-	if vim.fn.isdirectory(path) ~= 1 then
-		return vim.notify("Please create a custom folder to save theme! Use :TeVimCreateCustom")
-	end
-	local theme = themes[math.random(#themes)]
-	M.settheme(theme)
-end
-
 M.toggleTransparency = function()
 	vim.g.transparency = not vim.g.transparency
 	require("tevim.themes").load()

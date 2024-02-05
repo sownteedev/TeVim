@@ -2,32 +2,6 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local is_available = require("tevim.core.utils").is_available
 
-autocmd({ "UIEnter" }, {
-	callback = function()
-		require("tevim.themes").load()
-		require("tevim.ui.testtline").setup()
-	end,
-	desc = "Load Statusline, Dashboard and Themes",
-})
-
-autocmd({ "BufNewFile", "BufReadPost" }, {
-	callback = function()
-		require("tevim.ui.tebufline").setup()
-	end,
-	desc = "Load TabBufline",
-})
-
-if vim.g.load_tedash_on_startup then
-	autocmd({ "UIEnter" }, {
-		callback = function()
-			if vim.fn.argc() == 0 then
-				require("tevim.ui.tedash").setup()
-			end
-		end,
-		desc = "Load Dashboard",
-	})
-end
-
 vim.api.nvim_create_autocmd("VimResized", {
 	callback = function()
 		if vim.bo.filetype == "tedash" then
@@ -193,6 +167,39 @@ autocmd("FileType", {
 	end,
 	desc = "Don't list quickfix buffer",
 })
+
+autocmd({ "UIEnter" }, {
+	callback = function()
+		require("tevim.themes").load()
+	end,
+	desc = "Load TeVim Themes",
+})
+
+autocmd({ "FileType" }, {
+	pattern = "tedash",
+	callback = function()
+		require("tevim.ui.testtline").setup()
+	end,
+	desc = "Load TeStatusline",
+})
+
+autocmd({ "BufNewFile", "BufReadPost" }, {
+	callback = function()
+		require("tevim.ui.tebufline").setup()
+	end,
+	desc = "Load TeBufline",
+})
+
+if vim.g.load_tedash_on_startup then
+	autocmd({ "UIEnter" }, {
+		callback = function()
+			if vim.fn.argc() == 0 then
+				require("tevim.ui.tedash").setup()
+			end
+		end,
+		desc = "Load TeDash",
+	})
+end
 
 autocmd("BufWritePost", {
 	pattern = "*/lua/*",

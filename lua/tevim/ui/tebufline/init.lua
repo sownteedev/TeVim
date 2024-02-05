@@ -4,7 +4,8 @@ local devicons_present, devicons = pcall(require, "nvim-web-devicons")
 
 -- Commands
 vim.cmd("function! TeBufGoToBuf(bufnr,b,c,d) \n execute 'b'..a:bufnr \n endfunction")
-vim.cmd("function! ToggleTheme(a,b,c,d) \n TeVimThemesToggle \n endfunction")
+vim.cmd("function! ToggleTheme(a,b,c,d) \n TeVimThemes \n endfunction")
+vim.cmd("function! ToggleTrans(a,b,c,d) \n TeVimThemesToggleTrans \n endfunction")
 vim.cmd("function! Split(a,b,c,d) \n vsplit \n endfunction")
 vim.cmd("function! Run(a,b,c,d) \n lua require('tevim.core.utils').build_run() \n endfunction")
 vim.cmd("function! Quit(a,b,c,d) \n qa! \n endfunction")
@@ -113,8 +114,9 @@ M.getTabline = function()
 		run = "%@Run@" .. " 󰀂 "
 	end
 	local split = "%@Split@" .. "  "
+	local trans = "%@ToggleTrans@" .. " 󱡓 "
 	local theme = "%@ToggleTheme@" .. "   "
-	local quit = "%@Quit@" .. " 󰅜 "
+	local quit = "%@Quit@" .. " 󰅙 "
 	local counter = 0
 	for _, buf in pairs(vim.api.nvim_list_bufs()) do
 		local filename = vim.api.nvim_buf_get_name(buf):match("^.+/(.+)$") or ""
@@ -144,10 +146,14 @@ M.getTabline = function()
 			.. run
 			.. "%#TeBufSplit#"
 			.. split
+			.. "%#TeBufTrans#"
+			.. trans
 			.. "%#TeBufTheme#"
 			.. theme
 			.. "%#TeBufQuit#"
 			.. quit
+	elseif vim.bo.filetype == "tedash" then
+		return ""
 	end
 	return treespace
 		.. buffline
@@ -156,6 +162,8 @@ M.getTabline = function()
 		.. run
 		.. "%#TeBufSplit#"
 		.. split
+		.. "%#TeBufTrans#"
+		.. trans
 		.. "%#TeBufTheme#"
 		.. theme
 		.. "%#TeBufQuit#"
