@@ -13,9 +13,11 @@ for _, file in ipairs(vim.fn.readdir(files)) do
 	local f = vim.fn.fnamemodify(file, ":r")
 	table.insert(themes, f)
 end
-for _, file in ipairs(vim.fn.readdir(custom)) do
-	local f = vim.fn.fnamemodify(file, ":r")
-	table.insert(themes, f)
+if vim.fn.isdirectory(custom) then
+	for _, file in ipairs(vim.fn.readdir(custom)) do
+		local f = vim.fn.fnamemodify(file, ":r")
+		table.insert(themes, f)
+	end
 end
 
 M.settheme = function(theme)
@@ -71,19 +73,11 @@ local picker_opts = {
 }
 
 M.setup = function()
-	local path = vim.fn.stdpath("config") .. "/lua/custom"
-	if vim.fn.isdirectory(path) ~= 1 then
-		return vim.notify("Please create a custom folder to save theme! Use :TeVimCreateCustom")
-	end
 	local picker = pickers.new({ layout_config = { height = 0.5, width = 0.25 } }, picker_opts)
 	picker:find()
 end
 
 M.toggleTransparency = function()
-	local path = vim.fn.stdpath("config") .. "/lua/custom"
-	if vim.fn.isdirectory(path) ~= 1 then
-		return vim.notify("Please create a custom folder to save theme! Use :TeVimCreateCustom")
-	end
 	vim.g.transparency = not vim.g.transparency
 	require("tevim.themes").load()
 	local file = vim.fn.stdpath("config") .. "/lua/custom/options.lua"

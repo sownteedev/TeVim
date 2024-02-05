@@ -89,9 +89,9 @@ and more plugins...
   ```
   git clone https://github.com/sownteedev/TeVim ~/.config/nvim --depth 1 && nvim
   ```
-- Wait for everything to install, reopen Neovim
-- Use command ":TeVimCreateCustom" to create files and folders for custom
-- Use command ":MasonInstallAll" to install all LSPs
+- Wait for everything to install, reopen Neovim.
+- TeVim auto create Custom Folder, change or add everything in it.
+- Use command ":MasonInstallAll" to install all LSPs.
 
 ENJOY !
 

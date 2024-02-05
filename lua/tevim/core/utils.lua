@@ -8,30 +8,24 @@ end
 function M.toggle_option(option)
 	local value = not vim.api.nvim_get_option_value(option, {})
 	vim.opt[option] = value
-	local options = io.open(vim.fn.stdpath("config") .. "/lua/custom/options.lua", "a")
-	if options == nil then
-		vim.notify("Please create a custom folder to save options! Use :TeVimCreateCustom")
-	else
-		local file = vim.fn.stdpath("config") .. "/lua/custom/options.lua"
-		local lines = vim.fn.readfile(file)
-		local newlines = {}
-		local found = false
-		for _, line in ipairs(lines) do
-			if line == "vim.opt." .. option .. " = " .. tostring(not value) then
-				table.insert(newlines, "vim.opt." .. option .. " = " .. tostring(value))
-				found = true
-			else
-				table.insert(newlines, line)
-			end
-		end
-		if not found then
+	local file = vim.fn.stdpath("config") .. "/lua/custom/options.lua"
+	local lines = vim.fn.readfile(file)
+	local newlines = {}
+	local found = false
+	for _, line in ipairs(lines) do
+		if line == "vim.opt." .. option .. " = " .. tostring(not value) then
 			table.insert(newlines, "vim.opt." .. option .. " = " .. tostring(value))
+			found = true
+		else
+			table.insert(newlines, line)
 		end
-		vim.fn.writefile(newlines, file)
 	end
+	if not found then
+		table.insert(newlines, "vim.opt." .. option .. " = " .. tostring(value))
+	end
+	vim.fn.writefile(newlines, file)
 	vim.notify(option .. " set to " .. tostring(value))
 end
-
 function M.toggle_tabline()
 	local value = vim.api.nvim_get_option_value("showtabline", {})
 	if value == 2 then
@@ -180,6 +174,7 @@ M.CreateCustom = function()
 		options:write("-- add options or override my options in here")
 		local keymaps = io.open(path .. "/keymaps.lua", "w")
 		keymaps:write("-- add your keymaps in here")
+		vim.fn.mkdir(path .. "/themes/schemes", "p")
 		local themes = io.open(path .. "/themes/schemes/yourtheme.lua", "w")
 		themes:write(
 			"local M = {}\n\nfunction M.get_colors()\n\treturn {\n\t\t-- add your colors in here(check my color to setup)\n\t}\nend\n\nreturn M"

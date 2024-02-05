@@ -353,11 +353,7 @@ if vim.loop.fs_stat(custom_path) then
 		end
 	end
 else
-	vim.cmd([[echohl WarningMsg]])
-	vim.cmd(
-		[[echomsg "Custom folder not found. Please use :TeVimCreateCustom to create folder and file then read the docs!"]]
-	)
-	vim.cmd([[echohl None]])
+	vim.cmd("TeVimCreateCustom")
 end
 
 require("lazy").setup(plugins)
