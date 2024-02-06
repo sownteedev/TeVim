@@ -92,6 +92,7 @@ autocmd({ "BufWritePre" }, {
 
 autocmd({ "FileType" }, {
 	pattern = {
+		"neo-tree",
 		"PlenaryTestPopup",
 		"checkhealth",
 		"fugitive",
@@ -99,6 +100,7 @@ autocmd({ "FileType" }, {
 		"gitcommit",
 		"help",
 		"lazy",
+		"lazyterm",
 		"lspinfo",
 		"man",
 		"mason",
@@ -108,12 +110,15 @@ autocmd({ "FileType" }, {
 		"spectre_panel",
 		"startuptime",
 		"tsplayground",
+		"Trouble",
+		"trouble",
 	},
 	callback = function()
 		vim.opt_local.number = false
 		vim.opt_local.cursorline = false
+		vim.b.miniindentscope_disable = true
 	end,
-	desc = "Disable number and cursorline in specific filetypes",
+	desc = "Disable miniindentscope, number and cursorline in specific filetypes",
 })
 
 autocmd("BufWinEnter", {
@@ -131,28 +136,6 @@ autocmd("BufWinEnter", {
 	end,
 	desc = "Make q close help, man, quickfix, dap floats",
 })
-
-if is_available("mini.indentscope") then
-	vim.api.nvim_create_autocmd("FileType", {
-		pattern = {
-			"help",
-			"alpha",
-			"tedash",
-			"neo-tree",
-			"Trouble",
-			"trouble",
-			"lazy",
-			"mason",
-			"notify",
-			"toggleterm",
-			"lazyterm",
-		},
-		callback = function()
-			vim.b.miniindentscope_disable = true
-		end,
-		desc = "Disable miniindent for specific filetypes",
-	})
-end
 
 autocmd("FileType", {
 	group = augroup("unlist_quickfist", { clear = true }),
