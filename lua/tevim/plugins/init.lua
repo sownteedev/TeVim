@@ -10,6 +10,7 @@ local plugins = {
 	{
 		"nvim-tree/nvim-web-devicons",
 		lazy = true,
+		event = "BufRead",
 		opts = function()
 			return require("tevim.plugins.others.devicons")
 		end,
@@ -58,6 +59,7 @@ local plugins = {
 	},
 	{
 		"windwp/nvim-ts-autotag",
+		lazy = true,
 		ft = { "html", "javascript", "jsx", "typescript", "tsx", "svelte", "vue", "xml", "markdown" },
 		config = function(_, opts)
 			require("nvim-ts-autotag").setup(opts)
@@ -65,11 +67,13 @@ local plugins = {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
 		lazy = true,
 		event = { "BufReadPost", "BufNewFile" },
 		dependencies = {
 			{
 				"echasnovski/mini.indentscope",
+				lazy = true,
 				opts = { symbol = "│", options = { try_as_border = true } },
 			},
 		},
@@ -84,7 +88,7 @@ local plugins = {
 		"folke/which-key.nvim",
 		lazy = true,
 		keys = { "<leader>", " ", "'", "`" },
-		event = "VeryLazy",
+		cmd = "WhichKey",
 		opts = function()
 			return require("tevim.plugins.others.whichkey")
 		end,
@@ -98,7 +102,7 @@ local plugins = {
 		lazy = true,
 		keys = {
 			{ mode = "n", "<C-/>", "<Plug>(comment_toggle_linewise_current)", desc = "Toggle Comment" },
-			{ mode = "v", "<C-/>", "<Plug>(comment_toggle_linewise_visual)", desc = "Toggle Comment(Visual)" },
+			{ mode = "v", "<C-/>", "<Plug>(comment_toggle_linewise_visual)",  desc = "Toggle Comment(Visual)" },
 		},
 		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
 		config = function()
@@ -224,9 +228,9 @@ local plugins = {
 						ft_ignore = { "neo-tree", "Outline" },
 						segments = {
 							{ sign = { namespace = { "diagnostic*" } } },
-							{ sign = { namespace = { "gitsign" } }, click = "v:lua.ScSa" },
-							{ text = { builtin.lnumfunc, "  " }, click = "v:lua.ScLa" },
-							{ text = { builtin.foldfunc, "  " }, click = "v:lua.ScFa" },
+							{ sign = { namespace = { "gitsign" } },    click = "v:lua.ScSa" },
+							{ text = { builtin.lnumfunc, "  " },       click = "v:lua.ScLa" },
+							{ text = { builtin.foldfunc, "  " },       click = "v:lua.ScFa" },
 						},
 					})
 				end,
@@ -264,8 +268,8 @@ local plugins = {
 			},
 			{
 				"windwp/nvim-autopairs",
-				event = "InsertEnter",
 				lazy = true,
+				event = "InsertEnter",
 				opts = { fast_wrap = {}, disable_filetype = { "TelescopePrompt", "vim" } },
 				config = function(_, opts)
 					require("nvim-autopairs").setup(opts)
@@ -314,6 +318,7 @@ local plugins = {
 			},
 			{
 				"ray-x/lsp_signature.nvim",
+				lazy = true,
 				opts = { hint_enable = false },
 				config = function(_, opts)
 					require("lsp_signature").setup(opts)
@@ -323,23 +328,6 @@ local plugins = {
 		config = function()
 			require("tevim.plugins.lsp.lspconfig")
 		end,
-	},
-	{
-		"stevearc/conform.nvim",
-		lazy = true,
-		event = "BufWritePre",
-		cmd = "ConformInfo",
-		opts = function()
-			return require("tevim.plugins.lsp.conform")
-		end,
-		config = function(_, opts)
-			require("conform").setup(opts)
-		end,
-	},
-	{
-		"folke/trouble.nvim",
-		lazy = true,
-		cmd = { "TroubleToggle", "Trouble" },
 	},
 }
 

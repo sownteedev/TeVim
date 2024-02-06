@@ -45,8 +45,6 @@ local configs = {
 			s = { "<cmd>lua require('tevim.core.utils').toggle_option('spell')<cr>", "Spell" },
 			n = { "<cmd>lua require('tevim.core.utils').toggle_option('number')<cr>", "Number" },
 			r = { "<cmd>lua require('tevim.core.utils').toggle_option('relativenumber')<cr>", "Relative Number" },
-			t = { "<cmd>lua require('tevim.core.utils').toggle_tabline()<cr>", "Tabline" },
-			l = { "<cmd>lua require('tevim.core.utils').toggle_statusline()<cr>", "Statusline" },
 		},
 		w = {
 			name = "  WINDOWS",
@@ -88,9 +86,6 @@ local configs = {
 		l = {
 			name = "  LSP",
 			a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-			d = { "<cmd>TroubleToggle<cr>", "Diagnostics" },
-			f = { "<cmd>lua require('conform').format()<cr>", "Format" },
-			F = { "<cmd>lua require('tevim.core.utils').toggle_formatOnSave()<cr>", "Toggle FormatOnSave" },
 			I = { "<cmd>LspInfo<cr>", "Info" },
 			i = { "<cmd>lua require('tevim.core.utils').toggle_inlayHint()<cr>", "Toggle Inlay Hint" },
 			j = { "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", "Next Diagnostic" },

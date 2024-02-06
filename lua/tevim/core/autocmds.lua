@@ -76,17 +76,19 @@ autocmd("TermOpen", {
 	desc = "Disable number and cursorline in terminal",
 })
 
-if is_available("conform.nvim") then
-	autocmd("BufWritePre", {
-		callback = function()
-			local formatOnSave = require("tevim.plugins.lsp.conform").formatOnSave
-			if formatOnSave then
-				vim.cmd("lua require('conform').format()")
+autocmd({ "BufWritePre" }, {
+	callback = function()
+		for _, client in ipairs(vim.lsp.get_active_clients()) do
+			if client.attached_buffers[vim.api.nvim_get_current_buf()] then
+				vim.lsp.buf.format()
+				return
+			else
+				return
 			end
-		end,
-		desc = "Format on save",
-	})
-end
+		end
+	end,
+	desc = "Format on save",
+})
 
 autocmd({ "FileType" }, {
 	pattern = {
@@ -168,7 +170,8 @@ autocmd({ "UIEnter" }, {
 	desc = "Load TeVim Themes",
 })
 
-autocmd({ "FileType" }, {
+autocmd({ "FileType", "BufNewFile" }, {
+	pattern = "*",
 	callback = function()
 		require("tevim.ui.testtline").setup()
 	end,
@@ -185,7 +188,18 @@ autocmd({ "BufNewFile", "BufReadPost" }, {
 if vim.g.load_tedash_on_startup then
 	autocmd({ "UIEnter" }, {
 		callback = function()
-			if vim.fn.argc() == 0 then
+			local should_skip = false
+			if vim.fn.argc() > 0 or vim.fn.line2byte("$") ~= -1 or not vim.o.modifiable then
+				should_skip = true
+			else
+				for _, arg in pairs(vim.v.argv) do
+					if arg == "-b" or arg == "-c" or vim.startswith(arg, "+") or arg == "-S" then
+						should_skip = true
+						break
+					end
+				end
+			end
+			if not should_skip then
 				require("tevim.ui.tedash").setup()
 			end
 		end,

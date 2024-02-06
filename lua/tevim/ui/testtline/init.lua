@@ -50,6 +50,7 @@ M.run = function()
 end
 
 M.setup = function()
+	vim.opt.laststatus = 3
 	vim.opt.statusline = M.run()
 	vim.api.nvim_create_autocmd({ "ModeChanged", "CursorHold" }, {
 		callback = function()

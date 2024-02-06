@@ -26,27 +26,6 @@ function M.toggle_option(option)
 	vim.fn.writefile(newlines, file)
 	vim.notify(option .. " set to " .. tostring(value))
 end
-function M.toggle_tabline()
-	local value = vim.api.nvim_get_option_value("showtabline", {})
-	if value == 2 then
-		value = 0
-	else
-		value = 2
-	end
-	vim.opt.showtabline = value
-	vim.notify("showtabline" .. " set to " .. tostring(value))
-end
-
-function M.toggle_statusline()
-	local value = vim.api.nvim_get_option_value("laststatus", {})
-	if value == 3 then
-		value = 0
-	else
-		value = 3
-	end
-	vim.opt.laststatus = value
-	vim.notify("laststatus" .. " set to " .. tostring(value))
-end
 
 function M.toggle_inlayHint()
 	if not M.is_available("nvim-lspconfig") then
@@ -64,41 +43,27 @@ function M.toggle_inlayHint()
 	end
 end
 
-function M.toggle_formatOnSave()
-	if not M.is_available("conform.nvim") then
-		return vim.notify("conform.nvim isn't installed!")
-	end
-	local formatOnSave = require("tevim.plugins.lsp.conform").formatOnSave
-	if formatOnSave then
-		require("tevim.plugins.lsp.conform").formatOnSave = false
-		vim.notify("Format on save disabled")
-	else
-		require("tevim.plugins.lsp.conform").formatOnSave = true
-		vim.notify("Format on save enabled")
-	end
-end
-
 function M.build_run()
 	local filetype = vim.bo.filetype
 	if filetype == "c" then
 		vim.cmd(
 			"TermExec cmd='gcc "
-				.. vim.fn.expand("%")
-				.. " -o "
-				.. vim.fn.expand("%:r")
-				.. " && "
-				.. vim.fn.expand("%:r")
-				.. "'"
+			.. vim.fn.expand("%")
+			.. " -o "
+			.. vim.fn.expand("%:r")
+			.. " && "
+			.. vim.fn.expand("%:r")
+			.. "'"
 		)
 	elseif filetype == "cpp" then
 		vim.cmd(
 			"TermExec cmd='g++ "
-				.. vim.fn.expand("%")
-				.. " -o "
-				.. vim.fn.expand("%:r")
-				.. " && "
-				.. vim.fn.expand("%:r")
-				.. "'"
+			.. vim.fn.expand("%")
+			.. " -o "
+			.. vim.fn.expand("%:r")
+			.. " && "
+			.. vim.fn.expand("%:r")
+			.. "'"
 		)
 	elseif filetype == "python" then
 		vim.cmd("TermExec cmd='python3 " .. vim.fn.expand("%") .. "'")

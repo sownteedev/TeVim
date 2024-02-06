@@ -175,6 +175,7 @@ M.setup = function()
 	vim.opt_local.foldcolumn = "0"
 	vim.opt_local.stc = ""
 	vim.opt_local.colorcolumn = "0"
+	vim.opt_local.showtabline = 0
 end
 
 api.nvim_create_user_command("TeDash", function()
