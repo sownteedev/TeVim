@@ -5,7 +5,7 @@ local devicons_present, devicons = pcall(require, "nvim-web-devicons")
 -- Commands
 vim.cmd("function! TeBufGoToBuf(bufnr,b,c,d) \n execute 'b'..a:bufnr \n endfunction")
 vim.cmd("function! ToggleTheme(a,b,c,d) \n TeVimThemes \n endfunction")
-vim.cmd("function! ToggleTrans(a,b,c,d) \n TeVimThemesToggleTrans \n endfunction")
+vim.cmd("function! ToggleTrans(a,b,c,d) \n TeVimToggleTrans \n endfunction")
 vim.cmd("function! Split(a,b,c,d) \n vsplit \n endfunction")
 vim.cmd("function! Run(a,b,c,d) \n lua require('tevim.core.utils').build_run() \n endfunction")
 vim.cmd("function! Quit(a,b,c,d) \n qa! \n endfunction")

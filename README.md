@@ -14,9 +14,9 @@
 <div align="center">
 
 ```txt
-Performance for time startup
-On Power                              : 0.030s - 0.034s
-On Battery                            : 0.031s - 0.036s
+Performance for time startup on low laptop
+On Power                              : 0.035s - 0.039s
+On Battery                            : 0.037s - 0.040s
 ```
 
 </div>
@@ -97,6 +97,13 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 
 ### Custom Colorschemes
 > Read my colorschemes in tevim/themes/schemes/ and write like it in custom/themes/schemes/
+
+### TeVim Commands
+> **TeVimThemes** : Open list colorschemes
+>
+> **TeVimToggleTrans** : Toggle Transparency
+>
+> **TeVimCheckMason** : Install or Remove package you add or remove on custom/configs/overrides.lua
 
 <br>
 

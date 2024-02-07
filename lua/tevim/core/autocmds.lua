@@ -214,3 +214,6 @@ autocmd("BufWritePost", {
 vim.api.nvim_create_user_command("TeVimCreateCustom", function()
 	vim.cmd("lua require('tevim.core.utils').CreateCustom()")
 end, {})
+vim.api.nvim_create_user_command("TeVimCheckMason", function()
+	vim.cmd("lua require('tevim.core.utils').checkMason()")
+end, {})

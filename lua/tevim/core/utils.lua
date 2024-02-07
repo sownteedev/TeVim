@@ -139,9 +139,44 @@ M.lazy = function(install_path)
 	assert(vim.v.shell_error == 0, "External call failed with error code: " .. vim.v.shell_error .. "\n" .. output)
 	vim.opt.rtp:prepend(install_path)
 	require("tevim.plugins")
-	vim.cmd("MasonInstallAll")
+	vim.cmd("MasonInstall lua-language-server stylua")
 	vim.cmd("redraw")
 	vim.api.nvim_echo({ { "Wait for everything install. Reopen Neovim!", "Bold" } }, true, {})
+end
+
+M.checkMason = function()
+	local status_ok, _ = pcall(require, "mason")
+	if not status_ok then
+		return vim.notify("mason.nvim isn't installed!")
+	end
+	local mason_packages = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/packages/*", 0, 1)
+	local mason_installed = {}
+	for _, package in ipairs(mason_packages) do
+		table.insert(mason_installed, vim.fn.fnamemodify(package, ":t"))
+	end
+	local ensure_installed = require("custom.configs.overrides").mason.ensure_installed
+	local missing = {}
+	for _, package in ipairs(ensure_installed) do
+		if not vim.tbl_contains(mason_installed, package) then
+			table.insert(missing, package)
+		end
+	end
+	local remove = {}
+	for _, package in ipairs(mason_installed) do
+		if
+			not vim.tbl_contains(ensure_installed, package)
+			and package ~= "stylua"
+			and package ~= "lua-language-server"
+		then
+			table.insert(remove, package)
+		end
+	end
+	if #remove > 0 then
+		vim.cmd("MasonUninstall " .. table.concat(remove, " "))
+	end
+	if #missing > 0 then
+		vim.cmd("MasonInstall " .. table.concat(missing, " "))
+	end
 end
 
 M.CreateCustom = function()
