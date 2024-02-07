@@ -1,16 +1,13 @@
 <h1 align="center">TeVim</h1>
 
-<h3 align="center">Neovim configuration for Developer</h3>
-
 <div align="center">
- 
-[![Neovim Minimum Version](https://img.shields.io/badge/Neovim-Nightly-blueviolet.svg?style=for-the-badge&logo=Neovim&color=90E59A&logoColor=white)](https://github.com/neovim/neovim)
-![](https://img.shields.io/github/last-commit/sownteedev/TeVim?&style=for-the-badge&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41)
-![](https://img.shields.io/github/stars/sownteedev/TeVim?style=for-the-badge&logo=starship&color=8bd5ca&logoColor=D9E0EE&labelColor=302D41)
-<a href="https://discordapp.com/users/745732774027198554"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white"/></a>
-</div>
 
-## 📷 Showcase
+![GitHub top language](https://img.shields.io/github/languages/top/sownteedev/TeVim?color=6d92bf&style=for-the-badge&labelColor=111418)
+![Last Commit](https://img.shields.io/github/last-commit/sownteedev/TeVim?&style=for-the-badge&color=da696f&logoColor=D9E0EE&labelColor=111418)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/sownteedev/TeVim?color=e1b56a&style=for-the-badge&labelColor=111418)
+![GitHub Repo stars](https://img.shields.io/github/stars/sownteedev/TeVim?color=74be88&style=for-the-badge&labelColor=111418)
+
+</div>
 
 <img src="https://github.com/sownteedev/TeVim/assets/90148193/48251bcf-864a-41e5-8c37-1418effcc662">
 
@@ -33,8 +30,6 @@ On Battery                            : 0.031s - 0.036s
 
 </details>
 
-<h7>Updating...</h7>
-
 ## Plugins
 
 | Plugin                                                                                | Description                                                    |  Lazy   |
@@ -56,10 +51,7 @@ On Battery                            : 0.031s - 0.036s
 | [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim)               | beautiful highlights for TODO comments                         | `true`  |
 | [folke/trouble.nvim](https://github.com/folke/trouble.nvim)                           | pretty list for showing diagnostics, references, etc           | `true`  |
 
-and more plugins...
-<br>
-
-<h3>🔎 Requirement </h3>
+## 🔎 Requirements
 
 - Neovim >= v0.9.4.
 
@@ -75,28 +67,50 @@ and more plugins...
 
 - Lazygit and Ranger (OPTIONAL).
 
-<h3> ⬇️  Installation </h3>
+## ⬇️  Installation
 
 - Backup your config
-  ```
+  ```zsh
   mv ~/.config/nvim ~/.config/nvim.bak
   ```
 - Remove cache setup
-  ```
+  ```zsh
   rm -rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim ~/.config/nvim/lazy-lock.json
   ```
 - Install TeVim
-  ```
+  ```zsh
   git clone https://github.com/sownteedev/TeVim ~/.config/nvim --depth 1 && nvim
   ```
-- Wait for everything to install, reopen Neovim.
-- TeVim auto create Custom Folder, change or add everything in it.
-- Use command ":MasonInstallAll" to install all LSPs.
+<br>
 
-ENJOY !
+> **NOTE:**
+>
+> TeVim auto create Custom Folder, change or add everything in it.
+>
+> THIS IS NOT A "DISTRO" and for BEGINNERS, you need to have some experiences with Lua and Neovim.
 
+### Adding mason to path
+```zsh
+# this is for zsh
+export PATH=$PATH:~/.local/share/nvim/mason/bin
+```
+
+### Custom Colorschemes
+> Read my colorschemes in tevim/themes/schemes/ and write like it in custom/themes/schemes/
+
+<br>
+
+<h5> ENJOY WITH TEVIM ! 🎉 </h5>
+
+<br>
+
+> If there are any errors or questions, please create Issues or contact me
+<a href="https://discordapp.com/users/745732774027198554">here</a>
+
+<br>
 <details><summary> <b>Credits</b></summary>
 
 - [Nvchad](https://github.com/nvchad) helped me with TeDash and TeBufline
+- [chadcat7](https://github.com/chadcat7) helped me with Theme
 
 </details>
