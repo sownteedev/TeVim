@@ -174,6 +174,10 @@ M.setup = function()
 		vim.o.showtabline = 2
 		vim.o.tabline = '%!v:lua.require("tevim.ui.tebufline").getTabline()'
 	end
+	vim.cmd([[
+		nnoremap <silent><TAB> :TeBufNext<CR>
+		nnoremap <silent><S-TAB> :TeBufPrev<CR>
+	]])
 end
 
 return M

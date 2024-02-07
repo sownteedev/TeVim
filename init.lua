@@ -1,25 +1,14 @@
--- Author : Nguyen Thanh Son - SownteeNguyen
--- Github : @sownteedev
+-- NOTE: Author : Nguyen Thanh Son - SownteeNguyen
+-- NOTE: Github : @sownteedev
 
 ------------------------------- WELCOME TO TEVIM -------------------------------
+-- WARNING: THIS IS A PERSONAL CONFIGURATION NOT A DISTRO, YOU CAN USE DEFAULT CONFIGURATION OR CUSTOMIZE IT
+
 require("tevim.core")
 
---- @diagnostic disable warning
-local function echo(str)
-	vim.cmd("redraw")
-	vim.api.nvim_echo({ { str, "Bold" } }, true, {})
-end
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	echo("Hi there, welcome to TEVIM 󱠡 ")
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable",
-		lazypath,
-	})
+	require("tevim.core.utils").lazy(lazypath)
 end
 vim.opt.rtp:prepend(lazypath)
 require("tevim.plugins")

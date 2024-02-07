@@ -5,6 +5,7 @@ local configs = {
 	},
 	indent = { enable = true },
 	ensure_installed = { "lua" },
+	auto_install = true,
 }
 
 return configs

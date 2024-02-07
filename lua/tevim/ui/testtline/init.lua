@@ -52,7 +52,7 @@ end
 M.setup = function()
 	vim.opt.laststatus = 3
 	vim.opt.statusline = M.run()
-	vim.api.nvim_create_autocmd({ "ModeChanged", "CursorHold" }, {
+	vim.api.nvim_create_autocmd({ "ModeChanged", "CursorHold", "VimResized" }, {
 		callback = function()
 			vim.opt.statusline = M.run()
 		end,

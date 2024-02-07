@@ -48,7 +48,7 @@ local plugins = {
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 		lazy = true,
-		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo", "TSUninstall" },
 		dependencies = { "nvim-treesitter/nvim-treesitter-context", "HiPhish/rainbow-delimiters.nvim" },
 		opts = function()
 			return require("tevim.plugins.others.treesitter")
@@ -102,9 +102,9 @@ local plugins = {
 		lazy = true,
 		keys = {
 			{ mode = "n", "<C-/>", "<Plug>(comment_toggle_linewise_current)", desc = "Toggle Comment" },
-			{ mode = "v", "<C-/>", "<Plug>(comment_toggle_linewise_visual)",  desc = "Toggle Comment(Visual)" },
+			{ mode = "v", "<C-/>", "<Plug>(comment_toggle_linewise_visual)", desc = "Toggle Comment(Visual)" },
 		},
-		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+		dependencies = "JoosepAlviste/nvim-ts-context-commentstring",
 		config = function()
 			require("Comment").setup({
 				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
@@ -219,18 +219,19 @@ local plugins = {
 		lazy = true,
 		event = { "BufReadPost", "BufNewFile" },
 		dependencies = {
-			"kevinhwang91/promise-async",
 			{
 				"luukvbaal/statuscol.nvim",
+				lazy = true,
+				dependencies = "kevinhwang91/promise-async",
 				config = function()
 					local builtin = require("statuscol.builtin")
 					require("statuscol").setup({
 						ft_ignore = { "neo-tree", "Outline" },
 						segments = {
 							{ sign = { namespace = { "diagnostic*" } } },
-							{ sign = { namespace = { "gitsign" } },    click = "v:lua.ScSa" },
-							{ text = { builtin.lnumfunc, "  " },       click = "v:lua.ScLa" },
-							{ text = { builtin.foldfunc, "  " },       click = "v:lua.ScFa" },
+							{ sign = { namespace = { "gitsign" } }, click = "v:lua.ScSa" },
+							{ text = { builtin.lnumfunc, "  " }, click = "v:lua.ScLa" },
+							{ text = { builtin.foldfunc, "  " }, click = "v:lua.ScFa" },
 						},
 					})
 				end,
@@ -327,6 +328,18 @@ local plugins = {
 		},
 		config = function()
 			require("tevim.plugins.lsp.lspconfig")
+		end,
+	},
+	{
+		"stevearc/conform.nvim",
+		lazy = true,
+		event = "BufWritePre",
+		cmd = "ConformInfo",
+		opts = function()
+			return require("tevim.plugins.lsp.conform")
+		end,
+		config = function(_, opts)
+			require("conform").setup(opts)
 		end,
 	},
 }

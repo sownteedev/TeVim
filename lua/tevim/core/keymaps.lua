@@ -45,9 +45,4 @@ map("i", "<C-k>", "<Up>", opts, { desc = "Move Cursor Up in Insert Mode" })
 map("i", "<C-h>", "<Left>", opts, { desc = "Move Cursor Left in Insert Mode" })
 map("i", "<C-l>", "<Right>", opts, { desc = "Move Cursor Right in Insert Mode" })
 
-map("n", "<TAB>", "<cmd>TeBufNext<CR>", opts, { desc = "Next Buffer" })
-map("n", "<S-TAB>", "<cmd>TeBufPrev<CR>", opts, { desc = "Previous Buffer" })
-
 map("n", "<Enter>", "<cmd>nohlsearch<CR>", opts, { desc = "Clear Highlight" })
-
-map("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { silent = true }, { desc = "Rename" })

@@ -48,22 +48,22 @@ function M.build_run()
 	if filetype == "c" then
 		vim.cmd(
 			"TermExec cmd='gcc "
-			.. vim.fn.expand("%")
-			.. " -o "
-			.. vim.fn.expand("%:r")
-			.. " && "
-			.. vim.fn.expand("%:r")
-			.. "'"
+				.. vim.fn.expand("%")
+				.. " -o "
+				.. vim.fn.expand("%:r")
+				.. " && "
+				.. vim.fn.expand("%:r")
+				.. "'"
 		)
 	elseif filetype == "cpp" then
 		vim.cmd(
 			"TermExec cmd='g++ "
-			.. vim.fn.expand("%")
-			.. " -o "
-			.. vim.fn.expand("%:r")
-			.. " && "
-			.. vim.fn.expand("%:r")
-			.. "'"
+				.. vim.fn.expand("%")
+				.. " -o "
+				.. vim.fn.expand("%:r")
+				.. " && "
+				.. vim.fn.expand("%:r")
+				.. "'"
 		)
 	elseif filetype == "python" then
 		vim.cmd("TermExec cmd='python3 " .. vim.fn.expand("%") .. "'")
@@ -131,6 +131,19 @@ function M.Ranger()
 	ranger:toggle()
 end
 
+M.lazy = function(install_path)
+	vim.cmd("redraw")
+	vim.api.nvim_echo({ { "Hi there, welcome to TEVIM 󱠡 ", "Bold" } }, true, {})
+	local repo = "https://github.com/folke/lazy.nvim.git"
+	local output = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", repo, install_path })
+	assert(vim.v.shell_error == 0, "External call failed with error code: " .. vim.v.shell_error .. "\n" .. output)
+	vim.opt.rtp:prepend(install_path)
+	require("tevim.plugins")
+	vim.cmd("MasonInstallAll")
+	vim.cmd("redraw")
+	vim.api.nvim_echo({ { "Wait for everything install. Reopen Neovim!", "Bold" } }, true, {})
+end
+
 M.CreateCustom = function()
 	local path = vim.fn.stdpath("config") .. "/lua/custom"
 	if vim.fn.isdirectory(path) ~= 1 then
@@ -140,7 +153,12 @@ M.CreateCustom = function()
 			'local M = {}\n\nM.keymaps = require("custom.keymaps")\nM.options = require("custom.options")\n\nM.plugins = "custom.plugins"\n\nreturn M'
 		)
 		local plugins = io.open(path .. "/plugins.lua", "w")
-		plugins:write("local plugins = {\n\n-- add plugins or override my plugins in here\n\n}\n\nreturn plugins")
+		plugins:write(
+			'local overrides = require("custom.configs.overrides")\n\nlocal plugins = {\n\n-- add plugins or override my plugins in here\n\n}\n\nreturn plugins'
+		)
+		vim.fn.mkdir(path .. "/configs", "p")
+		local overrides = io.open(path .. "/configs/overrides.lua", "w")
+		overrides:write("local M = {}\n\n-- add overrides in here\n\nreturn M")
 		local options = io.open(path .. "/options.lua", "w")
 		options:write("-- add options or override my options in here")
 		local keymaps = io.open(path .. "/keymaps.lua", "w")
