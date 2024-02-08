@@ -52,7 +52,6 @@ local configs = {
 			h = { "<C-w>s", "Horizontal Split" },
 			e = { "<C-w>=", "Make Splits Equal" },
 			q = { "<cmd>close<CR>", "Close Split" },
-			c = { "<cmd>TeBufCloseOtherBuf<CR>", "Close Other Buffers" },
 		},
 		f = {
 			name = "  TELESCOPE",
@@ -65,7 +64,6 @@ local configs = {
 			R = { "<cmd>Telescope registers<cr>", "Registers" },
 			j = { "<cmd>Telescope commands<cr>", "Commands" },
 			h = { "<cmd>Telescope highlights<cr>", "Highlights" },
-			p = { "<cmd>Telescope projects<cr>", "Projects" },
 			t = { "<cmd>TodoTelescope<cr>", "Todo" },
 		},
 		g = {
@@ -99,7 +97,7 @@ local configs = {
 			name = "  TREESITTER",
 			c = { "<cmd>TSContextToggle<cr>", "Toggle Context" },
 			i = { "<cmd>TSInstallInfo<cr>", "Info" },
-			s = { "<cmd>TSUpdate<cr>", "Update" },
+			u = { "<cmd>TSUpdate<cr>", "Update" },
 		},
 		t = {
 			name = "  TERMINAL",

@@ -30,27 +30,6 @@ On Battery                            : 0.037s - 0.040s
 
 </details>
 
-## Plugins
-
-| Plugin                                                                                | Description                                                    |  Lazy   |
-| ------------------------------------------------------------------------------------- | -------------------------------------------------------------- | :-----: |
-| [folke/lazy](https://github.com/folke/lazy.nvim)                                      | the package manager for newbies                                | `false` |
-| [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | syntax highlighting, most popular one for neovim               | `true`  |
-| [NvChad/nvim-colorizer.lua](https://github.com/NvChad/nvim-colorizer.lua)             | highlights colors and is really frickin fast                   | `true`  |
-| [nvim-neo-tree/neo-tree.lua](https://github.com/nvim-neo-tree/neo-tree.nvim)          | a very neat, simple and clean file tree and most features      | `true`  |
-| [nvim-tree/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)         | more devicons for neovim                                       | `true`  |
-| [folke/which-key.nvim](https://github.com/folke/which-key.nvim)                       | shows all the posiible vim keybindings, perfect for dummies    | `true`  |
-| [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)     | probably the most popular menu. can be used for a lot of stuff | `true`  |
-| [akinsho/toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)                 | terminal integration in neovim                                 | `true`  |
-| [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)                 | Super fast git decorations implemented purely in Lua.          | `true`  |
-| [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim)                 | installing LSPs made super easy                                | `true`  |
-| [nvimdev/lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim)                       | responsible for the winbar and lightbulb                       | `true`  |
-| [kevinhwang91/nvim-ufo](https://github.com/kevinhwang91/nvim-ufo)                     | folds in neovim arent that bad! actually, better than vscode   | `true`  |
-| [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip)                               | very simple and easy to use snippet engine                     | `true`  |
-| [numToStr/Comment.nvim](https://github.com/numToStr/Comment.nvim)                     | quik and easy commenting                                       | `true`  |
-| [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim)               | beautiful highlights for TODO comments                         | `true`  |
-| [folke/trouble.nvim](https://github.com/folke/trouble.nvim)                           | pretty list for showing diagnostics, references, etc           | `true`  |
-
 ## 🔎 Requirements
 
 - Neovim >= v0.9.4.
@@ -59,13 +38,13 @@ On Battery                            : 0.037s - 0.040s
 
 - Ripgrep and Fzf are required for grep searching with Telescope.
 
-- Xsel and Xclip for copy and paste (If you use X11).
-
 - GCC (Clang), Windows users must have mingw installed and set on path.
 
 - Npm(neovim) and Pynvim for Neovim.
 
 - Lazygit and Ranger (OPTIONAL).
+
+- Xsel and Xclip for copy and paste (If you use X11)(OPTIONAL).
 
 ## ⬇️  Installation
 
@@ -81,15 +60,8 @@ On Battery                            : 0.037s - 0.040s
   ```zsh
   git clone https://github.com/sownteedev/TeVim ~/.config/nvim --depth 1 && nvim
   ```
-<br>
 
-> **NOTE:**
->
-> TeVim auto create Custom Folder, change or add everything in it.
->
-> THIS IS NOT A "DISTRO" and for BEGINNERS, you need to have some experiences with Lua and Neovim.
-
-### Adding mason to path
+### Adding Mason to path
 ```zsh
 # this is for zsh
 export PATH=$PATH:~/.local/share/nvim/mason/bin
@@ -111,10 +83,101 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 
 <br>
 
+> **NOTE:**
+>
+> TeVim auto create Custom Folder, change or add everything in it.
+>
+> THIS IS NOT A "DISTRO" and not for BEGINNERS, you need to have some experiences with Lua and Neovim.
+>
 > If there are any errors or questions, please create Issues or contact me
 <a href="https://discordapp.com/users/745732774027198554">here</a>
 
+## Plugins
+
+| Plugin                                                                                | Description                                                    |  Lazy   |
+| ------------------------------------------------------------------------------------- | -------------------------------------------------------------- | :-----: |
+| [folke/lazy](https://github.com/folke/lazy.nvim)                                      | the package manager for newbies                                | `false` |
+| [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | syntax highlighting, most popular one for neovim               | `true`  |
+| [NvChad/nvim-colorizer.lua](https://github.com/NvChad/nvim-colorizer.lua)             | highlights colors and is really frickin fast                   | `true`  |
+| [nvim-neo-tree/neo-tree.lua](https://github.com/nvim-neo-tree/neo-tree.nvim)          | a very neat, simple and clean file tree and most features      | `true`  |
+| [nvim-tree/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)         | more devicons for neovim                                       | `true`  |
+| [folke/which-key.nvim](https://github.com/folke/which-key.nvim)                       | shows all the posiible vim keybindings, perfect for dummies    | `true`  |
+| [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)     | probably the most popular menu. can be used for a lot of stuff | `true`  |
+| [akinsho/toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)                 | terminal integration in neovim                                 | `true`  |
+| [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)                 | Super fast git decorations implemented purely in Lua.          | `true`  |
+| [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim)                 | installing LSPs made super easy                                | `true`  |
+| [nvimdev/lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim)                       | responsible for the winbar and lightbulb                       | `true`  |
+| [kevinhwang91/nvim-ufo](https://github.com/kevinhwang91/nvim-ufo)                     | folds in neovim arent that bad! actually, better than vscode   | `true`  |
+| [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip)                               | very simple and easy to use snippet engine                     | `true`  |
+| [numToStr/Comment.nvim](https://github.com/numToStr/Comment.nvim)                     | quik and easy commenting                                       | `true`  |
+| [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim)               | beautiful highlights for TODO comments                         | `true`  |
+
+## Keybinds
+
+| Keys        | Function          |
+| ------------- |-------------|
+| <kbd>CTRL</kbd> <kbd>h</kbd> / <kbd>j</kbd> / <kbd>k</kbd> / <kbd>l</kbd> | Moving Window Focus Towards Left/Up/Down/Right (Normal) |
+| <kbd>CTRL</kbd> <kbd>h</kbd> / <kbd>j</kbd> / <kbd>k</kbd> / <kbd>l</kbd> | Moving Cursor Left/Up/Down/Right (Insert) |
+| <kbd>Enter</kbd> | Clear Highlights Search |
+| <kbd>ALT</kbd> / <kbd>⬇️</kbd> / <kbd>⬆️</kbd> | Moving Current Line or Lines Down/Up |
+| <kbd>CTRL</kbd> <kbd>e</kbd> | Toggle Explorer with Neotree |
+| <kbd>CTRL</kbd> <kbd>`</kbd> | Open And Close ToggleTerm |
+
+#### File Operations
+
+| Keys        | Function          |
+| ------------- |-------------|
+| <kbd>LDR</kbd> <kbd>q</kbd> | Exit Neovim |
+| <kbd>LDR</kbd> <kbd>q</kbd> <kbd>w</kbd> | Save And Exit Neovim |
+| <kbd>CTRL</kbd> <kbd>s</kbd> | Save File (Normal + Insert) |
+| <kbd>CTRL</kbd> <kbd>q</kbd> | Close Current Buffer |
+| <kbd>CTRL</kbd> <kbd>o</kbd> | Close Other Buffer |
+
+#### Telescope
+
+| Keys        | Function          |
+| ------------- |-------------|
+| <kbd>LDR</kbd> <kbd>f</kbd> <kbd>f</kbd>  | Find Files |
+| <kbd>LDR</kbd> <kbd>f</kbd> <kbd>r</kbd> | Find Recently Visited Files |
+| <kbd>LDR</kbd> <kbd>f</kbd> <kbd>w</kbd> | Find File By String |
+| <kbd>LDR</kbd> <kbd>f</kbd> <kbd>t</kbd> | TODO |
+| <kbd>LDR</kbd> <kbd>f</kbd> <kbd>c</kbd> | TeVim Colorscheme Picker |
+
+#### LSP
+
+| Keys        | Function          |
+| ------------- |-------------|
+| <kbd>LDR</kbd> <kbd>l</kbd> <kbd>i</kbd>  | Toggle Inlay Hints |
+| <kbd>LDR</kbd> <kbd>l</kbd> <kbd>a</kbd>  | Code Action |
+| <kbd>LDR</kbd> <kbd>l</kbd> <kbd>o</kbd>  | Outline |
+| <kbd>LDR</kbd> <kbd>l</kbd> <kbd>i</kbd>  | Lsp Infor |
+| <kbd>LDR</kbd> <kbd>l</kbd> <kbd>r</kbd>  | Lsp Rename |
+
+#### Treesiiter
+
+| Keys        | Function          |
+| ------------- |-------------|
+| <kbd>LDR</kbd> <kbd>s</kbd> <kbd>c</kbd>  | Toggle Context |
+| <kbd>LDR</kbd> <kbd>s</kbd> <kbd>i</kbd> | Treesiiter Info |
+| <kbd>LDR</kbd> <kbd>s</kbd> <kbd>u</kbd> | Treesiiter Update |
+
+#### Lazy
+
+| Keys        | Function          |
+| ------------- |-------------|
+| <kbd>LDR</kbd> <kbd>p</kbd> <kbd>S</kbd>  | Open Lazy Dashboard |
+| <kbd>LDR</kbd> <kbd>p</kbd> <kbd>s</kbd>  | Lazy Sync |
+| <kbd>LDR</kbd> <kbd>p</kbd> <kbd>i</kbd>  | Lazy Install |
+| <kbd>LDR</kbd> <kbd>p</kbd> <kbd>u</kbd>  | Lazy Update |
+| <kbd>LDR</kbd> <kbd>p</kbd> <kbd>C</kbd>  | Clean Plugins |
+| <kbd>LDR</kbd> <kbd>p</kbd> <kbd>c</kbd>  | Open Lazy Log |
+
 <br>
+
+> Use **Space** to open which-key and use more keybindings
+
+<br>
+
 <details><summary> <b>Credits</b></summary>
 
 - [Nvchad](https://github.com/nvchad) helped me with TeDash and TeBufline
