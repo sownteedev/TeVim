@@ -132,6 +132,7 @@ function M.Ranger()
 end
 
 M.lazy = function(install_path)
+	require("tevim.themes").load()
 	vim.cmd("redraw")
 	vim.api.nvim_echo({ { "Hi there, welcome to TEVIM 󱠡 ", "Bold" } }, true, {})
 	local repo = "https://github.com/folke/lazy.nvim.git"
@@ -189,7 +190,7 @@ M.CreateCustom = function()
 		)
 		local plugins = io.open(path .. "/plugins.lua", "w")
 		plugins:write(
-			'local overrides = require("custom.configs.overrides")\n\nlocal plugins = {\n\n-- add plugins or override my plugins in here\n\n}\n\nreturn plugins'
+			'local overrides = require("custom.configs.overrides")\n\nlocal plugins = {\n\n\t-- add plugins or override my plugins in here\n\n}\n\nreturn plugins'
 		)
 		vim.fn.mkdir(path .. "/configs", "p")
 		local overrides = io.open(path .. "/configs/overrides.lua", "w")
@@ -202,6 +203,10 @@ M.CreateCustom = function()
 		local themes = io.open(path .. "/themes/schemes/yourtheme.lua", "w")
 		themes:write(
 			"local M = {}\n\nfunction M.get_colors()\n\treturn {\n\t\t-- add your colors in here(check my color to setup)\n\t}\nend\n\nreturn M"
+		)
+		local integrations = io.open(path .. "/themes/integrations.lua", "w")
+		integrations:write(
+			'local colors = require("tevim.themes").getCurrentTheme()\n\nreturn {\n\t-- add your highlights in here\n}'
 		)
 		vim.notify("Created custom folder. Please read the docs!")
 	end

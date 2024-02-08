@@ -15,8 +15,8 @@
 
 ```txt
 Performance for time startup on low laptop
-On Power                              : 0.035s - 0.039s
-On Battery                            : 0.037s - 0.040s
+On Power                              : 20ms - 24ms
+On Battery                            : 23ms - 26ms
 ```
 
 </div>
@@ -118,10 +118,10 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 | ------------- |-------------|
 | <kbd>CTRL</kbd> <kbd>h</kbd> / <kbd>j</kbd> / <kbd>k</kbd> / <kbd>l</kbd> | Moving Window Focus Towards Left/Up/Down/Right (Normal) |
 | <kbd>CTRL</kbd> <kbd>h</kbd> / <kbd>j</kbd> / <kbd>k</kbd> / <kbd>l</kbd> | Moving Cursor Left/Up/Down/Right (Insert) |
-| <kbd>Enter</kbd> | Clear Highlights Search |
-| <kbd>ALT</kbd> / <kbd>⬇️</kbd> / <kbd>⬆️</kbd> | Moving Current Line or Lines Down/Up |
 | <kbd>CTRL</kbd> <kbd>e</kbd> | Toggle Explorer with Neotree |
 | <kbd>CTRL</kbd> <kbd>`</kbd> | Open And Close ToggleTerm |
+| <kbd>ALT</kbd> / <kbd>⬇️</kbd> / <kbd>⬆️</kbd> | Moving Current Line or Lines Down/Up |
+| <kbd>Enter</kbd> | Clear Highlight Search |
 
 #### File Operations
 
@@ -129,9 +129,10 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 | ------------- |-------------|
 | <kbd>LDR</kbd> <kbd>q</kbd> | Exit Neovim |
 | <kbd>LDR</kbd> <kbd>q</kbd> <kbd>w</kbd> | Save And Exit Neovim |
-| <kbd>CTRL</kbd> <kbd>s</kbd> | Save File (Normal + Insert) |
+| <kbd>CTRL</kbd> <kbd>s</kbd> | Save File (N + I) |
 | <kbd>CTRL</kbd> <kbd>q</kbd> | Close Current Buffer |
 | <kbd>CTRL</kbd> <kbd>o</kbd> | Close Other Buffer |
+| <kbd>CTRL</kbd> <kbd>/</kbd> | Toggle Comment (N + I + V) |
 
 #### Telescope
 
@@ -153,24 +154,13 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 | <kbd>LDR</kbd> <kbd>l</kbd> <kbd>i</kbd>  | Lsp Infor |
 | <kbd>LDR</kbd> <kbd>l</kbd> <kbd>r</kbd>  | Lsp Rename |
 
-#### Treesiiter
+#### Treesitter
 
 | Keys        | Function          |
 | ------------- |-------------|
 | <kbd>LDR</kbd> <kbd>s</kbd> <kbd>c</kbd>  | Toggle Context |
-| <kbd>LDR</kbd> <kbd>s</kbd> <kbd>i</kbd> | Treesiiter Info |
-| <kbd>LDR</kbd> <kbd>s</kbd> <kbd>u</kbd> | Treesiiter Update |
-
-#### Lazy
-
-| Keys        | Function          |
-| ------------- |-------------|
-| <kbd>LDR</kbd> <kbd>p</kbd> <kbd>S</kbd>  | Open Lazy Dashboard |
-| <kbd>LDR</kbd> <kbd>p</kbd> <kbd>s</kbd>  | Lazy Sync |
-| <kbd>LDR</kbd> <kbd>p</kbd> <kbd>i</kbd>  | Lazy Install |
-| <kbd>LDR</kbd> <kbd>p</kbd> <kbd>u</kbd>  | Lazy Update |
-| <kbd>LDR</kbd> <kbd>p</kbd> <kbd>C</kbd>  | Clean Plugins |
-| <kbd>LDR</kbd> <kbd>p</kbd> <kbd>c</kbd>  | Open Lazy Log |
+| <kbd>LDR</kbd> <kbd>s</kbd> <kbd>i</kbd> | Treesitter Info |
+| <kbd>LDR</kbd> <kbd>s</kbd> <kbd>u</kbd> | Treesitter Update |
 
 <br>
 

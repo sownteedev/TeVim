@@ -102,6 +102,7 @@ local plugins = {
 		lazy = true,
 		keys = {
 			{ mode = "n", "<C-/>", "<Plug>(comment_toggle_linewise_current)", desc = "Toggle Comment" },
+			{ mode = "i", "<C-/>", "<esc><Plug>(comment_toggle_linewise_current)", desc = "Toggle Comment(Insert)" },
 			{ mode = "v", "<C-/>", "<Plug>(comment_toggle_linewise_visual)", desc = "Toggle Comment(Visual)" },
 		},
 		dependencies = "JoosepAlviste/nvim-ts-context-commentstring",

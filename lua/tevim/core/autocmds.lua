@@ -98,6 +98,7 @@ autocmd({ "FileType" }, {
 		"tsplayground",
 		"Trouble",
 		"trouble",
+		"toggleterm",
 	},
 	callback = function()
 		vim.opt_local.number = false
@@ -134,7 +135,7 @@ autocmd("FileType", {
 
 autocmd({ "UIEnter" }, {
 	callback = function()
-		require("tevim.themes").load()
+		dofile(vim.g.theme_cache .. "allThemes")
 	end,
 	desc = "Load TeVim Themes",
 })
@@ -210,10 +211,16 @@ autocmd("BufWritePost", {
 	desc = "Reload neovim config on save",
 })
 
--- Create custom command to Create Custom Config
+-- Create custom command
 vim.api.nvim_create_user_command("TeVimCreateCustom", function()
 	vim.cmd("lua require('tevim.core.utils').CreateCustom()")
 end, {})
 vim.api.nvim_create_user_command("TeVimCheckMason", function()
 	vim.cmd("lua require('tevim.core.utils').checkMason()")
+end, {})
+vim.api.nvim_create_user_command("TeVimThemes", function()
+	vim.cmd("lua require('tevim.themes.switch').setup()")
+end, {})
+vim.api.nvim_create_user_command("TeVimToggleTrans", function()
+	vim.cmd("lua require('tevim.themes.switch').toggleTransparency()")
 end, {})

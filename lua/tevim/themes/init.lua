@@ -1,5 +1,6 @@
 local M = {}
 local hl_files = vim.fn.stdpath("config") .. "/lua/tevim/themes/integrations"
+local hl_files_custom = vim.fn.stdpath("config") .. "/lua/custom/themes/integrations"
 local custom = vim.fn.stdpath("config") .. "/lua/custom/themes/schemes/"
 
 M.check = function()
@@ -24,6 +25,11 @@ end
 
 M.loadTb = function(g)
 	g = require("tevim.themes.integrations." .. g)
+	return g
+end
+
+M.loadCustomTb = function(g)
+	g = require("custom.themes.integrations")
 	return g
 end
 
@@ -88,31 +94,43 @@ M.toCache = function(filename, tb)
 	end
 end
 
+local function indexOf(array, value)
+	for i, v in ipairs(array) do
+		if v == value then
+			return i
+		end
+	end
+	return nil
+end
 M.compile = function()
 	if not vim.loop.fs_stat(vim.g.theme_cache) then
 		vim.fn.mkdir(vim.g.theme_cache, "p")
 	end
+	local allThemes = {}
 	for _, file in ipairs(vim.fn.readdir(hl_files)) do
 		local filename = vim.fn.fnamemodify(file, ":r")
-		M.toCache(filename, M.loadTb(filename))
+		local a = M.loadTb(filename)
+		for k, f in pairs(a) do
+			allThemes[k] = f
+		end
 	end
+	local filename = vim.fn.fnamemodify(hl_files_custom, ":r")
+	local a = M.loadCustomTb(filename)
+	for k, f in pairs(a) do
+		for _, i in pairs(allThemes) do
+			if i == f then
+				table.remove(allThemes, indexOf(allThemes, i))
+				break
+			end
+		end
+		allThemes[k] = f
+	end
+	M.toCache("allThemes", allThemes)
 end
 
 M.load = function()
-	M.setTermColors()
-	require("plenary.reload").reload_module("tevim.themes")
 	M.compile()
-	for _, file in ipairs(vim.fn.readdir(vim.g.theme_cache)) do
-		dofile(vim.g.theme_cache .. file)
-	end
+	dofile(vim.g.theme_cache .. "allThemes")
 end
-
-vim.api.nvim_create_user_command("TeVimThemes", function()
-	vim.cmd("lua require('tevim.themes.switch').setup()")
-end, {})
-
-vim.api.nvim_create_user_command("TeVimToggleTrans", function()
-	vim.cmd("lua require('tevim.themes.switch').toggleTransparency()")
-end, {})
 
 return M
