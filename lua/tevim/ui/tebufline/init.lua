@@ -97,7 +97,7 @@ local createTab = function(buf)
 	end
 end
 
-local excludedFileTypes = { "neo-tree", "help", "dasher", "lir", "alpha", "toggleterm", "tedash" }
+local excludedFileTypes = { "neo-tree", "help", "dasher", "lir", "alpha", "toggleterm" }
 
 local treeWidth = function()
 	for _, win in pairs(vim.api.nvim_tabpage_list_wins(0)) do
@@ -140,9 +140,7 @@ M.getTabline = function()
 		end
 		::do_nothing::
 	end
-	if vim.bo.filetype == "tedash" then
-		return ""
-	elseif counter < 2 or vim.o.columns < 120 then
+	if counter < 2 or vim.o.columns < 120 then
 		return treespace
 			.. buffstart
 			.. "%="

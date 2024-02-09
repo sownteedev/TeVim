@@ -76,7 +76,7 @@ autocmd("TermOpen", {
 	desc = "Disable number and cursorline in terminal",
 })
 
-autocmd({ "FileType" }, {
+autocmd("FileType", {
 	pattern = {
 		"neo-tree",
 		"PlenaryTestPopup",
@@ -133,38 +133,25 @@ autocmd("FileType", {
 	desc = "Don't list quickfix buffer",
 })
 
-autocmd({ "UIEnter" }, {
-	callback = function()
-		dofile(vim.g.theme_cache .. "allThemes")
-	end,
-	desc = "Load TeVim Themes",
-})
-
-autocmd({ "FileType", "BufNewFile" }, {
-	pattern = "*",
-	callback = function()
-		require("tevim.ui.testtline").setup()
-	end,
-	desc = "Load TeStatusline",
-})
-
-autocmd({ "BufNewFile", "BufReadPost" }, {
+autocmd({ "BufNewFile", "BufRead" }, {
 	callback = function()
 		require("tevim.ui.tebufline").setup()
 	end,
-	desc = "Load TeBufline",
 })
 
-autocmd({ "UIEnter" }, {
+autocmd("UIEnter", {
 	callback = function()
+		dofile(vim.g.theme_cache .. "allThemes")
+		require("tevim.ui.testtline").setup()
 		local buf_lines = vim.api.nvim_buf_get_lines(0, 0, 1, false)
 		local no_buf_content = vim.api.nvim_buf_line_count(0) == 1 and buf_lines[1] == ""
 		local bufname = vim.api.nvim_buf_get_name(0)
+
 		if bufname == "" and no_buf_content then
 			require("tevim.ui.tedash").setup()
 		end
 	end,
-	desc = "Load TeDash",
+	desc = "Load TeDash, TeSttLine and Themes",
 })
 
 autocmd("VimResized", {

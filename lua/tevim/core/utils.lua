@@ -131,20 +131,6 @@ function M.Ranger()
 	ranger:toggle()
 end
 
-M.lazy = function(install_path)
-	require("tevim.themes").load()
-	vim.cmd("redraw")
-	vim.api.nvim_echo({ { "Hi there, welcome to TEVIM 󱠡 ", "Bold" } }, true, {})
-	local repo = "https://github.com/folke/lazy.nvim.git"
-	local output = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", repo, install_path })
-	assert(vim.v.shell_error == 0, "External call failed with error code: " .. vim.v.shell_error .. "\n" .. output)
-	vim.opt.rtp:prepend(install_path)
-	require("tevim.plugins")
-	vim.cmd("MasonInstall lua-language-server stylua")
-	vim.cmd("redraw")
-	vim.api.nvim_echo({ { "Wait for everything install. Reopen Neovim!", "Bold" } }, true, {})
-end
-
 M.checkMason = function()
 	local status_ok, _ = pcall(require, "mason")
 	if not status_ok then
