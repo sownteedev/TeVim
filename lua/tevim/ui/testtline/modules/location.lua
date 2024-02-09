@@ -1,7 +1,8 @@
 local M = function()
-	local line = vim.fn.line(".")
-	local col = vim.fn.virtcol(".")
-	return "%#TeSTTLocationIcon#" .. "  " .. "%#TeSTTLocation#" .. string.format(" %3d:%-2d ", line, col)
+	return "%#TeSTTLocationIcon#"
+		.. "  "
+		.. "%#TeSTTLocation#"
+		.. string.format(" %3d:%-2d ", vim.fn.line("."), vim.fn.virtcol("."))
 end
 
 return M

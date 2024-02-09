@@ -155,27 +155,17 @@ autocmd({ "BufNewFile", "BufReadPost" }, {
 	desc = "Load TeBufline",
 })
 
-if vim.g.load_tedash_on_startup then
-	autocmd({ "UIEnter" }, {
-		callback = function()
-			local should_skip = false
-			if vim.fn.argc() > 0 or vim.fn.line2byte("$") ~= -1 or not vim.o.modifiable then
-				should_skip = true
-			else
-				for _, arg in pairs(vim.v.argv) do
-					if arg == "-b" or arg == "-c" or vim.startswith(arg, "+") or arg == "-S" then
-						should_skip = true
-						break
-					end
-				end
-			end
-			if not should_skip then
-				require("tevim.ui.tedash").setup()
-			end
-		end,
-		desc = "Load TeDash",
-	})
-end
+autocmd({ "UIEnter" }, {
+	callback = function()
+		local buf_lines = vim.api.nvim_buf_get_lines(0, 0, 1, false)
+		local no_buf_content = vim.api.nvim_buf_line_count(0) == 1 and buf_lines[1] == ""
+		local bufname = vim.api.nvim_buf_get_name(0)
+		if bufname == "" and no_buf_content then
+			require("tevim.ui.tedash").setup()
+		end
+	end,
+	desc = "Load TeDash",
+})
 
 autocmd("VimResized", {
 	callback = function()
@@ -189,7 +179,8 @@ autocmd("VimResized", {
 })
 
 autocmd("BufWritePost", {
-	pattern = "*/lua/*",
+	pattern = vim.fn.stdpath("config") .. "/lua/*",
+	group = augroup("TeVimReload", { clear = true }),
 	callback = function(opts)
 		local fp = vim.fn.fnamemodify(vim.fs.normalize(vim.api.nvim_buf_get_name(opts.buf)), ":r")
 		local app_name = vim.env.NVIM_APPNAME and vim.env.NVIM_APPNAME or "nvim"

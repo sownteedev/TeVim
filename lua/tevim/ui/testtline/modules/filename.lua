@@ -1,8 +1,6 @@
-local fn = vim.fn
 local M = function()
 	local icon = " 󰢚 "
-	local directory = " " .. fn.fnamemodify(fn.getcwd(), ":t")
-	local filename = (fn.expand("%") == "" and "Empty ") or fn.expand("%:t")
+	local filename = (vim.fn.expand("%") == "" and "Empty ") or vim.fn.expand("%:t")
 	if filename ~= "Empty " then
 		local devicons = require("nvim-web-devicons")
 		local ft_icon = devicons.get_icon(filename)
@@ -19,7 +17,8 @@ local M = function()
 			.. icon
 			.. " "
 			.. "%#TeSTTFolder#"
-			.. directory
+			.. " "
+			.. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 			.. "/"
 			.. "%#TeSTTFileName#"
 			.. filename

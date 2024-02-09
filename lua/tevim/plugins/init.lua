@@ -129,8 +129,8 @@ local plugins = {
 	{
 		"folke/todo-comments.nvim",
 		lazy = true,
-		event = { "BufReadPost", "InsertEnter" },
-		cmd = { "TodoTrouble", "TodoTelescope" },
+		event = "BufReadPost",
+		cmd = "TodoTelescope",
 		opts = { signs = false },
 	},
 	{
@@ -303,7 +303,7 @@ local plugins = {
 			},
 			{
 				"williamboman/mason.nvim",
-				cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
+				cmd = { "Mason", "MasonInstall", "TeVimCheckMason", "MasonUpdate" },
 				lazy = true,
 				opts = function()
 					return require("tevim.plugins.lsp.mason")

@@ -42,7 +42,6 @@ return {
 
 	TeSTTNothing = { bg = colors.statusline_bg },
 	TeSTTNothing2 = { bg = colors.black },
-	TeSTTNothing3 = { bg = colors.black },
 
 	TeSTTError = { fg = colors.red, bg = colors.one_bg },
 	TeSTTErrorIcon = { fg = colors.red, bg = colors.one_bg },

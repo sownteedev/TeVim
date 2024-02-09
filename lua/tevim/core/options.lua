@@ -62,7 +62,6 @@ local globals = {
 	TeVimTheme = "yoru",
 	theme_cache = vim.fn.stdpath("data") .. "/colors_data/",
 	transparency = false,
-	load_tedash_on_startup = true,
 	snipmate_snippets_path = "",
 }
 
