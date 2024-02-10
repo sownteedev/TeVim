@@ -64,8 +64,7 @@ M.tableToStr = function(tb)
 	return result
 end
 
-M.setTermColors = function()
-	local colors = M.getCurrentTheme()
+M.setTermColors = function(colors)
 	vim.g.terminal_color_0 = colors.base01
 	vim.g.terminal_color_1 = colors.base08
 	vim.g.terminal_color_2 = colors.base0B
