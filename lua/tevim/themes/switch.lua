@@ -22,7 +22,7 @@ end
 
 M.settheme = function(theme)
 	vim.g.TeVimTheme = theme
-	require("tevim.themes").setTermColors()
+	require("tevim.themes").setTermColors(theme)
 	require("plenary.reload").reload_module("tevim.themes")
 	require("tevim.themes").load()
 	local file = vim.fn.stdpath("config") .. "/lua/custom/options.lua"
