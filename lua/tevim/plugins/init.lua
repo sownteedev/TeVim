@@ -67,21 +67,21 @@ local plugins = {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
+		version = "2.20.7",
 		lazy = true,
 		event = { "BufReadPost", "BufNewFile" },
 		dependencies = {
 			{
 				"echasnovski/mini.indentscope",
 				lazy = true,
-				opts = { symbol = "│", options = { try_as_border = true } },
+				opts = { symbol = "│" },
 			},
 		},
 		opts = function()
 			return require("tevim.plugins.others.others").blankline
 		end,
 		config = function(_, opts)
-			require("ibl").setup(opts)
+			require("indent_blankline").setup(opts)
 		end,
 	},
 	{

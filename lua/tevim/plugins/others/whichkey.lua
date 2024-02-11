@@ -1,6 +1,5 @@
 local configs = {
 	setup = {
-		operators = { gc = "Comments" },
 		key_labels = {
 			["<space>"] = "SPACE",
 			["<leader>"] = "SPACE",
@@ -21,14 +20,10 @@ local configs = {
 		ignore_missing = true,
 		show_help = true,
 		triggers = { "<leader>" },
-		triggers_blacklist = {
-			i = { "j", "k" },
-			v = { "j", "k" },
-		},
 	},
 
 	mappings = {
-		["q"] = { "<cmd>qa!<CR>", "Quit" },
+		["q"] = { "<cmd>qa!<CR>", "  Quit" },
 		p = {
 			name = "󰏖  LAZY",
 			C = { "<cmd>Lazy clean<cr>", "Clean" },

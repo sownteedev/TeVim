@@ -76,7 +76,7 @@ return {
 	-- Lazy
 	LazyH1 = { bg = colors.green, fg = colors.black },
 	LazyButton = { bg = colors.one_bg, fg = colors.light_grey },
-	LazyH2 = { fg = colors.red, bold = true, underline = true },
+	LazyH2 = { fg = colors.red, bold = true },
 	LazyReasonPlugin = { fg = colors.red },
 	LazyValue = { fg = colors.teal },
 	LazyDir = { fg = colors.base05 },

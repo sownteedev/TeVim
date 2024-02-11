@@ -1,8 +1,8 @@
 return {
 	-- base30
 	white = "#D9E0EE",
-	darker_black = "#191828",
-	black = "#1E1D2D",
+	darker_black = "#181825",
+	black = "#1E1E2E",
 	black2 = "#252434",
 	one_bg = "#2d2c3c",
 	one_bg2 = "#363545",
@@ -34,7 +34,7 @@ return {
 	none = "NONE",
 
 	-- base16
-	base00 = "#1E1D2D",
+	base00 = "#1E1E2E",
 	base01 = "#282737",
 	base02 = "#2f2e3e",
 	base03 = "#383747",
