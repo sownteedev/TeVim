@@ -191,14 +191,14 @@ autocmd("BufWritePost", {
 
 -- Create custom command
 vim.api.nvim_create_user_command("TeVimCreateCustom", function()
-	vim.cmd("lua require('tevim.core.utils').CreateCustom()")
+	require("tevim.core.utils").CreateCustom()
 end, {})
 vim.api.nvim_create_user_command("TeVimCheckMason", function()
-	vim.cmd("lua require('tevim.core.utils').checkMason()")
+	require("tevim.core.utils").checkMason()
 end, {})
 vim.api.nvim_create_user_command("TeVimThemes", function()
-	vim.cmd("lua require('tevim.themes').setup()")
+	require("tevim.themes").setup()
 end, {})
 vim.api.nvim_create_user_command("TeVimToggleTrans", function()
-	vim.cmd("lua require('tevim.themes').toggleTransparency()")
+	require("tevim.themes").toggleTransparency()
 end, {})

@@ -7,6 +7,7 @@ local scheme = vim.fn.stdpath("config") .. "/lua/tevim/themes/schemes"
 local hl_files = vim.fn.stdpath("config") .. "/lua/tevim/themes/integrations"
 local custom_scheme = vim.fn.stdpath("config") .. "/lua/custom/themes/schemes"
 local hl_files_custom = vim.fn.stdpath("config") .. "/lua/custom/themes/integrations"
+local replaceword = require("tevim.core.utils").replaceword
 
 local M = {}
 
@@ -133,28 +134,6 @@ M.setTermColors = function(colors)
 end
 
 ---------------------------------------------------------------------
-local function replaceword(middle, old, new)
-	local file = vim.fn.stdpath("config") .. "/lua/custom/options.lua"
-	local lines = vim.fn.readfile(file)
-	local new_lines = {}
-	local found = false
-	for _, line in ipairs(lines) do
-		if line:find(middle) then
-			if line:find(old) then
-				table.insert(new_lines, middle .. " = " .. new)
-			else
-				table.insert(new_lines, middle .. " = " .. old)
-			end
-			found = true
-		else
-			table.insert(new_lines, line)
-		end
-	end
-	if not found then
-		table.insert(new_lines, middle .. " = " .. new)
-	end
-	vim.fn.writefile(new_lines, file)
-end
 
 local themes = {}
 for _, file in ipairs(vim.fn.readdir(scheme)) do

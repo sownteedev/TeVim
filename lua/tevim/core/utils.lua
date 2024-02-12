@@ -5,25 +5,33 @@ function M.is_available(plugin)
 	return lazy_config_avail and lazy_config.spec.plugins[plugin] ~= nil
 end
 
-function M.toggle_option(option)
-	local value = not vim.api.nvim_get_option_value(option, {})
-	vim.opt[option] = value
+function M.replaceword(middle, old, new)
 	local file = vim.fn.stdpath("config") .. "/lua/custom/options.lua"
 	local lines = vim.fn.readfile(file)
-	local newlines = {}
+	local new_lines = {}
 	local found = false
 	for _, line in ipairs(lines) do
-		if line == "vim.opt." .. option .. " = " .. tostring(not value) then
-			table.insert(newlines, "vim.opt." .. option .. " = " .. tostring(value))
+		if line:find(middle) then
+			if line:find(old) then
+				table.insert(new_lines, middle .. " = " .. new)
+			else
+				table.insert(new_lines, middle .. " = " .. old)
+			end
 			found = true
 		else
-			table.insert(newlines, line)
+			table.insert(new_lines, line)
 		end
 	end
 	if not found then
-		table.insert(newlines, "vim.opt." .. option .. " = " .. tostring(value))
+		table.insert(new_lines, middle .. " = " .. new)
 	end
-	vim.fn.writefile(newlines, file)
+	vim.fn.writefile(new_lines, file)
+end
+
+function M.toggle_option(option)
+	local value = not vim.api.nvim_get_option_value(option, {})
+	vim.opt[option] = value
+	M.replaceword("vim.opt." .. option, tostring(not value), tostring(value))
 	vim.notify(option .. " set to " .. tostring(value))
 end
 
