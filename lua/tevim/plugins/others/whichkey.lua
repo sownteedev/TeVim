@@ -50,7 +50,7 @@ local configs = {
 		},
 		f = {
 			name = "  TELESCOPE",
-			c = { "<cmd>lua require('tevim.themes').setup()<cr>", "TeVim Themes" },
+			c = { "<cmd>TeVimThemes<cr>", "TeVim Themes" },
 			f = { "<cmd>Telescope find_files<cr>", "Find File" },
 			r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
 			w = { "<cmd>Telescope live_grep<cr>", "Find Text" },

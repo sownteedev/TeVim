@@ -1,13 +1,5 @@
-local pickers = require("telescope.pickers")
-local finders = require("telescope.finders")
-local actions = require("telescope.actions")
-local action_state = require("telescope.actions.state")
-local sorters = require("telescope.sorters")
-local scheme = vim.fn.stdpath("config") .. "/lua/tevim/themes/schemes"
 local hl_files = vim.fn.stdpath("config") .. "/lua/tevim/themes/integrations"
-local custom_scheme = vim.fn.stdpath("config") .. "/lua/custom/themes/schemes"
 local hl_files_custom = vim.fn.stdpath("config") .. "/lua/custom/themes/integrations"
-local replaceword = require("tevim.core.utils").replaceword
 
 local M = {}
 
@@ -109,7 +101,6 @@ M.compile = function()
 end
 
 M.load = function()
-	require("plenary.reload").reload_module("tevim.themes")
 	M.compile()
 	dofile(vim.g.theme_cache .. "allThemes")
 end
@@ -131,64 +122,6 @@ M.setTermColors = function(colors)
 	vim.g.terminal_color_13 = colors.base0E
 	vim.g.terminal_color_14 = colors.base0C
 	vim.g.terminal_color_15 = colors.base07
-end
-
----------------------------------------------------------------------
-
-local themes = {}
-for _, file in ipairs(vim.fn.readdir(scheme)) do
-	table.insert(themes, vim.fn.fnamemodify(file, ":r"))
-end
-for _, file in ipairs(vim.fn.readdir(custom_scheme)) do
-	table.insert(themes, vim.fn.fnamemodify(file, ":r"))
-end
-
-M.settheme = function(theme)
-	vim.g.TeVimTheme = theme
-	require("tevim.themes").setTermColors(theme)
-	require("tevim.themes").load()
-	replaceword("vim.g.TeVimTheme", '"' .. vim.g.TeVimTheme .. '"', '"' .. theme .. '"')
-end
-
-local picker_opts = {
-	prompt_title = "TEVIM THEMES",
-	finder = finders.new_table({ results = themes }),
-	sorter = sorters.get_generic_fuzzy_sorter({}),
-	attach_mappings = function(bufnr, map)
-		map("i", "<CR>", function()
-			M.settheme(action_state.get_selected_entry()[1])
-			actions.close(bufnr)
-		end)
-
-		map("i", "<Down>", function()
-			actions.move_selection_next(bufnr)
-			M.settheme(action_state.get_selected_entry()[1])
-		end)
-		map("i", "<C-j>", function()
-			actions.move_selection_next(bufnr)
-			M.settheme(action_state.get_selected_entry()[1])
-		end)
-
-		map("i", "<Up>", function()
-			actions.move_selection_previous(bufnr)
-			M.settheme(action_state.get_selected_entry()[1])
-		end)
-		map("i", "<C-k>", function()
-			actions.move_selection_previous(bufnr)
-			M.settheme(action_state.get_selected_entry()[1])
-		end)
-		return true
-	end,
-}
-M.setup = function()
-	local picker = pickers.new({ layout_config = { height = 0.5, width = 0.25 } }, picker_opts)
-	picker:find()
-end
-
-M.toggleTransparency = function()
-	vim.g.transparency = not vim.g.transparency
-	require("tevim.themes").load()
-	replaceword("vim.g.transparency", tostring(not vim.g.transparency), tostring(vim.g.transparency))
 end
 
 return M
