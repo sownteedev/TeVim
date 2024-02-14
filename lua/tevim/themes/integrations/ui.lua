@@ -2,8 +2,10 @@ local colors = require("tevim.themes").getCurrentTheme()
 
 return {
 	-- Tebufline
-	TeBufOnActive = { bg = colors.black, fg = colors.white, bold = true },
-	TeBufOnInactive = { fg = colors.grey_fg2, bg = colors.statusline_bg },
+	TeBufOnActive = { fg = colors.white, bg = colors.black, bold = true },
+	TeBufOnInactive = { fg = colors.grey, bg = colors.statusline_bg },
+	TeBufFolderOnActive = { fg = colors.white, bg = colors.black, italic = true },
+	TeBufFolderOnInactive = { fg = colors.grey_fg2, bg = colors.statusline_bg, italic = true },
 	TeBufOnModified = { fg = colors.green },
 	TeBufOffModified = { fg = colors.grey_fg2, bg = colors.statusline_bg },
 	TeBufOnClose = { fg = colors.red, bg = colors.black },
@@ -37,7 +39,7 @@ return {
 
 	TeSTTFileIcon = { fg = colors.black, bg = colors.red },
 	TeSTTFileName = { fg = colors.red, bg = colors.one_bg, bold = true },
-	TeSTTFolder = { fg = colors.red, bg = colors.one_bg },
+	TeSTTFolder = { fg = colors.red, bg = colors.one_bg, italic = true },
 	TeSTTModified = { fg = colors.green, bg = colors.one_bg },
 
 	TeSTTNothing = { bg = colors.statusline_bg },

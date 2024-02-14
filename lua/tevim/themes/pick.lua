@@ -18,7 +18,7 @@ for _, file in ipairs(vim.fn.readdir(custom_scheme)) do
 	table.insert(themes, vim.fn.fnamemodify(file, ":r"))
 end
 
-M.settheme = function(theme)
+M.setTheme = function(theme)
 	vim.g.TeVimTheme = theme
 	require("tevim.themes").setTermColors(theme)
 	require("plenary.reload").reload_module("tevim.themes")
@@ -37,26 +37,26 @@ local picker_opts = {
 	sorter = sorters.get_generic_fuzzy_sorter({}),
 	attach_mappings = function(bufnr, map)
 		map("i", "<CR>", function()
-			M.settheme(action_state.get_selected_entry()[1])
+			M.setTheme(action_state.get_selected_entry()[1])
 			actions.close(bufnr)
 		end)
 
 		map("i", "<Down>", function()
 			actions.move_selection_next(bufnr)
-			M.settheme(action_state.get_selected_entry()[1])
+			M.setTheme(action_state.get_selected_entry()[1])
 		end)
 		map("i", "<C-j>", function()
 			actions.move_selection_next(bufnr)
-			M.settheme(action_state.get_selected_entry()[1])
+			M.setTheme(action_state.get_selected_entry()[1])
 		end)
 
 		map("i", "<Up>", function()
 			actions.move_selection_previous(bufnr)
-			M.settheme(action_state.get_selected_entry()[1])
+			M.setTheme(action_state.get_selected_entry()[1])
 		end)
 		map("i", "<C-k>", function()
 			actions.move_selection_previous(bufnr)
-			M.settheme(action_state.get_selected_entry()[1])
+			M.setTheme(action_state.get_selected_entry()[1])
 		end)
 		return true
 	end,

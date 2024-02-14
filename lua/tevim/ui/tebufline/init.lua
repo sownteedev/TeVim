@@ -50,46 +50,54 @@ local createTab = function(buf)
 			vim.api.nvim_get_current_buf() == buf and new_hl(icon_hl, "TeBufOnActive") .. " " .. icon
 			or new_hl(icon_hl, "TeBufOnInactive") .. " " .. icon
 		)
+		local folder = nil
 		local close_btn = "%" .. buf .. "@TeBufKillBuf@󰅖%X"
-		-- for _, buffer in pairs(vim.api.nvim_list_bufs()) do
-		-- 	if
-		-- 		vim.api.nvim_buf_is_valid(buffer)
-		-- 		and vim.api.nvim_buf_is_loaded(buffer)
-		-- 		and vim.bo[buffer].buflisted
-		-- 		and filename ~= ""
-		-- 	then
-		-- if filename == vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buffer), ":t") and buffer ~= buf then
-		-- local other = {}
-		-- for match in (vim.api.nvim_buf_get_name(buffer) .. "/"):gmatch("(.-)" .. "/") do
-		-- 	table.insert(other, match)
-		-- end
+		for _, buffer in pairs(vim.api.nvim_list_bufs()) do
+			if
+				vim.api.nvim_buf_is_valid(buffer)
+				and vim.api.nvim_buf_is_loaded(buffer)
+				and vim.bo[buffer].buflisted
+				and filename ~= ""
+				and filename == vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buffer), ":t")
+				and buffer ~= buf
+			then
+				local other = {}
+				for match in (vim.api.nvim_buf_get_name(buffer) .. "/"):gmatch("(.-)" .. "/") do
+					table.insert(other, match)
+				end
 
-		local current = {}
-		for match in (vim.api.nvim_buf_get_name(buf) .. "/"):gmatch("(.-)" .. "/") do
-			table.insert(current, match)
+				local current = {}
+				for match in (vim.api.nvim_buf_get_name(buf) .. "/"):gmatch("(.-)" .. "/") do
+					table.insert(current, match)
+				end
+
+				filename = current[#current]
+
+				for i = #current - 1, 1, -1 do
+					local value_current = current[i]
+					local other_current = other[i]
+
+					if value_current ~= other_current and buf == vim.api.nvim_get_current_buf() then
+						filename = "%#TeBufFolderOnActive#" .. value_current .. "/" .. "%#TeBufOnActive#" .. filename
+						break
+					elseif value_current ~= other_current and buf ~= vim.api.nvim_get_current_buf() then
+						filename = "%#TeBufFolderOnInactive#"
+							.. value_current
+							.. "/"
+							.. "%#TeBufOnInactive#"
+							.. filename
+						break
+					end
+				end
+				break
+			end
 		end
-
-		filename = current[#current]
-
-		-- for i = #current - 1, 1, -1 do
-		-- 	local value_current = current[i]
-		-- 	local other_current = other[i]
-		--
-		-- 	if value_current ~= other_current then
-		-- 		filename = value_current .. "/" .. filename
-		-- 		break
-		-- 	end
-		-- end
-		-- break
-		-- end
-		-- end
-		-- end
 		if buf == vim.api.nvim_get_current_buf() then
-			filename = "%#TeBufOnActive#" .. "   " .. icon .. "%#TeBufOnActive#" .. "  " .. filename
+			filename = "%#TeBufOnActive#" .. "   " .. icon .. "  " .. "%#TeBufOnActive#" .. filename
 			close_btn = (vim.bo[0].modified and "%" .. buf .. "@BufflineKillBuf@%#TeBufOnModified#●   ")
 				or ("%#TeBufOnClose#" .. close_btn) .. "   "
 		else
-			filename = "%#TeBufOnInactive#" .. "   " .. icon .. "%#TeBufOnInactive#" .. "  " .. filename
+			filename = "%#TeBufOnInactive#" .. "   " .. icon .. "  " .. "%#TeBufOnInactive#" .. filename
 			close_btn = (vim.bo[buf].modified and "%" .. buf .. "@BufflineKillBuf@%#TeBufOffModified#●   ")
 				or ("%#TeBufOffClose#" .. close_btn) .. "   "
 		end

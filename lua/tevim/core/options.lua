@@ -60,7 +60,7 @@ local globals = {
 	maplocalleader = " ",
 	speeddating_no_mappings = 1,
 	TeVimTheme = "yoru",
-	theme_cache = vim.fn.stdpath("data") .. "/colors_data/",
+	themeCache = vim.fn.stdpath("data") .. "/colors_data/",
 	transparency = false,
 	snipmate_snippets_path = "",
 }

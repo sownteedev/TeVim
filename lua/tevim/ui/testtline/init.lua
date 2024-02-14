@@ -11,12 +11,10 @@ M.run = function()
 	local tab = require("tevim.ui.testtline.modules.tab")
 	local progress = require("tevim.ui.testtline.modules.progress")
 	local location = require("tevim.ui.testtline.modules.location")
-	local tree = require("tevim.ui.testtline.modules.tree")
 	local nothing = require("tevim.ui.testtline.modules.nothing")
 	if vim.o.columns < 120 then
 		return table.concat({
-			tree(),
-			"%#TeSTTNothing2#" .. " ",
+			nothing(),
 			"%=",
 			mode(),
 			nothing(),

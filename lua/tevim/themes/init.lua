@@ -58,7 +58,7 @@ end
 
 M.toCache = function(filename, tb)
 	local lines = "return string.dump(function()" .. M.tableToStr(tb) .. "end, true)"
-	local file = io.open(vim.g.theme_cache .. filename, "wb")
+	local file = io.open(vim.g.themeCache .. filename, "wb")
 	if file then
 		---@diagnostic disable-next-line: deprecated
 		file:write(loadstring(lines)())
@@ -75,8 +75,8 @@ local function indexOf(array, value)
 	return nil
 end
 M.compile = function()
-	if not vim.loop.fs_stat(vim.g.theme_cache) then
-		vim.fn.mkdir(vim.g.theme_cache, "p")
+	if not vim.loop.fs_stat(vim.g.themeCache) then
+		vim.fn.mkdir(vim.g.themeCache, "p")
 	end
 	local allThemes = {}
 	for _, file in ipairs(vim.fn.readdir(hl_files)) do
@@ -102,7 +102,7 @@ end
 
 M.load = function()
 	M.compile()
-	dofile(vim.g.theme_cache .. "allThemes")
+	dofile(vim.g.themeCache .. "allThemes")
 end
 
 M.setTermColors = function(colors)
