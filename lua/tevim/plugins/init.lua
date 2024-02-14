@@ -46,9 +46,10 @@ local plugins = {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
+		event = { "BufReadPost", "BufNewFile" },
 		lazy = true,
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo", "TSUninstall" },
+		build = ":TSUpdate",
 		dependencies = { "nvim-treesitter/nvim-treesitter-context", "HiPhish/rainbow-delimiters.nvim" },
 		opts = function()
 			return require("tevim.plugins.others.treesitter")
@@ -238,6 +239,12 @@ local plugins = {
 				end,
 			},
 		},
+		init = function()
+			vim.o.foldcolumn = "1"
+			vim.o.foldlevel = 99
+			vim.o.foldlevelstart = 99
+			vim.o.foldenable = true
+		end,
 		config = function()
 			require("ufo").setup({
 				provider_selector = function()
@@ -303,7 +310,7 @@ local plugins = {
 			},
 			{
 				"williamboman/mason.nvim",
-				cmd = { "Mason", "MasonInstall", "TeVimCheckMason", "MasonUpdate" },
+				cmd = { "Mason", "MasonInstall", "MasonUpdate" },
 				lazy = true,
 				opts = function()
 					return require("tevim.plugins.lsp.mason")

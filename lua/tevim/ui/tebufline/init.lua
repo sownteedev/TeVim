@@ -50,7 +50,6 @@ local createTab = function(buf)
 			vim.api.nvim_get_current_buf() == buf and new_hl(icon_hl, "TeBufOnActive") .. " " .. icon
 			or new_hl(icon_hl, "TeBufOnInactive") .. " " .. icon
 		)
-		local folder = nil
 		local close_btn = "%" .. buf .. "@TeBufKillBuf@󰅖%X"
 		for _, buffer in pairs(vim.api.nvim_list_bufs()) do
 			if

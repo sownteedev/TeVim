@@ -1,15 +1,7 @@
-vim.cmd([[
-	syntax off
-	filetype off
-	filetype plugin indent off
-]])
-
 local options = {
 	number = true,
 	relativenumber = false,
 	numberwidth = 5,
-	expandtab = false,
-	smarttab = true,
 	shiftwidth = 4,
 	tabstop = 4,
 	softtabstop = 4,
@@ -20,19 +12,13 @@ local options = {
 	ignorecase = true,
 	fileencoding = "utf-8",
 	encoding = "utf-8",
-	backup = false,
 	clipboard = "unnamedplus",
-	writebackup = false,
-	swapfile = false,
 	completeopt = { "menu", "menuone", "noselect" },
-	pumheight = 10,
 	backspace = "indent,eol,start",
 	undofile = true,
 	mouse = "a",
-	mousemoveevent = true,
 	cursorline = true,
 	title = true,
-	conceallevel = 0,
 	hlsearch = true,
 	showmode = false,
 	laststatus = 3,
@@ -40,20 +26,15 @@ local options = {
 	splitbelow = true,
 	splitright = true,
 	termguicolors = true,
-	timeoutlen = 100,
-	updatetime = 300,
-	wrap = true,
-	list = true,
-	splitkeep = "screen",
+	timeoutlen = 400,
+	updatetime = 200,
 	fillchars = { eob = " ", foldopen = "", foldsep = " ", foldclose = "", lastline = " " },
 	listchars = "tab:  ",
-	foldenable = true,
-	foldcolumn = "1",
-	foldlevelstart = 99,
 }
 
 vim.opt.shortmess:append("sI")
 vim.opt.formatoptions:remove("c", "r", "o")
+vim.opt.whichwrap:append("<>[]hl")
 
 local globals = {
 	mapleader = " ",
@@ -64,6 +45,9 @@ local globals = {
 	transparency = false,
 	snipmate_snippets_path = "",
 }
+
+local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
 
 local builtins = {
 	"2html_plugin",
@@ -102,6 +86,9 @@ local builtins = {
 
 for _, plugin in ipairs(builtins) do
 	vim.g["loaded_" .. plugin] = 1
+end
+for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
+	vim.g["loaded_" .. provider .. "_provider"] = 0
 end
 
 for k, v in pairs(options) do

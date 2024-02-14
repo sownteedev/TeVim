@@ -40,8 +40,6 @@ On Battery                            : 23ms - 26ms
 
 - GCC (Clang), Windows users must have mingw installed and set on path.
 
-- Npm(neovim) and Pynvim for Neovim.
-
 - Lazygit and Ranger (OPTIONAL).
 
 - Xsel and Xclip for copy and paste (If you use X11)(OPTIONAL).
