@@ -23,7 +23,7 @@ end, {})
 vim.api.nvim_create_user_command("TeBufCloseOtherBuf", function()
 	require("tevim.ui.tebufline.modules").close_other_buffers()
 end, {})
-vim.api.nvim_create_user_command("TeBufKillBuf", function()
+vim.api.nvim_create_user_command("TeBufKillBuf2", function()
 	require("tevim.ui.tebufline.modules").close_buffer(vim.api.nvim_get_current_buf())
 end, {})
 
@@ -186,7 +186,7 @@ M.setup = function()
 		nnoremap <silent><TAB> :TeBufNext<CR>
 		nnoremap <silent><S-TAB> :TeBufPrev<CR>
 		nnoremap <silent><C-o> :TeBufCloseOtherBuf<CR>
-		nnoremap <silent><C-q> :TeBufKillBuf<CR>
+		nnoremap <silent><C-q> :TeBufKillBuf2<CR>
 	]])
 end
 
