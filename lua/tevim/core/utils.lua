@@ -242,11 +242,9 @@ local function hslToRgb(h, s, l)
 	if s == 0 then
 		return l, l, l
 	end
-
 	h = (h % 1 + 1) % 1
 	s = math.min(1, math.max(0, s))
 	l = math.min(1, math.max(0, l))
-
 	local function hueToRgb(p, q, t)
 		if t < 0 then
 			t = t + 1
@@ -265,7 +263,6 @@ local function hslToRgb(h, s, l)
 		end
 		return p
 	end
-
 	local q = l < 0.5 and l * (1 + s) or l + s - l * s
 	local p = 2 * l - q
 	local r = hueToRgb(p, q, h + 1 / 3)
@@ -279,21 +276,12 @@ M.blend = function(foreground, background, alpha)
 	alpha = type(alpha) == "string" and (tonumber(alpha, 16) / 0xff) or alpha
 	local bg = hexToRgb(background)
 	local fg = hexToRgb(foreground)
-
 	local blendChannel = function(i)
 		local ret = (alpha * fg[i] + ((1 - alpha) * bg[i]))
 		return math.floor(math.min(math.max(0, ret), 255) + 0.5)
 	end
 
 	return string.format("#%02x%02x%02x", blendChannel(1), blendChannel(2), blendChannel(3))
-end
-
-M.darken = function(hex, bg, amount)
-	return M.blend(hex, bg, amount)
-end
-
-M.lighten = function(hex, fg, amount)
-	return M.blend(hex, fg, amount)
 end
 
 M.mix = function(c1, c2, wt)
@@ -354,10 +342,6 @@ M.moreBlue = function(c, f)
 	b = b + f
 	b = math.min(255, math.max(0, b))
 	return string.format("#%02X%02X%02X", r, g, b)
-end
-
-M.cold = function(c, f)
-	return M.moreBlue(c, f)
 end
 
 M.warm = function(c, f)
