@@ -332,18 +332,6 @@ local plugins = {
 			require("tevim.plugins.lsp.lspconfig")
 		end,
 	},
-	{
-		"stevearc/conform.nvim",
-		lazy = true,
-		event = "BufWritePre",
-		cmd = "ConformInfo",
-		opts = function()
-			return require("tevim.plugins.lsp.conform")
-		end,
-		config = function(_, opts)
-			require("conform").setup(opts)
-		end,
-	},
 }
 
 local custom_path = vim.fn.stdpath("config") .. "/lua/custom"
