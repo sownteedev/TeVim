@@ -1,6 +1,11 @@
 local colors = require("tevim.themes").getCurrentTheme()
 
 return {
+	-- GitSigns
+	GitSignsAdd = { fg = colors.green },
+	GitSignsAdded = { fg = colors.blue },
+	GitSignsChange = { fg = colors.orange },
+	GitSignsDelete = { fg = colors.red },
 	GitSignsCurrentLineBlame = { fg = colors.grey_fg },
 
 	diffOldFile = { fg = colors.baby_pink },

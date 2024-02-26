@@ -198,8 +198,6 @@ M.CreateCustom = function()
 		local keymaps = io.open(path .. "/keymaps.lua", "w")
 		keymaps:write("-- add your keymaps in here")
 		vim.fn.mkdir(path .. "/themes/schemes", "p")
-		local themes = io.open(path .. "/themes/schemes/yourtheme.lua", "w")
-		themes:write("return {\n\t-- add your colors in here(check my color to setup)\n}")
 		local integrations = io.open(path .. "/themes/integrations.lua", "w")
 		integrations:write(
 			'local colors = require("tevim.themes").getCurrentTheme()\n\nreturn {\n\t-- add your highlights in here\n}'

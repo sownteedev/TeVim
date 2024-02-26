@@ -90,7 +90,6 @@ local configs = {
 		},
 		s = {
 			name = "  TREESITTER",
-			c = { "<cmd>TSContextToggle<cr>", "Toggle Context" },
 			i = { "<cmd>TSInstallInfo<cr>", "Info" },
 			u = { "<cmd>TSUpdate<cr>", "Update" },
 		},

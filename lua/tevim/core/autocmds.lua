@@ -156,7 +156,7 @@ autocmd("UIEnter", {
 
 autocmd("VimResized", {
 	callback = function()
-		if vim.bo.filetype == "tedash" then
+		if vim.bo.filetype == "tedash" or vim.bo.filetype == "neo-tree" then
 			vim.opt_local.modifiable = true
 			vim.api.nvim_buf_set_lines(0, 0, -1, false, { "" })
 			require("tevim.ui.tedash").setup()

@@ -50,7 +50,7 @@ local plugins = {
 		lazy = true,
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo", "TSUninstall" },
 		build = ":TSUpdate",
-		dependencies = { "nvim-treesitter/nvim-treesitter-context", "HiPhish/rainbow-delimiters.nvim" },
+		dependencies = "HiPhish/rainbow-delimiters.nvim",
 		opts = function()
 			return require("tevim.plugins.others.treesitter")
 		end,
