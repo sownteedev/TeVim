@@ -154,6 +154,10 @@ M.checkMason = function()
 		table.insert(mason_installed, vim.fn.fnamemodify(package, ":t"))
 	end
 	local ensure_installed = require("custom.configs.overrides").mason.ensure_installed
+	local ensure_installed2 = { "lua-language-server", "stylua" }
+	for _, package in ipairs(ensure_installed2) do
+		table.insert(ensure_installed, package)
+	end
 	local missing = {}
 	for _, package in ipairs(ensure_installed) do
 		if not vim.tbl_contains(mason_installed, package) then
@@ -162,11 +166,7 @@ M.checkMason = function()
 	end
 	local remove = {}
 	for _, package in ipairs(mason_installed) do
-		if
-			not vim.tbl_contains(ensure_installed, package)
-			and package ~= "stylua"
-			and package ~= "lua-language-server"
-		then
+		if not vim.tbl_contains(ensure_installed, package) then
 			table.insert(remove, package)
 		end
 	end
