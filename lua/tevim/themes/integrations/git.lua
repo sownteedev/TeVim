@@ -1,4 +1,5 @@
 local colors = require("tevim.themes").getCurrentTheme()
+local utils = require("tevim.core.utils")
 
 return {
 	-- GitSigns
@@ -6,9 +7,9 @@ return {
 	GitSignsAdded = { fg = colors.blue },
 	GitSignsChange = { fg = colors.orange },
 	GitSignsDelete = { fg = colors.red },
-	GitSignsCurrentLineBlame = { fg = colors.grey_fg },
+	GitSignsCurrentLineBlame = { fg = utils.blend(colors.foreground, colors.background, 0.15) },
 
-	diffOldFile = { fg = colors.baby_pink },
+	diffOldFile = { fg = colors.red },
 	diffNewFile = { fg = colors.blue },
 
 	DiffAdd = { fg = colors.green },
@@ -18,7 +19,7 @@ return {
 	DiffModified = { fg = colors.orange },
 	DiffDelete = { fg = colors.red },
 	DiffRemoved = { fg = colors.red },
-	DiffText = { fg = colors.white, bg = colors.black2 },
+	DiffText = { fg = colors.foreground, bg = colors.lighter },
 
 	-- git commits
 	gitcommitOverflow = { fg = colors.base08 },

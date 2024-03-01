@@ -188,7 +188,7 @@ M.CreateCustom = function()
 		)
 		local plugins = io.open(path .. "/plugins.lua", "w")
 		plugins:write(
-			'local overrides = require("custom.configs.overrides")\n\nlocal plugins = {\n\n\t-- add plugins or override my plugins in here\n\n}\n\nreturn plugins'
+			'local overrides = require("custom.configs.overrides")\n\nreturn {\n\n\t-- add plugins or override my plugins in here\n\n}'
 		)
 		vim.fn.mkdir(path .. "/configs", "p")
 		local overrides = io.open(path .. "/configs/overrides.lua", "w")

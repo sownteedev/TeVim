@@ -1,22 +1,22 @@
 local colors = require("tevim.themes").getCurrentTheme()
 
 return {
-	TelescopeBackground = { bg = colors.darker_black },
-	TelescopeNormal = { bg = colors.darker_black },
-	TelescopeBorder = { fg = colors.darker_black, bg = colors.darker_black },
+	TelescopeBackground = { bg = colors.darker },
+	TelescopeNormal = { bg = colors.darker },
+	TelescopeBorder = { fg = colors.darker, bg = colors.darker },
 
-	TelescopePromptBorder = { fg = colors.black2, bg = colors.black2 },
-	TelescopePromptNormal = { fg = colors.white, bg = colors.black2 },
+	TelescopePromptBorder = { fg = colors.lighter, bg = colors.lighter },
+	TelescopePromptNormal = { fg = colors.foreground, bg = colors.lighter },
 	TelescopePromptTitle = { fg = colors.black, bg = colors.red },
 
-	TelescopePreviewTitle = { fg = colors.black2, bg = colors.blue },
-	TelescopePreviewBorder = { bg = colors.darker_black, fg = colors.darker_black },
+	TelescopePreviewTitle = { fg = colors.lighter, bg = colors.blue },
+	TelescopePreviewBorder = { bg = colors.darker, fg = colors.darker },
 
-	TelescopeResultsTitle = { fg = colors.black2, bg = colors.green },
-	TelescopeResultsBorder = { bg = colors.darker_black, fg = colors.darker_black },
+	TelescopeResultsTitle = { fg = colors.lighter, bg = colors.green },
+	TelescopeResultsBorder = { bg = colors.darker, fg = colors.darker },
 
 	TelescopeMatching = { bold = true },
-	TelescopeSelection = { bg = colors.black2, fg = colors.teal },
+	TelescopeSelection = { bg = colors.lighter, fg = colors.blue },
 	TelescopeResultsDiffAdd = { fg = colors.green },
 	TelescopeResultsDiffChange = { fg = colors.blue },
 	TelescopeResultsDiffDelete = { fg = colors.red },

@@ -1,4 +1,5 @@
 local colors = require("tevim.themes").getCurrentTheme()
+local utils = require("tevim.core.utils")
 
 local M = {}
 
@@ -19,7 +20,7 @@ local normal = {
 }
 
 M.WinSeparator = {
-	fg = colors.one_bg2,
+	fg = utils.blend(colors.foreground, colors.background, 0.1),
 	bg = colors.none,
 }
 
@@ -63,17 +64,17 @@ local telescope = {
 }
 
 M.TelescopePromptBorder = {
-	fg = colors.one_bg2,
+	fg = utils.blend(colors.foreground, colors.background, 0.1),
 	bg = colors.none,
 }
 
 M.TelescopePreviewBorder = {
-	fg = colors.one_bg2,
+	fg = utils.blend(colors.foreground, colors.background, 0.1),
 	bg = colors.none,
 }
 
 M.TelescopeResultsBorder = {
-	fg = colors.one_bg2,
+	fg = utils.blend(colors.foreground, colors.background, 0.1),
 	bg = colors.none,
 }
 
@@ -90,7 +91,7 @@ local tree = {
 }
 
 M.NeoTreeWinSeparator = {
-	fg = colors.one_bg2,
+	fg = utils.blend(colors.foreground, colors.background, 0.1),
 	bg = colors.none,
 }
 
@@ -123,7 +124,7 @@ local cmp = {
 }
 
 M.CmpBorder = {
-	fg = colors.one_bg2,
+	fg = utils.blend(colors.foreground, colors.background, 0.1),
 	bg = colors.none,
 }
 

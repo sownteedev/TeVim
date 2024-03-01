@@ -3,10 +3,8 @@ local M = {}
 local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-M.inlayHint = true
-
 M.on_attach = function(client, bufnr)
-	if M.inlayHint and client.supports_method("textDocument/inlayHint") then
+	if client.supports_method("textDocument/inlayHint") then
 		local value
 		local ih = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
 		if type(ih) == "function" then
@@ -47,13 +45,6 @@ vim.diagnostic.config({
 lspconfig.lua_ls.setup({
 	on_attach = M.on_attach,
 	capabilities = M.capabilities,
-	settings = {
-		Lua = {
-			hint = { enable = true },
-			diagnostics = { globals = { "vim", "awesome", "client", "screen", "mouse", "tag" } },
-			workspace = { checkThirdParty = false },
-		},
-	},
 })
 
 return M

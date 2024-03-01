@@ -5,13 +5,13 @@ return {
 	DapBreakpoint = { fg = colors.red },
 	DapBreakpointCondition = { fg = colors.yellow },
 	DapLogPoint = { fg = colors.cyan },
-	DapStopped = { fg = colors.baby_pink },
+	DapStopped = { fg = colors.red },
 
 	-- DapUI
 	DAPUIScope = { fg = colors.cyan },
-	DAPUIType = { fg = colors.dark_purple },
+	DAPUIType = { fg = colors.purple },
 	DAPUIValue = { fg = colors.cyan },
-	DAPUIVariable = { fg = colors.white },
+	DAPUIVariable = { fg = colors.foreground },
 	DapUIModifiedValue = { fg = colors.orange },
 	DapUIDecoration = { fg = colors.cyan },
 	DapUIThread = { fg = colors.green },
@@ -20,14 +20,14 @@ return {
 	DapUILineNumber = { fg = colors.cyan },
 	DapUIFloatBorder = { fg = colors.cyan },
 
-	DapUIWatchesEmpty = { fg = colors.baby_pink },
+	DapUIWatchesEmpty = { fg = colors.red },
 	DapUIWatchesValue = { fg = colors.green },
-	DapUIWatchesError = { fg = colors.baby_pink },
+	DapUIWatchesError = { fg = colors.red },
 
 	DapUIBreakpointsPath = { fg = colors.cyan },
 	DapUIBreakpointsInfo = { fg = colors.green },
 	DapUIBreakPointsCurrentLine = { fg = colors.green, bold = true },
-	DapUIBreakpointsDisabledLine = { fg = colors.grey_fg2 },
+	DapUIBreakpointsDisabledLine = { fg = colors.grey },
 
 	DapUIStepOver = { fg = colors.blue },
 	DapUIStepOverNC = { fg = colors.blue },
@@ -43,6 +43,6 @@ return {
 	DapUIPlayPauseNC = { fg = colors.green },
 	DapUIRestart = { fg = colors.green },
 	DapUIRestartNC = { fg = colors.green },
-	DapUIUnavailable = { fg = colors.grey_fg },
-	DapUIUnavailableNC = { fg = colors.grey_fg },
+	DapUIUnavailable = { fg = colors.grey },
+	DapUIUnavailableNC = { fg = colors.grey },
 }

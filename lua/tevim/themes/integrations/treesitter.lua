@@ -70,23 +70,23 @@ return {
 	["@markup.list"] = { fg = colors.base08 },
 	["@markup.strong"] = { bold = true },
 	["@markup.italic"] = { italic = true },
-	["@markup.quote"] = { bg = colors.black2 },
+	["@markup.quote"] = { bg = colors.lighter },
 	["@markup.strikethrough"] = { strikethrough = true },
 
-	["@comment"] = { fg = colors.grey_fg },
-	["@comment.todo"] = { fg = colors.grey, bg = colors.white },
-	["@comment.warning"] = { fg = colors.black2, bg = colors.base09 },
-	["@comment.note"] = { fg = colors.black2, bg = colors.white },
-	["@comment.danger"] = { fg = colors.black2, bg = colors.red },
+	["@comment"] = { fg = colors.grey },
+	["@comment.todo"] = { fg = colors.grey, bg = colors.foreground },
+	["@comment.warning"] = { fg = colors.lighter, bg = colors.base09 },
+	["@comment.note"] = { fg = colors.lighter, bg = colors.foreground },
+	["@comment.danger"] = { fg = colors.lighter, bg = colors.red },
 
 	["@diff.plus"] = { fg = colors.green },
 	["@diff.minus"] = { fg = colors.red },
-	["@diff.delta"] = { fg = colors.light_grey },
+	["@diff.delta"] = { fg = colors.grey },
 
 	-- TreesitterContext
 	TreesitterContext = { bg = colors.base01, bold = true },
 	TreesitterContextBottom = { bold = true },
-	TreesitterContextLineNumber = { fg = colors.light_grey, bold = true },
+	TreesitterContextLineNumber = { fg = colors.grey, bold = true },
 
 	-- Rainbow Brackets
 	RainbowDelimiterRed = { fg = colors.red },

@@ -1,16 +1,16 @@
 local colors = require("tevim.themes").getCurrentTheme()
 
 return {
-	CmpDocumentationBorder = { fg = colors.darker_black, bg = colors.darker },
-	CmpItemAbbr = { fg = colors.white, bg = colors.darker_black },
-	CmpItemAbbrDeprecated = { fg = colors.green, bg = colors.darker_black },
-	CmpItemAbbrMatch = { fg = colors.white, bg = colors.darker_black, bold = true },
-	CmpItemAbbrMatchFuzzy = { fg = colors.white, bg = colors.darker_black, bold = true },
-	CmpItemKind = { fg = colors.blue, bg = colors.darker_black },
-	CmpItemMenu = { fg = colors.green, bg = colors.darker_black },
-	CmpNormal = { fg = colors.white, bg = colors.darker_black },
-	CmpBorder = { fg = colors.darker_black, bg = colors.darker_black },
-	CmpSelection = { fg = colors.darker_black, bg = colors.blue, bold = true, italic = true },
+	CmpDocumentationBorder = { fg = colors.darker, bg = colors.darker },
+	CmpItemAbbr = { fg = colors.foreground, bg = colors.darker },
+	CmpItemAbbrDeprecated = { fg = colors.green, bg = colors.darker },
+	CmpItemAbbrMatch = { fg = colors.foreground, bg = colors.darker, bold = true },
+	CmpItemAbbrMatchFuzzy = { fg = colors.foreground, bg = colors.darker, bold = true },
+	CmpItemKind = { fg = colors.blue, bg = colors.darker },
+	CmpItemMenu = { fg = colors.green, bg = colors.darker },
+	CmpNormal = { fg = colors.foreground, bg = colors.darker },
+	CmpBorder = { fg = colors.darker, bg = colors.darker },
+	CmpSelection = { fg = colors.darker, bg = colors.blue, bold = true, italic = true },
 
 	CmpItemKindConstant = { fg = colors.base09 },
 	CmpItemKindFunction = { fg = colors.base0D },
@@ -30,9 +30,9 @@ return {
 	CmpItemKindProperty = { fg = colors.base08 },
 	CmpItemKindEnum = { fg = colors.blue },
 	CmpItemKindUnit = { fg = colors.base0E },
-	CmpItemKindClass = { fg = colors.teal },
+	CmpItemKindClass = { fg = colors.blue },
 	CmpItemKindInterface = { fg = colors.green },
-	CmpItemKindColor = { fg = colors.white },
+	CmpItemKindColor = { fg = colors.foreground },
 	CmpItemKindReference = { fg = colors.base05 },
 	CmpItemKindEnumMember = { fg = colors.purple },
 	CmpItemKindStruct = { fg = colors.base0E },
@@ -44,5 +44,5 @@ return {
 	CmpItemKindCodeium = { fg = colors.yellow },
 
 	-- Copilot.vim
-	CopilotSuggestion = { fg = colors.light_grey, italic = true },
+	CopilotSuggestion = { fg = colors.grey, italic = true },
 }

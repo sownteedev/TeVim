@@ -1,21 +1,22 @@
 local colors = require("tevim.themes").getCurrentTheme()
+local utils = require("tevim.core.utils")
 
 return {
-	NeoTreeNormal = { bg = colors.darker_black },
-	NeoTreeNormalNC = { bg = colors.darker_black },
-	NeoTreeWinSeparator = { bg = colors.black, fg = colors.black },
-	NeoTreeIndentMarker = { fg = colors.one_bg },
+	NeoTreeNormal = { bg = colors.darker },
+	NeoTreeNormalNC = { bg = colors.darker },
+	NeoTreeWinSeparator = { bg = colors.background, fg = colors.background },
+	NeoTreeIndentMarker = { fg = utils.blend(colors.foreground, colors.background, 0.1) },
 	NeoTreeExpander = { fg = colors.grey },
-	NeoTreeDirectoryIcon = { fg = colors.folder_bg },
+	NeoTreeDirectoryIcon = { fg = colors.blue },
 	NeoTreeRootName = { fg = colors.blue, bold = true },
 	NeoTreeModified = { fg = colors.green },
 
 	NeoTreeGitAdded = { fg = colors.green },
-	NeoTreeGitConflict = { fg = colors.baby_pink },
-	NeoTreeGitDeleted = { fg = colors.baby_pink },
+	NeoTreeGitConflict = { fg = colors.red },
+	NeoTreeGitDeleted = { fg = colors.red },
 	NeoTreeGitIgnored = { fg = colors.grey },
 	NeoTreeGitModified = { fg = colors.orange },
-	NeoTreeGitUnstaged = { fg = colors.baby_pink },
+	NeoTreeGitUnstaged = { fg = colors.red },
 	NeoTreeGitUntracked = { fg = colors.green },
 	NeoTreeGitStaged = { fg = colors.green },
 }

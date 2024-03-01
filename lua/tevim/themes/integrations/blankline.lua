@@ -1,17 +1,18 @@
 local colors = require("tevim.themes").getCurrentTheme()
+local utils = require("tevim.core.utils")
 
 return {
 	-- For ibl version
-	IblScope = { fg = colors.one_bg },
-	IblIndent = { fg = colors.one_bg },
-	IblWhitespace = { fg = colors.one_bg2 },
+	IblScope = { fg = utils.blend(colors.foreground, colors.background, 0.05) },
+	IblIndent = { fg = utils.blend(colors.foreground, colors.background, 0.05) },
+	IblWhitespace = { fg = utils.blend(colors.foreground, colors.background, 0.05) },
 
 	-- For 2.20.7 version
-	IndentBlanklineChar = { fg = colors.one_bg },
-	IndentBlanklineSpaceChar = { fg = colors.one_bg },
-	IndentBlanklineContextChar = { fg = colors.one_bg2 },
-	IndentBlanklineContextStart = { bg = colors.one_bg2 },
+	IndentBlanklineChar = { fg = utils.blend(colors.foreground, colors.background, 0.05) },
+	IndentBlanklineSpaceChar = { fg = utils.blend(colors.foreground, colors.background, 0.05) },
+	IndentBlanklineContextChar = { fg = utils.blend(colors.foreground, colors.background, 0.05) },
+	IndentBlanklineContextStart = { bg = utils.blend(colors.foreground, colors.background, 0.05) },
 
 	-- Mini Indent (mini.nvim)
-	MiniIndentscopeSymbol = { fg = colors.grey },
+	MiniIndentscopeSymbol = { fg = utils.blend(colors.foreground, colors.background, 0.15) },
 }
