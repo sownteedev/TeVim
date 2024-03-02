@@ -29,14 +29,17 @@ return {
 	-- TeSttLine
 	StatusLine = { bg = utils.blend(colors.foreground, colors.background, 0.015) },
 	TeSTTNormalMode = { fg = colors.blue, bg = utils.blend(colors.blue, colors.background, 0.1) },
-	TeSTTVisualMode = { fg = colors.purple, bg = utils.blend(colors.purple, colors.background, 0.1) },
+	TeSTTVisualMode = {
+		fg = utils.mix(colors.red, colors.blue, 0.5),
+		bg = utils.blend(utils.mix(colors.red, colors.blue, 0.5), colors.background, 0.1),
+	},
 	TeSTTCommandMode = { fg = colors.red, bg = utils.blend(colors.red, colors.background, 0.1) },
 	TeSTTInsertMode = { fg = colors.green, bg = utils.blend(colors.green, colors.background, 0.1) },
 	TeSTTTerminalMode = { fg = colors.red, bg = utils.blend(colors.red, colors.background, 0.1) },
 	TeSTTNTerminalMode = { fg = colors.red, bg = utils.blend(colors.red, colors.background, 0.1) },
 	TeSTTConfirmMode = { fg = colors.yellow, bg = utils.blend(colors.yellow, colors.background, 0.1) },
 	TeSTTNormalModeIcon = { fg = colors.background, bg = colors.blue },
-	TeSTTVisualModeIcon = { fg = colors.background, bg = colors.purple },
+	TeSTTVisualModeIcon = { fg = colors.background, bg = utils.mix(colors.red, colors.blue, 0.5) },
 	TeSTTCommandModeIcon = { fg = colors.background, bg = colors.red },
 	TeSTTInsertModeIcon = { fg = colors.background, bg = colors.green },
 	TeSTTTerminalModeIcon = { fg = colors.background, bg = colors.red },
@@ -58,23 +61,38 @@ return {
 	TeSTTErrorIcon = { fg = colors.red, bg = utils.blend(colors.green, colors.background, 0.1) },
 	TeSTTWarning = { fg = colors.yellow, bg = utils.blend(colors.green, colors.background, 0.1) },
 	TeSTTWarningIcon = { fg = colors.yellow, bg = utils.blend(colors.green, colors.background, 0.1) },
-	TeSTTHints = { fg = colors.purple, bg = utils.blend(colors.green, colors.background, 0.1) },
-	TeSTTHintsIcon = { fg = colors.purple, bg = utils.blend(colors.green, colors.background, 0.1) },
+	TeSTTHints = {
+		fg = utils.mix(colors.red, colors.blue, 0.5),
+		bg = utils.blend(colors.green, colors.background, 0.1),
+	},
+	TeSTTHintsIcon = {
+		fg = utils.mix(colors.red, colors.blue, 0.5),
+		bg = utils.blend(colors.green, colors.background, 0.1),
+	},
 	TeSTTInfo = { fg = colors.blue, bg = utils.blend(colors.green, colors.background, 0.1) },
 	TeSTTInfoIcon = { fg = colors.blue, bg = utils.blend(colors.green, colors.background, 0.1) },
 
-	TeSTTBranchName = { fg = colors.purple, bg = utils.blend(colors.purple, colors.background, 0.1) },
-	TeSTTBranchIcon = { fg = colors.background, bg = colors.purple },
+	TeSTTBranchName = {
+		fg = utils.mix(colors.red, colors.blue, 0.5),
+		bg = utils.blend(utils.mix(colors.red, colors.blue, 0.5), colors.background, 0.1),
+	},
+	TeSTTBranchIcon = { fg = colors.background, bg = utils.mix(colors.red, colors.blue, 0.5) },
 	TeSTTDiffAdd = { fg = colors.green, bg = utils.blend(colors.blue, colors.background, 0.1) },
-	TeSTTDiffChange = { fg = colors.orange, bg = utils.blend(colors.blue, colors.background, 0.1) },
+	TeSTTDiffChange = {
+		fg = utils.mix(colors.red, colors.yellow, 0.5),
+		bg = utils.blend(colors.blue, colors.background, 0.1),
+	},
 	TeSTTDiffRemove = { fg = colors.red, bg = utils.blend(colors.blue, colors.background, 0.1) },
 	TeSTTGithub = { fg = colors.background, bg = colors.blue },
 
 	TeSTTTabIcon = { fg = colors.background, bg = colors.red },
 	TeSTTTab = { fg = colors.red, bg = utils.blend(colors.red, colors.background, 0.1) },
 
-	TeSTTProgressIcon = { fg = colors.background, bg = colors.purple },
-	TeSTTProgress = { fg = colors.purple, bg = utils.blend(colors.purple, colors.background, 0.1) },
+	TeSTTProgressIcon = { fg = colors.background, bg = utils.mix(colors.red, colors.blue, 0.5) },
+	TeSTTProgress = {
+		fg = utils.mix(colors.red, colors.blue, 0.5),
+		bg = utils.blend(utils.mix(colors.red, colors.blue, 0.5), colors.background, 0.1),
+	},
 
 	TeSTTLocationIcon = { fg = colors.background, bg = colors.yellow },
 	TeSTTLocation = { fg = colors.yellow, bg = utils.blend(colors.yellow, colors.background, 0.1) },

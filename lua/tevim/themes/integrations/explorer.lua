@@ -15,7 +15,7 @@ return {
 	NeoTreeGitConflict = { fg = colors.red },
 	NeoTreeGitDeleted = { fg = colors.red },
 	NeoTreeGitIgnored = { fg = colors.grey },
-	NeoTreeGitModified = { fg = colors.orange },
+	NeoTreeGitModified = { fg = utils.mix(colors.red, colors.yellow, 0.5) },
 	NeoTreeGitUnstaged = { fg = colors.red },
 	NeoTreeGitUntracked = { fg = colors.green },
 	NeoTreeGitStaged = { fg = colors.green },

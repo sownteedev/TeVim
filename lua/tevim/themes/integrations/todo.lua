@@ -1,20 +1,21 @@
 local colors = require("tevim.themes").getCurrentTheme()
+local utils = require("tevim.core.utils")
 
 return {
 	TodoBgFix = { fg = colors.lighter, bg = colors.red, bold = true },
 	TodoBgHack = { fg = colors.lighter, bg = colors.yellow, bold = true },
 	TodoBgNote = { fg = colors.lighter, bg = colors.foreground, bold = true },
-	TodoBgPerf = { fg = colors.lighter, bg = colors.purple, bold = true },
+	TodoBgPerf = { fg = colors.lighter, bg = utils.mix(colors.red, colors.blue, 0.5), bold = true },
 	TodoBgTest = { fg = colors.lighter, bg = colors.green, bold = true },
 	TodoBgTodo = { fg = colors.lighter, bg = colors.blue, bold = true },
-	TodoBgWarn = { fg = colors.lighter, bg = colors.orange, bold = true },
+	TodoBgWarn = { fg = colors.lighter, bg = utils.mix(colors.red, colors.yellow, 0.5), bold = true },
 	TodoFgFix = { fg = colors.red },
 	TodoFgHack = { fg = colors.yellow },
 	TodoFgNote = { fg = colors.foreground },
-	TodoFgPerf = { fg = colors.purple },
+	TodoFgPerf = { fg = utils.mix(colors.red, colors.blue, 0.5) },
 	TodoFgTest = { fg = colors.green },
 	TodoFgTodo = { fg = colors.blue },
-	TodoFgWarn = { fg = colors.orange },
+	TodoFgWarn = { fg = utils.mix(colors.red, colors.yellow, 0.5) },
 	TodoSignFix = { link = "TodoFgFix" },
 	TodoSignHack = { link = "TodoFgHack" },
 	TodoSignNote = { link = "TodoFgNote" },

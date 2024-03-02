@@ -1,4 +1,5 @@
 local colors = require("tevim.themes").getCurrentTheme()
+local utils = require("tevim.core.utils")
 
 return {
 	["@annotation"] = { fg = colors.base0F },
@@ -92,8 +93,8 @@ return {
 	RainbowDelimiterRed = { fg = colors.red },
 	RainbowDelimiterYellow = { fg = colors.yellow },
 	RainbowDelimiterBlue = { fg = colors.blue },
-	RainbowDelimiterOrange = { fg = colors.orange },
+	RainbowDelimiterOrange = { fg = utils.mix(colors.red, colors.yellow, 0.5) },
 	RainbowDelimiterGreen = { fg = colors.green },
-	RainbowDelimiterViolet = { fg = colors.purple },
+	RainbowDelimiterViolet = { fg = utils.mix(colors.red, colors.blue, 0.5) },
 	RainbowDelimiterCyan = { fg = colors.cyan },
 }

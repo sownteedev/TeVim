@@ -1,4 +1,5 @@
 local colors = require("tevim.themes").getCurrentTheme()
+local utils = require("tevim.core.utils")
 
 return {
 	-- Dap
@@ -9,10 +10,10 @@ return {
 
 	-- DapUI
 	DAPUIScope = { fg = colors.cyan },
-	DAPUIType = { fg = colors.purple },
+	DAPUIType = { fg = utils.mix(colors.red, colors.blue, 0.5) },
 	DAPUIValue = { fg = colors.cyan },
 	DAPUIVariable = { fg = colors.foreground },
-	DapUIModifiedValue = { fg = colors.orange },
+	DapUIModifiedValue = { fg = utils.mix(colors.red, colors.yellow, 0.5) },
 	DapUIDecoration = { fg = colors.cyan },
 	DapUIThread = { fg = colors.green },
 	DapUIStoppedThread = { fg = colors.cyan },

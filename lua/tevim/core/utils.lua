@@ -184,7 +184,7 @@ M.CreateCustom = function()
 		vim.fn.mkdir(path, "p")
 		local file = io.open(path .. "/init.lua", "w")
 		file:write(
-			'local M = {}\n\nM.keymaps = require("custom.keymaps")\nM.options = require("custom.options")\n\nM.plugins = "custom.plugins"\n\nreturn M'
+			'local M = {}\n\nM.keymaps = require("custom.keymaps")\nM.options = require("custom.options")\n\nreturn M'
 		)
 		local plugins = io.open(path .. "/plugins.lua", "w")
 		plugins:write(

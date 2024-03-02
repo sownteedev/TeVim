@@ -1,4 +1,5 @@
 local colors = require("tevim.themes").getCurrentTheme()
+local utils = require("tevim.core.utils")
 
 return {
 	NoiceMini = { bg = colors.darker },
@@ -17,18 +18,18 @@ return {
 	NotifyDEBUGBorder = { fg = colors.darker, bg = colors.darker },
 	NotifyTRACEBorder = { fg = colors.darker, bg = colors.darker },
 	NotifyERRORIcon = { fg = colors.red, bg = colors.darker },
-	NotifyWARNIcon = { fg = colors.orange, bg = colors.darker },
+	NotifyWARNIcon = { fg = utils.mix(colors.red, colors.yellow, 0.5), bg = colors.darker },
 	NotifyINFOIcon = { fg = colors.blue, bg = colors.darker },
 	NotifyDEBUGIcon = { fg = colors.cyan, bg = colors.darker },
-	NotifyTRACEIcon = { fg = colors.purple, bg = colors.darker },
+	NotifyTRACEIcon = { fg = utils.mix(colors.red, colors.blue, 0.5), bg = colors.darker },
 	NotifyERRORTitle = { fg = colors.red, bg = colors.darker },
-	NotifyWARNTitle = { fg = colors.orange, bg = colors.darker },
+	NotifyWARNTitle = { fg = utils.mix(colors.red, colors.yellow, 0.5), bg = colors.darker },
 	NotifyINFOTitle = { fg = colors.blue, bg = colors.darker },
 	NotifyDEBUGTitle = { fg = colors.cyan, bg = colors.darker },
-	NotifyTRACETitle = { fg = colors.purple, bg = colors.darker },
+	NotifyTRACETitle = { fg = utils.mix(colors.red, colors.blue, 0.5), bg = colors.darker },
 	NotifyERRORBody = { fg = colors.red, bg = colors.darker },
-	NotifyWARNBody = { fg = colors.orange, bg = colors.darker },
+	NotifyWARNBody = { fg = utils.mix(colors.red, colors.yellow, 0.5), bg = colors.darker },
 	NotifyINFOBody = { fg = colors.blue, bg = colors.darker },
 	NotifyDEBUGBody = { fg = colors.cyan, bg = colors.darker },
-	NotifyTRACEBody = { fg = colors.purple, bg = colors.darker },
+	NotifyTRACEBody = { fg = utils.mix(colors.red, colors.blue, 0.5), bg = colors.darker },
 }

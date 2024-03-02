@@ -1,4 +1,5 @@
 local colors = require("tevim.themes").getCurrentTheme()
+local utils = require("tevim.core.utils")
 
 return {
 	LspReferenceText = { fg = colors.darker, bg = colors.foreground },
@@ -8,7 +9,7 @@ return {
 	DiagnosticError = { fg = colors.red },
 	DiagnosticWarn = { fg = colors.yellow },
 	DiagnosticInfo = { fg = colors.blue },
-	DiagnosticHint = { fg = colors.purple },
+	DiagnosticHint = { fg = utils.mix(colors.red, colors.blue, 0.5) },
 	DiagnosticInformation = { fg = colors.green },
 	LspInlayHint = { fg = colors.grey, bg = colors.lighter },
 }

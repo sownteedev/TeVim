@@ -1,16 +1,17 @@
 local colors = require("tevim.themes").getCurrentTheme()
+local utils = require("tevim.core.utils")
 
 return {
 	TroubleCount = { fg = colors.red },
 	TroubleCode = { fg = colors.foreground },
-	TroubleWarning = { fg = colors.orange },
+	TroubleWarning = { fg = utils.mix(colors.red, colors.yellow, 0.5) },
 	TroubleSignWarning = { fg = colors.yellow },
 	TroubleTextWarning = { fg = colors.foreground },
 	TroublePreview = { fg = colors.red },
 	TroubleSource = { fg = colors.cyan },
 	TroubleSignHint = { fg = colors.green },
 	TroubleTextHint = { fg = colors.red },
-	TroubleHint = { fg = colors.orange },
+	TroubleHint = { fg = utils.mix(colors.red, colors.yellow, 0.5) },
 	TroubleSignOther = { fg = colors.green },
 	TroubleSignInformation = { fg = colors.foreground },
 	TroubleTextInformation = { fg = colors.blue },

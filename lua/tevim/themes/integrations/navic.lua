@@ -1,4 +1,5 @@
 local colors = require("tevim.themes").getCurrentTheme()
+local utils = require("tevim.core.utils")
 
 return {
 	NavicIconsConstant = { fg = colors.base09 },
@@ -23,7 +24,7 @@ return {
 	NavicIconsInterface = { fg = colors.green },
 	NavicIconsColor = { fg = colors.foreground },
 	NavicIconsReference = { fg = colors.base05 },
-	NavicIconsEnumMember = { fg = colors.purple },
+	NavicIconsEnumMember = { fg = utils.mix(colors.red, colors.blue, 0.5) },
 	NavicIconsStruct = { fg = colors.base0E },
 	NavicIconsValue = { fg = colors.cyan },
 	NavicIconsEvent = { fg = colors.yellow },
@@ -33,7 +34,7 @@ return {
 	NavicIconsPackage = { fg = colors.green },
 	NavicIconsString = { fg = colors.green },
 	NavicIconsNumber = { fg = colors.red },
-	NavicIconsBoolean = { fg = colors.orange },
+	NavicIconsBoolean = { fg = utils.mix(colors.red, colors.yellow, 0.5) },
 	NavicIconsArray = { fg = colors.blue },
 	NavicIconsObject = { fg = colors.base0E },
 	NavicIconsKey = { fg = colors.red },

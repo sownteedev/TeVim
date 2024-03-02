@@ -8,8 +8,6 @@ return {
 	green = "#ABE9B3",
 	blue = "#89B4FA",
 	yellow = "#FAE3B0",
-	purple = "#d0a9e5",
-	orange = "#F8BD96",
 	cyan = "#89DCEB",
 	none = "NONE",
 

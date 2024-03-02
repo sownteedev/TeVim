@@ -5,7 +5,7 @@ return {
 	-- GitSigns
 	GitSignsAdd = { fg = colors.green },
 	GitSignsAdded = { fg = colors.blue },
-	GitSignsChange = { fg = colors.orange },
+	GitSignsChange = { fg = utils.mix(colors.red, colors.yellow, 0.5) },
 	GitSignsDelete = { fg = colors.red },
 	GitSignsCurrentLineBlame = { fg = utils.blend(colors.foreground, colors.background, 0.15) },
 
@@ -14,9 +14,9 @@ return {
 
 	DiffAdd = { fg = colors.green },
 	DiffAdded = { fg = colors.blue },
-	DiffChange = { fg = colors.orange },
+	DiffChange = { fg = utils.mix(colors.red, colors.yellow, 0.5) },
 	DiffChangeDelete = { fg = colors.red },
-	DiffModified = { fg = colors.orange },
+	DiffModified = { fg = utils.mix(colors.red, colors.yellow, 0.5) },
 	DiffDelete = { fg = colors.red },
 	DiffRemoved = { fg = colors.red },
 	DiffText = { fg = colors.foreground, bg = colors.lighter },
