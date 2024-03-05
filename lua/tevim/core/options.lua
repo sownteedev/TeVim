@@ -36,6 +36,7 @@ local globals = {
 	themeCache = vim.fn.stdpath("data") .. "/colors_data/",
 	transparency = false,
 	snipmate_snippets_path = "",
+	loadTeDash = true,
 }
 
 local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
