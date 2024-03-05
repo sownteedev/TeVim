@@ -96,5 +96,5 @@ return {
 	RainbowDelimiterOrange = { fg = utils.mix(colors.red, colors.yellow, 0.5) },
 	RainbowDelimiterGreen = { fg = colors.green },
 	RainbowDelimiterViolet = { fg = utils.mix(colors.red, colors.blue, 0.5) },
-	RainbowDelimiterCyan = { fg = colors.cyan },
+	RainbowDelimiterCyan = { fg = utils.mix(colors.foreground, colors.blue, 0.7) },
 }

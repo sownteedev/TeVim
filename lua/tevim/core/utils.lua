@@ -182,24 +182,18 @@ M.CreateCustom = function()
 	local path = vim.fn.stdpath("config") .. "/lua/custom"
 	if vim.fn.isdirectory(path) ~= 1 then
 		vim.fn.mkdir(path, "p")
-		local file = io.open(path .. "/init.lua", "w")
-		file:write(
+		io.open(path .. "/init.lua", "w"):write(
 			'local M = {}\n\nM.keymaps = require("custom.keymaps")\nM.options = require("custom.options")\n\nreturn M'
 		)
-		local plugins = io.open(path .. "/plugins.lua", "w")
-		plugins:write(
+		io.open(path .. "/plugins.lua", "w"):write(
 			'local overrides = require("custom.configs.overrides")\n\nreturn {\n\n\t-- add plugins or override my plugins in here\n\n}'
 		)
 		vim.fn.mkdir(path .. "/configs", "p")
-		local overrides = io.open(path .. "/configs/overrides.lua", "w")
-		overrides:write("local M = {}\n\n-- add overrides in here\n\nreturn M")
-		local options = io.open(path .. "/options.lua", "w")
-		options:write("-- add options or override my options in here")
-		local keymaps = io.open(path .. "/keymaps.lua", "w")
-		keymaps:write("-- add your keymaps in here")
+		io.open(path .. "/configs/overrides.lua", "w"):write("local M = {}\n\n-- add overrides in here\n\nreturn M")
+		io.open(path .. "/options.lua", "w"):write("-- add options or override my options in here")
+		io.open(path .. "/keymaps.lua", "w"):write("-- add your keymaps in here")
 		vim.fn.mkdir(path .. "/themes/schemes", "p")
-		local integrations = io.open(path .. "/themes/integrations.lua", "w")
-		integrations:write(
+		io.open(path .. "/themes/integrations.lua", "w"):write(
 			'local colors = require("tevim.themes").getCurrentTheme()\n\nreturn {\n\t-- add your highlights in here\n}'
 		)
 		vim.notify("Created custom folder. Please read the docs!")

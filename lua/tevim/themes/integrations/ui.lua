@@ -22,7 +22,10 @@ return {
 
 	TeBufRun = { bg = utils.blend(colors.foreground, colors.background, 0.08), fg = colors.yellow },
 	TeBufSplit = { bg = utils.blend(colors.foreground, colors.background, 0.08), fg = colors.blue },
-	TeBufTrans = { bg = utils.blend(colors.foreground, colors.background, 0.08), fg = colors.cyan },
+	TeBufTrans = {
+		bg = utils.blend(colors.foreground, colors.background, 0.08),
+		fg = utils.mix(colors.foreground, colors.blue, 0.7),
+	},
 	TeBufTheme = { bg = utils.blend(colors.foreground, colors.background, 0.08), fg = colors.green },
 	TeBufQuit = { bg = colors.red, fg = utils.blend(colors.foreground, colors.background, 0.08) },
 
@@ -55,7 +58,10 @@ return {
 
 	TeSTTLsp = { fg = colors.green, bg = utils.blend(colors.green, colors.background, 0.1) },
 	TeSTTLspIcon = { fg = colors.background, bg = colors.green },
-	TeSTTCopilot = { fg = colors.cyan, bg = utils.blend(colors.green, colors.background, 0.1) },
+	TeSTTCopilot = {
+		fg = utils.mix(colors.foreground, colors.blue, 0.7),
+		bg = utils.blend(colors.green, colors.background, 0.1),
+	},
 
 	TeSTTError = { fg = colors.red, bg = utils.blend(colors.green, colors.background, 0.1) },
 	TeSTTErrorIcon = { fg = colors.red, bg = utils.blend(colors.green, colors.background, 0.1) },

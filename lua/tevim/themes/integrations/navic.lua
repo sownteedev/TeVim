@@ -26,7 +26,7 @@ return {
 	NavicIconsReference = { fg = colors.base05 },
 	NavicIconsEnumMember = { fg = utils.mix(colors.red, colors.blue, 0.5) },
 	NavicIconsStruct = { fg = colors.base0E },
-	NavicIconsValue = { fg = colors.cyan },
+	NavicIconsValue = { fg = utils.mix(colors.foreground, colors.blue, 0.7) },
 	NavicIconsEvent = { fg = colors.yellow },
 	NavicIconsOperator = { fg = colors.base05 },
 	NavicIconsTypeParameter = { fg = colors.base08 },
@@ -38,7 +38,7 @@ return {
 	NavicIconsArray = { fg = colors.blue },
 	NavicIconsObject = { fg = colors.base0E },
 	NavicIconsKey = { fg = colors.red },
-	NavicIconsNull = { fg = colors.cyan },
+	NavicIconsNull = { fg = utils.mix(colors.foreground, colors.blue, 0.7) },
 	NavicText = { fg = colors.grey },
 	NavicSeparator = { fg = colors.red },
 }
