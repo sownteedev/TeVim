@@ -39,6 +39,6 @@ return {
 	NavicIconsObject = { fg = colors.base0E },
 	NavicIconsKey = { fg = colors.red },
 	NavicIconsNull = { fg = utils.mix(colors.foreground, colors.blue, 0.7) },
-	NavicText = { fg = colors.grey },
+	NavicText = { fg = utils.blend(colors.foreground, colors.background, 0.2) },
 	NavicSeparator = { fg = colors.red },
 }

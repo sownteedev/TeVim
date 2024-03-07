@@ -1,4 +1,5 @@
 local colors = require("tevim.themes").getCurrentTheme()
+local utils = require("tevim.core.utils")
 
 return {
 	MasonHeader = { bg = colors.red, fg = colors.background },
@@ -6,6 +7,6 @@ return {
 	MasonHighlightBlock = { fg = colors.background, bg = colors.green },
 	MasonHighlightBlockBold = { link = "MasonHighlightBlock" },
 	MasonHeaderSecondary = { link = "MasonHighlightBlock" },
-	MasonMuted = { fg = colors.grey },
-	MasonMutedBlock = { fg = colors.grey },
+	MasonMuted = { fg = utils.blend(colors.foreground, colors.background, 0.2) },
+	MasonMutedBlock = { fg = utils.blend(colors.foreground, colors.background, 0.2) },
 }

@@ -11,5 +11,5 @@ return {
 	DiagnosticInfo = { fg = colors.blue },
 	DiagnosticHint = { fg = utils.mix(colors.red, colors.blue, 0.5) },
 	DiagnosticInformation = { fg = colors.green },
-	LspInlayHint = { fg = colors.grey, bg = colors.lighter },
+	LspInlayHint = { fg = utils.blend(colors.foreground, colors.background, 0.2), bg = colors.lighter },
 }

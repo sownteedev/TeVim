@@ -28,7 +28,7 @@ return {
 	DapUIBreakpointsPath = { fg = utils.mix(colors.foreground, colors.blue, 0.7) },
 	DapUIBreakpointsInfo = { fg = colors.green },
 	DapUIBreakPointsCurrentLine = { fg = colors.green, bold = true },
-	DapUIBreakpointsDisabledLine = { fg = colors.grey },
+	DapUIBreakpointsDisabledLine = { fg = utils.blend(colors.foreground, colors.background, 0.2) },
 
 	DapUIStepOver = { fg = colors.blue },
 	DapUIStepOverNC = { fg = colors.blue },
@@ -44,6 +44,6 @@ return {
 	DapUIPlayPauseNC = { fg = colors.green },
 	DapUIRestart = { fg = colors.green },
 	DapUIRestartNC = { fg = colors.green },
-	DapUIUnavailable = { fg = colors.grey },
-	DapUIUnavailableNC = { fg = colors.grey },
+	DapUIUnavailable = { fg = utils.blend(colors.foreground, colors.background, 0.2) },
+	DapUIUnavailableNC = { fg = utils.blend(colors.foreground, colors.background, 0.2) },
 }

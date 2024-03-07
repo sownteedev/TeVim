@@ -30,7 +30,7 @@ local configs = {
 			},
 		},
 	},
-	window = { width = 35 },
+	window = { width = 30 },
 	filesystem = {
 		filtered_items = { hide_dotfiles = false, hide_gitignored = false },
 		follow_current_file = { enabled = true },

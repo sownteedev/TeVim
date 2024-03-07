@@ -3,7 +3,6 @@ return {
 	darker = "#12121F",
 	background = "#141523",
 	lighter = "#191829",
-	grey = "#565697",
 	red = "#FF5555",
 	green = "#50FA7B",
 	blue = "#2CCCFF",

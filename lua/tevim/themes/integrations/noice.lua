@@ -7,7 +7,7 @@ return {
 	NoiceCmdlinePopupBorder = { bg = colors.darker, fg = colors.darker },
 	NoiceCmdlinePopupBorderSearch = { link = "NoiceCmdlinePopupBorder" },
 	NoiceCmdlinePopupTitle = { bg = colors.darker, fg = colors.darker },
-	NoiceLspProgressSpinner = { fg = colors.grey },
+	NoiceLspProgressSpinner = { fg = utils.blend(colors.foreground, colors.background, 0.2) },
 
 	-- Notify
 	NotifyBackground = { bg = colors.darker },

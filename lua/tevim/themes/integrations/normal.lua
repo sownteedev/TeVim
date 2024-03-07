@@ -20,8 +20,8 @@ return {
 	MsgSeparator = { fg = colors.foreground, bg = colors.background },
 
 	WildMenu = { fg = colors.base08, bg = colors.base0A },
-	Comment = { fg = colors.grey, italic = true },
-	Whitespace = { fg = colors.grey },
+	Comment = { fg = utils.blend(colors.foreground, colors.background, 0.2), italic = true },
+	Whitespace = { fg = utils.blend(colors.foreground, colors.background, 0.2) },
 
 	Folded = { fg = utils.blend(colors.foreground, colors.background, 0.15), bg = colors.background },
 	FoldColumn = { fg = utils.blend(colors.foreground, colors.background, 0.15), bg = colors.background },

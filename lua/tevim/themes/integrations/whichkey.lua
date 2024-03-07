@@ -3,7 +3,7 @@ local utils = require("tevim.core.utils")
 
 return {
 	WhichKey = { fg = colors.blue, bold = true },
-	WhichKeySeparator = { fg = colors.grey },
+	WhichKeySeparator = { fg = utils.blend(colors.foreground, colors.background, 0.2) },
 	WhichKeyDesc = { fg = colors.red },
 	WhichKeyGroup = { fg = utils.mix(colors.red, colors.yellow, 0.5) },
 	WhichKeyValue = { fg = colors.green },

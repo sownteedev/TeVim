@@ -74,20 +74,20 @@ return {
 	["@markup.quote"] = { bg = colors.lighter },
 	["@markup.strikethrough"] = { strikethrough = true },
 
-	["@comment"] = { fg = colors.grey },
-	["@comment.todo"] = { fg = colors.grey, bg = colors.foreground },
+	["@comment"] = { link = "Comment" },
+	["@comment.todo"] = { fg = utils.blend(colors.foreground, colors.background, 0.2), bg = colors.foreground },
 	["@comment.warning"] = { fg = colors.lighter, bg = colors.base09 },
 	["@comment.note"] = { fg = colors.lighter, bg = colors.foreground },
 	["@comment.danger"] = { fg = colors.lighter, bg = colors.red },
 
 	["@diff.plus"] = { fg = colors.green },
 	["@diff.minus"] = { fg = colors.red },
-	["@diff.delta"] = { fg = colors.grey },
+	["@diff.delta"] = { fg = utils.blend(colors.foreground, colors.background, 0.2) },
 
 	-- TreesitterContext
 	TreesitterContext = { bg = colors.base01, bold = true },
 	TreesitterContextBottom = { bold = true },
-	TreesitterContextLineNumber = { fg = colors.grey, bold = true },
+	TreesitterContextLineNumber = { fg = utils.blend(colors.foreground, colors.background, 0.2), bold = true },
 
 	-- Rainbow Brackets
 	RainbowDelimiterRed = { fg = colors.red },

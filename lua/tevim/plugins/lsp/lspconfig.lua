@@ -45,6 +45,13 @@ vim.diagnostic.config({
 lspconfig.lua_ls.setup({
 	on_attach = M.on_attach,
 	capabilities = M.capabilities,
+
+	settings = {
+		Lua = {
+			diagnostics = { globals = { "vim" } },
+			workspace = { checkThirdParty = false },
+		},
+	},
 })
 
 return M

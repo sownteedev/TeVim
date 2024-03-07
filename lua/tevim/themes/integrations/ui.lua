@@ -4,17 +4,26 @@ local utils = require("tevim.core.utils")
 return {
 	-- Tebufline
 	TeBufOnActive = { fg = colors.foreground, bg = colors.background, bold = true },
-	TeBufOnInactive = { fg = colors.grey, bg = utils.blend(colors.foreground, colors.background, 0.02) },
+	TeBufOnInactive = {
+		fg = utils.blend(colors.foreground, colors.background, 0.2),
+		bg = utils.blend(colors.foreground, colors.background, 0.02),
+	},
 	TeBufFolderOnActive = { fg = colors.foreground, bg = colors.background, italic = true },
 	TeBufFolderOnInactive = {
-		fg = colors.grey,
+		fg = utils.blend(colors.foreground, colors.background, 0.2),
 		bg = utils.blend(colors.foreground, colors.background, 0.02),
 		italic = true,
 	},
 	TeBufOnModified = { fg = colors.green },
-	TeBufOffModified = { fg = colors.grey, bg = utils.blend(colors.foreground, colors.background, 0.02) },
+	TeBufOffModified = {
+		fg = utils.blend(colors.foreground, colors.background, 0.2),
+		bg = utils.blend(colors.foreground, colors.background, 0.02),
+	},
 	TeBufOnClose = { fg = colors.red, bg = colors.background },
-	TeBufOffClose = { fg = colors.grey, bg = utils.blend(colors.foreground, colors.background, 0.02) },
+	TeBufOffClose = {
+		fg = utils.blend(colors.foreground, colors.background, 0.2),
+		bg = utils.blend(colors.foreground, colors.background, 0.02),
+	},
 	TeBufTree = { bg = colors.darker },
 	TeBufEmpty = { bg = colors.background },
 	TeBufEmptyColor = { bg = utils.blend(colors.foreground, colors.background, 0.01) },

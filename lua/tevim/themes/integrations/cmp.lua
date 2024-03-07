@@ -1,4 +1,5 @@
 local colors = require("tevim.themes").getCurrentTheme()
+local utils = require("tevim.core.utils")
 
 return {
 	CmpDocumentationBorder = { fg = colors.darker, bg = colors.darker },
@@ -44,5 +45,5 @@ return {
 	CmpItemKindCodeium = { fg = colors.yellow },
 
 	-- Copilot.vim
-	CopilotSuggestion = { fg = colors.grey, italic = true },
+	CopilotSuggestion = { fg = utils.blend(colors.foreground, colors.background, 0.2), italic = true },
 }
