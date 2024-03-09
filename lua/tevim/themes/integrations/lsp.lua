@@ -7,7 +7,7 @@ return {
 	LspReferenceWrite = { fg = colors.darker, bg = colors.foreground },
 
 	DiagnosticError = { fg = colors.red },
-	DiagnosticWarn = { fg = colors.yellow },
+	DiagnosticWarn = { fg = utils.mix(colors.red, colors.green, 0.5) },
 	DiagnosticInfo = { fg = colors.blue },
 	DiagnosticHint = { fg = utils.mix(colors.red, colors.blue, 0.5) },
 	DiagnosticInformation = { fg = colors.green },

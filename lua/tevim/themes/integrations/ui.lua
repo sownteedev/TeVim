@@ -29,7 +29,10 @@ return {
 	TeBufEmptyColor = { bg = utils.blend(colors.foreground, colors.background, 0.01) },
 	TeBufCloseButton = { bg = colors.red, fg = colors.background },
 
-	TeBufRun = { bg = utils.blend(colors.foreground, colors.background, 0.08), fg = colors.yellow },
+	TeBufRun = {
+		bg = utils.blend(colors.foreground, colors.background, 0.08),
+		fg = utils.mix(colors.red, colors.green, 0.5),
+	},
 	TeBufSplit = { bg = utils.blend(colors.foreground, colors.background, 0.08), fg = colors.blue },
 	TeBufTrans = {
 		bg = utils.blend(colors.foreground, colors.background, 0.08),
@@ -49,14 +52,17 @@ return {
 	TeSTTInsertMode = { fg = colors.green, bg = utils.blend(colors.green, colors.background, 0.1) },
 	TeSTTTerminalMode = { fg = colors.red, bg = utils.blend(colors.red, colors.background, 0.1) },
 	TeSTTNTerminalMode = { fg = colors.red, bg = utils.blend(colors.red, colors.background, 0.1) },
-	TeSTTConfirmMode = { fg = colors.yellow, bg = utils.blend(colors.yellow, colors.background, 0.1) },
+	TeSTTConfirmMode = {
+		fg = utils.mix(colors.red, colors.green, 0.5),
+		bg = utils.blend(utils.mix(colors.red, colors.green, 0.5), colors.background, 0.1),
+	},
 	TeSTTNormalModeIcon = { fg = colors.background, bg = colors.blue },
 	TeSTTVisualModeIcon = { fg = colors.background, bg = utils.mix(colors.red, colors.blue, 0.5) },
 	TeSTTCommandModeIcon = { fg = colors.background, bg = colors.red },
 	TeSTTInsertModeIcon = { fg = colors.background, bg = colors.green },
 	TeSTTTerminalModeIcon = { fg = colors.background, bg = colors.red },
 	TeSTTNTerminalModeIcon = { fg = colors.background, bg = colors.red },
-	TeSTTConfirmModeIcon = { fg = colors.background, bg = colors.yellow },
+	TeSTTConfirmModeIcon = { fg = colors.background, bg = utils.mix(colors.red, colors.green, 0.5) },
 
 	TeSTTFileIcon = { fg = colors.background, bg = colors.red },
 	TeSTTFileName = { fg = colors.red, bg = utils.blend(colors.red, colors.background, 0.1), bold = true },
@@ -74,8 +80,14 @@ return {
 
 	TeSTTError = { fg = colors.red, bg = utils.blend(colors.green, colors.background, 0.1) },
 	TeSTTErrorIcon = { fg = colors.red, bg = utils.blend(colors.green, colors.background, 0.1) },
-	TeSTTWarning = { fg = colors.yellow, bg = utils.blend(colors.green, colors.background, 0.1) },
-	TeSTTWarningIcon = { fg = colors.yellow, bg = utils.blend(colors.green, colors.background, 0.1) },
+	TeSTTWarning = {
+		fg = utils.mix(colors.red, colors.green, 0.5),
+		bg = utils.blend(colors.green, colors.background, 0.1),
+	},
+	TeSTTWarningIcon = {
+		fg = utils.mix(colors.red, colors.green, 0.5),
+		bg = utils.blend(colors.green, colors.background, 0.1),
+	},
 	TeSTTHints = {
 		fg = utils.mix(colors.red, colors.blue, 0.5),
 		bg = utils.blend(colors.green, colors.background, 0.1),
@@ -94,7 +106,7 @@ return {
 	TeSTTBranchIcon = { fg = colors.background, bg = utils.mix(colors.red, colors.blue, 0.5) },
 	TeSTTDiffAdd = { fg = colors.green, bg = utils.blend(colors.blue, colors.background, 0.1) },
 	TeSTTDiffChange = {
-		fg = utils.mix(colors.red, colors.yellow, 0.5),
+		fg = utils.mix(colors.red, utils.mix(colors.red, colors.green, 0.5), 0.5),
 		bg = utils.blend(colors.blue, colors.background, 0.1),
 	},
 	TeSTTDiffRemove = { fg = colors.red, bg = utils.blend(colors.blue, colors.background, 0.1) },
@@ -109,8 +121,11 @@ return {
 		bg = utils.blend(utils.mix(colors.red, colors.blue, 0.5), colors.background, 0.1),
 	},
 
-	TeSTTLocationIcon = { fg = colors.background, bg = colors.yellow },
-	TeSTTLocation = { fg = colors.yellow, bg = utils.blend(colors.yellow, colors.background, 0.1) },
+	TeSTTLocationIcon = { fg = colors.background, bg = utils.mix(colors.red, colors.green, 0.5) },
+	TeSTTLocation = {
+		fg = utils.mix(colors.red, colors.green, 0.5),
+		bg = utils.blend(utils.mix(colors.red, colors.green, 0.5), colors.background, 0.1),
+	},
 
 	-- TeDash
 	TeDashAscii = { fg = colors.background, bg = colors.blue },

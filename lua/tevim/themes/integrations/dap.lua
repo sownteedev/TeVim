@@ -4,7 +4,7 @@ local utils = require("tevim.core.utils")
 return {
 	-- Dap
 	DapBreakpoint = { fg = colors.red },
-	DapBreakpointCondition = { fg = colors.yellow },
+	DapBreakpointCondition = { fg = utils.mix(colors.red, colors.green, 0.5) },
 	DapLogPoint = { fg = utils.mix(colors.foreground, colors.blue, 0.7) },
 	DapStopped = { fg = colors.red },
 
@@ -13,7 +13,7 @@ return {
 	DAPUIType = { fg = utils.mix(colors.red, colors.blue, 0.5) },
 	DAPUIValue = { fg = utils.mix(colors.foreground, colors.blue, 0.7) },
 	DAPUIVariable = { fg = colors.foreground },
-	DapUIModifiedValue = { fg = utils.mix(colors.red, colors.yellow, 0.5) },
+	DapUIModifiedValue = { fg = utils.mix(colors.red, utils.mix(colors.red, colors.green, 0.5), 0.5) },
 	DapUIDecoration = { fg = utils.mix(colors.foreground, colors.blue, 0.7) },
 	DapUIThread = { fg = colors.green },
 	DapUIStoppedThread = { fg = utils.mix(colors.foreground, colors.blue, 0.7) },

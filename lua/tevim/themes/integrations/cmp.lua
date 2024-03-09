@@ -42,7 +42,7 @@ return {
 	CmpItemKindOperator = { fg = colors.base05 },
 	CmpItemKindTypeParameter = { fg = colors.base08 },
 	CmpItemKindCopilot = { fg = colors.green },
-	CmpItemKindCodeium = { fg = colors.yellow },
+	CmpItemKindCodeium = { fg = utils.mix(colors.red, colors.green, 0.5) },
 
 	-- Copilot.vim
 	CopilotSuggestion = { fg = utils.blend(colors.foreground, colors.background, 0.2), italic = true },

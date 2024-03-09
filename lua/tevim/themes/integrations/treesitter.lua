@@ -91,9 +91,9 @@ return {
 
 	-- Rainbow Brackets
 	RainbowDelimiterRed = { fg = colors.red },
-	RainbowDelimiterYellow = { fg = colors.yellow },
+	RainbowDelimiterYellow = { fg = utils.mix(colors.red, colors.green, 0.5) },
 	RainbowDelimiterBlue = { fg = colors.blue },
-	RainbowDelimiterOrange = { fg = utils.mix(colors.red, colors.yellow, 0.5) },
+	RainbowDelimiterOrange = { fg = utils.mix(colors.red, utils.mix(colors.red, colors.green, 0.5), 0.5) },
 	RainbowDelimiterGreen = { fg = colors.green },
 	RainbowDelimiterViolet = { fg = utils.mix(colors.red, colors.blue, 0.5) },
 	RainbowDelimiterCyan = { fg = utils.mix(colors.foreground, colors.blue, 0.7) },
