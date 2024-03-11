@@ -1,4 +1,4 @@
-local configs = {
+return {
 	close_if_last_window = true,
 	open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
 	default_component_configs = {
@@ -48,5 +48,3 @@ local configs = {
 		},
 	},
 }
-
-return configs

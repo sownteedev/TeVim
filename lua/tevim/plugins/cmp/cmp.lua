@@ -15,7 +15,7 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
 end
 
-local configs = {
+return {
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body)
@@ -114,5 +114,3 @@ local configs = {
 		native_menu = false,
 	},
 }
-
-return configs

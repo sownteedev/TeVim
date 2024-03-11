@@ -1,4 +1,4 @@
-local configs = {
+return {
 	override = {
 		c = { icon = "", name = "C" },
 		css = { icon = "", name = "CSS" },
@@ -76,5 +76,3 @@ local configs = {
 		},
 	},
 }
-
-return configs

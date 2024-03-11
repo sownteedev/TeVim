@@ -106,7 +106,7 @@ return {
 	TeSTTBranchIcon = { fg = colors.background, bg = utils.mix(colors.red, colors.blue, 0.5) },
 	TeSTTDiffAdd = { fg = colors.green, bg = utils.blend(colors.blue, colors.background, 0.1) },
 	TeSTTDiffChange = {
-		fg = utils.mix(colors.red, utils.mix(colors.red, colors.green, 0.5), 0.5),
+		fg = colors.blue,
 		bg = utils.blend(colors.blue, colors.background, 0.1),
 	},
 	TeSTTDiffRemove = { fg = colors.red, bg = utils.blend(colors.blue, colors.background, 0.1) },

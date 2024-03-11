@@ -1,6 +1,6 @@
 local actions = require("telescope.actions")
 
-local configs = {
+return {
 	defaults = {
 		layout_config = {
 			horizontal = {
@@ -40,5 +40,3 @@ local configs = {
 		},
 	},
 }
-
-return configs

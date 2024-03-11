@@ -1,4 +1,4 @@
-local configs = {
+return {
 	setup = {
 		key_labels = {
 			["<space>"] = "SPACE",
@@ -64,16 +64,16 @@ local configs = {
 		g = {
 			name = "󰊢  GIT",
 			l = { "<cmd>lua require('tevim.core.utils').LazyGit()<cr>", "Lazygit" },
-			j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-			k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-			p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-			r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-			R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-			s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-			u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
+			j = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" },
+			k = { "<cmd>Gitsigns prev_hunk<cr>", "Prev Hunk" },
+			r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
+			R = { "<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer" },
+			s = { "<cmd>Gitsigns stage_hunk<cr>", "Stage Hunk" },
+			S = { "<cmd>Gitsigns undo_stage_hunk<cr>", "Undo Stage Hunk" },
+			b = { "<cmd>Gitsigns blame_line<cr>", "Blame Line" },
 			o = { "<cmd>Telescope git_status<cr>", "Open Changed File" },
-			b = { "<cmd>Telescope git_branches<cr>", "Checkout Branch" },
-			c = { "<cmd>Telescope git_commits<cr>", "Checkout Commit" },
+			c = { "<cmd>Telescope git_branches<cr>", "Checkout Branch" },
+			m = { "<cmd>Telescope git_commits<cr>", "Checkout Commit" },
 			d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
 		},
 		l = {
@@ -114,5 +114,3 @@ local configs = {
 		nowait = true,
 	},
 }
-
-return configs
