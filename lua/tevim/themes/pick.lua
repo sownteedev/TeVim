@@ -17,7 +17,6 @@ end
 for _, file in ipairs(vim.fn.readdir(custom_scheme)) do
 	table.insert(themes, vim.fn.fnamemodify(file, ":r"))
 end
-table.sort(themes)
 
 M.setTheme = function(theme)
 	vim.g.TeVimTheme = theme
