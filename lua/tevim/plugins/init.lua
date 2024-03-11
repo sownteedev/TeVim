@@ -79,7 +79,7 @@ local plugins = {
 			},
 		},
 		opts = function()
-			return require("tevim.plugins.others.others").blankline
+			return require("tevim.plugins.others.blankline")
 		end,
 		config = function(_, opts)
 			require("indent_blankline").setup(opts)
@@ -174,7 +174,7 @@ local plugins = {
 			})
 		end,
 		opts = function()
-			return require("tevim.plugins.others.others").gitsigns
+			return require("tevim.plugins.others.gitsign")
 		end,
 		config = function(_, opts)
 			require("gitsigns").setup(opts)
@@ -195,7 +195,7 @@ local plugins = {
 	{
 		"akinsho/toggleterm.nvim",
 		lazy = true,
-		cmd = "ToggleTerm",
+		cmd = { "ToggleTerm", "TermExec" },
 		keys = { { [[<C-`>]], "<cmd>ToggleTerm size=10 direction=horizontal<cr>", { desc = "Toggle Terminal" } } },
 		version = "*",
 		opts = {
@@ -272,7 +272,7 @@ local plugins = {
 				dependencies = "rafamadriz/friendly-snippets",
 				opts = { history = true, updateevents = "TextChanged,TextChangedI" },
 				config = function(_, opts)
-					require("tevim.plugins.cmp.luasnip").luasnip(opts)
+					require("tevim.plugins.cmp.luasnips").luasnip(opts)
 				end,
 			},
 			{

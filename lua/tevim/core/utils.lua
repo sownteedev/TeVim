@@ -39,22 +39,6 @@ function M.toggle_option(option)
 	vim.notify(option .. " set to " .. tostring(value))
 end
 
-function M.toggle_inlayHint()
-	if not M.is_available("nvim-lspconfig") then
-		return vim.notify("nvim-lspconfig isn't installed!")
-	end
-	local inlayHint = require("tevim.plugins.lsp.lspconfig").inlayHint
-	if inlayHint then
-		require("tevim.plugins.lsp.lspconfig").inlayHint = false
-		vim.cmd("LspRestart")
-		vim.notify("Inlay hints disabled")
-	else
-		require("tevim.plugins.lsp.lspconfig").inlayHint = true
-		vim.cmd("LspRestart")
-		vim.notify("Inlay hints enabled")
-	end
-end
-
 function M.build_run()
 	local filetype = vim.bo.filetype
 	if filetype == "c" then

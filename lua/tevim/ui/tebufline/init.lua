@@ -119,10 +119,28 @@ M.getTabline = function()
 	local treespace = "%#TeBufTree#" .. string.rep(" ", treeWidth())
 	local buffline = ""
 	local buffstart = "%#TeBufEmpty#"
-	local run = "%@Run@" .. "  "
+	local run = "%@Run@" .. ""
+	local listrun = {
+		c = "c",
+		cpp = "cpp",
+		lua = "lua",
+		python = "python",
+		rust = "rust",
+		javascript = "javascript",
+		typescript = "typescript",
+		go = "go",
+		php = "php",
+		java = "java",
+		cs = "cs",
+		dart = "dart",
+		sh = "sh",
+	}
 	if vim.bo.filetype == "html" or vim.bo.filetype == "markdown" then
 		run = "%@Run@" .. " 󰀂 "
+	elseif listrun[vim.bo.filetype] then
+		run = "%@Run@" .. "  "
 	end
+
 	local split = "%@Split@" .. "  "
 	local trans = "%@ToggleTrans@" .. " 󱡓 "
 	local theme = "%@ToggleTheme@" .. "   "

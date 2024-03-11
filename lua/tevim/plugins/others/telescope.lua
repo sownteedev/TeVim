@@ -1,5 +1,3 @@
-local actions = require("telescope.actions")
-
 return {
 	defaults = {
 		layout_config = {
@@ -31,11 +29,12 @@ return {
 		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 		mappings = {
 			i = {
-				["<C-j>"] = actions.move_selection_next,
-				["<C-k>"] = actions.move_selection_previous,
-				["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-				["<esc>"] = actions.close,
-				["<CR>"] = actions.select_default + actions.center,
+				["<C-j>"] = require("telescope.actions").move_selection_next,
+				["<C-k>"] = require("telescope.actions").move_selection_previous,
+				["<C-q>"] = require("telescope.actions").smart_send_to_qflist
+					+ require("telescope.actions").open_qflist,
+				["<esc>"] = require("telescope.actions").close,
+				["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center,
 			},
 		},
 	},
