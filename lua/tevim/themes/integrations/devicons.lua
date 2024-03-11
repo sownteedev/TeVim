@@ -31,7 +31,7 @@ return {
 	DevIconxz = { fg = utils.mix(colors.red, utils.mix(colors.red, colors.green, 0.5), 0.5) },
 	DevIconzip = { fg = utils.mix(colors.red, utils.mix(colors.red, colors.green, 0.5), 0.5) },
 	DevIconZig = { fg = utils.mix(colors.red, utils.mix(colors.red, colors.green, 0.5), 0.5) },
-	DevIconMarkdown = { fg = colors.blue },
+	DevIconMd = { fg = colors.blue },
 	DevIconTsx = { fg = colors.blue },
 	DevIconJsx = { fg = colors.blue },
 	DevIconSvelte = { fg = colors.red },

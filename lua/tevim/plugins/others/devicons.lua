@@ -4,7 +4,7 @@ return {
 		css = { icon = "", name = "CSS" },
 		deb = { icon = "", name = "Deb" },
 		Dockerfile = { icon = "", name = "Dockerfile" },
-		md = { icon = "", name = "Markdown" },
+		md = { icon = "", name = "Md" },
 		html = { icon = "", name = "HTML" },
 		jpeg = { icon = "", name = "JPEG" },
 		jpg = { icon = "", name = "JPG" },
