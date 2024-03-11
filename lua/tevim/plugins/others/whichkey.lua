@@ -35,7 +35,7 @@ return {
 		},
 		o = {
 			name = "  OPTIONS",
-			a = { "<cmd>lua require('tevim.core.utils').Ranger()<cr>", "Ranger" },
+			a = { "<cmd>Ranger<cr>", "Ranger" },
 			w = { "<cmd>lua require('tevim.core.utils').toggle_option('wrap')<cr>", "Wrap" },
 			s = { "<cmd>lua require('tevim.core.utils').toggle_option('spell')<cr>", "Spell" },
 			n = { "<cmd>lua require('tevim.core.utils').toggle_option('number')<cr>", "Number" },
@@ -63,7 +63,7 @@ return {
 		},
 		g = {
 			name = "󰊢  GIT",
-			l = { "<cmd>lua require('tevim.core.utils').LazyGit()<cr>", "Lazygit" },
+			l = { "<cmd>LazyGit<cr>", "Lazygit" },
 			j = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" },
 			k = { "<cmd>Gitsigns prev_hunk<cr>", "Prev Hunk" },
 			r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
