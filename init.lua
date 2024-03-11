@@ -8,6 +8,7 @@ require("tevim.core")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
+	vim.cmd("TeVimCreateCustom")
 	require("tevim.themes").load()
 	vim.cmd("redraw")
 	vim.api.nvim_echo({ { "Hi there, welcome to TEVIM 󱠡 ", "Bold" } }, true, {})
