@@ -195,6 +195,9 @@ autocmd("BufWritePost", {
 })
 
 -- Create custom command
+vim.api.nvim_create_user_command("TeVimUpdate", function()
+	require("tevim.core.utils").TeVimUpdate()
+end, {})
 vim.api.nvim_create_user_command("TeVimCreateCustom", function()
 	require("tevim.core.utils").CreateCustom()
 end, {})

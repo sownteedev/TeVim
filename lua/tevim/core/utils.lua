@@ -200,6 +200,12 @@ M.CreateCustom = function()
 	end
 end
 
+M.TeVimUpdate = function()
+	vim.cmd("silent !git -C " .. vim.fn.stdpath("config") .. " pull")
+	vim.cmd("Lazy sync")
+	vim.notify("TeVim updated")
+end
+
 ------------------------------------ FOR THEMES ------------------------------------------
 local function hexToRgb(c)
 	c = string.lower(c)
