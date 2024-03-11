@@ -83,6 +83,10 @@ function M.build_run()
 		vim.cmd("TermExec cmd='bash " .. vim.fn.expand("%") .. "'")
 	elseif filetype == "dart" then
 		vim.cmd("TermExec cmd='dart " .. vim.fn.expand("%") .. "'")
+	elseif not M.is_available("markdown-preview.nvim") and filetype == "markdown" then
+		vim.notify("You can install plugins support for markdown like markdown-preview.nvim ^^")
+	elseif filetype == "html" and vim.fn.executable("live-server") ~= 1 then
+		vim.notify("You can install live-server by npm ^^")
 	elseif filetype == "html" then
 		vim.cmd("TermExec cmd='live-server " .. vim.fn.expand("%:p:h") .. "'")
 	elseif filetype == "markdown" then

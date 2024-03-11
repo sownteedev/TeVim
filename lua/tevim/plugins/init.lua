@@ -146,12 +146,6 @@ local plugins = {
 		end,
 	},
 	{
-		"iamcco/markdown-preview.nvim",
-		lazy = true,
-		ft = "markdown",
-		build = ":call mkdp#util#install()",
-	},
-	{
 		"lewis6991/gitsigns.nvim",
 		lazy = true,
 		ft = { "gitcommit", "diff" },
@@ -196,7 +190,14 @@ local plugins = {
 		"akinsho/toggleterm.nvim",
 		lazy = true,
 		cmd = { "ToggleTerm", "TermExec" },
-		keys = { { [[<C-`>]], "<cmd>ToggleTerm size=10 direction=horizontal<cr>", { desc = "Toggle Terminal" } } },
+		keys = {
+			{
+				mode = { "n", "t" },
+				[[<C-`>]],
+				"<cmd>ToggleTerm size=10 direction=horizontal<cr>",
+				{ desc = "Toggle Terminal" },
+			},
+		},
 		version = "*",
 		opts = {
 			shading_factor = 0.2,
