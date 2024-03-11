@@ -101,6 +101,7 @@ M.compile = function()
 end
 
 M.load = function()
+	require("plenary.reload").reload_module("tevim.themes")
 	M.compile()
 	dofile(vim.g.themeCache .. "allThemes")
 end
