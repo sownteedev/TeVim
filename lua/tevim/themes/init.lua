@@ -4,10 +4,8 @@ local hl_files_custom = vim.fn.stdpath("config") .. "/lua/custom/themes/integrat
 local M = {}
 
 M.getCurrentTheme = function()
-	local default = "tevim.themes.schemes." .. vim.g.TeVimTheme
-	local custom = "custom.themes.schemes." .. vim.g.TeVimTheme
-	local check1, default_theme = pcall(require, default)
-	local check2, custom_theme = pcall(require, custom)
+	local check1, default_theme = pcall(require, "tevim.themes.schemes." .. vim.g.TeVimTheme)
+	local check2, custom_theme = pcall(require, "custom.themes.schemes." .. vim.g.TeVimTheme)
 	if check1 then
 		return default_theme
 	elseif check2 then
@@ -21,7 +19,12 @@ M.loadTb = function(g)
 end
 
 M.loadCustomTb = function(g)
-	g = require("custom.themes.integrations")
+	local check, _ = pcall(require, "custom.themes.integrations")
+	if check then
+		g = require("custom.themes.integrations")
+	else
+		g = {}
+	end
 	return g
 end
 

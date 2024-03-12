@@ -335,8 +335,8 @@ local plugins = {
 	},
 }
 
-local custom_path = vim.fn.stdpath("config") .. "/lua/custom"
-if vim.loop.fs_stat(custom_path) then
+local check, _ = pcall(require, "custom")
+if check then
 	require("custom")
 	local custom_plugins = require("custom.plugins")
 	if #custom_plugins > 0 then
