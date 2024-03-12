@@ -174,10 +174,12 @@ M.CreateCustom = function()
 			'local M = {}\n\nM.keymaps = require("custom.keymaps")\nM.options = require("custom.options")\n\nreturn M'
 		)
 		io.open(path .. "/plugins.lua", "w"):write(
-			'local overrides = require("custom.configs.overrides")\n\nreturn {\n\n\t-- add plugins or override my plugins in here\n\n}'
+			'local overrides = require("custom.configs.overrides")\n\nreturn {\n\t-- add plugins or override my plugins in here\n}'
 		)
 		vim.fn.mkdir(path .. "/configs", "p")
-		io.open(path .. "/configs/overrides.lua", "w"):write("local M = {}\n\n-- add overrides in here(eg: mason.nvim)\nM.mason = {\n\tensure_installed = {}\n}\n\nreturn M")
+		io.open(path .. "/configs/overrides.lua", "w"):write(
+			"local M = {}\n\n-- add overrides in here(eg: mason.nvim)\nM.mason = {\n\tensure_installed = {}\n}\n\nreturn M"
+		)
 		io.open(path .. "/options.lua", "w"):write("-- add options or override my options in here")
 		io.open(path .. "/keymaps.lua", "w"):write("-- add your keymaps in here")
 		vim.fn.mkdir(path .. "/themes/schemes", "p")
@@ -190,7 +192,6 @@ end
 
 M.TeVimUpdate = function()
 	vim.cmd("silent !git -C " .. vim.fn.stdpath("config") .. " pull")
-	vim.cmd("Lazy sync")
 	vim.notify("TeVim updated")
 end
 
