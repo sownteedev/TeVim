@@ -74,6 +74,8 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 > **TeVimToggleTrans** : Toggle Transparency
 >
 > **TeVimCheckMason** : Install or Remove package you add or remove on custom/configs/overrides.lua
+>
+> **TeVimUpdate** : Update TeVim(If you have any problems, please create issues)
 
 <br>
 

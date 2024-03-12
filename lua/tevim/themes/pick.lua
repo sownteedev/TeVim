@@ -2,7 +2,7 @@ local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
-local sorters = require("telescope.sorters")
+local conf = require("telescope.config").values
 local replaceword = require("tevim.core.utils").replaceword
 local scheme = vim.fn.stdpath("config") .. "/lua/tevim/themes/schemes"
 local custom_scheme = vim.fn.stdpath("config") .. "/lua/custom/themes/schemes"
@@ -32,39 +32,50 @@ M.setTheme = function(theme)
 	)
 end
 
-local picker_opts = {
-	prompt_title = "TEVIM THEMES",
-	finder = finders.new_table({ results = themes }),
-	sorter = sorters.get_generic_fuzzy_sorter({}),
-	attach_mappings = function(bufnr, map)
-		map("i", "<CR>", function()
-			M.setTheme(action_state.get_selected_entry()[1])
-			actions.close(bufnr)
-		end)
-
-		map("i", "<Down>", function()
-			actions.move_selection_next(bufnr)
-			M.setTheme(action_state.get_selected_entry()[1])
-		end)
-		map("i", "<C-j>", function()
-			actions.move_selection_next(bufnr)
-			M.setTheme(action_state.get_selected_entry()[1])
-		end)
-
-		map("i", "<Up>", function()
-			actions.move_selection_previous(bufnr)
-			M.setTheme(action_state.get_selected_entry()[1])
-		end)
-		map("i", "<C-k>", function()
-			actions.move_selection_previous(bufnr)
-			M.setTheme(action_state.get_selected_entry()[1])
-		end)
-		return true
-	end,
-}
 M.setup = function()
-	local picker = pickers.new({ layout_config = { height = 0.5, width = 0.25 } }, picker_opts)
-	picker:find()
+	pickers
+		.new({
+			prompt_title = "  TEVIM COLORSCHEMES",
+			layout_config = { height = 0.4, width = 0.2 },
+			finder = finders.new_table({ results = themes }),
+			sorter = conf.generic_sorter(),
+			attach_mappings = function(bufnr, map)
+				vim.schedule(function()
+					vim.api.nvim_create_autocmd("TextChangedI", {
+						buffer = bufnr,
+						callback = function()
+							if action_state.get_selected_entry() then
+								M.setTheme(action_state.get_selected_entry()[1])
+							end
+						end,
+					})
+				end)
+				map("i", "<CR>", function()
+					M.setTheme(action_state.get_selected_entry()[1])
+					actions.close(bufnr)
+				end)
+
+				map("i", "<Down>", function()
+					actions.move_selection_next(bufnr)
+					M.setTheme(action_state.get_selected_entry()[1])
+				end)
+				map("i", "<C-j>", function()
+					actions.move_selection_next(bufnr)
+					M.setTheme(action_state.get_selected_entry()[1])
+				end)
+
+				map("i", "<Up>", function()
+					actions.move_selection_previous(bufnr)
+					M.setTheme(action_state.get_selected_entry()[1])
+				end)
+				map("i", "<C-k>", function()
+					actions.move_selection_previous(bufnr)
+					M.setTheme(action_state.get_selected_entry()[1])
+				end)
+				return true
+			end,
+		})
+		:find()
 end
 
 M.toggleTransparency = function()
