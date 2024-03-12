@@ -142,8 +142,8 @@ M.checkMason = function()
 		table.insert(mason_installed, vim.fn.fnamemodify(package, ":t"))
 	end
 	local ensure_installed = require("custom.configs.overrides").mason.ensure_installed
-	local ensure_installed2 = { "lua-language-server", "stylua" }
-	for _, package in ipairs(ensure_installed2) do
+	local default_mason = { "lua-language-server", "stylua" }
+	for _, package in ipairs(default_mason) do
 		table.insert(ensure_installed, package)
 	end
 	local missing = {}
@@ -177,7 +177,7 @@ M.CreateCustom = function()
 			'local overrides = require("custom.configs.overrides")\n\nreturn {\n\n\t-- add plugins or override my plugins in here\n\n}'
 		)
 		vim.fn.mkdir(path .. "/configs", "p")
-		io.open(path .. "/configs/overrides.lua", "w"):write("local M = {}\n\n-- add overrides in here\n\nreturn M")
+		io.open(path .. "/configs/overrides.lua", "w"):write("local M = {}\n\n-- add overrides in here(eg: mason.nvim)\nM.mason = {\n\tensure_installed = {}\n}\n\nreturn M")
 		io.open(path .. "/options.lua", "w"):write("-- add options or override my options in here")
 		io.open(path .. "/keymaps.lua", "w"):write("-- add your keymaps in here")
 		vim.fn.mkdir(path .. "/themes/schemes", "p")

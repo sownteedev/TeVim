@@ -22,6 +22,7 @@ table.sort(themes)
 M.setTheme = function(theme)
 	vim.g.TeVimTheme = theme
 	require("tevim.themes").setTermColors(theme)
+	require("plenary.reload").reload_module("tevim.themes")
 	require("tevim.themes").load()
 	replaceword(
 		"vim.g.TeVimTheme",
