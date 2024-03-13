@@ -196,7 +196,7 @@ M.getTabline = function()
 end
 
 M.setup = function()
-	if #vim.fn.getbufinfo({ buflisted = 1 }) >= 1 then
+	if #vim.fn.getbufinfo({ buflisted = 1 }) >= 1 or #vim.api.nvim_list_tabpages() >= 2 then
 		vim.o.showtabline = 2
 		vim.o.tabline = '%!v:lua.require("tevim.ui.tebufline").getTabline()'
 	end

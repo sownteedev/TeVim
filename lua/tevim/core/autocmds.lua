@@ -133,30 +133,23 @@ autocmd("FileType", {
 	desc = "Don't list quickfix buffer",
 })
 
-if vim.g.loadTeDash then
-	autocmd({ "BufNewFile", "BufRead" }, {
-		callback = function()
-			require("tevim.ui.tebufline").setup()
-		end,
-	})
-end
-
+autocmd({ "BufNew", "BufNewFile", "BufRead", "TabEnter", "TermOpen" }, {
+	pattern = "*",
+	callback = function()
+		require("tevim.ui.tebufline").setup()
+	end,
+})
 autocmd("UIEnter", {
 	callback = function()
 		dofile(vim.g.themeCache .. "allThemes")
-		require("tevim.ui.testtline").setup()
-		if vim.g.loadTeDash then
-			local buf_lines = vim.api.nvim_buf_get_lines(0, 0, 1, false)
-			local no_buf_content = vim.api.nvim_buf_line_count(0) == 1 and buf_lines[1] == ""
-			local bufname = vim.api.nvim_buf_get_name(0)
-			if bufname == "" and no_buf_content then
-				require("tevim.ui.tedash").setup()
-			end
-		else
-			require("tevim.ui.tebufline").setup()
+		vim.opt.statusline = "%!v:lua.require('tevim.ui.testtline').setup()"
+		local buf_lines = vim.api.nvim_buf_get_lines(0, 0, 1, false)
+		local no_buf_content = vim.api.nvim_buf_line_count(0) == 1 and buf_lines[1] == ""
+		local bufname = vim.api.nvim_buf_get_name(0)
+		if bufname == "" and no_buf_content then
+			require("tevim.ui.tedash").setup()
 		end
 	end,
-	desc = "Load TeDash, TeSttLine and Themes",
 })
 
 autocmd("VimResized", {

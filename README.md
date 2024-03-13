@@ -15,8 +15,8 @@
 
 ```txt
 Performance for time startup on low laptop
-On Power                              : 20ms - 24ms
-On Battery                            : 23ms - 26ms
+On Power                              : 15ms - 20ms
+On Battery                            : 17ms - 21ms
 ```
 
 </div>
