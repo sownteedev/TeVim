@@ -33,14 +33,6 @@ table.insert(headerAscii, 2, emmptyLine)
 headerAscii[#headerAscii + 1] = emmptyLine
 headerAscii[#headerAscii + 1] = emmptyLine
 
-api.nvim_create_autocmd("BufLeave", {
-	callback = function()
-		if vim.bo.ft == "tedash" then
-			vim.g.tedash_displayed = false
-		end
-	end,
-})
-
 local tedashWidth = #headerAscii[1] + 3
 
 local max_height = #headerAscii + 4 + (2 * #buttonss)
@@ -184,12 +176,33 @@ M.setup = function()
 	end
 end
 
-api.nvim_create_user_command("TeDash", function()
-	if vim.g.tedash_displayed then
-		require("tevim.ui.tebufline.modules").close_buffer()
-	else
-		M.setup()
-	end
-end, {})
+if loadTeDash then
+	api.nvim_create_user_command("TeDash", function()
+		if vim.g.tedash_displayed then
+			require("tevim.ui.tebufline.modules").close_buffer()
+		else
+			M.setup()
+		end
+	end, {})
+
+	api.nvim_create_autocmd("VimResized", {
+		callback = function()
+			if vim.bo.filetype == "tedash" or vim.bo.filetype == "neo-tree" then
+				vim.opt_local.modifiable = true
+				vim.api.nvim_buf_set_lines(0, 0, -1, false, { "" })
+				require("tevim.ui.tedash").setup()
+			end
+		end,
+		desc = "Resize Dashboard",
+	})
+
+	api.nvim_create_autocmd("BufLeave", {
+		callback = function()
+			if vim.bo.ft == "tedash" then
+				vim.g.tedash_displayed = false
+			end
+		end,
+	})
+end
 
 return M

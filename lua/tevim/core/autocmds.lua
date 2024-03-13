@@ -152,19 +152,8 @@ autocmd("UIEnter", {
 	end,
 })
 
-autocmd("VimResized", {
-	callback = function()
-		if vim.bo.filetype == "tedash" or vim.bo.filetype == "neo-tree" then
-			vim.opt_local.modifiable = true
-			vim.api.nvim_buf_set_lines(0, 0, -1, false, { "" })
-			require("tevim.ui.tedash").setup()
-		end
-	end,
-	desc = "Resize Dashboard",
-})
-
 autocmd("BufWritePost", {
-	pattern = vim.fn.stdpath("config") .. "/lua/*",
+	pattern = vim.fn.stdpath("config") .. "/lua/*.lua",
 	group = augroup("TeVimReload", { clear = true }),
 	callback = function(opts)
 		local fp = vim.fn.fnamemodify(vim.fs.normalize(vim.api.nvim_buf_get_name(opts.buf)), ":r")
