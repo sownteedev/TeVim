@@ -9,7 +9,7 @@
 
 </div>
 
-<img src="https://github.com/sownteedev/TeVim/assets/90148193/48251bcf-864a-41e5-8c37-1418effcc662">
+<img src="https://github.com/sownteedev/TeVim/assets/90148193/dda6c61f-10a1-4317-8df2-561e3f961bd2">
 
 <div align="center">
 
@@ -138,7 +138,7 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 
 | Keys        | Function          |
 | ------------- |-------------|
-| <kbd>LDR</kbd> <kbd>f</kbd> <kbd>f</kbd>  | Find Files |
+| <kbd>LDR</kbd> <kbd>f</kbd> <kbd>f</kbd> | Find Files |
 | <kbd>LDR</kbd> <kbd>f</kbd> <kbd>r</kbd> | Find Recently Visited Files |
 | <kbd>LDR</kbd> <kbd>f</kbd> <kbd>w</kbd> | Find File By String |
 | <kbd>LDR</kbd> <kbd>f</kbd> <kbd>t</kbd> | TODO |
@@ -148,7 +148,6 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 
 | Keys        | Function          |
 | ------------- |-------------|
-| <kbd>LDR</kbd> <kbd>l</kbd> <kbd>i</kbd>  | Toggle Inlay Hints |
 | <kbd>LDR</kbd> <kbd>l</kbd> <kbd>a</kbd>  | Code Action |
 | <kbd>LDR</kbd> <kbd>l</kbd> <kbd>o</kbd>  | Outline |
 | <kbd>LDR</kbd> <kbd>l</kbd> <kbd>i</kbd>  | Lsp Infor |
@@ -158,7 +157,6 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 
 | Keys        | Function          |
 | ------------- |-------------|
-| <kbd>LDR</kbd> <kbd>s</kbd> <kbd>c</kbd>  | Toggle Context |
 | <kbd>LDR</kbd> <kbd>s</kbd> <kbd>i</kbd> | Treesitter Info |
 | <kbd>LDR</kbd> <kbd>s</kbd> <kbd>u</kbd> | Treesitter Update |
 
