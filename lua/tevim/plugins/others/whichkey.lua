@@ -23,7 +23,6 @@ return {
 	},
 
 	mappings = {
-		["q"] = { "<cmd>qa!<CR>", "  Quit" },
 		p = {
 			name = "󰏖  LAZY",
 			C = { "<cmd>Lazy clean<cr>", "Clean" },
@@ -101,6 +100,12 @@ return {
 			f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
 			h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
 			v = { "<cmd>ToggleTerm size=50 direction=vertical<cr>", "Vertical" },
+		},
+		["<leader>"] = {
+			name = "󰢚  TeVim",
+			u = { "<cmd>TeVimUpdate<cr>", "Update TeVim" },
+			m = { "<cmd>TeVimCheckMason<cr>", "Check Mason" },
+			t = { "<cmd>TeVimToggleTrans<cr>", "Toggle Transparency" },
 		},
 	},
 
