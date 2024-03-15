@@ -21,12 +21,12 @@ local normal = {
 
 M.WinSeparator = {
 	fg = utils.blend(colors.foreground, colors.background, 0.1),
-	bg = colors.none,
+	bg = "NONE",
 }
 
 for _, normal_hl in ipairs(normal) do
 	M[normal_hl] = {
-		bg = colors.none,
+		bg = "NONE",
 	}
 end
 
@@ -48,7 +48,7 @@ local ui = {
 
 for _, ui_hl in ipairs(ui) do
 	M[ui_hl] = {
-		bg = colors.none,
+		bg = "NONE",
 	}
 end
 
@@ -65,22 +65,22 @@ local telescope = {
 
 M.TelescopePromptBorder = {
 	fg = utils.blend(colors.foreground, colors.background, 0.1),
-	bg = colors.none,
+	bg = "NONE",
 }
 
 M.TelescopePreviewBorder = {
 	fg = utils.blend(colors.foreground, colors.background, 0.1),
-	bg = colors.none,
+	bg = "NONE",
 }
 
 M.TelescopeResultsBorder = {
 	fg = utils.blend(colors.foreground, colors.background, 0.1),
-	bg = colors.none,
+	bg = "NONE",
 }
 
 for _, telescope_hl in ipairs(telescope) do
 	M[telescope_hl] = {
-		bg = colors.none,
+		bg = "NONE",
 	}
 end
 
@@ -92,12 +92,12 @@ local tree = {
 
 M.NeoTreeWinSeparator = {
 	fg = utils.blend(colors.foreground, colors.background, 0.1),
-	bg = colors.none,
+	bg = "NONE",
 }
 
 for _, tree_hl in ipairs(tree) do
 	M[tree_hl] = {
-		bg = colors.none,
+		bg = "NONE",
 	}
 end
 
@@ -111,7 +111,7 @@ local whichkey = {
 
 for _, whichkey_hl in ipairs(whichkey) do
 	M[whichkey_hl] = {
-		bg = colors.none,
+		bg = "NONE",
 	}
 end
 
@@ -125,17 +125,17 @@ local cmp = {
 
 M.CmpBorder = {
 	fg = utils.blend(colors.foreground, colors.background, 0.1),
-	bg = colors.none,
+	bg = "NONE",
 }
 
 M.CmpItemAbbrMatch = {
-	bg = colors.none,
+	bg = "NONE",
 	bold = true,
 }
 
 for _, cmp_hl in ipairs(cmp) do
 	M[cmp_hl] = {
-		bg = colors.none,
+		bg = "NONE",
 	}
 end
 
@@ -172,13 +172,13 @@ local noice = {
 
 for _, noice_hl in ipairs(noice) do
 	M[noice_hl] = {
-		bg = colors.none,
+		bg = "NONE",
 	}
 end
 
 -- Treesitter Context --
 M.TreesitterContext = {
-	bg = colors.none,
+	bg = "NONE",
 }
 
 return M

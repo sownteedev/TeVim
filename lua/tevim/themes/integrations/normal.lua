@@ -39,7 +39,7 @@ return {
 	ErrorMsg = { fg = colors.base08 },
 	MoreMsg = { fg = colors.base0B },
 
-	QuickFixLine = { bg = colors.base01, sp = colors.none },
+	QuickFixLine = { bg = colors.base01, sp = "NONE" },
 	MatchWord = { bg = colors.lighter, fg = colors.foreground },
 	MatchParen = { link = "MatchWord" },
 
@@ -47,13 +47,13 @@ return {
 	Macro = { fg = colors.base08 },
 	Debug = { fg = colors.base08 },
 
-	Conceal = { bg = colors.none },
+	Conceal = { bg = "NONE" },
 	Directory = { fg = colors.base0D },
 	SpecialKey = { fg = colors.base03 },
-	Title = { fg = colors.base0D, sp = colors.none },
+	Title = { fg = colors.base0D, sp = "NONE" },
 	Search = { fg = colors.background, bg = colors.base0A },
 	IncSearch = { fg = colors.background, bg = colors.base0A },
-	Substitute = { fg = colors.base01, bg = colors.base0A, sp = colors.none },
+	Substitute = { fg = colors.base01, bg = colors.base0A, sp = "NONE" },
 	Question = { fg = colors.base0D },
 	NonText = { fg = colors.base03 },
 

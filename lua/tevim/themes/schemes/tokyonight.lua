@@ -6,7 +6,6 @@ return {
 	red = "#f7768e",
 	green = "#9ece6a",
 	blue = "#7aa2f7",
-	none = "NONE",
 
 	base00 = "#24283b",
 	base01 = "#1f2335",
