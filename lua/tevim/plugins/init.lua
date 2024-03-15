@@ -1,15 +1,12 @@
 local plugins = {
 	{
 		"nvim-lua/plenary.nvim",
-		lazy = true,
 	},
 	{
 		"MunifTanjim/nui.nvim",
-		lazy = true,
 	},
 	{
 		"nvim-tree/nvim-web-devicons",
-		lazy = true,
 		event = "BufRead",
 		opts = function()
 			require("nvim-web-devicons").set_default_icon("󰈚")
@@ -18,7 +15,6 @@ local plugins = {
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		lazy = true,
 		cmd = "Neotree",
 		keys = { { "<C-e>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" } },
 		branch = "v3.x",
@@ -41,7 +37,6 @@ local plugins = {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPost", "BufNewFile" },
-		lazy = true,
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo", "TSUninstall", "TSUpdate" },
 		run = ":TSUpdate",
 		dependencies = {
@@ -63,7 +58,6 @@ local plugins = {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		version = "2.20.7",
-		lazy = true,
 		event = { "BufReadPost", "BufNewFile" },
 		dependencies = {
 			{
@@ -78,7 +72,6 @@ local plugins = {
 	},
 	{
 		"folke/which-key.nvim",
-		lazy = true,
 		keys = { "<leader>", " ", "'", "`" },
 		cmd = "WhichKey",
 		opts = function()
@@ -91,7 +84,6 @@ local plugins = {
 	},
 	{
 		"numToStr/Comment.nvim",
-		lazy = true,
 		keys = {
 			{ mode = "n", "<C-/>", "<Plug>(comment_toggle_linewise_current)", desc = "Toggle Comment" },
 			{ mode = "i", "<C-/>", "<esc><Plug>(comment_toggle_linewise_current)", desc = "Toggle Comment(Insert)" },
@@ -106,7 +98,6 @@ local plugins = {
 	},
 	{
 		"stevearc/dressing.nvim",
-		lazy = true,
 		init = function()
 			vim.ui.select = function(...)
 				require("lazy").load({ plugins = { "dressing.nvim" } })
@@ -120,14 +111,12 @@ local plugins = {
 	},
 	{
 		"folke/todo-comments.nvim",
-		lazy = true,
 		event = "BufReadPost",
 		cmd = "TodoTelescope",
 		opts = { signs = false },
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		lazy = true,
 		cmd = "Telescope",
 		opts = function()
 			return require("tevim.plugins.others.telescope")
@@ -135,7 +124,6 @@ local plugins = {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		lazy = true,
 		ft = { "gitcommit", "diff" },
 		init = function()
 			vim.api.nvim_create_autocmd({ "BufRead" }, {
@@ -161,7 +149,6 @@ local plugins = {
 	},
 	{
 		"NvChad/nvim-colorizer.lua",
-		lazy = true,
 		event = "BufRead",
 		opts = function()
 			vim.defer_fn(function()
@@ -172,7 +159,6 @@ local plugins = {
 	},
 	{
 		"akinsho/toggleterm.nvim",
-		lazy = true,
 		cmd = { "ToggleTerm", "TermExec" },
 		keys = {
 			{
@@ -191,7 +177,6 @@ local plugins = {
 	},
 	{
 		"RRethy/vim-illuminate",
-		lazy = true,
 		event = { "BufReadPost", "BufNewFile" },
 		opts = { filetypes_denylist = { "neo-tree", "Trouble", "DressingSelect", "TelescopePrompt" } },
 		config = function(_, opts)
@@ -200,12 +185,10 @@ local plugins = {
 	},
 	{
 		"kevinhwang91/nvim-ufo",
-		lazy = true,
 		event = { "BufReadPost", "BufNewFile" },
 		dependencies = {
 			{
 				"luukvbaal/statuscol.nvim",
-				lazy = true,
 				dependencies = "kevinhwang91/promise-async",
 				config = function()
 					local builtin = require("statuscol.builtin")
@@ -239,7 +222,6 @@ local plugins = {
 	--------------------------------------------------------------
 	{
 		"hrsh7th/nvim-cmp",
-		lazy = true,
 		event = "InsertEnter",
 		dependencies = {
 			"hrsh7th/cmp-buffer",
@@ -250,7 +232,6 @@ local plugins = {
 			"onsails/lspkind.nvim",
 			{
 				"L3MON4D3/LuaSnip",
-				lazy = true,
 				dependencies = "rafamadriz/friendly-snippets",
 				opts = { history = true, updateevents = "TextChanged,TextChangedI" },
 				config = function(_, opts)
@@ -259,7 +240,6 @@ local plugins = {
 			},
 			{
 				"windwp/nvim-autopairs",
-				lazy = true,
 				event = "InsertEnter",
 				opts = function()
 					require("nvim-autopairs").setup({ fast_wrap = {}, disable_filetype = { "TelescopePrompt", "vim" } })
@@ -274,26 +254,22 @@ local plugins = {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		lazy = true,
 		event = { "BufReadPost", "BufNewFile" },
 		cmd = { "LspInfo", "LspInstall", "LspUninstall", "LspStart" },
 		dependencies = {
 			{
 				"nvimdev/lspsaga.nvim",
-				lazy = true,
 				opts = { symbol_in_winbar = { show_file = false } },
 			},
 			{
 				"williamboman/mason.nvim",
 				cmd = { "Mason", "MasonInstall", "MasonUpdate" },
-				lazy = true,
 				opts = function()
 					return require("tevim.plugins.lsp.mason")
 				end,
 			},
 			{
 				"ray-x/lsp_signature.nvim",
-				lazy = true,
 				opts = { hint_enable = false },
 			},
 		},
@@ -317,6 +293,7 @@ else
 end
 
 require("lazy").setup(plugins, {
+	defaults = { lazy = true },
 	ui = {
 		icons = {
 			ft = "",
