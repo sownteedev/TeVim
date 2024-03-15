@@ -49,7 +49,7 @@ local plugins = {
 		event = { "BufReadPost", "BufNewFile" },
 		lazy = true,
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo", "TSUninstall", "TSUpdate" },
-		build = ":TSUpdate",
+		run = ":TSUpdate",
 		dependencies = {
 			"HiPhish/rainbow-delimiters.nvim",
 			{
@@ -351,4 +351,46 @@ else
 	vim.cmd("TeVimCreateCustom")
 end
 
-require("lazy").setup(plugins)
+require("lazy").setup(plugins, {
+	ui = {
+		icons = {
+			ft = "",
+			lazy = "󰂠 ",
+			loaded = "",
+			not_loaded = "",
+		},
+	},
+	performance = {
+		rtp = {
+			disabled_plugins = {
+				"2html_plugin",
+				"tohtml",
+				"getscript",
+				"getscriptPlugin",
+				"gzip",
+				"logipat",
+				"netrw",
+				"netrwPlugin",
+				"netrwSettings",
+				"netrwFileHandlers",
+				"matchit",
+				"tar",
+				"tarPlugin",
+				"rrhelper",
+				"spellfile_plugin",
+				"vimball",
+				"vimballPlugin",
+				"zip",
+				"zipPlugin",
+				"tutor",
+				"rplugin",
+				"syntax",
+				"synmenu",
+				"optwin",
+				"compiler",
+				"bugreport",
+				"ftplugin",
+			},
+		},
+	},
+})

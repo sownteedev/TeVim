@@ -22,8 +22,8 @@ local options = {
 	updatetime = 200,
 	fillchars = { eob = " ", foldopen = "", foldsep = " ", foldclose = "", lastline = " " },
 	listchars = "tab:  ",
+	background = "light",
 }
-
 vim.opt.shortmess:append("sI")
 vim.opt.formatoptions:remove("c", "r", "o")
 vim.opt.whichwrap:append("<>[]hl")

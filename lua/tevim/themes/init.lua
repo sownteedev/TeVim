@@ -32,19 +32,15 @@ M.merge_tb = function(...)
 	return vim.tbl_deep_extend("force", ...)
 end
 
-M.setTrans = function(highlights)
-	local glassy = require("tevim.themes.transparency")
-	for key, value in pairs(glassy) do
-		if highlights[key] then
-			highlights[key] = M.merge_tb(highlights[key], value)
-		end
-	end
-end
-
 M.tableToStr = function(tb)
 	local result = ""
 	if vim.g.transparency then
-		M.setTrans(tb)
+		local glassy = require("tevim.themes.transparency")
+		for key, value in pairs(glassy) do
+			if tb[key] then
+				tb[key] = M.merge_tb(tb[key], value)
+			end
+		end
 	end
 	for hlgroupName, hlgroup_vals in pairs(tb) do
 		local hlname = "'" .. hlgroupName .. "',"
@@ -83,15 +79,11 @@ M.compile = function()
 	end
 	local allThemes = {}
 	for _, file in ipairs(vim.fn.readdir(hl_files)) do
-		local filename = vim.fn.fnamemodify(file, ":r")
-		local a = M.loadTb(filename)
-		for k, f in pairs(a) do
+		for k, f in pairs(M.loadTb(vim.fn.fnamemodify(file, ":r"))) do
 			allThemes[k] = f
 		end
 	end
-	local filename = vim.fn.fnamemodify(hl_files_custom, ":r")
-	local a = M.loadCustomTb(filename)
-	for k, f in pairs(a) do
+	for k, f in pairs(M.loadCustomTb(vim.fn.fnamemodify(hl_files_custom, ":r"))) do
 		for _, i in pairs(allThemes) do
 			if i == f then
 				table.remove(allThemes, indexOf(allThemes, i))

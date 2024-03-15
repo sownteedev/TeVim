@@ -1,7 +1,6 @@
 local colors = require("tevim.themes").getCurrentTheme()
 
 return {
-	TelescopeBackground = { bg = colors.darker },
 	TelescopeNormal = { bg = colors.darker },
 	TelescopeBorder = { fg = colors.darker, bg = colors.darker },
 

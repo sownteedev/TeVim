@@ -8,6 +8,7 @@ return {
 	NeoTreeIndentMarker = { fg = utils.blend(colors.foreground, colors.background, 0.02) },
 	NeoTreeExpander = { fg = utils.blend(colors.foreground, colors.background, 0.1) },
 	NeoTreeDirectoryIcon = { fg = colors.blue },
+	NeoTreeDirectoryName = { fg = colors.blue },
 	NeoTreeRootName = { fg = colors.blue, bold = true },
 	NeoTreeModified = { fg = colors.green },
 
