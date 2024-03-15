@@ -12,11 +12,8 @@ local plugins = {
 		lazy = true,
 		event = "BufRead",
 		opts = function()
-			return require("tevim.plugins.others.devicons")
-		end,
-		config = function(_, opts)
 			require("nvim-web-devicons").set_default_icon("󰈚")
-			require("nvim-web-devicons").setup(opts)
+			return require("tevim.plugins.others.devicons")
 		end,
 	},
 	{
@@ -40,9 +37,6 @@ local plugins = {
 		opts = function()
 			return require("tevim.plugins.others.neotree")
 		end,
-		config = function(_, opts)
-			require("neo-tree").setup(opts)
-		end,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -65,9 +59,6 @@ local plugins = {
 		opts = function()
 			return require("tevim.plugins.others.treesitter")
 		end,
-		config = function(_, opts)
-			require("nvim-treesitter.configs").setup(opts)
-		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -83,9 +74,6 @@ local plugins = {
 		},
 		opts = function()
 			return require("tevim.plugins.others.blankline")
-		end,
-		config = function(_, opts)
-			require("indent_blankline").setup(opts)
 		end,
 	},
 	{
@@ -144,9 +132,6 @@ local plugins = {
 		opts = function()
 			return require("tevim.plugins.others.telescope")
 		end,
-		config = function(_, opts)
-			require("telescope").setup(opts)
-		end,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -173,20 +158,16 @@ local plugins = {
 		opts = function()
 			return require("tevim.plugins.others.gitsign")
 		end,
-		config = function(_, opts)
-			require("gitsigns").setup(opts)
-		end,
 	},
 	{
 		"NvChad/nvim-colorizer.lua",
 		lazy = true,
 		event = "BufRead",
-		opts = {},
-		config = function(_, opts)
-			require("colorizer").setup(opts)
+		opts = function()
 			vim.defer_fn(function()
 				require("colorizer").attach_to_buffer(0)
 			end, 0)
+			return require("colorizer").setup()
 		end,
 	},
 	{
@@ -207,9 +188,6 @@ local plugins = {
 			highlights = { NormalFloat = { link = "NormalFloat" } },
 			float_opts = { border = "none" },
 		},
-		config = function(_, opts)
-			require("toggleterm").setup(opts)
-		end,
 	},
 	{
 		"RRethy/vim-illuminate",
@@ -283,9 +261,8 @@ local plugins = {
 				"windwp/nvim-autopairs",
 				lazy = true,
 				event = "InsertEnter",
-				opts = { fast_wrap = {}, disable_filetype = { "TelescopePrompt", "vim" } },
-				config = function(_, opts)
-					require("nvim-autopairs").setup(opts)
+				opts = function()
+					require("nvim-autopairs").setup({ fast_wrap = {}, disable_filetype = { "TelescopePrompt", "vim" } })
 					local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 					require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
 				end,
@@ -293,9 +270,6 @@ local plugins = {
 		},
 		opts = function()
 			return require("tevim.plugins.cmp.cmp")
-		end,
-		config = function(_, opts)
-			require("cmp").setup(opts)
 		end,
 	},
 	{
@@ -308,9 +282,6 @@ local plugins = {
 				"nvimdev/lspsaga.nvim",
 				lazy = true,
 				opts = { symbol_in_winbar = { show_file = false } },
-				config = function(_, opts)
-					require("lspsaga").setup(opts)
-				end,
 			},
 			{
 				"williamboman/mason.nvim",
@@ -319,17 +290,11 @@ local plugins = {
 				opts = function()
 					return require("tevim.plugins.lsp.mason")
 				end,
-				config = function(_, opts)
-					require("mason").setup(opts)
-				end,
 			},
 			{
 				"ray-x/lsp_signature.nvim",
 				lazy = true,
 				opts = { hint_enable = false },
-				config = function(_, opts)
-					require("lsp_signature").setup(opts)
-				end,
 			},
 		},
 		config = function()
