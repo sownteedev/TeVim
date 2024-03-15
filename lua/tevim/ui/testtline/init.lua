@@ -11,34 +11,34 @@ M.run = function()
 	local tab = require("tevim.ui.testtline.modules.tab")
 	local progress = require("tevim.ui.testtline.modules.progress")
 	local location = require("tevim.ui.testtline.modules.location")
-	local nothing = require("tevim.ui.testtline.modules.nothing")
+	local nothing = vim.o.columns < 120 and "%#TeSTTNothing2#" .. " " or "%#TeSTTNothing#" .. "   "
 	if vim.o.columns < 120 then
 		return table.concat({
-			nothing(),
+			nothing,
 			"%=",
 			mode(),
-			nothing(),
+			nothing,
 			diagnostics(),
 		})
 	end
 	return table.concat({
 		mode(),
-		nothing(),
+		nothing,
 		filename(),
-		nothing(),
+		nothing,
 		branch(),
-		nothing(),
+		nothing,
 		diff(),
-		nothing(),
+		nothing,
 		"%=",
 		diagnostics(),
 		lsp(),
 		copilot(),
-		nothing(),
+		nothing,
 		tab(),
-		nothing(),
+		nothing,
 		progress(),
-		nothing(),
+		nothing,
 		location(),
 	})
 end

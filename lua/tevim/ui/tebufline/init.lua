@@ -9,23 +9,7 @@ vim.cmd("function! ToggleTrans(a,b,c,d) \n TeVimToggleTrans \n endfunction")
 vim.cmd("function! Split(a,b,c,d) \n vsplit \n endfunction")
 vim.cmd("function! Run(a,b,c,d) \n lua require('tevim.core.utils').build_run() \n endfunction")
 vim.cmd("function! Quit(a,b,c,d) \n qa! \n endfunction")
-vim.cmd([[
-   function! TeBufKillBuf(bufnr,b,c,d)
-        call luaeval('require("tevim.ui.tebufline.modules").close_buffer(_A)', a:bufnr)
-  endfunction]])
-
-vim.api.nvim_create_user_command("TeBufPrev", function()
-	require("tevim.ui.tebufline.modules").tebuflinePrev()
-end, {})
-vim.api.nvim_create_user_command("TeBufNext", function()
-	require("tevim.ui.tebufline.modules").tebuflineNext()
-end, {})
-vim.api.nvim_create_user_command("TeBufCloseOtherBuf", function()
-	require("tevim.ui.tebufline.modules").close_other_buffers()
-end, {})
-vim.api.nvim_create_user_command("TeBufKillBuf2", function()
-	require("tevim.ui.tebufline.modules").close_buffer(vim.api.nvim_get_current_buf())
-end, {})
+vim.cmd("function! TeBufKillBuf(a,b,c,d) \n TeBufKillBuf \n endfunction")
 
 -------------------------------------------------------------------------
 
@@ -196,6 +180,18 @@ M.getTabline = function()
 end
 
 M.setup = function()
+	vim.api.nvim_create_user_command("TeBufPrev", function()
+		require("tevim.ui.tebufline.modules").tebuflinePrev()
+	end, {})
+	vim.api.nvim_create_user_command("TeBufNext", function()
+		require("tevim.ui.tebufline.modules").tebuflineNext()
+	end, {})
+	vim.api.nvim_create_user_command("TeBufCloseOtherBuf", function()
+		require("tevim.ui.tebufline.modules").close_other_buffers()
+	end, {})
+	vim.api.nvim_create_user_command("TeBufKillBuf", function()
+		require("tevim.ui.tebufline.modules").close_buffer(vim.api.nvim_get_current_buf())
+	end, {})
 	if #vim.fn.getbufinfo({ buflisted = 1 }) >= 1 or #vim.api.nvim_list_tabpages() >= 2 then
 		vim.o.showtabline = 2
 		vim.o.tabline = '%!v:lua.require("tevim.ui.tebufline").getTabline()'
@@ -204,7 +200,7 @@ M.setup = function()
 		nnoremap <silent><TAB> :TeBufNext<CR>
 		nnoremap <silent><S-TAB> :TeBufPrev<CR>
 		nnoremap <silent><C-o> :TeBufCloseOtherBuf<CR>
-		nnoremap <silent><C-q> :TeBufKillBuf2<CR>
+		nnoremap <silent><C-q> :TeBufKillBuf<CR>
 		nnoremap <silent><Leader>q :qa!<CR>
 	]])
 end

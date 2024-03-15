@@ -1,6 +1,6 @@
 local M = {}
 
-local logo = {
+M.logo = {
 	"▄███████▓▓████▓ ██▒   █▓ ██▓ ███▄ ▄███▓ ",
 	"▓  ██▒ ▓▒▓█   ▀▓██░   █▒▓██▒▓██▒▀█▀ ██▒ ",
 	"▒ ▓██░ ▒░▒███   ▓██  █▒░▒██▒▓██    ▓██░ ",
@@ -11,7 +11,7 @@ local logo = {
 	"  ░         ░        ░   ▒ ░       ░    ",
 }
 
-local buttonss = {
+M.buttons = {
 	{ "  Find File", "󱁐 f f", "Telescope find_files" },
 	{ "󰈚  TODO List", "󱁐 f t", "TodoTelescope" },
 	{ "  TeVim Themes", "󱁐 f c", "TeVimThemes" },
@@ -24,7 +24,7 @@ local fn = vim.fn
 
 local loadTeDash = vim.g.loadTeDash
 
-local headerAscii = logo
+local headerAscii = M.logo
 local emmptyLine = string.rep(" ", vim.fn.strwidth(headerAscii[1]))
 
 table.insert(headerAscii, 1, emmptyLine)
@@ -35,7 +35,7 @@ headerAscii[#headerAscii + 1] = emmptyLine
 
 local tedashWidth = #headerAscii[1] + 3
 
-local max_height = #headerAscii + 4 + (2 * #buttonss)
+local max_height = #headerAscii + 4 + (2 * #M.buttons)
 local get_win_height = api.nvim_win_get_height
 
 M.setup = function()
@@ -56,7 +56,7 @@ M.setup = function()
 		vim.g.tedash_displayed = true
 
 		local header = headerAscii
-		local buttons = buttonss
+		local buttonsS = M.buttons
 
 		local function addSpacing_toBtns(txt1, txt2)
 			local btn_len = fn.strwidth(txt1) + fn.strwidth(txt2)
@@ -75,7 +75,7 @@ M.setup = function()
 			table.insert(dashboard, val .. " ")
 		end
 
-		for _, val in ipairs(buttons) do
+		for _, val in ipairs(buttonsS) do
 			table.insert(dashboard, addSpacing_toBtns(val[1], val[2]) .. " ")
 			table.insert(dashboard, header[1] .. " ")
 		end
@@ -113,7 +113,7 @@ M.setup = function()
 		local first_btn_line = abc + #header + 2
 		local keybind_lineNrs = {}
 
-		for _, _ in ipairs(buttonss) do
+		for _, _ in ipairs(M.buttons) do
 			table.insert(keybind_lineNrs, first_btn_line - 2)
 			first_btn_line = first_btn_line + 2
 		end
@@ -150,7 +150,7 @@ M.setup = function()
 		vim.keymap.set("n", "<CR>", function()
 			for i, val in ipairs(keybind_lineNrs) do
 				if val == fn.line(".") then
-					local action = buttonss[i][3]
+					local action = M.buttons[i][3]
 					if type(action) == "string" then
 						vim.cmd(action)
 					elseif type(action) == "function" then
