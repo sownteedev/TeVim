@@ -133,8 +133,7 @@ autocmd("FileType", {
 	desc = "Don't list quickfix buffer",
 })
 
-autocmd({ "BufNew", "BufNewFile", "BufRead", "TabEnter", "TermOpen" }, {
-	pattern = "*",
+autocmd({ "BufNewFile", "BufRead"}, {
 	callback = function()
 		require("tevim.ui.tebufline").setup()
 	end,
