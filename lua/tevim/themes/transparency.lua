@@ -5,9 +5,8 @@ local M = {}
 
 --- General ---
 local normal = {
-	"NormalFloat",
 	"Normal",
-	"NormalNC",
+	"NormalFloat",
 	"WinBar",
 	"WinBarNC",
 	"Folded",
@@ -17,6 +16,7 @@ local normal = {
 	"ColorColumn",
 	"SignColumn",
 	"CursorLine",
+	"MsgArea",
 }
 
 M.WinSeparator = {
