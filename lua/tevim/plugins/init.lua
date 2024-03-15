@@ -43,7 +43,6 @@ local plugins = {
 			"HiPhish/rainbow-delimiters.nvim",
 			{
 				"windwp/nvim-ts-autotag",
-				lazy = true,
 				ft = { "html", "javascript", "jsx", "typescript", "tsx", "svelte", "vue", "xml", "markdown" },
 				opts = { enable_close_on_slash = false },
 				config = function(_, opts)
@@ -62,7 +61,6 @@ local plugins = {
 		dependencies = {
 			{
 				"echasnovski/mini.indentscope",
-				lazy = true,
 				opts = { symbol = "│" },
 			},
 		},
