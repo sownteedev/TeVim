@@ -32,7 +32,7 @@ On Battery                            : 17ms - 21ms
 
 ## 🔎 Requirements
 
-- Neovim >= v0.9.4.
+- Neovim >= v0.9.4 (Recommend nightly version).
 
 - Nerd Font as your terminal font.
 
@@ -42,7 +42,7 @@ On Battery                            : 17ms - 21ms
 
 - Lazygit and Ranger (OPTIONAL).
 
-- Xsel and Xclip for copy and paste (If you use X11)(OPTIONAL).
+- Xsel and Xclip for copy and paste (X11), wl-clipboard (Wayland) (OPTIONAL).
 
 ## ⬇️  Installation
 
@@ -52,7 +52,7 @@ On Battery                            : 17ms - 21ms
   ```
 - Remove cache setup
   ```zsh
-  rm -rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim ~/.config/nvim/lazy-lock.json
+  rm -rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
   ```
 - Install TeVim
   ```zsh
@@ -66,7 +66,7 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 ```
 
 ### Custom Colorschemes
-> Read my colorschemes in tevim/themes/schemes/ and write like it in custom/themes/schemes/
+> Read my colorschemes in tevim/themes/schemes/ and write like it on custom/themes/schemes/
 
 ### TeVim Commands
 > **TeVimThemes** : Open list colorschemes
@@ -75,7 +75,7 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 >
 > **TeVimCheckMason** : Install or Remove package you add or remove on custom/configs/overrides.lua
 >
-> **TeVimUpdate** : Update TeVim(If you have any problems, please create issues)
+> **TeVimUpdate** : Update TeVim (If you have any problems, please create issues)
 
 <br>
 
@@ -85,7 +85,7 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 
 > **NOTE:**
 >
-> TeVim auto create Custom Folder, change or add everything in it.
+> TeVim auto create Custom Folder, change or add everything on it.
 >
 > THIS IS NOT A "DISTRO" and not for BEGINNERS, you need to have some experiences with Lua and Neovim.
 >
@@ -94,21 +94,29 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 
 ## Plugins
 
-| Plugin                                                                                | Description                                                    |  Lazy   |
+| Plugin (~30 plugs)                                                                    | Description                                                    |  Lazy   |
 | ------------------------------------------------------------------------------------- | -------------------------------------------------------------- | :-----: |
-| [folke/lazy](https://github.com/folke/lazy.nvim)                                      | the package manager for newbies                                | `false` |
+| [folke/lazy](https://github.com/folke/lazy.nvim)                                      | the package manager for newbies                                | `true`  |
 | [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | syntax highlighting, most popular one for neovim               | `true`  |
+| [HiPhish/rainbow-delimiters.nvim](https:://github.com/HiPhish/rainbow-delimiters.nvim)| highlights matching delimiters                                 | `true`  |
 | [NvChad/nvim-colorizer.lua](https://github.com/NvChad/nvim-colorizer.lua)             | highlights colors and is really frickin fast                   | `true`  |
 | [nvim-neo-tree/neo-tree.lua](https://github.com/nvim-neo-tree/neo-tree.nvim)          | a very neat, simple and clean file tree and most features      | `true`  |
 | [nvim-tree/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)         | more devicons for neovim                                       | `true`  |
+| [windwp/nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)                   | automatically close and rename html tags                       | `true`  |
+| [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs)                     | automatically close and rename brackets                        | `true`  |
 | [folke/which-key.nvim](https://github.com/folke/which-key.nvim)                       | shows all the posiible vim keybindings, perfect for dummies    | `true`  |
 | [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)     | probably the most popular menu. can be used for a lot of stuff | `true`  |
 | [akinsho/toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)                 | terminal integration in neovim                                 | `true`  |
 | [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)                 | Super fast git decorations implemented purely in Lua.          | `true`  |
 | [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim)                 | installing LSPs made super easy                                | `true`  |
 | [nvimdev/lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim)                       | responsible for the winbar and lightbulb                       | `true`  |
-| [kevinhwang91/nvim-ufo](https://github.com/kevinhwang91/nvim-ufo)                     | folds in neovim arent that bad! actually, better than vscode   | `true`  |
+| [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)                     | the most popular LSP client for neovim                         | `true`  |
+| [hrsh7th/nvim-cmp](https:://github.com/hrsh7th/nvim-cmp)                              | autocompletion plugin for neovim                               | `true`  |
 | [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip)                               | very simple and easy to use snippet engine                     | `true`  |
+| [kevinhwang91/nvim-ufo](https://github.com/kevinhwang91/nvim-ufo)                     | folds in neovim arent that bad! actually, better than vscode   | `true`  |
+| [RRethy/vim-illuminate](https://github.com/RRethy/vim-illuminate)                     | highlights all instances of the word under the cursor          | `true`  |
+| [lukas-reineke/indent-blankline.nvim](https:://github.com/lukas-reineke/indent-blankline.nvim)| shows indent lines in neovim                           | `true`  |
+| [echasnovski/mini.indentscope](https:://github.com/echasnovski/mini.indentscope)      | perfect animation indent lines                                 | `true`  |
 | [numToStr/Comment.nvim](https://github.com/numToStr/Comment.nvim)                     | quik and easy commenting                                       | `true`  |
 | [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim)               | beautiful highlights for TODO comments                         | `true`  |
 
@@ -119,7 +127,7 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 | <kbd>CTRL</kbd> <kbd>h</kbd> / <kbd>j</kbd> / <kbd>k</kbd> / <kbd>l</kbd> | Moving Window Focus Towards Left/Up/Down/Right (Normal) |
 | <kbd>CTRL</kbd> <kbd>h</kbd> / <kbd>j</kbd> / <kbd>k</kbd> / <kbd>l</kbd> | Moving Cursor Left/Up/Down/Right (Insert) |
 | <kbd>CTRL</kbd> <kbd>e</kbd> | Toggle Explorer with Neotree |
-| <kbd>CTRL</kbd> <kbd>`</kbd> | Open And Close ToggleTerm |
+| <kbd>CTRL</kbd> <kbd>`</kbd> | Open And Close ToggleTerm |`
 | <kbd>ALT</kbd> / <kbd>⬇️</kbd> / <kbd>⬆️</kbd> | Moving Current Line or Lines Down/Up |
 | <kbd>Enter</kbd> | Clear Highlight Search |
 
@@ -128,10 +136,11 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 | Keys        | Function          |
 | ------------- |-------------|
 | <kbd>LDR</kbd> <kbd>q</kbd> | Exit Neovim |
-| <kbd>LDR</kbd> <kbd>q</kbd> <kbd>w</kbd> | Save And Exit Neovim |
 | <kbd>CTRL</kbd> <kbd>s</kbd> | Save File (N + I) |
 | <kbd>CTRL</kbd> <kbd>q</kbd> | Close Current Buffer |
 | <kbd>CTRL</kbd> <kbd>o</kbd> | Close Other Buffer |
+| <kbd>TAB</kbd>               | Next Buffer |
+| <kbd>SHIFT</kbd> <kbd>TAB</kbd> | Previous Buffer |
 | <kbd>CTRL</kbd> <kbd>/</kbd> | Toggle Comment (N + I + V) |
 
 #### Telescope
@@ -160,6 +169,14 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 | <kbd>LDR</kbd> <kbd>s</kbd> <kbd>i</kbd> | Treesitter Info |
 | <kbd>LDR</kbd> <kbd>s</kbd> <kbd>u</kbd> | Treesitter Update |
 
+#### TeVim
+
+| Keys        | Function          |
+| ------------- |-------------|
+| <kbd>LDR</kbd> <kbd>LDR</kbd> <kbd>u</kbd> | TeVim Update |
+| <kbd>LDR</kbd> <kbd>LDR</kbd> <kbd>m</kbd> | TeVim Check Mason |
+| <kbd>LDR</kbd> <kbd>LDR</kbd> <kbd>t</kbd> | Toggle Transparency |
+
 <br>
 
 > Use **Space** to open which-key and use more keybindings
@@ -168,7 +185,6 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 
 <details><summary> <b>Credits</b></summary>
 
-- [Nvchad](https://github.com/nvchad) helped me with TeDash and TeBufline
-- [chadcat7](https://github.com/chadcat7) helped me with Theme
+- [Nvchad](https://github.com/nvchad) helped TeDash and TeBufline (fix some bugs for theme)
 
 </details>

@@ -27,7 +27,6 @@ map("n", "<C-l>", "<C-w>l", opts, { desc = "Move Cursor Right Buffer" })
 
 map("n", "<C-s>", "<cmd>w<CR>", opts, { desc = "Save" })
 map("i", "<C-s>", "<ESC>:w<CR>", opts, { desc = "Save (Insert)" })
-map("n", "<Leader>qw", "<cmd>wq<CR>", opts, { desc = "Save & Quit" })
 
 map("n", "<M-Up>", ":m-2<CR>", opts, { desc = "Move Line Up" })
 map("n", "<M-Down>", ":m+<CR>", opts, { desc = "Move Line Down" })

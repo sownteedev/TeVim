@@ -15,7 +15,7 @@ return {
 	TelescopeResultsBorder = { bg = colors.darker, fg = colors.darker },
 
 	TelescopeMatching = { bold = true },
-	TelescopeSelection = { bg = colors.lighter, fg = colors.blue },
+	TelescopeSelection = { bg = colors.lighter, fg = colors.blue, bold = true },
 	TelescopeResultsDiffAdd = { fg = colors.green },
 	TelescopeResultsDiffChange = { fg = colors.blue },
 	TelescopeResultsDiffDelete = { fg = colors.red },

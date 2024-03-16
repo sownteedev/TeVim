@@ -35,7 +35,7 @@ end
 M.setup = function()
 	pickers
 		.new({
-			prompt_title = "  TEVIM COLORSCHEMES",
+			prompt_title = " TEVIM COLORSCHEMES",
 			layout_config = { height = 0.4, width = 0.2 },
 			finder = finders.new_table({ results = themes }),
 			sorter = conf.generic_sorter(),
