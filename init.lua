@@ -23,8 +23,3 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("tevim.plugins")
--- Test
--- Test 2
--- Test 3
--- Test 4
--- Test 5
