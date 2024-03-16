@@ -195,9 +195,9 @@ local lsp = function()
 	return "%#TeSTTLsp#" .. " " .. table.concat(vim.fn.uniq(buf_client_names), ", ")
 end
 
-local copilot = function()
+local copilotvim = function()
 	if not is_available("copilot.vim") then
-		return " "
+		return ""
 	end
 	--- @diagnostic disable: deprecated
 	for _, client in pairs(vim.lsp.get_active_clients()) do
@@ -206,6 +206,37 @@ local copilot = function()
 		end
 	end
 	return "%#TeSTTCopilot#" .. "     "
+end
+
+local copilotlua = function()
+	if not is_available("copilot.lua") then
+		return ""
+	end
+	--- @diagnostic disable: deprecated
+	for _, client in pairs(vim.lsp.get_active_clients()) do
+		if client.name == "copilot" then
+			return "%#TeSTTCopilot#" .. "    "
+		end
+	end
+	return "%#TeSTTCopilot#" .. "     "
+end
+
+local codeium = function()
+	if is_available("codeium.nvim") then
+		return "%#TeSTTCodeium#" .. "  "
+	end
+	return ""
+end
+
+local tabnine = function()
+	if not is_available("tabnine-nvim") then
+		return ""
+	end
+	local tabnine = require("tabnine.status").status()
+	if tabnine == "⌬ tabnine starter" then
+		return "%#TeSTTTabnine#" .. "⌬ "
+	end
+	return ""
 end
 
 local tab = function()
@@ -261,7 +292,10 @@ M.run = function()
 		"%=",
 		diagnostics(),
 		lsp(),
-		copilot(),
+		copilotvim(),
+		copilotlua(),
+		codeium(),
+		tabnine(),
 		nothing,
 		tab(),
 		nothing,

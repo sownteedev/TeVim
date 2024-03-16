@@ -77,6 +77,14 @@ return {
 		fg = utils.mix(colors.foreground, colors.blue, 0.7),
 		bg = utils.blend(colors.green, colors.background, 0.1),
 	},
+	TeSTTCodeium = {
+		fg = utils.mix(colors.foreground, colors.blue, 0.7),
+		bg = utils.blend(colors.green, colors.background, 0.1),
+	},
+	TeSTTTabnine = {
+		fg = utils.mix(colors.foreground, colors.blue, 0.7),
+		bg = utils.blend(colors.green, colors.background, 0.1),
+	},
 
 	TeSTTError = { fg = colors.red, bg = utils.blend(colors.green, colors.background, 0.1) },
 	TeSTTErrorIcon = { fg = colors.red, bg = utils.blend(colors.green, colors.background, 0.1) },
