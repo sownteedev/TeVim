@@ -10,7 +10,7 @@ local plugins = {
 		event = "BufRead",
 		opts = function()
 			require("nvim-web-devicons").set_default_icon("󰈚")
-			return require("tevim.plugins.others.devicons")
+			return require("tevim.plugins.configs.devicons")
 		end,
 	},
 	{
@@ -31,7 +31,7 @@ local plugins = {
 			end
 		end,
 		opts = function()
-			return require("tevim.plugins.others.neotree")
+			return require("tevim.plugins.configs.neotree")
 		end,
 	},
 	{
@@ -51,7 +51,7 @@ local plugins = {
 			},
 		},
 		opts = function()
-			return require("tevim.plugins.others.treesitter")
+			return require("tevim.plugins.configs.treesitter")
 		end,
 	},
 	{
@@ -65,7 +65,7 @@ local plugins = {
 			},
 		},
 		opts = function()
-			return require("tevim.plugins.others.blankline")
+			return require("tevim.plugins.configs.blankline")
 		end,
 	},
 	{
@@ -73,7 +73,7 @@ local plugins = {
 		keys = { "<leader>", " ", "'", "`" },
 		cmd = "WhichKey",
 		opts = function()
-			return require("tevim.plugins.others.whichkey")
+			return require("tevim.plugins.configs.whichkey")
 		end,
 		config = function(_, opts)
 			require("which-key").setup(opts.setup)
@@ -117,7 +117,7 @@ local plugins = {
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		opts = function()
-			return require("tevim.plugins.others.telescope")
+			return require("tevim.plugins.configs.telescope")
 		end,
 	},
 	{
@@ -142,7 +142,7 @@ local plugins = {
 			})
 		end,
 		opts = function()
-			return require("tevim.plugins.others.gitsign")
+			return require("tevim.plugins.configs.gitsign")
 		end,
 	},
 	{
@@ -233,7 +233,7 @@ local plugins = {
 				dependencies = "rafamadriz/friendly-snippets",
 				opts = { history = true, updateevents = "TextChanged,TextChangedI" },
 				config = function(_, opts)
-					require("tevim.plugins.cmp.luasnips").luasnip(opts)
+					require("tevim.plugins.configs.luasnips").luasnip(opts)
 				end,
 			},
 			{
@@ -247,7 +247,7 @@ local plugins = {
 			},
 		},
 		opts = function()
-			return require("tevim.plugins.cmp.cmp")
+			return require("tevim.plugins.configs.cmp")
 		end,
 	},
 	{
@@ -263,7 +263,7 @@ local plugins = {
 				"williamboman/mason.nvim",
 				cmd = { "Mason", "MasonInstall", "MasonUpdate" },
 				opts = function()
-					return require("tevim.plugins.lsp.mason")
+					return require("tevim.plugins.configs.mason")
 				end,
 			},
 			{
@@ -272,7 +272,7 @@ local plugins = {
 			},
 		},
 		config = function()
-			require("tevim.plugins.lsp.lspconfig")
+			require("tevim.plugins.configs.lspconfig")
 		end,
 	},
 }
