@@ -17,8 +17,8 @@ return {
 	WildMenu = { fg = colors.base08, bg = colors.base0A },
 	Comment = { fg = utils.blend(colors.foreground, colors.background, 0.2), italic = true },
 
-	Folded = { fg = utils.blend(colors.foreground, colors.background, 0.15), bg = colors.background },
-	FoldColumn = { fg = utils.blend(colors.foreground, colors.background, 0.15), bg = colors.background },
+	Folded = { fg = utils.blend(colors.foreground, colors.background, 0.3), bg = colors.background },
+	FoldColumn = { fg = utils.blend(colors.foreground, colors.background, 0.3), bg = colors.background },
 
 	Cursor = { fg = colors.base00, bg = colors.base05 },
 	CursorLine = { bg = utils.blend(colors.foreground, colors.background, 0.015) },
