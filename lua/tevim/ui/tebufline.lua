@@ -264,7 +264,6 @@ M.setup = function()
 		nnoremap <silent><S-TAB> :TeBufPrev<CR>
 		nnoremap <silent><C-o> :TeBufCloseOtherBuf<CR>
 		nnoremap <silent><C-q> :TeBufKillBuf<CR>
-		nnoremap <silent><Leader>q :qa!<CR>
 	]])
 end
 
