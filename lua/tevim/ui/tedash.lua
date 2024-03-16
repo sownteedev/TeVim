@@ -171,6 +171,7 @@ M.setup = function()
 		vim.opt_local.stc = ""
 		vim.opt_local.colorcolumn = "0"
 		vim.opt_local.showtabline = 0
+		vim.cmd([[ nnoremap <silent><Leader>q :qa!<CR>]])
 	else
 		vim.o.tabline = '%!v:lua.require("tevim.ui.tebufline").getTabline()'
 		vim.cmd([[ nnoremap <silent><Leader>q :qa!<CR>]])
