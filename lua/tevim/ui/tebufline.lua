@@ -1,7 +1,4 @@
 local M = {}
-
-local devicons_present, devicons = pcall(require, "nvim-web-devicons")
-
 -- Commands
 vim.cmd("function! TeBufGoToBuf(bufnr,b,c,d) \n execute 'b'..a:bufnr \n endfunction")
 vim.cmd("function! ToggleTheme(a,b,c,d) \n TeVimThemes \n endfunction")
@@ -19,6 +16,8 @@ local function new_hl(group1, group2)
 	vim.api.nvim_set_hl(0, "TeBuf" .. group1 .. group2, { fg = fg, bg = bg })
 	return "%#" .. "TeBuf" .. group1 .. group2 .. "#"
 end
+
+local devicons_present, devicons = pcall(require, "nvim-web-devicons")
 
 local createTab = function(buf)
 	if devicons_present then
@@ -88,7 +87,7 @@ local createTab = function(buf)
 	end
 end
 
-local excludedFileTypes = { "neo-tree", "help", "dasher", "lir", "alpha", "toggleterm" }
+local excludedFileTypes = { "neo-tree", "help", "dasher", "lir", "alpha", "toggleterm", "dashboard" }
 
 local treeWidth = function()
 	for _, win in pairs(vim.api.nvim_tabpage_list_wins(0)) do
@@ -179,18 +178,82 @@ M.getTabline = function()
 		.. quit
 end
 
+local tebufilter = function()
+	local bufs = vim.api.nvim_list_bufs() or nil
+	if not bufs then
+		return {}
+	end
+	for i = #bufs, 1, -1 do
+		local filename = (#vim.api.nvim_buf_get_name(bufs[i]) ~= 0)
+				and vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufs[i]), ":t")
+			or ""
+		if
+			not vim.api.nvim_buf_is_valid(bufs[i])
+			or not vim.bo[bufs[i]].buflisted
+			or not vim.api.nvim_buf_is_loaded(bufs[i])
+			or filename == ""
+		then
+			table.remove(bufs, i)
+		end
+	end
+	return bufs
+end
+
+local tebuflinePrev = function()
+	local bufs = tebufilter()
+	for i, v in ipairs(bufs) do
+		if vim.api.nvim_get_current_buf() == v then
+			vim.cmd(i == 1 and "b" .. bufs[#bufs] or "b" .. bufs[i - 1])
+			break
+		end
+	end
+end
+
+local tebuflineNext = function()
+	local bufs = tebufilter()
+	for i, v in ipairs(bufs) do
+		if vim.api.nvim_get_current_buf() == v then
+			vim.cmd(i == #bufs and "b" .. bufs[1] or "b" .. bufs[i + 1])
+			break
+		end
+	end
+end
+
+local close_buffer = function(bufnr)
+	if vim.bo.buftype == "terminal" then
+		vim.cmd(vim.bo.buflisted and "set nobl | enew" or "hide")
+	else
+		bufnr = bufnr or vim.api.nvim_get_current_buf()
+		if bufnr == vim.api.nvim_get_current_buf() then
+			tebuflinePrev()
+		end
+		vim.cmd("confirm bd" .. bufnr)
+	end
+end
+
+local close_other_buffers = function()
+	local bufs = tebufilter()
+	local current_buf = vim.api.nvim_get_current_buf()
+	for _, v in ipairs(bufs) do
+		if v ~= current_buf then
+			vim.cmd("confirm bd" .. v)
+		end
+	end
+	vim.cmd("redrawtabline")
+end
+
 M.setup = function()
 	vim.api.nvim_create_user_command("TeBufPrev", function()
-		require("tevim.ui.tebufline.modules").tebuflinePrev()
+		tebuflinePrev()
 	end, {})
 	vim.api.nvim_create_user_command("TeBufNext", function()
-		require("tevim.ui.tebufline.modules").tebuflineNext()
+		tebuflineNext()
 	end, {})
 	vim.api.nvim_create_user_command("TeBufCloseOtherBuf", function()
-		require("tevim.ui.tebufline.modules").close_other_buffers()
+		close_other_buffers()
 	end, {})
 	vim.api.nvim_create_user_command("TeBufKillBuf", function()
-		require("tevim.ui.tebufline.modules").close_buffer(vim.api.nvim_get_current_buf())
+		close_buffer(vim.api.nvim_get_current_buf())
 	end, {})
 	if #vim.fn.getbufinfo({ buflisted = 1 }) >= 1 or #vim.api.nvim_list_tabpages() >= 2 then
 		vim.o.showtabline = 2
