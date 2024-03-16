@@ -21,7 +21,7 @@ return {
 	FoldColumn = { fg = utils.blend(colors.foreground, colors.background, 0.3), bg = colors.background },
 
 	Cursor = { fg = colors.base00, bg = colors.base05 },
-	CursorLine = { bg = utils.blend(colors.foreground, colors.background, 0.015) },
+	CursorLine = { bg = utils.blend(colors.foreground, colors.background, 0.02) },
 	CursorLineNr = { fg = colors.foreground, bold = true },
 	LineNr = { fg = utils.blend(colors.foreground, colors.background, 0.3), bg = colors.background },
 
