@@ -26,3 +26,4 @@ require("tevim.plugins")
 -- Test
 -- Test 2
 -- Test 3
+-- Test 4
