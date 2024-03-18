@@ -25,4 +25,5 @@ return {
 	LazyReasonSource = { fg = utils.mix(colors.foreground, colors.blue, 0.7) },
 	LazyReasonImport = { fg = colors.foreground },
 	LazyProgressDone = { fg = colors.green },
+	LazyProgressTodo = { fg = utils.blend(colors.foreground, colors.background, 0.3), bg = colors.darker },
 }

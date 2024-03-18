@@ -38,20 +38,20 @@ local plugins = {
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPost", "BufNewFile" },
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo", "TSUninstall", "TSUpdate" },
-		run = ":TSUpdate",
+		build = ":TSUpdate",
 		dependencies = {
 			"HiPhish/rainbow-delimiters.nvim",
 			{
 				"windwp/nvim-ts-autotag",
 				ft = { "html", "javascript", "jsx", "typescript", "tsx", "svelte", "vue", "xml", "markdown" },
 				opts = { enable_close_on_slash = false },
-				config = function(_, opts)
-					require("nvim-ts-autotag").setup(opts)
-				end,
 			},
 		},
 		opts = function()
 			return require("tevim.plugins.configs.treesitter")
+		end,
+		config = function(_, opts)
+			require("nvim-treesitter.configs").setup(opts)
 		end,
 	},
 	{

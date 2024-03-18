@@ -10,6 +10,7 @@ return {
 	NeoTreeDirectoryIcon = { fg = colors.blue },
 	NeoTreeDirectoryName = { fg = colors.blue },
 	NeoTreeRootName = { fg = colors.blue, bold = true },
+	NeoTreeTitleBar = { bg = colors.darker, fg = colors.foreground, bold = true },
 	NeoTreeModified = { fg = colors.green },
 
 	NeoTreeGitAdded = { fg = colors.green },

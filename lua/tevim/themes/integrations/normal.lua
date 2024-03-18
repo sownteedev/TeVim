@@ -5,6 +5,7 @@ return {
 	Normal = { fg = colors.foreground, bg = colors.background },
 	NormalFloat = { bg = colors.darker },
 	FloatBorder = { fg = colors.darker, bg = colors.darker },
+	FloatTitle = { fg = colors.foreground, bg = colors.darker, bold = true },
 	WinSeparator = { fg = colors.lighter },
 	WinBar = { link = "Normal" },
 	WinBarNC = { link = "Normal" },
