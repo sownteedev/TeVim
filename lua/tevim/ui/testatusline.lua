@@ -254,7 +254,7 @@ local progress = function()
 	end
 end
 
-local nothing = vim.o.columns < 120 and "%#TeSTTNothing2#" .. " " or "%#TeSTTNothing#" .. "   "
+local nothing = vim.o.columns < 120 and "%#TeSTTNothing2#" .. "   " or "%#TeSTTNothing#" .. "   "
 
 M.run = function()
 	if vim.o.columns < 120 then

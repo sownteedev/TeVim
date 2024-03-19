@@ -10,6 +10,7 @@ local options = {
 	ignorecase = true,
 	clipboard = "unnamedplus",
 	undofile = true,
+	swapfile = false,
 	mouse = "a",
 	cursorline = true,
 	showmode = false,
