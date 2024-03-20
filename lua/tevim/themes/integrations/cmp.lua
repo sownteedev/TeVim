@@ -44,6 +44,7 @@ return {
 	CmpItemKindCopilot = { fg = colors.green },
 	CmpItemKindCodeium = { fg = utils.mix(colors.red, colors.green, 0.5) },
 
-	-- Copilot.vim
+	-- AI
 	CopilotSuggestion = { fg = utils.blend(colors.foreground, colors.background, 0.2), italic = true },
+	TabnineSuggestion = { link = "CopilotSuggestion" },
 }

@@ -6,8 +6,9 @@ vim.cmd("function! ToggleTrans(a,b,c,d) \n TeVimToggleTrans \n endfunction")
 vim.cmd("function! Split(a,b,c,d) \n vsplit \n endfunction")
 vim.cmd("function! Run(a,b,c,d) \n lua require('tevim.core.utils').build_run() \n endfunction")
 vim.cmd("function! Quit(a,b,c,d) \n qa! \n endfunction")
-vim.cmd("function! TeBufKillBuf(a,b,c,d) \n TeBufKillBuf \n endfunction")
-
+vim.cmd([[ function! TeBufKillBuf(bufnr,b,c,d)
+        call luaeval('require("tevim.ui.tebufline").close_buffer(_A)', a:bufnr)
+  endfunction]])
 -------------------------------------------------------------------------
 
 local function new_hl(group1, group2)
@@ -219,7 +220,7 @@ local tebuflineNext = function()
 	end
 end
 
-local close_buffer = function(bufnr)
+M.close_buffer = function(bufnr)
 	if vim.bo.buftype == "terminal" then
 		vim.cmd(vim.bo.buflisted and "set nobl | enew" or "hide")
 	else
@@ -253,7 +254,7 @@ M.setup = function()
 		close_other_buffers()
 	end, {})
 	vim.api.nvim_create_user_command("TeBufKillBuf", function()
-		close_buffer(vim.api.nvim_get_current_buf())
+		M.close_buffer(vim.api.nvim_get_current_buf())
 	end, {})
 	if #vim.fn.getbufinfo({ buflisted = 1 }) >= 1 or #vim.api.nvim_list_tabpages() >= 2 then
 		vim.o.showtabline = 2
