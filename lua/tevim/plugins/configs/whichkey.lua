@@ -70,10 +70,10 @@ return {
 			s = { "<cmd>Gitsigns stage_hunk<cr>", "Stage Hunk" },
 			S = { "<cmd>Gitsigns undo_stage_hunk<cr>", "Undo Stage Hunk" },
 			b = { "<cmd>Gitsigns blame_line<cr>", "Blame Line" },
+			d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
 			o = { "<cmd>Telescope git_status<cr>", "Open Changed File" },
 			c = { "<cmd>Telescope git_branches<cr>", "Checkout Branch" },
 			m = { "<cmd>Telescope git_commits<cr>", "Checkout Commit" },
-			d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
 		},
 		l = {
 			name = "  LSP",

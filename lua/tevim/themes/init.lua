@@ -1,6 +1,3 @@
-local hl_files = vim.fn.stdpath("config") .. "/lua/tevim/themes/integrations"
-local hl_files_custom = vim.fn.stdpath("config") .. "/lua/custom/themes/integrations"
-
 local M = {}
 
 M.getCurrentTheme = function()
@@ -28,17 +25,17 @@ M.loadCustomTb = function(g)
 	return g
 end
 
-M.merge_tb = function(...)
+local merge_tb = function(...)
 	return vim.tbl_deep_extend("force", ...)
 end
 
-M.tableToStr = function(tb)
+local tableToStr = function(tb)
 	local result = ""
 	if vim.g.transparency then
 		local glassy = require("tevim.themes.transparency")
 		for key, value in pairs(glassy) do
 			if tb[key] then
-				tb[key] = M.merge_tb(tb[key], value)
+				tb[key] = merge_tb(tb[key], value)
 			end
 		end
 	end
@@ -55,8 +52,8 @@ M.tableToStr = function(tb)
 	return result
 end
 
-M.toCache = function(filename, tb)
-	local lines = "return string.dump(function()" .. M.tableToStr(tb) .. "end, true)"
+local toCache = function(filename, tb)
+	local lines = "return string.dump(function()" .. tableToStr(tb) .. "end, true)"
 	local file = io.open(vim.g.themeCache .. filename, "wb")
 	if file then
 		---@diagnostic disable-next-line: deprecated
@@ -73,17 +70,20 @@ local function indexOf(array, value)
 	end
 	return nil
 end
-M.compile = function()
+
+local compile = function()
 	if not vim.loop.fs_stat(vim.g.themeCache) then
 		vim.fn.mkdir(vim.g.themeCache, "p")
 	end
 	local allThemes = {}
-	for _, file in ipairs(vim.fn.readdir(hl_files)) do
+	for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/tevim/themes/integrations")) do
 		for k, f in pairs(M.loadTb(vim.fn.fnamemodify(file, ":r"))) do
 			allThemes[k] = f
 		end
 	end
-	for k, f in pairs(M.loadCustomTb(vim.fn.fnamemodify(hl_files_custom, ":r"))) do
+	for k, f in
+		pairs(M.loadCustomTb(vim.fn.fnamemodify(vim.fn.stdpath("config") .. "/lua/custom/themes/integrations", ":r")))
+	do
 		for _, i in pairs(allThemes) do
 			if i == f then
 				table.remove(allThemes, indexOf(allThemes, i))
@@ -92,11 +92,11 @@ M.compile = function()
 		end
 		allThemes[k] = f
 	end
-	M.toCache("allThemes", allThemes)
+	toCache("allThemes", allThemes)
 end
 
 M.load = function()
-	M.compile()
+	compile()
 	dofile(vim.g.themeCache .. "allThemes")
 end
 

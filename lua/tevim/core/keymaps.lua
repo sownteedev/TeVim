@@ -1,9 +1,10 @@
 local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
 
-map("n", "<C-a>", "ggVG", opts, { desc = "Select All" })
+map({ "n", "v" }, "<C-a>", "ggVG", opts, { desc = "Select All" })
 map("v", "<C-c>", "y", opts, { desc = "Copy" })
-map("n", "<C-v>", "p", opts, { desc = "Paste" })
+map({ "n", "i" }, "<C-v>", "<ESC>pa", opts, { desc = "Paste" })
+map({ "n", "v" }, "<C-x>", "d", opts, { desc = "Cut" })
 
 map(
 	"n",
@@ -25,21 +26,18 @@ map("n", "<C-j>", "<C-w>j", opts, { desc = "Move Cursor Down Buffer" })
 map("n", "<C-k>", "<C-w>k", opts, { desc = "Move Cursor Up Buffer" })
 map("n", "<C-l>", "<C-w>l", opts, { desc = "Move Cursor Right Buffer" })
 
-map("n", "<C-s>", "<cmd>w<CR>", opts, { desc = "Save" })
-map("i", "<C-s>", "<ESC>:w<CR>", opts, { desc = "Save (Insert)" })
-map("n", "<Leader>q", "<cmd>qa!<CR>", opts, { desc = "Quit" })
+map({ "n", "i" }, "<C-s>", "<ESC>:w<CR>", opts, { desc = "Save" })
+map({ "n", "v" }, "<Leader>q", "<cmd>qa!<CR>", opts, { desc = "Quit" })
 
-map("n", "<M-Up>", ":m-2<CR>", opts, { desc = "Move Line Up" })
-map("n", "<M-Down>", ":m+<CR>", opts, { desc = "Move Line Down" })
-map("i", "<M-Up>", "<Esc>:m-2<CR>", opts, { desc = "Move Line Up (Insert)" })
-map("i", "<M-Down>", "<Esc>:m+<CR>", opts, { desc = "Move Line Down (Insert)" })
+map({ "n", "i" }, "<M-Up>", "<Esc>:m-2<CR>", opts, { desc = "Move Line Up (Insert)" })
+map({ "n", "i" }, "<M-Down>", "<Esc>:m+<CR>", opts, { desc = "Move Line Down (Insert)" })
 map("x", "<M-Up>", ":move '<-2<CR>gv-gv", opts, { desc = "Move Line Up (Visual)" })
 map("x", "<M-Down>", ":move '>+1<CR>gv-gv", opts, { desc = "Move Line Down (Visual)" })
 
-map("n", "<C-Up>", ":resize +2<CR>", opts, { desc = "Resize Window Up" })
-map("n", "<C-Down>", ":resize -2<CR>", opts, { desc = "Resize Window Down" })
-map("n", "<C-Left>", ":vertical resize +2<CR>", opts, { desc = "Resize Window Left" })
-map("n", "<C-Right>", ":vertical resize -2<CR>", opts, { desc = "Resize Window Right" })
+map({ "n", "v" }, "<C-Up>", ":resize +2<CR>", opts, { desc = "Resize Window Up" })
+map({ "n", "v" }, "<C-Down>", ":resize -2<CR>", opts, { desc = "Resize Window Down" })
+map({ "n", "v" }, "<C-Left>", ":vertical resize +2<CR>", opts, { desc = "Resize Window Left" })
+map({ "n", "v" }, "<C-Right>", ":vertical resize -2<CR>", opts, { desc = "Resize Window Right" })
 
 map("i", "<C-j>", "<Down>", opts, { desc = "Move Cursor Down in Insert Mode" })
 map("i", "<C-k>", "<Up>", opts, { desc = "Move Cursor Up in Insert Mode" })

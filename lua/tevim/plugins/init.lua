@@ -16,7 +16,7 @@ local plugins = {
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		cmd = "Neotree",
-		keys = { { "<C-e>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" } },
+		keys = { { mode = { "n", "v" }, "<C-e>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" } },
 		branch = "v3.x",
 		deactivate = function()
 			vim.cmd([[Neotree close]])
@@ -70,7 +70,7 @@ local plugins = {
 	},
 	{
 		"folke/which-key.nvim",
-		keys = { "<leader>", " ", "'", "`" },
+		keys = { mode = { "n", "v" }, "<leader>", " ", "'", "`" },
 		cmd = "WhichKey",
 		opts = function()
 			return require("tevim.plugins.configs.whichkey")
@@ -160,7 +160,7 @@ local plugins = {
 		cmd = { "ToggleTerm", "TermExec" },
 		keys = {
 			{
-				mode = { "n", "t" },
+				mode = { "n", "t", "v" },
 				[[<C-`>]],
 				"<cmd>ToggleTerm size=10 direction=horizontal<cr>",
 				{ desc = "Toggle Terminal" },

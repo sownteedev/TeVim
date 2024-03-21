@@ -4,17 +4,14 @@ local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local conf = require("telescope.config").values
 local replaceword = require("tevim.core.utils").replaceword
-local scheme = vim.fn.stdpath("config") .. "/lua/tevim/themes/schemes"
-local custom_scheme = vim.fn.stdpath("config") .. "/lua/custom/themes/schemes"
 
 local M = {}
 
 local themes = {}
-
-for _, file in ipairs(vim.fn.readdir(scheme)) do
+for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/tevim/themes/schemes")) do
 	table.insert(themes, vim.fn.fnamemodify(file, ":r"))
 end
-for _, file in ipairs(vim.fn.readdir(custom_scheme)) do
+for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/custom/themes/schemes")) do
 	table.insert(themes, vim.fn.fnamemodify(file, ":r"))
 end
 table.sort(themes)
