@@ -19,7 +19,6 @@ return {
 		},
 		ignore_missing = true,
 		show_help = true,
-		triggers = { "<leader>" },
 	},
 
 	mappings = {
