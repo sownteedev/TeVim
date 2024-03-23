@@ -109,7 +109,7 @@ return {
 	},
 
 	opts = {
-		mode = "n",
+		mode = { "n", "v" },
 		prefix = "<leader>",
 		buffer = nil,
 		silent = true,

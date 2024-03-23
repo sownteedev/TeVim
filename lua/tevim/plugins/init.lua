@@ -70,7 +70,7 @@ local plugins = {
 	},
 	{
 		"folke/which-key.nvim",
-		keys = { mode = { "n", "v" }, "<leader>", " ", "'", "`" },
+		keys = { "<leader>", " ", "'", "`" },
 		cmd = "WhichKey",
 		opts = function()
 			return require("tevim.plugins.configs.whichkey")
