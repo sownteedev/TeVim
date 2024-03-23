@@ -194,8 +194,12 @@ M.CreateCustom = function()
 end
 
 M.TeVimUpdate = function()
-	vim.cmd("silent !git -C " .. vim.fn.stdpath("config") .. " pull")
-	vim.notify("TeVim updated! Reopen Neovim, if TeVim has issues, please report to me!")
+	local status = vim.fn.system("git -C " .. vim.fn.stdpath("config") .. " pull")
+	if status == 0 then
+		vim.notify("TeVim doesn't have any updates!")
+	else
+		vim.notify("TeVim updated! Reopen Neovim, if TeVim has issues, please report to me!")
+	end
 end
 
 ------------------------------------ FOR THEMES ------------------------------------------
