@@ -3,7 +3,7 @@ local utils = require("tevim.core.utils")
 
 return {
 	LazyH1 = { bg = colors.green, fg = colors.background },
-	LazyButton = { bg = utils.blend(colors.foreground, colors.background, 0.05), fg = colors.foreground },
+	LazyButton = { bg = utils.blend(colors.foreground, colors.background, 0.1), fg = colors.foreground },
 	LazyButtonActive = { bg = utils.blend(colors.foreground, colors.background, 0.2), fg = colors.foreground },
 	LazyH2 = { fg = colors.red, bold = true },
 	LazyReasonPlugin = { fg = colors.red },

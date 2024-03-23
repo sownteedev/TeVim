@@ -164,6 +164,9 @@ M.checkMason = function()
 	if #missing > 0 then
 		vim.cmd("MasonInstall " .. table.concat(missing, " "))
 	end
+	if #missing == 0 and #remove == 0 then
+		vim.notify("Nothing to install or uninstall")
+	end
 end
 
 M.CreateCustom = function()
@@ -192,7 +195,7 @@ end
 
 M.TeVimUpdate = function()
 	vim.cmd("silent !git -C " .. vim.fn.stdpath("config") .. " pull")
-	vim.notify("TeVim updated")
+	vim.notify("TeVim updated! Reopen Neovim, if TeVim has issues, please report to me!")
 end
 
 ------------------------------------ FOR THEMES ------------------------------------------

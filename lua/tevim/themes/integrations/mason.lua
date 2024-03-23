@@ -7,6 +7,6 @@ return {
 	MasonHighlightBlock = { fg = colors.background, bg = colors.green },
 	MasonHighlightBlockBold = { link = "MasonHighlightBlock" },
 	MasonHeaderSecondary = { link = "MasonHighlightBlock" },
-	MasonMuted = { fg = utils.blend(colors.foreground, colors.background, 0.2) },
-	MasonMutedBlock = { fg = utils.blend(colors.foreground, colors.background, 0.2) },
+	MasonMuted = { fg = colors.foreground },
+	MasonMutedBlock = { fg = colors.foreground, bg = utils.blend(colors.foreground, colors.background, 0.2) },
 }
