@@ -1,203 +1,258 @@
 <h1 align="center">TeVim</h1>
 
+<p align="center">
+  A fast, extensible Neovim configuration with a custom UI, sensible defaults,
+  built-in LSP support, and a user layer that stays separate from the core.
+</p>
+
 <div align="center">
 
 ![GitHub top language](https://img.shields.io/github/languages/top/sownteedev/TeVim?color=6d92bf&style=for-the-badge&labelColor=111418)
-![Last Commit](https://img.shields.io/github/last-commit/sownteedev/TeVim?&style=for-the-badge&color=da696f&logoColor=D9E0EE&labelColor=111418)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/sownteedev/TeVim?color=e1b56a&style=for-the-badge&labelColor=111418)
-![GitHub Repo stars](https://img.shields.io/github/stars/sownteedev/TeVim?color=74be88&style=for-the-badge&labelColor=111418)
+![Last Commit](https://img.shields.io/github/last-commit/sownteedev/TeVim?style=for-the-badge&color=da696f&logoColor=D9E0EE&labelColor=111418)
+![GitHub code size](https://img.shields.io/github/languages/code-size/sownteedev/TeVim?color=e1b56a&style=for-the-badge&labelColor=111418)
+![GitHub stars](https://img.shields.io/github/stars/sownteedev/TeVim?color=74be88&style=for-the-badge&labelColor=111418)
 
 </div>
 
-<img src="https://github.com/sownteedev/TeVim/assets/90148193/dda6c61f-10a1-4317-8df2-561e3f961bd2">
+<img src="https://github.com/sownteedev/TeVim/assets/90148193/dda6c61f-10a1-4317-8df2-561e3f961bd2" alt="TeVim dashboard">
 
-<div align="center">
+## Features
 
-```txt
-Performance for time startup on low laptop
-On Power                              : 15ms - 20ms
-On Battery                            : 17ms - 21ms
-```
+- Fast startup with lazy-loaded plugins.
+- Custom dashboard, statusline, bufferline, and theme system.
+- LSP support powered by Neovim's native LSP client, nvim-lspconfig, and Mason.
+- Completion, snippets, Treesitter highlighting, Git integration, Telescope, and Neo-tree.
+- A separate `lua/custom/` layer for personal configuration.
+- 16 bundled colorschemes with support for user-created themes.
 
-</div>
-<h5> Themes Showcase with 16 colorschemes </h5>
+On the author's machine, a headless startup typically takes approximately 14–20 ms.
+Startup time depends on hardware, operating system, and enabled custom plugins.
 
-| <img src="https://github.com/sownteedev/TeVim/assets/90148193/7b5e73eb-244c-48b0-937a-bd9590ca151c" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/0dad550e-08f0-4ed3-a0a5-b8ace6e561d2" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/a3f2a5ab-e17f-4132-9c52-7ea8b0962ab8" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/ed8f0347-b809-4570-b0d9-6b49e81257d9" align="center" width="200px"> |
-| :-------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------: | --------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="https://github.com/sownteedev/TeVim/assets/90148193/a7426bf0-43cd-4eb5-943c-7995b23a5b4b" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/49100402-f82c-40e3-9197-debdc04a0e54" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/7ec88e9b-5e40-475c-b765-82cc83571dd5" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/2148b26a-b799-426b-89ec-5ceda8a1006b" align="center" width="200px"> |
-| <img src="https://github.com/sownteedev/TeVim/assets/90148193/c4fe9259-0714-4247-8c95-9cec37c0c697" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/073d64fd-f049-43a4-903d-6fde8ab1fbe3" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/a77bc174-cc25-4610-9c58-32590ad8c577" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/2ff7f908-51e7-4214-9609-9c4b72da8f90" align="center" width="200px"> |
-| <img src="https://github.com/sownteedev/TeVim/assets/90148193/c9bc8b70-1912-4700-8f8c-928493189805" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/974c9cec-5479-49a1-9d37-05e82749ac97" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/eabb7fba-1596-44ec-b93c-98fb2244c911" align="center" width="200px"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/f7502d7c-fe4b-4970-899c-d32cd83bec73" align="center" width="200px"> |
+<details>
+<summary><strong>Theme showcase — 16 colorschemes</strong></summary>
+
+| | | | |
+| :-: | :-: | :-: | :-: |
+| <img src="https://github.com/sownteedev/TeVim/assets/90148193/7b5e73eb-244c-48b0-937a-bd9590ca151c" width="200" alt="TeVim theme 1"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/0dad550e-08f0-4ed3-a0a5-b8ace6e561d2" width="200" alt="TeVim theme 2"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/a3f2a5ab-e17f-4132-9c52-7ea8b0962ab8" width="200" alt="TeVim theme 3"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/ed8f0347-b809-4570-b0d9-6b49e81257d9" width="200" alt="TeVim theme 4"> |
+| <img src="https://github.com/sownteedev/TeVim/assets/90148193/a7426bf0-43cd-4eb5-943c-7995b23a5b4b" width="200" alt="TeVim theme 5"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/49100402-f82c-40e3-9197-debdc04a0e54" width="200" alt="TeVim theme 6"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/7ec88e9b-5e40-475c-b765-82cc83571dd5" width="200" alt="TeVim theme 7"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/2148b26a-b799-426b-89ec-5ceda8a1006b" width="200" alt="TeVim theme 8"> |
+| <img src="https://github.com/sownteedev/TeVim/assets/90148193/c4fe9259-0714-4247-8c95-9cec37c0c697" width="200" alt="TeVim theme 9"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/073d64fd-f049-43a4-903d-6fde8ab1fbe3" width="200" alt="TeVim theme 10"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/a77bc174-cc25-4610-9c58-32590ad8c577" width="200" alt="TeVim theme 11"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/2ff7f908-51e7-4214-9609-9c4b72da8f90" width="200" alt="TeVim theme 12"> |
+| <img src="https://github.com/sownteedev/TeVim/assets/90148193/c9bc8b70-1912-4700-8f8c-928493189805" width="200" alt="TeVim theme 13"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/974c9cec-5479-49a1-9d37-05e82749ac97" width="200" alt="TeVim theme 14"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/eabb7fba-1596-44ec-b93c-98fb2244c911" width="200" alt="TeVim theme 15"> | <img src="https://github.com/sownteedev/TeVim/assets/90148193/f7502d7c-fe4b-4970-899c-d32cd83bec73" width="200" alt="TeVim theme 16"> |
 
 </details>
 
-## 🔎 Requirements
+## Requirements
 
-- Neovim >= v0.9 (Recommend nightly version).
+- Neovim **0.11.3 or newer**. Neovim 0.12 is recommended.
+- Git, curl, ripgrep, and a C compiler.
+- A [Nerd Font](https://www.nerdfonts.com/) configured in your terminal.
+- A clipboard provider: `wl-clipboard` on Wayland, or `xclip`/`xsel` on X11.
+- Optional: `lazygit` and `ranger`.
 
-- Nerd Font as your terminal font.
+Some Treesitter parsers and native Telescope extensions require a working compiler.
+Windows users can use LLVM/Clang or MinGW and must add it to `PATH`.
 
-- `Ripgrep` and `Fzf` are required for grep searching with Telescope.
+## Installation
 
-- `GCC (Clang)`, **Windows** users must have `mingw` installed and set on PATH.
+Back up your existing configuration first.
 
-- `Lazygit` and `Ranger` (OPTIONAL).
+### Linux and macOS
 
-- `Xsel` and `Xclip` for copy and paste (X11), `wl-clipboard` (Wayland) (OPTIONAL).
+```sh
+mv ~/.config/nvim ~/.config/nvim.bak
+git clone --depth 1 https://github.com/sownteedev/TeVim ~/.config/nvim
+nvim
+```
 
-## ⬇️  Installation
+### Windows PowerShell
 
-#### Linux
-- Backup your config
-  ```zsh
-  mv ~/.config/nvim ~/.config/nvim.bak
-  ```
-- Remove cache setup
-  ```zsh
-  rm -rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
-  ```
-- Install TeVim
-  ```zsh
-  git clone https://github.com/sownteedev/TeVim ~/.config/nvim --depth 1 && nvim
-  ```
+```powershell
+Move-Item $env:LOCALAPPDATA\nvim $env:LOCALAPPDATA\nvim.bak
+git clone --depth 1 https://github.com/sownteedev/TeVim $env:LOCALAPPDATA\nvim
+nvim
+```
 
-- Adding Mason to PATH
-  ```zsh
-  # this is for zsh
-  export PATH=$PATH:~/.local/share/nvim/mason/bin
-  ```
+TeVim installs plugins on the first launch and creates `lua/custom/`
+automatically. Restart Neovim after the initial installation finishes.
 
-#### Windows (PowerShell)
-- Backup your config
-  ```powershell
-  Move-Item $env:LOCALAPPDATA\nvim $env:LOCALAPPDATA\nvim.bak
-  ```
-- Remove cache setup
-  ```powershell
-  Move-Item $env:LOCALAPPDATA\nvim-data $env:LOCALAPPDATA\nvim-data.bak
-  ```
-- Install TeVim
-  ```powershell
-  git clone https://github.com/sownteedev/TeVim $env:LOCALAPPDATA\nvim --depth 1 && nvim
-  ```
+## Core and custom configuration
 
-#### Custom Colorschemes
-> Read file colorschemes on tevim/themes/schemes/ and write like it on custom/themes/schemes/
+TeVim separates maintained defaults from user configuration:
 
-#### TeVim Commands
-> **TeVimThemes** : Open list colorschemes
->
-> **TeVimToggleTrans** : Toggle Transparency
->
-> **TeVimCheckMason** : Install or Remove package you add or remove on custom/configs/overrides.lua
->
-> **TeVimUpdate** : Update TeVim (If you have any problems, please create issues)
+```text
+lua/
+├── tevim/       # TeVim core: UI, defaults, and bundled plugins
+└── custom/      # Your plugins, options, keymaps, LSP servers, and themes
+```
 
-<br>
+Do not edit `lua/tevim/` for personal changes. Files in `lua/custom/` are
+loaded after the core and can extend or override it without creating conflicts
+when TeVim is updated.
 
-<h3> ENJOY WITH TEVIM ! 🎉 </h3>
+### Add a plugin
 
-<br>
+Add a Lazy plugin specification to `lua/custom/plugins.lua`:
 
-> **NOTE:**
->
-> TeVim auto create Custom Folder, change or add everything on it.
->
-> THIS IS NOT A "DISTRO" and not for BEGINNERS, you need to have some experiences with Lua and Neovim.
->
-> If there are any errors or questions, please create Issues or contact me
-<a href="https://discordapp.com/users/745732774027198554">here</a>
+```lua
+return {
+	{
+		"stevearc/conform.nvim",
+		event = "BufWritePre",
+		opts = {},
+	},
+}
+```
 
-## Plugins
+You can also add another specification with the same repository name to
+override a bundled plugin.
 
-| Plugin (~30 plugs)                                                                    | Description                                                    |  Lazy   |
-| ------------------------------------------------------------------------------------- | -------------------------------------------------------------- | :-----: |
-| [folke/lazy](https://github.com/folke/lazy.nvim)                                      | the package manager for newbies                                | `true`  |
-| [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | syntax highlighting, most popular one for neovim               | `true`  |
-| [HiPhish/rainbow-delimiters.nvim](https:://github.com/HiPhish/rainbow-delimiters.nvim)| highlights matching delimiters                                 | `true`  |
-| [NvChad/nvim-colorizer.lua](https://github.com/NvChad/nvim-colorizer.lua)             | highlights colors and is really frickin fast                   | `true`  |
-| [nvim-neo-tree/neo-tree.lua](https://github.com/nvim-neo-tree/neo-tree.nvim)          | a very neat, simple and clean file tree and most features      | `true`  |
-| [nvim-tree/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)         | more devicons for neovim                                       | `true`  |
-| [windwp/nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)                   | automatically close and rename html tags                       | `true`  |
-| [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs)                     | automatically close and rename brackets                        | `true`  |
-| [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)     | probably the most popular menu. can be used for a lot of stuff | `true`  |
-| [akinsho/toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)                 | terminal integration in neovim                                 | `true`  |
-| [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)                 | Super fast git decorations implemented purely in Lua.          | `true`  |
-| [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim)                 | installing LSPs made super easy                                | `true`  |
-| [nvimdev/lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim)                       | responsible for the winbar and lightbulb                       | `true`  |
-| [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)                     | the most popular LSP client for neovim                         | `true`  |
-| [hrsh7th/nvim-cmp](https:://github.com/hrsh7th/nvim-cmp)                              | autocompletion plugin for neovim                               | `true`  |
-| [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip)                               | very simple and easy to use snippet engine                     | `true`  |
-| [RRethy/vim-illuminate](https://github.com/RRethy/vim-illuminate)                     | highlights all instances of the word under the cursor          | `true`  |
-| [lukas-reineke/indent-blankline.nvim](https:://github.com/lukas-reineke/indent-blankline.nvim)| shows indent lines in neovim                           | `true`  |
-| [echasnovski/mini.indentscope](https:://github.com/echasnovski/mini.indentscope)      | perfect animation indent lines                                 | `true`  |
-| [numToStr/Comment.nvim](https://github.com/numToStr/Comment.nvim)                     | quik and easy commenting                                       | `true`  |
-| [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim)               | beautiful highlights for TODO comments                         | `true`  |
+### Change an option
 
-## Keybinds
+Add your changes to `lua/custom/options.lua`:
 
-| Keys        | Function          |
-| ------------- |-------------|
-| <kbd>CTRL</kbd> <kbd>h</kbd> / <kbd>j</kbd> / <kbd>k</kbd> / <kbd>l</kbd> | Moving Window Focus Towards Left/Up/Down/Right (Normal) |
-| <kbd>CTRL</kbd> <kbd>h</kbd> / <kbd>j</kbd> / <kbd>k</kbd> / <kbd>l</kbd> | Moving Cursor Left/Up/Down/Right (Insert) |
-| <kbd>CTRL</kbd> <kbd>e</kbd> | Toggle Explorer with Neotree |
-| <kbd>CTRL</kbd> <kbd>`</kbd> | Open And Close ToggleTerm |`
-| <kbd>ALT</kbd> / <kbd>⬇️</kbd> / <kbd>⬆️</kbd> | Moving Current Line or Lines Down/Up |
-| <kbd>Enter</kbd> | Clear Highlight Search |
+```lua
+vim.opt.relativenumber = true
+vim.opt.wrap = false
+vim.g.transparency = true
+```
 
-#### File Operations
+### Add a keymap
 
-| Keys        | Function          |
-| ------------- |-------------|
-| <kbd>LDR</kbd> <kbd>q</kbd> | Exit Neovim |
-| <kbd>CTRL</kbd> <kbd>s</kbd> | Save File (N + I) |
-| <kbd>CTRL</kbd> <kbd>q</kbd> | Close Current Buffer |
-| <kbd>CTRL</kbd> <kbd>o</kbd> | Close Other Buffer |
-| <kbd>TAB</kbd>               | Next Buffer |
-| <kbd>SHIFT</kbd> <kbd>TAB</kbd> | Previous Buffer |
-| <kbd>CTRL</kbd> <kbd>/</kbd> | Toggle Comment (N + I + V) |
+Add keymaps to `lua/custom/keymaps.lua`:
 
-#### Telescope
+```lua
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", {
+	desc = "Toggle file explorer",
+	silent = true,
+})
+```
 
-| Keys        | Function          |
-| ------------- |-------------|
-| <kbd>LDR</kbd> <kbd>f</kbd> <kbd>f</kbd> | Find Files |
-| <kbd>LDR</kbd> <kbd>f</kbd> <kbd>r</kbd> | Find Recently Visited Files |
-| <kbd>LDR</kbd> <kbd>f</kbd> <kbd>w</kbd> | Find File By String |
-| <kbd>LDR</kbd> <kbd>f</kbd> <kbd>t</kbd> | TODO |
+### Add LSP servers and Mason packages
 
-#### LSP
+List packages managed by `:TeVimCheckMason` in
+`lua/custom/configs/overrides.lua`:
 
-| Keys        | Function          |
-| ------------- |-------------|
-| <kbd>LDR</kbd> <kbd>l</kbd> <kbd>a</kbd>  | Code Action |
-| <kbd>LDR</kbd> <kbd>l</kbd> <kbd>o</kbd>  | Outline |
-| <kbd>LDR</kbd> <kbd>l</kbd> <kbd>i</kbd>  | Lsp Infor |
-| <kbd>LDR</kbd> <kbd>l</kbd> <kbd>r</kbd>  | Lsp Rename |
+```lua
+local M = {}
 
-#### Treesitter
+M.mason = {
+	ensure_installed = {
+		"typescript-language-server",
+		"eslint-lsp",
+		"prettier",
+	},
+}
 
-| Keys        | Function          |
-| ------------- |-------------|
-| <kbd>LDR</kbd> <kbd>s</kbd> <kbd>i</kbd> | Treesitter Info |
-| <kbd>LDR</kbd> <kbd>s</kbd> <kbd>u</kbd> | Treesitter Update |
+return M
+```
 
-#### TeVim
+Create `lua/custom/configs/lspconfig.lua`:
 
-| Keys        | Function          |
-| ------------- |-------------|
-| <kbd>LDR</kbd> <kbd>LDR</kbd> <kbd>u</kbd> | TeVim Update |
-| <kbd>LDR</kbd> <kbd>LDR</kbd> <kbd>c</kbd> | TeVim Colorscheme Picker |
-| <kbd>LDR</kbd> <kbd>LDR</kbd> <kbd>t</kbd> | Toggle Transparency |
-| <kbd>LDR</kbd> <kbd>LDR</kbd> <kbd>m</kbd> | TeVim Check Mason |
+```lua
+local base = require("tevim.plugins.configs.lspconfig")
+local servers = { "ts_ls", "eslint" }
 
-<br>
+for _, server in ipairs(servers) do
+	vim.lsp.config(server, {
+		on_attach = base.on_attach,
+		capabilities = base.capabilities,
+	})
+end
 
-> Use **Telescope keymaps** for more keybinds
+vim.lsp.enable(servers)
+```
 
-<br>
+Then extend the bundled LSP plugin in `lua/custom/plugins.lua`:
 
-<details><summary> <b>Credits</b></summary>
+```lua
+return {
+	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			require("tevim.plugins.configs.lspconfig")
+			require("custom.configs.lspconfig")
+		end,
+	},
+}
+```
 
-- [Nvchad](https://github.com/nvchad) helped TeDash and TeBufline (fix some bugs for theme)
+Run `:TeVimCheckMason` after changing the package list.
+
+### Add a colorscheme
+
+Copy one of the palette files from `lua/tevim/themes/schemes/` to
+`lua/custom/themes/schemes/mytheme.lua`, change its colors, and select it in
+`lua/custom/options.lua`:
+
+```lua
+vim.g.TeVimTheme = "mytheme"
+```
+
+Custom highlight overrides belong in `lua/custom/themes/integrations.lua`.
+
+## Commands
+
+| Command | Description |
+| --- | --- |
+| `:TeVimThemes` | Open the colorscheme picker |
+| `:TeVimToggleTrans` | Toggle background transparency |
+| `:TeVimCheckMason` | Synchronize packages listed in `custom/configs/overrides.lua` |
+| `:TeVimUpdate` | Update TeVim |
+| `:Mason` | Open the Mason package manager |
+| `:Lazy` | Open the Lazy plugin manager |
+
+## Keymaps
+
+The leader key is <kbd>Space</kbd>. Use `:Telescope keymaps` to browse the
+complete list.
+
+| Key | Action |
+| --- | --- |
+| <kbd>Ctrl</kbd>+<kbd>E</kbd> | Toggle Neo-tree |
+| <kbd>Ctrl</kbd>+<kbd>`</kbd> | Toggle the terminal |
+| <kbd>Ctrl</kbd>+<kbd>S</kbd> | Save the current file |
+| <kbd>Ctrl</kbd>+<kbd>/</kbd> | Toggle comments |
+| <kbd>Leader</kbd> <kbd>f</kbd> <kbd>f</kbd> | Find files |
+| <kbd>Leader</kbd> <kbd>f</kbd> <kbd>w</kbd> | Search text |
+| <kbd>Leader</kbd> <kbd>l</kbd> <kbd>a</kbd> | LSP code action |
+| <kbd>Leader</kbd> <kbd>l</kbd> <kbd>r</kbd> | LSP rename |
+| <kbd>Leader</kbd> <kbd>l</kbd> <kbd>I</kbd> | LSP information |
+| <kbd>Leader</kbd> <kbd>s</kbd> <kbd>i</kbd> | Treesitter module information |
+| <kbd>Leader</kbd> <kbd>s</kbd> <kbd>u</kbd> | Update Treesitter parsers |
+| <kbd>Leader</kbd> <kbd>Leader</kbd> <kbd>c</kbd> | Open the theme picker |
+| <kbd>Leader</kbd> <kbd>Leader</kbd> <kbd>m</kbd> | Synchronize Mason packages |
+
+## Main plugins
+
+| Plugin | Purpose |
+| --- | --- |
+| [lazy.nvim](https://github.com/folke/lazy.nvim) | Plugin manager and lazy-loading |
+| [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Parsers, queries, and syntax highlighting |
+| [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP server configurations |
+| [mason.nvim](https://github.com/mason-org/mason.nvim) | External development-tool manager |
+| [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) | Completion engine |
+| [LuaSnip](https://github.com/L3MON4D3/LuaSnip) | Snippet engine |
+| [Telescope](https://github.com/nvim-telescope/telescope.nvim) | Fuzzy finder and picker interface |
+| [Neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim) | File explorer |
+| [Gitsigns](https://github.com/lewis6991/gitsigns.nvim) | Git changes and hunk actions |
+| [ToggleTerm](https://github.com/akinsho/toggleterm.nvim) | Terminal integration |
+| [which-key.nvim](https://github.com/folke/which-key.nvim) | Keymap discovery |
+
+## Troubleshooting
+
+- Run `:checkhealth` to inspect Neovim, LSP, Treesitter, and provider health.
+- Run `:Lazy sync` if a plugin is missing or out of date.
+- Run `:Mason` to inspect external tools.
+- Run `:LspInfo` after opening a source file to inspect attached LSP clients.
+- When reporting an issue, include your Neovim version and relevant
+  `:checkhealth` output.
+
+> TeVim is an opinionated configuration intended for users who are comfortable
+> with Lua and Neovim. If you encounter a problem, please
+> [open an issue](https://github.com/sownteedev/TeVim/issues).
+
+<details>
+<summary><strong>Credits</strong></summary>
+
+- [NvChad](https://github.com/NvChad) inspired parts of TeDash and TeBufline.
 
 </details>

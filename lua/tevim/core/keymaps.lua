@@ -6,6 +6,9 @@ map("v", "<C-c>", "y", opts, { desc = "Copy" })
 map({ "n", "i" }, "<C-v>", "<ESC>pa", opts, { desc = "Paste" })
 map({ "n", "v" }, "<C-x>", "d", opts, { desc = "Cut" })
 map({ "n", "v", "i" }, "<C-z>", "<cmd>undo<CR>", opts, { desc = "Undo" })
+map("n", "<C-/>", "gcc", { remap = true, silent = true }, { desc = "Toggle Comment" })
+map("v", "<C-/>", "gc", { remap = true, silent = true }, { desc = "Toggle Comment" })
+map("i", "<C-/>", "<Esc>gcca", { remap = true, silent = true }, { desc = "Toggle Comment" })
 
 map(
 	"n",
@@ -103,15 +106,19 @@ map({ "n", "v" }, "<Leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts, 
 map({ "n", "v" }, "<Leader>li", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", opts,
 	{ desc = "Toggle InlayHints" })
 map({ "n", "v" }, "<Leader>lI", "<cmd>LspInfo<CR>", opts, { desc = "Info" })
-map({ "n", "v" }, "<Leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", opts, { desc = "Next Diagnostic" })
-map({ "n", "v" }, "<Leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<CR>", opts, { desc = "Prev Diagnostic" })
+map({ "n", "v" }, "<Leader>lj", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end, opts, { desc = "Next Diagnostic" })
+map({ "n", "v" }, "<Leader>lk", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end, opts, { desc = "Prev Diagnostic" })
 map({ "n", "v" }, "<Leader>lo", "<cmd>Lspsaga outline<CR>", opts, { desc = "Outline" })
 map({ "n", "v" }, "<Leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts, { desc = "Rename" })
 map({ "n", "v" }, "<Leader>ls", "<cmd>Telescope lsp_document_symbols<CR>", opts, { desc = "Document Symbols" })
 map({ "n", "v" }, "<Leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", opts, { desc = "Workspace Symbols" })
 
 -- Treesitter:
-map({ "n", "v" }, "<Leader>si", "<cmd>TSInstallInfo<CR>", opts, { desc = "Treesitter Info" })
+map({ "n", "v" }, "<Leader>si", "<cmd>TSModuleInfo<CR>", opts, { desc = "Treesitter Info" })
 map({ "n", "v" }, "<Leader>su", "<cmd>TSUpdate<CR>", opts, { desc = "Treesitter Update" })
 
 -- Terminal:

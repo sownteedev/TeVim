@@ -35,7 +35,6 @@ local globals = {
 	maplocalleader = " ",
 	speeddating_no_mappings = 1,
 	TeVimTheme = "yoru",
-	themeCache = vim.fn.stdpath("data") .. "/colors_data/",
 	transparency = false,
 	loadTeDash = true,
 	loadTeBufLine = true,
@@ -43,47 +42,8 @@ local globals = {
 	loadTeVimTheme = true,
 }
 
-local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+local is_windows = vim.uv.os_uname().sysname == "Windows_NT"
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
-
-local builtins = {
-	"2html_plugin",
-	"getscript",
-	"getscriptPlugin",
-	"gzip",
-	"logipat",
-	"netrw",
-	"netrwPlugin",
-	"netrwSettings",
-	"netrwFileHandlers",
-	"tar",
-	"tarPlugin",
-	"rrhelper",
-	"spellfile_plugin",
-	"vimball",
-	"vimballPlugin",
-	"zip",
-	"zipPlugin",
-	"logipat",
-	"matchit",
-	"tutor",
-	"rplugin",
-	"syntax",
-	"synmenu",
-	"optwin",
-	"compiler",
-	"bugreport",
-	"ftplugin",
-	"archlinux",
-	"fzf",
-	"tutor_mode_plugin",
-	"sleuth",
-	"vimgrep",
-}
-
-for _, plugin in ipairs(builtins) do
-	vim.g["loaded_" .. plugin] = 1
-end
 for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
 	vim.g["loaded_" .. provider .. "_provider"] = 0
 end

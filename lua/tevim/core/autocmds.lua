@@ -8,7 +8,7 @@ autocmd("BufWritePre", {
 		if args.match:match("^%w%w+://") then
 			return
 		end
-		vim.fn.mkdir(vim.fn.fnamemodify(vim.loop.fs_realpath(args.match) or args.match, ":p:h"), "p")
+		vim.fn.mkdir(vim.fn.fnamemodify(vim.uv.fs_realpath(args.match) or args.match, ":p:h"), "p")
 	end,
 	desc = "Automatically create parent directories if they don't exist when saving a file",
 })
@@ -20,7 +20,7 @@ if is_available("neo-tree.nvim") then
 			if package.loaded["neo-tree"] then
 				vim.api.nvim_del_augroup_by_name("neotree_start")
 			else
-				local stats = (vim.uv or vim.loop).fs_stat(vim.api.nvim_buf_get_name(0))
+				local stats = vim.uv.fs_stat(vim.api.nvim_buf_get_name(0))
 				if stats and stats.type == "directory" then
 					vim.api.nvim_del_augroup_by_name("neotree_start")
 					require("neo-tree")
@@ -143,7 +143,7 @@ autocmd({ "BufNewFile", "BufRead" }, {
 autocmd("UIEnter", {
 	callback = function()
 		if vim.g.loadTeVimTheme then
-			dofile(vim.g.themeCache .. "allThemes")
+			require("tevim.themes").load()
 		end
 		if vim.g.loadTeStatusLine then
 			vim.opt.statusline = "%!v:lua.require('tevim.ui.testatusline').setup()"
@@ -155,6 +155,17 @@ autocmd("UIEnter", {
 			require("tevim.ui.tedash").setup()
 		end
 	end,
+})
+
+autocmd("User", {
+	pattern = "VeryLazy",
+	group = augroup("tevim_theme_final_apply", { clear = true }),
+	callback = function()
+		if vim.g.loadTeVimTheme then
+			require("tevim.themes").load()
+		end
+	end,
+	desc = "Reapply TeVim highlights after startup plugins finish loading",
 })
 
 autocmd("BufWritePost", {

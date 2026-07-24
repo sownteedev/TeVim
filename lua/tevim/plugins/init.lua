@@ -24,7 +24,7 @@ local plugins = {
 		init = function()
 			vim.g.neo_tree_remove_legacy_commands = 1
 			if vim.fn.argc(-1) == 1 then
-				local stat = vim.loop.fs_stat(vim.fn.argv(0))
+				local stat = vim.uv.fs_stat(vim.fn.argv(0))
 				if stat and stat.type == "directory" then
 					require("neo-tree")
 				end
@@ -36,6 +36,7 @@ local plugins = {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "master",
 		event = { "BufReadPost", "BufNewFile" },
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo", "TSUninstall", "TSUpdate" },
 		build = ":TSUpdate",
@@ -69,20 +70,6 @@ local plugins = {
 		end,
 	},
 	{
-		"numToStr/Comment.nvim",
-		keys = {
-			{ mode = "n", "<C-/>", "<Plug>(comment_toggle_linewise_current)",      desc = "Toggle Comment" },
-			{ mode = "i", "<C-/>", "<esc><Plug>(comment_toggle_linewise_current)", desc = "Toggle Comment(Insert)" },
-			{ mode = "v", "<C-/>", "<Plug>(comment_toggle_linewise_visual)",       desc = "Toggle Comment(Visual)" },
-		},
-		dependencies = "JoosepAlviste/nvim-ts-context-commentstring",
-		config = function()
-			require("Comment").setup({
-				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-			})
-		end,
-	},
-	{
 		"stevearc/dressing.nvim",
 		init = function()
 			vim.ui.select = function(...)
@@ -110,25 +97,7 @@ local plugins = {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		ft = { "gitcommit", "diff" },
-		init = function()
-			vim.api.nvim_create_autocmd({ "BufRead" }, {
-				group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
-				callback = function()
-					vim.fn.jobstart({ "git", "-C", vim.loop.cwd(), "rev-parse" }, {
-						on_exit = function(_, return_code)
-							if return_code == 0 then
-								vim.api.nvim_del_augroup_by_name("GitSignsLazyLoad")
-								vim.schedule(function()
-									require("lazy").load({ plugins = { "gitsigns.nvim" } })
-								end)
-							end
-						end,
-					})
-				end,
-				desc = "Load gitsigns only if git repository",
-			})
-		end,
+		event = "BufReadPre",
 		opts = function()
 			return require("tevim.plugins.configs.gitsign")
 		end,
@@ -195,7 +164,6 @@ local plugins = {
 	{
 		"kevinhwang91/nvim-ufo",
 		event = { "BufReadPost", "BufNewFile" },
-		commit = "aa2e676af592b4e99c105d80d6eafd1afc215d99",
 		dependencies = "kevinhwang91/promise-async",
 		init = function()
 			vim.o.foldcolumn = "1"
@@ -243,8 +211,8 @@ local plugins = {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		event = { "BufReadPost", "BufNewFile" },
-		cmd = { "LspInfo", "LspInstall", "LspUninstall", "LspStart" },
+		event = { "BufReadPre", "BufNewFile" },
+		cmd = { "LspInfo", "LspStart", "LspStop", "LspRestart" },
 		dependencies = {
 			{
 				"nvimdev/lspsaga.nvim",
@@ -252,7 +220,7 @@ local plugins = {
 			},
 			{
 				"williamboman/mason.nvim",
-				cmd = { "Mason", "MasonInstall", "MasonUpdate" },
+				cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUpdate" },
 				opts = function()
 					return require("tevim.plugins.configs.mason")
 				end,
@@ -325,4 +293,5 @@ require("lazy").setup(plugins, {
 			},
 		},
 	},
+	rocks = { enabled = false },
 })
