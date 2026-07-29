@@ -1,6 +1,7 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local is_available = require("tevim.core.utils").is_available
+local core_group = augroup("tevim_core_autocmds", { clear = true })
 
 autocmd("BufWritePre", {
 	group = augroup("create_dir", { clear = true }),
@@ -48,6 +49,7 @@ if is_available("neo-tree.nvim") then
 end
 
 autocmd("CursorHold", {
+	group = core_group,
 	pattern = "*",
 	callback = function()
 		vim.diagnostic.open_float({ scope = "cursor", focusable = false })
@@ -65,6 +67,7 @@ autocmd("TextYankPost", {
 })
 
 autocmd("TermOpen", {
+	group = core_group,
 	pattern = "*",
 	callback = function()
 		vim.opt_local.number = false
@@ -76,36 +79,111 @@ autocmd("TermOpen", {
 	desc = "Disable number and cursorline in terminal",
 })
 
+local auxiliary_filetypes = {
+	"neo-tree",
+	"PlenaryTestPopup",
+	"checkhealth",
+	"fugitive",
+	"git",
+	"gitcommit",
+	"help",
+	"lazy",
+	"lazyterm",
+	"lspinfo",
+	"man",
+	"mason",
+	"notify",
+	"qf",
+	"query",
+	"spectre_panel",
+	"startuptime",
+	"tsplayground",
+	"Trouble",
+	"trouble",
+	"toggleterm",
+}
+
+local function clear_neotree_winbars()
+	if vim.go.winbar ~= "" then
+		vim.go.winbar = ""
+	end
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		if vim.api.nvim_win_is_valid(win) then
+			local buf = vim.api.nvim_win_get_buf(win)
+			if vim.bo[buf].filetype == "neo-tree" and vim.wo[win].winbar ~= "" then
+				vim.wo[win].winbar = ""
+			end
+		end
+	end
+end
+
+local function schedule_neotree_winbar_cleanup()
+	clear_neotree_winbars()
+	vim.schedule(clear_neotree_winbars)
+end
+
 autocmd("FileType", {
-	pattern = {
-		"neo-tree",
-		"PlenaryTestPopup",
-		"checkhealth",
-		"fugitive",
-		"git",
-		"gitcommit",
-		"help",
-		"lazy",
-		"lazyterm",
-		"lspinfo",
-		"man",
-		"mason",
-		"notify",
-		"qf",
-		"query",
-		"spectre_panel",
-		"startuptime",
-		"tsplayground",
-		"Trouble",
-		"trouble",
-		"toggleterm",
-	},
+	group = core_group,
+	pattern = auxiliary_filetypes,
 	callback = function()
 		vim.opt_local.number = false
 		vim.opt_local.cursorline = false
+		vim.opt_local.foldcolumn = "0"
+		vim.opt_local.signcolumn = "no"
 		vim.b.miniindentscope_disable = true
+		vim.opt_local.statuscolumn = ""
+		if vim.bo.filetype == "neo-tree" then
+			vim.opt_local.winbar = ""
+		end
 	end,
-	desc = "Disable miniindentscope, number and cursorline in specific filetypes",
+	desc = "Simplify editor columns in auxiliary filetypes",
+})
+
+autocmd({ "BufWinEnter", "WinEnter" }, {
+	group = core_group,
+	callback = function(args)
+		if vim.bo[args.buf].filetype == "neo-tree" then
+			schedule_neotree_winbar_cleanup()
+		end
+	end,
+	desc = "Keep inherited LSP winbars out of Neo-tree",
+})
+
+autocmd("User", {
+	group = core_group,
+	pattern = "SagaSymbolUpdate",
+	callback = schedule_neotree_winbar_cleanup,
+	desc = "Clear delayed lspsaga winbars from Neo-tree",
+})
+
+autocmd("LspAttach", {
+	group = core_group,
+	callback = schedule_neotree_winbar_cleanup,
+	desc = "Prevent LSP winbars from leaking into Neo-tree",
+})
+
+autocmd("OptionSet", {
+	group = core_group,
+	pattern = "winbar",
+	callback = function()
+		if vim.bo.filetype == "neo-tree" and vim.wo.winbar ~= "" then
+			schedule_neotree_winbar_cleanup()
+		end
+	end,
+	desc = "Reject winbars added to Neo-tree by other plugins",
+})
+
+schedule_neotree_winbar_cleanup()
+
+autocmd("FileType", {
+	group = core_group,
+	pattern = "*",
+	callback = function()
+		if vim.bo.buftype == "" and not vim.tbl_contains(auxiliary_filetypes, vim.bo.filetype) then
+			vim.opt_local.foldcolumn = "1"
+		end
+	end,
+	desc = "Show the fold column only in regular file buffers",
 })
 
 autocmd("BufWinEnter", {
@@ -134,6 +212,7 @@ autocmd("FileType", {
 })
 
 autocmd({ "BufNewFile", "BufRead" }, {
+	group = core_group,
 	callback = function()
 		if vim.g.loadTeBufLine then
 			require("tevim.ui.tebufline").setup()
@@ -141,12 +220,16 @@ autocmd({ "BufNewFile", "BufRead" }, {
 	end,
 })
 autocmd("UIEnter", {
+	group = core_group,
 	callback = function()
 		if vim.g.loadTeVimTheme then
 			require("tevim.themes").load()
 		end
+		if vim.g.loadTeBufLine then
+			vim.o.tabline = '%!v:lua.require("tevim.ui.tebufline").getTabline()'
+		end
 		if vim.g.loadTeStatusLine then
-			vim.opt.statusline = "%!v:lua.require('tevim.ui.testatusline').setup()"
+			require("tevim.ui.testatusline").setup()
 		end
 		local buf_lines = vim.api.nvim_buf_get_lines(0, 0, 1, false)
 		local no_buf_content = vim.api.nvim_buf_line_count(0) == 1 and buf_lines[1] == ""
@@ -168,54 +251,79 @@ autocmd("User", {
 	desc = "Reapply TeVim highlights after startup plugins finish loading",
 })
 
+local reload_pending = false
 autocmd("BufWritePost", {
-	pattern = vim.fn.stdpath("config") .. "/lua/*.lua",
+	pattern = {
+		vim.fn.stdpath("config") .. "/lua/*.lua",
+		vim.fn.stdpath("config") .. "/lua/**/*.lua",
+	},
 	group = augroup("TeVimReload", { clear = true }),
 	callback = function(opts)
-		local fp = vim.fn.fnamemodify(vim.fs.normalize(vim.api.nvim_buf_get_name(opts.buf)), ":r")
-		local app_name = vim.env.NVIM_APPNAME and vim.env.NVIM_APPNAME or "nvim"
-		local module = string.gsub(fp, "^.*/" .. app_name .. "/lua/", ""):gsub("/", ".")
-		vim.cmd("silent source %")
-		if vim.g.loadTeVimTheme then
-			require("plenary.reload").reload_module("tevim.themes")
+		if reload_pending then
+			return
 		end
-		require("plenary.reload").reload_module(module)
-		require("plenary.reload").reload_module("custom")
+		reload_pending = true
+		local path = vim.fs.normalize(vim.api.nvim_buf_get_name(opts.buf))
 
-		if vim.g.loadTeBufLine then
-			require("plenary.reload").reload_module("tevim.ui.tebufline")
-			vim.opt.tabline = "%!v:lua.require('tevim.ui.tebufline').getTabline()"
-		end
-		if vim.g.loadTeStatusLine then
-			require("plenary.reload").reload_module("tevim.ui.testatusline")
-			vim.opt.statusline = "%!v:lua.require('tevim.ui.testatusline').setup()"
-		end
-		if vim.g.loadTeVimTheme then
-			require("tevim.themes").load()
-		end
+		vim.defer_fn(function()
+			reload_pending = false
+			local lua_root = vim.fs.normalize(vim.fn.stdpath("config") .. "/lua") .. "/"
+			local module = path:sub(#lua_root + 1):gsub("%.lua$", ""):gsub("/", ".")
+
+			if module == "tevim.plugins.init" or module == "custom.plugins" then
+				vim.notify("Plugin specs changed; run :Lazy reload or restart Neovim", vim.log.levels.INFO)
+				return
+			end
+
+			local reload = require("plenary.reload").reload_module
+			reload(module)
+			local ok, err = pcall(require, module)
+			if not ok then
+				vim.notify(("Failed to reload %s:\n%s"):format(module, err), vim.log.levels.ERROR)
+				return
+			end
+
+			if vim.g.loadTeBufLine then
+				reload("tevim.ui.tebufline")
+				vim.opt.tabline = "%!v:lua.require('tevim.ui.tebufline').getTabline()"
+			end
+			if vim.g.loadTeStatusLine then
+				reload("tevim.ui.testatusline")
+				require("tevim.ui.testatusline").setup()
+			end
+			if vim.g.loadTeVimTheme then
+				require("tevim.themes").load()
+			end
+			vim.cmd.redraw()
+		end, 50)
 	end,
 	desc = "Reload neovim config on save",
 })
 
 -- Create custom command
-vim.api.nvim_create_user_command("TeVimUpdate", function()
+local function user_command(name, callback)
+	pcall(vim.api.nvim_del_user_command, name)
+	vim.api.nvim_create_user_command(name, callback, {})
+end
+
+user_command("TeVimUpdate", function()
 	require("tevim.core.utils").TeVimUpdate()
-end, {})
-vim.api.nvim_create_user_command("TeVimCreateCustom", function()
+end)
+user_command("TeVimCreateCustom", function()
 	require("tevim.core.utils").CreateCustom()
-end, {})
-vim.api.nvim_create_user_command("TeVimCheckMason", function()
+end)
+user_command("TeVimCheckMason", function()
 	require("tevim.core.utils").checkMason()
-end, {})
-vim.api.nvim_create_user_command("TeVimThemes", function()
+end)
+user_command("TeVimThemes", function()
 	require("tevim.themes.pick").setup()
-end, {})
-vim.api.nvim_create_user_command("TeVimToggleTrans", function()
+end)
+user_command("TeVimToggleTrans", function()
 	require("tevim.themes.pick").toggleTransparency()
-end, {})
-vim.api.nvim_create_user_command("LazyGit", function()
+end)
+user_command("LazyGit", function()
 	require("tevim.core.utils").LazyGit()
-end, {})
-vim.api.nvim_create_user_command("Ranger", function()
+end)
+user_command("Ranger", function()
 	require("tevim.core.utils").Ranger()
-end, {})
+end)

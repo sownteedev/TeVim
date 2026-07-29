@@ -58,21 +58,38 @@ local icon = {
 	["!"] = { " ", "TeSTTTerminalModeIcon" },
 }
 local mode = function()
-	local mode = vim.api.nvim_get_mode().mode
+	local current_mode = vim.api.nvim_get_mode().mode
+	local mode_info = modes[current_mode] or modes.n
+	local mode_icon = icon[current_mode] or icon.n
 	return "%#"
-		.. icon[mode][2]
+		.. mode_icon[2]
 		.. "#"
-		.. icon[mode][1]
+		.. mode_icon[1]
 		.. " "
 		.. "%#"
-		.. modes[mode][2]
+		.. mode_info[2]
 		.. "#"
 		.. " "
-		.. modes[mode][1]
+		.. mode_info[1]
 		.. " "
 end
 
-local filename = function()
+local function truncate(text, limit)
+	if vim.fn.strdisplaywidth(text) <= limit then
+		return text
+	end
+	local result = ""
+	for index = 0, vim.fn.strchars(text) - 1 do
+		local character = vim.fn.strcharpart(text, index, 1)
+		if vim.fn.strdisplaywidth(result .. character .. "…") > limit then
+			break
+		end
+		result = result .. character
+	end
+	return result .. "…"
+end
+
+local filename = function(limit, show_project)
 	---@diagnostic disable-next-line: redefined-local
 	local icon = " 󰢚 "
 	local filename = (vim.fn.expand("%") == "" and "Empty ") or vim.fn.expand("%:t")
@@ -88,13 +105,13 @@ local filename = function()
 			filename = "Terminal"
 			return "%#TeSTTFileIcon#" .. "  " .. "%#TeSTTFileName#" .. " " .. filename .. " "
 		end
+		filename = truncate(filename, limit or 32)
+		local project = show_project and (truncate(vim.fn.fnamemodify(vim.fn.getcwd(), ":t"), 14) .. "/") or ""
 		return "%#TeSTTFileIcon#"
 			.. icon
 			.. " "
 			.. "%#TeSTTFolder#"
-			.. " "
-			.. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-			.. "/"
+			.. (project ~= "" and (" " .. project) or "")
 			.. "%#TeSTTFileName#"
 			.. filename
 			.. " "
@@ -103,13 +120,13 @@ local filename = function()
 	end
 end
 
-local branch = function()
+local branch = function(limit)
 	if not vim.b.gitsigns_head or vim.b.gitsigns_git_status then
 		return "%#TeSTTBranchIcon#" .. " 󱓌 "
 	end
 
 	local git_status = vim.b.gitsigns_status_dict
-	local branch_name = git_status.head .. " "
+	local branch_name = truncate(git_status.head, limit or 20) .. " "
 
 	return "%#TeSTTBranchIcon#" .. "  " .. "%#TeSTTBranchName#" .. " " .. branch_name
 end
@@ -139,27 +156,24 @@ local diff = function()
 	end
 end
 
-local diagnostics = function()
+local diagnostics = function(compact)
 	local errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
 	local warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
 	local hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
 	local info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
-	ERROR = (errors and errors > 0) and ("%#TeSTTErrorIcon#" .. "  " .. "%#TeSTTError#" .. errors) or ""
-	WARNING = (warnings and warnings > 0) and ("%#TeSTTWarningIcon#" .. "  " .. "%#TeSTTWarning#" .. warnings) or ""
-	HINT = (hints and hints > 0) and ("%#TeSTTHintsIcon#" .. " 󰌶 " .. "%#TeSTTHints#" .. hints) or ""
-	INFO = (info and info > 0) and ("%#TeSTTInfoIcon#" .. "  " .. "%#TeSTTInfo#" .. info) or ""
-	if vim.o.columns < 120 then
-		return ERROR .. WARNING .. HINT .. INFO .. " "
+	local error_text = errors > 0 and ("%#TeSTTErrorIcon#  %#TeSTTError#" .. errors) or ""
+	local warning_text = warnings > 0 and ("%#TeSTTWarningIcon#  %#TeSTTWarning#" .. warnings) or ""
+	local hint_text = hints > 0 and ("%#TeSTTHintsIcon# 󰌶 %#TeSTTHints#" .. hints) or ""
+	local info_text = info > 0 and ("%#TeSTTInfoIcon#  %#TeSTTInfo#" .. info) or ""
+	if compact then
+		return error_text .. warning_text .. " "
 	end
-	return "%#TeSTTLspIcon#" .. " 󰒋 " .. ERROR .. WARNING .. HINT .. INFO
+	return error_text .. warning_text .. hint_text .. info_text
 end
 
-local lsp = function()
-	local buf_clients = vim.lsp.get_clients()
-	if not buf_clients then
-		return ""
-	end
-	local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+local lsp = function(max_clients)
+	local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
+	local buf_ft = vim.bo.filetype
 	if next(buf_clients) == nil then
 		return ""
 	end
@@ -187,11 +201,14 @@ local lsp = function()
 	end
 
 	-- RETURN CLIENTS
-	if #buf_client_names > 3 then
-		return "%#TeSTTLsp#" ..
-			" " .. buf_client_names[1] .. ", " .. buf_client_names[2] .. ", " .. buf_client_names[3] .. " "
+	buf_client_names = vim.fn.uniq(buf_client_names)
+	max_clients = max_clients or 3
+	local prefix = "%#TeSTTLspIcon# 󰒋 %#TeSTTLsp# "
+	if #buf_client_names > max_clients then
+		local visible = vim.list_slice(buf_client_names, 1, max_clients)
+		return prefix .. table.concat(visible, ", ") .. " +" .. (#buf_client_names - max_clients) .. " "
 	end
-	return "%#TeSTTLsp#" .. " " .. table.concat(vim.fn.uniq(buf_client_names), ", ") .. " "
+	return prefix .. table.concat(buf_client_names, ", ") .. " "
 end
 
 local copilot = function()
@@ -225,7 +242,7 @@ local tabnine = function()
 end
 
 local tab = function()
-	return "%#TeSTTTabIcon#" .. "  " .. "%#TeSTTTab#" .. " " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
+	return "%#TeSTTTabIcon#" .. "  " .. "%#TeSTTTab#" .. " " .. vim.bo.shiftwidth .. " "
 end
 
 local location = function()
@@ -236,11 +253,11 @@ local location = function()
 end
 
 local progress = function()
-	local current_line = vim.fn.line(".")
-	local total_lines = vim.fn.line("$")
+	local current_line = math.max(1, vim.fn.line("."))
+	local total_lines = math.max(1, vim.fn.line("$"))
 	local chars = { "  ", " 󰪞 ", " 󰪟 ", " 󰪠 ", " 󰪢 ", " 󰪣 ", " 󰪤 ", " 󰪥 " }
 	local progress_percent = current_line / total_lines
-	local index = math.ceil(progress_percent * #chars)
+	local index = math.max(1, math.min(#chars, math.ceil(progress_percent * #chars)))
 	if current_line == 1 then
 		return "%#TeSTTProgressIcon#" .. chars[index] .. "%#TeSTTProgress#" .. " Top "
 	elseif current_line == total_lines then
@@ -270,53 +287,110 @@ local countBuffer = function()
 end
 
 local nothing = function()
-	if vim.o.columns < 120 or countBuffer() < 2 then
+	if countBuffer() < 2 then
 		return "%#TeSTTNothing2#" .. "    "
 	end
 	return "%#TeSTTNothing#" .. "    "
 end
 
-M.run = function()
-	if vim.o.columns < 120 then
+local function right_side(components)
+	local visible = {}
+	for _, component in ipairs(components) do
+		if component and component ~= "" and component ~= " " then
+			visible[#visible + 1] = component
+		end
+	end
+	return table.concat(visible, "%#TeSTTNothing2#  ")
+end
+
+function M.run(forced_width)
+	local width = forced_width or (vim.o.laststatus == 3 and vim.o.columns or vim.api.nvim_win_get_width(0))
+	local gap = nothing()
+	local align = "%#TeSTTNothing2#%="
+
+	if vim.bo.filetype == "neo-tree" then
 		return table.concat({
-			nothing(),
-			"%=",
 			mode(),
-			nothing(),
-			diagnostics(),
+			"%#TeSTTNothing2#  ",
+			"%#TeSTTFileIcon# 󰝰 ",
+			"%#TeSTTFileName# Explorer ",
+			align,
 		})
 	end
+
+	if width < 52 then
+		return table.concat({
+			mode(),
+			align,
+			location(),
+		})
+	elseif width < 72 then
+		return table.concat({
+			mode(),
+			align,
+			right_side({ diagnostics(true), location() }),
+		})
+	elseif width < 96 then
+		return table.concat({
+			mode(),
+			gap,
+			filename(14, true),
+			align,
+			right_side({ diagnostics(true), progress(), location() }),
+		})
+	elseif width < 120 then
+		return table.concat({
+			mode(),
+			gap,
+			filename(20, true),
+			gap,
+			branch(12),
+			align,
+			right_side({ diagnostics(true), tab(), progress(), location() }),
+		})
+	elseif width < 150 then
+		return table.concat({
+			mode(),
+			gap,
+			filename(28, true),
+			gap,
+			branch(16),
+			align,
+			right_side({ diagnostics(false), lsp(1), tab(), progress(), location() }),
+		})
+	end
+
 	return table.concat({
 		mode(),
-		nothing(),
-		filename(),
-		nothing(),
+		gap,
+		filename(36, true),
+		gap,
 		branch(),
-		nothing(),
+		gap,
 		diff(),
-		nothing(),
-		"%=",
-		diagnostics(),
-		lsp(),
-		copilot(),
-		codeium(),
-		tabnine(),
-		nothing(),
-		tab(),
-		nothing(),
-		progress(),
-		nothing(),
-		location(),
+		align,
+		right_side({
+			diagnostics(false),
+			lsp(3),
+			copilot(),
+			codeium(),
+			tabnine(),
+			tab(),
+			progress(),
+			location(),
+		}),
 	})
 end
 
-M.setup = function()
+function M.setup()
 	vim.opt.laststatus = 3
-	vim.opt.statusline = M.run()
-	vim.api.nvim_create_autocmd({ "ModeChanged", "CursorHold", "VimResized" }, {
-		callback = function()
-			vim.opt.statusline = M.run()
-		end,
+	vim.o.statusline = "%!v:lua.require('tevim.ui.testatusline').run()"
+	local group = vim.api.nvim_create_augroup("tevim_statusline", { clear = true })
+	vim.api.nvim_create_autocmd({ "ModeChanged", "DiagnosticChanged", "LspAttach", "LspDetach", "VimResized" }, {
+		group = group,
+		callback = vim.schedule_wrap(function()
+			vim.cmd.redrawstatus()
+		end),
 	})
 end
 

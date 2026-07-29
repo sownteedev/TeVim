@@ -15,9 +15,9 @@ local plugins = {
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
 		cmd = "Neotree",
 		keys = { { mode = { "n", "v" }, "<C-e>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" } },
-		commit = "8afbb06081ce1e4beb5b18945d14a608b10babeb",
 		deactivate = function()
 			vim.cmd([[Neotree close]])
 		end,
@@ -67,19 +67,6 @@ local plugins = {
 		},
 		opts = function()
 			return require("tevim.plugins.configs.blankline")
-		end,
-	},
-	{
-		"stevearc/dressing.nvim",
-		init = function()
-			vim.ui.select = function(...)
-				require("lazy").load({ plugins = { "dressing.nvim" } })
-				return vim.ui.select(...)
-			end
-			vim.ui.input = function(...)
-				require("lazy").load({ plugins = { "dressing.nvim" } })
-				return vim.ui.input(...)
-			end
 		end,
 	},
 	{
@@ -154,9 +141,9 @@ local plugins = {
 				ft_ignore = { "neo-tree", "Outline" },
 				segments = {
 					{ sign = { namespace = { "diagnostic*" } } },
-					{ sign = { namespace = { "gitsign" } },    click = "v:lua.ScSa" },
-					{ text = { builtin.lnumfunc, "  " },       click = "v:lua.ScLa" },
-					{ text = { builtin.foldfunc, "  " },       click = "v:lua.ScFa" },
+					{ sign = { namespace = { "gitsign" } }, click = "v:lua.ScSa" },
+					{ text = { builtin.lnumfunc, "  " }, click = "v:lua.ScLa" },
+					{ text = { builtin.foldfunc, "  " }, click = "v:lua.ScFa" },
 				},
 			})
 		end,
@@ -166,7 +153,6 @@ local plugins = {
 		event = { "BufReadPost", "BufNewFile" },
 		dependencies = "kevinhwang91/promise-async",
 		init = function()
-			vim.o.foldcolumn = "1"
 			vim.o.foldlevel = 99
 			vim.o.foldlevelstart = 99
 			vim.o.foldenable = true
@@ -216,7 +202,12 @@ local plugins = {
 		dependencies = {
 			{
 				"nvimdev/lspsaga.nvim",
-				opts = { symbol_in_winbar = { show_file = false } },
+				opts = {
+					symbol_in_winbar = {
+						show_file = false,
+						ignore_patterns = { "neo%-tree" },
+					},
+				},
 			},
 			{
 				"williamboman/mason.nvim",

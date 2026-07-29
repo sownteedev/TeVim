@@ -28,6 +28,15 @@ return {
 	TeBufEmpty = { bg = colors.background },
 	TeBufEmptyColor = { bg = utils.blend(colors.foreground, colors.background, 0.015) },
 	TeBufCloseButton = { bg = colors.red, fg = colors.background },
+	TeBufScroll = {
+		bg = utils.blend(colors.foreground, colors.background, 0.08),
+		fg = colors.blue,
+		bold = true,
+	},
+	TeBufScrollDisabled = {
+		bg = utils.blend(colors.foreground, colors.background, 0.02),
+		fg = utils.blend(colors.foreground, colors.background, 0.3),
+	},
 
 	TeBufRun = {
 		bg = utils.blend(colors.foreground, colors.background, 0.08),
@@ -50,6 +59,14 @@ return {
 	},
 	TeSTTCommandMode = { fg = colors.red, bg = utils.blend(colors.red, colors.background, 0.1) },
 	TeSTTInsertMode = { fg = colors.green, bg = utils.blend(colors.green, colors.background, 0.1) },
+	TeSTTReplaceMode = {
+		fg = utils.mix(colors.red, colors.blue, 0.5),
+		bg = utils.blend(utils.mix(colors.red, colors.blue, 0.5), colors.background, 0.1),
+	},
+	TeSTTSelectMode = {
+		fg = utils.mix(colors.green, colors.blue, 0.5),
+		bg = utils.blend(utils.mix(colors.green, colors.blue, 0.5), colors.background, 0.1),
+	},
 	TeSTTTerminalMode = { fg = colors.red, bg = utils.blend(colors.red, colors.background, 0.1) },
 	TeSTTNTerminalMode = { fg = colors.red, bg = utils.blend(colors.red, colors.background, 0.1) },
 	TeSTTConfirmMode = {
@@ -60,6 +77,8 @@ return {
 	TeSTTVisualModeIcon = { fg = colors.background, bg = utils.mix(colors.red, colors.blue, 0.5) },
 	TeSTTCommandModeIcon = { fg = colors.background, bg = colors.red },
 	TeSTTInsertModeIcon = { fg = colors.background, bg = colors.green },
+	TeSTTReplaceModeIcon = { fg = colors.background, bg = utils.mix(colors.red, colors.blue, 0.5) },
+	TeSTTSelectModeIcon = { fg = colors.background, bg = utils.mix(colors.green, colors.blue, 0.5) },
 	TeSTTTerminalModeIcon = { fg = colors.background, bg = colors.red },
 	TeSTTNTerminalModeIcon = { fg = colors.background, bg = colors.red },
 	TeSTTConfirmModeIcon = { fg = colors.background, bg = utils.mix(colors.red, colors.green, 0.5) },

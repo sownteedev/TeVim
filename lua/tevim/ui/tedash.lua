@@ -38,21 +38,35 @@ local tedashWidth = #headerAscii[1] + 3
 local max_height = #headerAscii + 4 + (2 * #buttons)
 local get_win_height = api.nvim_win_get_height
 
-M.setup = function()
+M.setup = function(target_win)
+	if vim.g.loadTeBufLine then
+		vim.o.tabline = '%!v:lua.require("tevim.ui.tebufline").getTabline()'
+	end
 	if loadTeDash then
-		vim.g.nv_previous_buf = vim.api.nvim_get_current_buf()
+		if not target_win and vim.bo.filetype ~= "tedash" then
+			vim.g.nv_previous_buf = vim.api.nvim_get_current_buf()
+		end
 
 		local buf = vim.api.nvim_create_buf(false, true)
-		local win = api.nvim_get_current_win()
-
-		if tedashWidth + 6 > api.nvim_win_get_width(0) then
-			vim.api.nvim_set_current_win(api.nvim_list_wins()[2])
+		local win = target_win
+		if not win or not api.nvim_win_is_valid(win) then
 			win = api.nvim_get_current_win()
+			for _, candidate in ipairs(api.nvim_tabpage_list_wins(0)) do
+				local candidate_buf = api.nvim_win_get_buf(candidate)
+				if
+					vim.bo[candidate_buf].filetype ~= "neo-tree"
+					and api.nvim_win_get_width(candidate) > api.nvim_win_get_width(win)
+				then
+					win = candidate
+				end
+			end
 		end
+
+		local win_width = api.nvim_win_get_width(win)
 
 		api.nvim_win_set_buf(win, buf)
 
-		vim.opt_local.filetype = "tedash"
+		vim.bo[buf].filetype = "tedash"
 		vim.g.tedash_displayed = true
 
 		local header = headerAscii
@@ -65,8 +79,8 @@ M.setup = function()
 		end
 
 		local function addPadding_toHeader(str)
-			local pad = (api.nvim_win_get_width(win) - fn.strwidth(str)) / 2
-			return string.rep(" ", math.floor(pad)) .. str .. " "
+			local pad = math.max(0, math.floor((win_width - fn.strwidth(str)) / 2))
+			return string.rep(" ", pad) .. str .. " "
 		end
 
 		local dashboard = {}
@@ -86,8 +100,9 @@ M.setup = function()
 			result[i] = ""
 		end
 
-		local headerStart_Index = math.abs(math.floor((get_win_height(win) / 2) - (#dashboard / 2))) + 1
-		local abc = math.abs(math.floor((get_win_height(win) / 2) - (#dashboard / 2))) + 1
+		local vertical_padding = math.max(0, math.floor((get_win_height(win) - #dashboard) / 2))
+		local headerStart_Index = vertical_padding + 1
+		local abc = vertical_padding + 1
 
 		-- set ascii
 		for _, val in ipairs(dashboard) do
@@ -98,7 +113,7 @@ M.setup = function()
 		api.nvim_buf_set_lines(buf, 0, -1, false, result)
 
 		local tedash = api.nvim_create_namespace("tedash")
-		local horiz_pad_index = math.floor((api.nvim_win_get_width(win) / 2) - (tedashWidth / 2)) - 2
+		local horiz_pad_index = math.max(0, math.floor((win_width - tedashWidth) / 2) - 2)
 
 		for i = abc, abc + #header do
 			api.nvim_buf_add_highlight(buf, tedash, "TeDashAscii", i, horiz_pad_index, -1)
@@ -108,7 +123,8 @@ M.setup = function()
 			api.nvim_buf_add_highlight(buf, tedash, "TeDashButtons", i, horiz_pad_index, -1)
 		end
 
-		api.nvim_win_set_cursor(win, { abc + #header, math.floor(vim.o.columns / 2) - 13 })
+		local cursor_column = math.max(0, math.floor((win_width - tedashWidth) / 2) + 1)
+		api.nvim_win_set_cursor(win, { abc + #header, cursor_column })
 
 		local first_btn_line = abc + #header + 2
 		local keybind_lineNrs = {}
@@ -118,34 +134,34 @@ M.setup = function()
 			first_btn_line = first_btn_line + 2
 		end
 
-		vim.keymap.set("n", "h", "", { buffer = true })
-		vim.keymap.set("n", "<Left>", "", { buffer = true })
-		vim.keymap.set("n", "l", "", { buffer = true })
-		vim.keymap.set("n", "<Right>", "", { buffer = true })
+		vim.keymap.set("n", "h", "", { buffer = buf })
+		vim.keymap.set("n", "<Left>", "", { buffer = buf })
+		vim.keymap.set("n", "l", "", { buffer = buf })
+		vim.keymap.set("n", "<Right>", "", { buffer = buf })
 
 		vim.keymap.set("n", "k", function()
 			local cur = fn.line(".")
 			local target_line = cur == keybind_lineNrs[1] and keybind_lineNrs[#keybind_lineNrs] or cur - 2
-			api.nvim_win_set_cursor(win, { target_line, math.floor(vim.o.columns / 2) - 13 })
-		end, { buffer = true })
+			api.nvim_win_set_cursor(win, { target_line, cursor_column })
+		end, { buffer = buf })
 
 		vim.keymap.set("n", "j", function()
 			local cur = fn.line(".")
 			local target_line = cur == keybind_lineNrs[#keybind_lineNrs] and keybind_lineNrs[1] or cur + 2
-			api.nvim_win_set_cursor(win, { target_line, math.floor(vim.o.columns / 2) - 13 })
-		end, { buffer = true })
+			api.nvim_win_set_cursor(win, { target_line, cursor_column })
+		end, { buffer = buf })
 
 		vim.keymap.set("n", "<Up>", function()
 			local cur = fn.line(".")
 			local target_line = cur == keybind_lineNrs[1] and keybind_lineNrs[#keybind_lineNrs] or cur - 2
-			api.nvim_win_set_cursor(win, { target_line, math.floor(vim.o.columns / 2) - 13 })
-		end, { buffer = true })
+			api.nvim_win_set_cursor(win, { target_line, cursor_column })
+		end, { buffer = buf })
 
 		vim.keymap.set("n", "<Down>", function()
 			local cur = fn.line(".")
 			local target_line = cur == keybind_lineNrs[#keybind_lineNrs] and keybind_lineNrs[1] or cur + 2
-			api.nvim_win_set_cursor(win, { target_line, math.floor(vim.o.columns / 2) - 13 })
-		end, { buffer = true })
+			api.nvim_win_set_cursor(win, { target_line, cursor_column })
+		end, { buffer = buf })
 
 		vim.keymap.set("n", "<CR>", function()
 			for i, val in ipairs(keybind_lineNrs) do
@@ -158,48 +174,65 @@ M.setup = function()
 					end
 				end
 			end
-		end, { buffer = true })
+		end, { buffer = buf })
 
-		vim.opt_local.buflisted = false
-		vim.opt_local.modifiable = false
-		vim.opt_local.number = false
-		vim.opt_local.list = false
-		vim.opt_local.relativenumber = false
-		vim.opt_local.wrap = false
-		vim.opt_local.cul = false
-		vim.opt_local.foldcolumn = "0"
-		vim.opt_local.stc = ""
-		vim.opt_local.colorcolumn = "0"
-		vim.opt_local.showtabline = 0
+		vim.bo[buf].buflisted = false
+		vim.bo[buf].modifiable = false
+		vim.wo[win].number = false
+		vim.wo[win].list = false
+		vim.wo[win].relativenumber = false
+		vim.wo[win].wrap = false
+		vim.wo[win].cursorline = false
+		vim.wo[win].foldcolumn = "0"
+		vim.wo[win].statuscolumn = ""
+		vim.wo[win].colorcolumn = ""
+		vim.o.showtabline = 0
 	elseif vim.g.loadTeBufLine then
+		vim.o.showtabline = 2
 		vim.o.tabline = '%!v:lua.require("tevim.ui.tebufline").getTabline()'
 	end
 end
 
 if loadTeDash then
+	pcall(api.nvim_del_user_command, "TeDash")
 	api.nvim_create_user_command("TeDash", function()
 		if vim.g.tedash_displayed then
-			require("tevim.ui.tebufline.modules").close_buffer()
+			local previous = vim.g.nv_previous_buf
+			if previous and api.nvim_buf_is_valid(previous) then
+				api.nvim_win_set_buf(0, previous)
+			else
+				api.nvim_win_set_buf(0, api.nvim_create_buf(true, false))
+			end
+			vim.g.tedash_displayed = false
+			if vim.g.loadTeBufLine then
+				vim.o.showtabline = 2
+			end
 		else
 			M.setup()
 		end
 	end, {})
 
+	local group = api.nvim_create_augroup("tevim_dashboard", { clear = true })
 	api.nvim_create_autocmd("VimResized", {
+		group = group,
 		callback = function()
-			if vim.bo.filetype == "tedash" or vim.bo.filetype == "neo-tree" then
-				vim.opt_local.modifiable = true
-				vim.api.nvim_buf_set_lines(0, 0, -1, false, { "" })
-				require("tevim.ui.tedash").setup()
+			for _, win in ipairs(api.nvim_tabpage_list_wins(0)) do
+				if vim.bo[api.nvim_win_get_buf(win)].filetype == "tedash" then
+					require("tevim.ui.tedash").setup(win)
+				end
 			end
 		end,
 		desc = "Resize Dashboard",
 	})
 
 	api.nvim_create_autocmd("BufLeave", {
+		group = group,
 		callback = function()
 			if vim.bo.ft == "tedash" then
 				vim.g.tedash_displayed = false
+				if vim.g.loadTeBufLine then
+					vim.o.showtabline = 2
+				end
 			end
 		end,
 	})

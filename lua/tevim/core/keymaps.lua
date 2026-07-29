@@ -6,9 +6,11 @@ map("v", "<C-c>", "y", opts, { desc = "Copy" })
 map({ "n", "i" }, "<C-v>", "<ESC>pa", opts, { desc = "Paste" })
 map({ "n", "v" }, "<C-x>", "d", opts, { desc = "Cut" })
 map({ "n", "v", "i" }, "<C-z>", "<cmd>undo<CR>", opts, { desc = "Undo" })
-map("n", "<C-/>", "gcc", { remap = true, silent = true }, { desc = "Toggle Comment" })
-map("v", "<C-/>", "gc", { remap = true, silent = true }, { desc = "Toggle Comment" })
-map("i", "<C-/>", "<Esc>gcca", { remap = true, silent = true }, { desc = "Toggle Comment" })
+for _, key in ipairs({ "<C-/>", "<C-_>" }) do
+	map("n", key, "gcc", { remap = true, silent = true, desc = "Toggle Comment" })
+	map("v", key, "gc", { remap = true, silent = true, desc = "Toggle Comment" })
+	map("i", key, "<Esc>gcca", { remap = true, silent = true, desc = "Toggle Comment" })
+end
 
 map(
 	"n",

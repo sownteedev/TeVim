@@ -30,6 +30,33 @@ return {
 			},
 		},
 	},
+	event_handlers = {
+		{
+			event = "neo_tree_window_after_open",
+			handler = function(args)
+				local function clear_winbar()
+					if vim.go.winbar ~= "" then
+						vim.go.winbar = ""
+					end
+					if vim.api.nvim_win_is_valid(args.winid) then
+						vim.api.nvim_set_option_value("winbar", "", { scope = "local", win = args.winid })
+						vim.api.nvim_set_option_value("number", false, { scope = "local", win = args.winid })
+						vim.api.nvim_set_option_value("relativenumber", false, { scope = "local", win = args.winid })
+						vim.api.nvim_set_option_value("statuscolumn", "", { scope = "local", win = args.winid })
+					end
+					for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+						local buf = vim.api.nvim_win_get_buf(win)
+						if vim.bo[buf].filetype == "tedash" then
+							vim.o.showtabline = 0
+							break
+						end
+					end
+				end
+				clear_winbar()
+				vim.schedule(clear_winbar)
+			end,
+		},
+	},
 	window = { width = 30 },
 	filesystem = {
 		filtered_items = { hide_dotfiles = false, hide_gitignored = false },

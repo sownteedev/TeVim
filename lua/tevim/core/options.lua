@@ -15,6 +15,7 @@ local options = {
 	mouse = "a",
 	cursorline = true,
 	showmode = false,
+	winbar = "",
 	laststatus = 3,
 	showtabline = 2,
 	splitbelow = true,
